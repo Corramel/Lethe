@@ -109,7 +109,7 @@ client.on('message', m => {
  if (m.content.startsWith(`?nanami`)) { //nanami
   if (!checkCommand(m, `?vanilla`)) return
   var vanillaArray = ["https://i.gyazo.com/fb6577a3239a86a24fac222e53b1e889.png", "http://puu.sh/maD1a/ebe71dec99.jpg"]
-  client.reply(m, vanillaArray[Math.floor(Math.random()*chanceyArray.length)])
+  client.reply(m, vanillaArray[Math.floor(Math.random()*vanillaArray.length)])
   return;
 }
  if (m.content.startsWith(`?uni`)) { //uni
