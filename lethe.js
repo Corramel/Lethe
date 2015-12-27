@@ -109,19 +109,24 @@ client.on('message', m => {
  if (m.content.startsWith(`?nanami`)) { //nanami
   if (!checkCommand(m, `?vanilla`)) return
   var vanillaArray = ["https://i.gyazo.com/fb6577a3239a86a24fac222e53b1e889.png", "http://puu.sh/maD1a/ebe71dec99.jpg"]
-  client.reply(m, vanillaArray[0])
+  client.reply(m, vanillaArray[Math.floor(Math.random()*chanceyArray.length)])
+  return;
 }
  if (m.content.startsWith(`?uni`)) { //uni
     if (!checkCommand(m, `?uni`)) return
-    var uniArray = ["https://puu.sh/lTwMZ/0176bb7075.JPG", "http://puu.sh/lNwLG/47cc9cf362.png", "http://puu.sh/m9whg/187a691bc7.png"]
+    var uniArray = ["https://puu.sh/lTwMZ/0176bb7075.JPG", "http://puu.sh/lNwLG/47cc9cf362.png", "http://puu.sh/m9whg/187a691bc7.png",]
     client.reply(m, uniArray[Math.floor(Math.random() * uniArray.length)])
     return;
  }
-if (m.content.startsWith(`?homieroast`)) { //when ya homie gets roasted
-  if (!checkCommand(m, `?homieroast`)) return
-  client.reply(m, "https://40.media.tumblr.com/a45905c3728d9e12c0cf75f1068dc1ca/tumblr_noto8ys9Uc1rraq2ko2_1280.jpg", "https://cdn.discordapp.com/attachments/93578176231374848/130706697416081408/tumblr_nwsaleCKuD1s8as3do1_540.png")
+if (m.content.startsWith(`?roast`)) { //when ya homie gets roasted
+  if (!checkCommand(m, `?roast`)) return
+  var roastArray = ["https://40.media.tumblr.com/a45905c3728d9e12c0cf75f1068dc1ca/tumblr_noto8ys9Uc1rraq2ko2_1280.jpg", "https://cdn.discordapp.com/attachments/93578176231374848/130706697416081408/tumblr_nwsaleCKuD1s8as3do1_540.png"]
+  client.reply(m, roastArray[Math.floor(Math.random()*roastArray.length)])
   return;
 }
+if (m.content.startsWith(`?niger`)) { //niger
+  if (!checkCommand(m, `?niger`)) return
+  client.reply(m, "This is really offensive and racist. Labelling someone with the word \"niger\" is not right. We're all human and skin color, nationality, religion, political beliefs, sexual identity and orientation and lifestyle don't make us different under the skin. Pictures like this should be banned from tumblr.")
 if (m.content.startsWith(`?jimbo`)) { //shadow realm jimbo
   if (!checkCommand(m, `?jimbo`)) return
   client.reply(m, "http://puu.sh/m1Ta5/910f1b8e35.png")
