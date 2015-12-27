@@ -1,3 +1,24 @@
+process.on('uncaughtException', function(err) {
+  // Handle ECONNRESETs caused by `next` or `destroy`
+  if (err.code == 'ECONNRESET') {
+    // Yes, I'm aware this is really bad node code. However, the uncaught exception
+    // that causes this error is buried deep inside either discord.js, ytdl or node
+    // itself and after countless hours of trying to debug this issue I have simply
+    // given up. The fact that this error only happens *sometimes* while attempting
+    // to skip to the next video (at other times, I used to get an EPIPE, which was
+    // clearly an error in discord.js and was now fixed) tells me that this problem
+    // can actually be safely prevented using uncaughtException. Should this bother
+    // you, you can always try to debug the error yourself and make a PR.
+    console.log('Got an ECONNRESET! This is *probably* not an error. Stacktrace:');
+    console.log(err.stack);
+  } else {
+    // Normal error handling
+    console.log(err);
+    console.log(err.stack);
+    process.exit(0);
+  }
+});
+
 var Discord = require('discord.js');
 
 var ytdl = require('ytdl-core');
@@ -10,12 +31,14 @@ var git = require('git-rev');
 git.short(commit => git.branch(branch => {
   console.log(`Lethe#${branch}@${commit}`);
 }));
+
 var shouldDisallowQueue = require('./lib/permission-checks.js');
-var VideoFormat = require('./lib/video-format.js');
-var YoutubeStream = require('./lib/youtube-stream.js');
 var Saved = require('./lib/saved.js');
 Saved.read();
 
+var YoutubeTrack = require('./lib/youtube-track.js');
+
+var Util = require('./lib/util.js');
 var Config = require('./lib/config.js');
 var CURRENT_REV = 2;
 
@@ -59,7 +82,7 @@ client.on('message', m => {
   if (!botMention) return;
   if (client.user.id == m.author.id) return;
 
-  if (m.content.startsWith(`?info`)) {
+    if (m.content.startsWith(`?info`)) {
     if (!checkCommand(m, '?info')) return;
     git.short(commit => git.branch(branch => {
       client.reply(m, `Version: \`Lethe#${branch}@${commit}\` (cf: ${Config.configRev} cr: ${CURRENT_REV}). Info about Lethe can be found at https://github.com/meew0/Lethe.`);
@@ -96,7 +119,7 @@ client.on('message', m => {
  }
 if (m.content.startsWith(`?homieroast`)) { //when ya homie gets roasted
   if (!checkCommand(m, `?homieroast`)) return
-  client.reply(m, "https://40.media.tumblr.com/a45905c3728d9e12c0cf75f1068dc1ca/tumblr_noto8ys9Uc1rraq2ko2_1280.jpg")
+  client.reply(m, "https://40.media.tumblr.com/a45905c3728d9e12c0cf75f1068dc1ca/tumblr_noto8ys9Uc1rraq2ko2_1280.jpg", "https://cdn.discordapp.com/attachments/93578176231374848/130706697416081408/tumblr_nwsaleCKuD1s8as3do1_540.png")
   return;
 }
 if (m.content.startsWith(`?jimbo`)) { //shadow realm jimbo
@@ -161,8 +184,8 @@ if (m.content.startsWith(`?murder`)) { //FE murder
   client.reply(m, murderArray[Math.floor(Math.random() * murderArray.length)])
   return
 } 
-if (m.content.startsWith(`?clearlyaruse`)) { //embarassing...
-  if (!checkCommand(m, `?clearlyaruse`)) return
+if (m.content.startsWith(`?clearly`)) { //embarassing...
+  if (!checkCommand(m, `?clearly`)) return
   var ruseArray = ["http://puu.sh/m9upL/d08c7cae41.jpg", "http://puu.sh/m9uuY/c73bdb1d8c.jpg", "http://puu.sh/m9uJx/88d050f6fd.png"]
   client.reply(m, ruseArray[Math.floor(Math.random()*ruseArray.length)])
   return
@@ -205,8 +228,8 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     return;
   }
 
-  if (m.content.startsWith(`?init`)) { // init
-    if (!checkCommand(m, '?init')) return;
+  if (m.content.startsWith(`${botMention} init`)) { // init
+    if (!checkCommand(m, 'init')) return;
     if (boundChannel) return;
     var channelToJoin = spliceArguments(m.content)[1];
     for (var channel of m.channel.server.channels) {
@@ -237,7 +260,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
   if (!m.channel.equals(boundChannel)) return;
 
   if (m.content.startsWith(`?next`)) { // next
-    if (!checkCommand(m, '?next')) return;
+    if (!checkCommand(m, 'next')) return;
     playStopped();
   }
 
@@ -279,9 +302,9 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
           }
         }
 
-        client.reply(m, 'Sorry, not even Ebola-chan could find videos matching your keywords. Try a different combination of search terms!');
+        client.reply(m, 'No video has been found!');
       } else {
-        client.reply(m, "....Something went wrong?");
+        client.reply(m, 'There was an error searching.');
         return;
       }
     });
@@ -289,8 +312,8 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     return; // have to stop propagation
   }
 
-  if (m.content.startsWith(`?playlist`)) { // playlist
-    if (!checkCommand(m, '?playlist')) return;
+  if (m.content.startsWith(`${botMention} pl`)) { // playlist
+    if (!checkCommand(m, 'pl')) return;
 
     if (apiKey == false) {
       client.reply(m, 'Playlist adding is disabled (no API KEY found).');
@@ -309,7 +332,6 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
 
     request.get(requestUrl).end((error, response) => {
       if (!error && response.statusCode == 200) {
-        console.log(response);
         var body = response.body;
         if (body.items.length == 0) {
           client.reply(m, 'That playlist has no videos.');
@@ -361,7 +383,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     }
 
     playQueue.push(videoToPlay);
-    client.reply(m, `Queued ${VideoFormat.prettyPrint(currentVideo)}`);
+    client.reply(m, `Queued ${videoToPlay.prettyPrint()}`);
   }
 
   if (m.content.startsWith(`?shuffle`)) { // shuffle
@@ -370,7 +392,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
       client.reply(m, 'Not enough songs in the queue.');
       return;
     } else {
-      shuffle(playQueue);
+      Util.shuffle(playQueue);
       client.reply(m, 'Songs in the queue have been shuffled.');
     }
 
@@ -379,7 +401,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
 
   if (m.content.startsWith(`?link`)) {
     if (!checkCommand(m, '?link')) return;
-    if (currentVideo) client.reply(m, `<${currentVideo.loaderUrl}>`);
+    if (currentVideo) client.reply(m, `<https://youtu.be/${currentVideo.vid}>`);
     return; // stop propagation
   }
 
@@ -388,12 +410,12 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     var formattedList = 'Here are the videos currently saved: \n';
     for (var key in Saved.saved.videos) {
       if (Saved.saved.videos.hasOwnProperty(key)) {
-        formattedList += `*${key}*: ${VideoFormat.prettyPrint(Saved.saved.videos[key])}\n`;
+        formattedList += `*${key}*: ${Saved.saved.videos[key].prettyPrint()}\n`;
       }
     }
 
     if (formattedList.length >= 2000) {
-      haste(formattedList, (key) => {
+      Util.haste(formattedList, (key) => {
         if (!key) {
           client.reply(m, 'There was an error while retrieving the list of saved videos! Sorry :(');
         }
@@ -408,7 +430,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     if (!checkCommand(m, '?list')) return;
 
     var formattedList = '';
-    if (currentVideo) formattedList += `Currently playing: ${VideoFormat.prettyPrintWithUser(currentVideo)}\n`;
+    if (currentVideo) formattedList += `Currently playing: ${currentVideo.fullPrint()}\n`;
 
     if (playQueue.length == 0) {
       formattedList += `The play queue is empty! Add something using **${botMention} yt *<video ID>***.`;
@@ -420,7 +442,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
       playQueue.forEach((video, idx) => {
         if (shouldBreak) return;
 
-        var formattedVideo = `${idx + 1}. ${VideoFormat.prettyPrintWithUser(video)}\n`;
+        var formattedVideo = `${idx + 1}. ${video.fullPrint()}\n`;
 
         if ((formattedList.length + formattedVideo.length) > 1950) {
           formattedList += `... and ${playQueue.length - idx} more`;
@@ -434,7 +456,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     client.reply(m, formattedList);
   }
 
-  if (m.content.startsWith(`?save`)) { // save
+  if (m.content.startsWith(`${botMention} s`)) { // save
     if (!checkCommand(m, 'save')) return;
     var argument = spliceArguments(m.content)[1];
     if (!argument) {
@@ -447,18 +469,18 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     var vid = splitArgs[0];
     vid = resolveVid(vid, m);
 
-    var requestUrl = 'http://www.youtube.com/watch?v=' + vid;
-    ytdl.getInfo(requestUrl, (err, info) => {
+    YoutubeTrack.getInfoFromVid(vid, m, (err, info) => {
       if (err) handleYTError(err);
-      else saveVideo(info, vid, splitArgs[0], m);
+      else saveVideo(info, vid, splitArgs[1], m);
     });
   }
 
   if (m.content.startsWith(`?time`)) { // time
     if (!checkCommand(m, '?time')) return;
     var streamTime = client.internal.voiceConnection.streamTime; // in ms
-    var videoTime = currentVideo.length_seconds;
-    client.reply(m, `${VideoFormat.prettyTime(streamTime)} / ${VideoFormat.prettyTime(videoTime * 1000)} (${(streamTime / (videoTime * 10)).toFixed(2)} %)`);
+    var streamSeconds = streamTime / 1000;
+    var videoTime = currentVideo.lengthSeconds;
+    client.reply(m, `${Util.formatTime(streamSeconds)} / ${Util.formatTime(videoTime)} (${((streamSeconds * 100) / videoTime).toFixed(2)} %)`);
   }
 });
 
@@ -488,13 +510,10 @@ function resolveVid(thing, m) {
 }
 
 function getInfoAndQueue(vid, m, suppress) {
-  requestUrl = 'http://www.youtube.com/watch?v=' + vid;
-  ytdl.getInfo(requestUrl, (err, info) => {
+  YoutubeTrack.getInfoFromVid(vid, m, (err, video) => {
     if (err) handleYTError(err);
     else {
-      info.vid = vid;
-      info.obtainedFromGetInfo = true;
-      possiblyQueue(info, m.author.id, m, suppress);
+      possiblyQueue(video, m.author.id, m, suppress);
     }
   });
 }
@@ -507,14 +526,14 @@ function spliceArguments(message, after) {
 }
 
 function saveVideo(video, vid, keywords, m) {
-  simplified = VideoFormat.simplify(video, vid);
-  if (Saved.saved.videos.hasOwnProperty(keywords)) client.reply(m, `Warning: ${VideoFormat.simplePrint(Saved.saved.videos[keywords])} is already saved as *${keywords}*! Overwriting.`);
+  simplified = video.saveable();
+  if (Saved.saved.videos.hasOwnProperty(keywords)) client.reply(m, `Warning: ${Saved.saved.videos[keywords].prettyPrint()} is already saved as *${keywords}*! Overwriting.`);
 
   var key;
   if (key = Saved.isVideoSaved(vid)) client.reply(m, `Warning: This video is already saved as *${key}*! Adding it anyway as *${keywords}*.`);
 
   Saved.saved.videos[keywords] = simplified;
-  client.reply(m, `Saved video ${VideoFormat.prettyPrint(video)} as *${keywords}*`);
+  client.reply(m, `Saved video ${video.prettyPrint()} as *${keywords}*`);
   Saved.write();
 }
 
@@ -523,11 +542,11 @@ function possiblyQueue(video, userId, m, suppress) {
   suppress = (suppress === undefined) ? false : suppress;
   reason = shouldDisallowQueue(playQueue, video, Config);
   if (!userIsAdmin(userId) && reason) {
-    fancyReply(m, `You can't queue ${VideoFormat.simplePrint(video)} right now! Reason: ${reason}`);
+    fancyReply(m, `You can't queue **${video.title}** right now! Reason: ${reason}`);
   } else {
     playQueue.push(video);
-    if (suppress == 0) fancyReply(m, `Queued ${VideoFormat.prettyPrint(video)}`);
-    else if (suppress > -1) fancyReply(m, `Queued ${VideoFormat.prettyPrint(video)} and ${suppress} other videos`);
+    if (suppress == 0) fancyReply(m, `Queued ${video.prettyPrint()}`);
+    else if (suppress > -1) fancyReply(m, `Queued ${video.prettyPrint()} and ${suppress} other videos`);
 
     // Start playing if not playing yet
     if (!currentVideo) nextInQueue();
@@ -550,21 +569,20 @@ function handleYTError(err) {
 }
 
 function playStopped() {
-  if (client.internal.voiceConnection){
-    client.internal.voiceConnection.stopPlaying();
-    boundChannel.sendMessage(`Finished playing ${VideoFormat.simplePrint(currentVideo)}`);
-    client.setStatus('online', null);
-    lastVideo = currentVideo;
-    currentVideo = false;
-    nextInQueue();
-  }
+  if (client.internal.voiceConnection) client.internal.voiceConnection.stopPlaying();
+
+  boundChannel.sendMessage(`Finished playing **${currentVideo.title}**`);
+  client.setStatus('online', null);
+  lastVideo = currentVideo;
+  currentVideo = false;
+  nextInQueue();
 }
 
 function play(video) {
   currentVideo = video;
   if (client.internal.voiceConnection) {
     var connection = client.internal.voiceConnection;
-    currentStream = YoutubeStream.getStream(video);
+    currentStream = video.getStream();
 
     currentStream.on('error', (err) => {
       boundChannel.sendMessage(`There was an error during playback! **${err}**`);
@@ -572,7 +590,7 @@ function play(video) {
 
     currentStream.on('end', () => setTimeout(playStopped, Config.timeOffset || 8000)); // 8 second leeway for bad timing
     connection.playRawStream(currentStream).then(intent => {
-      boundChannel.sendMessage(`Playing ${VideoFormat.prettyPrint(video)}`);
+      boundChannel.sendMessage(`Playing ${video.prettyPrint()}`);
       client.setStatus('online', video.title);
     });
   }
@@ -600,41 +618,12 @@ function nextInQueue() {
   }
 }
 
-function shuffle(array) {
-  var counter = array.length;
-  var temp;
-  var index;
-
-  // While there are elements in the array
-  while (counter > 0) {
-    index = Math.floor(Math.random() * counter);
-
-    counter--;
-
-    temp = array[counter];
-    array[counter] = array[index];
-    array[index] = temp;
-  }
-
-  return array;
-}
-
 function fancyReply(m, message) {
   if (shouldStockpile) {
     stockpile += message + '\n';
   } else {
     client.reply(m, message);
   }
-}
-
-function haste(data, cb) {
-  request.post('http://hastebin.com/documents').send(data).end((error, result) => {
-    if (error) {
-      cb(false);
-    } else {
-      cb(result.body.key);
-    }
-  });
 }
 
 function spitUp(m) {
