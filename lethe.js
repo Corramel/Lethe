@@ -550,13 +550,14 @@ function handleYTError(err) {
 }
 
 function playStopped() {
-  if (client.internal.voiceConnection) client.internal.voiceConnection.stopPlaying();
-
-  boundChannel.sendMessage(`Finished playing ${VideoFormat.simplePrint(currentVideo)}`);
-  client.setStatus('online', null);
-  lastVideo = currentVideo;
-  currentVideo = false;
-  nextInQueue();
+  if (client.internal.voiceConnection){
+    client.internal.voiceConnection.stopPlaying();
+    boundChannel.sendMessage(`Finished playing ${VideoFormat.simplePrint(currentVideo)}`);
+    client.setStatus('online', null);
+    lastVideo = currentVideo;
+    currentVideo = false;
+    nextInQueue();
+  }
 }
 
 function play(video) {
