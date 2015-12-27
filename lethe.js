@@ -127,6 +127,8 @@ if (m.content.startsWith(`?roast`)) { //when ya homie gets roasted
 if (m.content.startsWith(`?niger`)) { //niger
   if (!checkCommand(m, `?niger`)) return
   client.reply(m, "This is really offensive and racist. Labelling someone with the word \"niger\" is not right. We're all human and skin color, nationality, religion, political beliefs, sexual identity and orientation and lifestyle don't make us different under the skin. Pictures like this should be banned from tumblr.")
+  return;
+}
 if (m.content.startsWith(`?jimbo`)) { //shadow realm jimbo
   if (!checkCommand(m, `?jimbo`)) return
   client.reply(m, "http://puu.sh/m1Ta5/910f1b8e35.png")
