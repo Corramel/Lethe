@@ -268,6 +268,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
   if (!m.channel.equals(boundChannel)) return;
 
   if (m.content.startsWith(`?next`)) { // next !checkCommand(m, '?next')
+  var voteList = [];
     if (userIsAdmin(m.author.id)) { 
     playStopped();
     return
