@@ -30,7 +30,7 @@
     "?replay": false,
     "?save": false,
     "?time": false,
-    "?yq": false,
+    "yq": false,
     "?pl": true,
     "?shuffle": true
   }
