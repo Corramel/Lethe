@@ -271,7 +271,7 @@ var voteCount = 0;
     playStopped();
     return
     } else if(!userIsAdmin(m.author.id) && (!(m.author.id in voteList))){
-    voteCount = voteCount + 1
+    voteCount = voteCount + 1;
     voteList.push(m.author.id);
     client.sendMessage(m.channel, "Vote to next added by " + m.author.username + ".")
   } else {
@@ -292,7 +292,6 @@ var voteCount = 0;
         console.log("Not breaking limits........")
         console.log("The current amount of votes is " + voteCount);
         console.log("The people in the vote list is " + voteList);
-        return;
     }
     }
   if (m.content.startsWith(`${botMention} yq`) // youtube query
