@@ -27,8 +27,6 @@ var url = require('url');
 
 // Output version information in console
 var git = require('git-rev');
-var voteList = [];
-var voteCount = 0;
 git.short(commit => git.branch(branch => {
   console.log(`Lethe#${branch}@${commit}`);
 }));
@@ -266,9 +264,9 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
 
   // Only respond to other messages inside the bound channel
   if (!m.channel.equals(boundChannel)) return;
-
+var voteList = [];
+var voteCount = 0;
   if (m.content.startsWith(`?next`)) { // next !checkCommand(m, '?next')
-  var voteList = [];
     if (userIsAdmin(m.author.id)) { 
     playStopped();
     return
