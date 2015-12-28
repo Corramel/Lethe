@@ -280,11 +280,12 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
   } else {
     client.reply(m, "You already voted!")
     }
-    if (voteCount >= 3){
+    console.log(voteCount)
+    if (voteCount >= 2){
         playStopped();
         return;
       } else {
-        client.sendMessage(m.channel, "z")
+        console.log("Not yet limit")
         return;
     }
     }
