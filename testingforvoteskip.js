@@ -27,7 +27,8 @@ var url = require('url');
 
 // Output version information in console
 var git = require('git-rev');
-
+var voteList = [];
+var voteCount = 0;
 git.short(commit => git.branch(branch => {
   console.log(`Lethe#${branch}@${commit}`);
 }));
@@ -267,22 +268,22 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
   if (!m.channel.equals(boundChannel)) return;
 
   if (m.content.startsWith(`?next`)) { // next !checkCommand(m, '?next')
-    var voteList = [];
-    var voteCount = 0;
     if (userIsAdmin(m.author.id)) { 
     playStopped();
     return
     } else if(!userIsAdmin(m.author.id) && (!(m.author.id in voteList))){
-    var voteCount = voteCount + 1
+    var voteCount +=1
     voteList.push(m.author.id);
     client.sendMessage(m.channel, "Vote to next added by " + m.author.username + ".")
-    client.sendMessage(m.channel, voteCount)
+    console.log(voteCount)
   } else {
     client.reply(m, "You already voted!")
     }
     console.log(voteCount)
     if (voteCount >= 2){
         playStopped();
+        var voteList = [];
+        var voteCount = 0;
         return;
       } else {
         console.log("Not yet limit")
