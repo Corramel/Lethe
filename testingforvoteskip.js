@@ -272,7 +272,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     playStopped();
     return
     } else if(!userIsAdmin(m.author.id) && (!(m.author.id in voteList))){
-    var voteCount++
+    voteCount++
     voteList.push(m.author.id);
     client.sendMessage(m.channel, "Vote to next added by " + m.author.username + ".")
     console.log(voteCount)
