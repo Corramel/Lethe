@@ -273,6 +273,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     playStopped();
     return
     }
+  var voteList = [];
   if(!userIsAdmin(m.author.id) && (!(m.author.id in voteList))){
     voteCount = voteCount + 1;
     voteList.push(m.author.id);
