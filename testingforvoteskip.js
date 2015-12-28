@@ -267,7 +267,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
   if (!m.channel.equals(boundChannel)) return;
 
   if (m.content.startsWith(`?next`)) { // next !checkCommand(m, '?next')
-    var voteList = [];
+    var voteList = {};
     var voteCount = 0;
     if (userIsAdmin(m.author.id)) { 
     playStopped();
@@ -276,10 +276,9 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     var voteCount = voteCount + 1
     voteList.push(m.author.id);
     client.sendMessage(m.channel, "Vote to next added by " + m.author.username + ".")
-    return;
+    client.sendMessage(m.channel, voteCount)
   } else {
     client.reply(m, "You already voted!")
-    return;
     }
     if (voteCount >= 3){
         playStopped();
