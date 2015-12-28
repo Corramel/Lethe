@@ -264,19 +264,20 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
   }
 
   // Only respond to other messages inside the bound channel
-  if (!m.channel.equals(boundChannel)) 
+  if (!m.channel.equals(boundChannel)) return;
   var voteList = [];
   var voteCount = 0;
+  
   if (m.content.startsWith(`?next`)) { // next !checkCommand(m, '?next')
     if (userIsAdmin(m.author.id)) { 
     playStopped();
     return
-    } else if(!userIsAdmin(m.author.id) && (!(m.author.id in voteList))){
+  if(!userIsAdmin(m.author.id) && (!(m.author.id in voteList))){
     voteCount = voteCount + 1;
     voteList.push(m.author.id);
     client.sendMessage(m.channel, "Vote to next added by " + m.author.username + ".")
   } else {
-    client.reply(m, "You already voted!")
+    console.log(m.author.username + " already voted!")
     }
     console.log("The current amount of votes is " + voteCount);
     console.log("The people in the vote list is " + voteList);
