@@ -273,19 +273,20 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     playStopped();
     return
     } else if(!userIsAdmin(m.author.id) && (!(m.author.id in voteList))){
-    var voteCount = voteCount + 1;
+    var voteCount = voteCount + 1
     voteList.push(m.author.id);
-    client.sendMessage(m.author.channel, "Vote to next added by " + m.author.username + ".")
+    client.sendMessage(m.channel, "Vote to next added by " + m.author.username + ".")
     return;
   } else {
-    client.sendMessage(m.author.channel, "You already voted!")
+    client.reply(m, "You already voted!")
     return;
     }
-      if (voteCount >= 4){
+    if (voteCount >= 3){
         playStopped();
-        return
+        return;
       } else {
-        return
+        client.sendMessage(m.channel, "z")
+        return;
     }
     }
   if (m.content.startsWith(`${botMention} yq`) // youtube query
