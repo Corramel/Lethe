@@ -69,8 +69,7 @@ if (process.argv[4]) {
   var apiKey = false;
 }
 
-var voteList = ["test"];
-var voteCount = 0;
+
 
 client.on('ready', () => {
   botMention = `<@${client.user.id}>`;
@@ -79,6 +78,8 @@ client.on('ready', () => {
     console.log('WARNING: Your lethe-config.json is out of date relative to the code using it! Please update it from the git repository, otherwise things will break!');
   }
 });
+var voteList = ["test"];
+var voteCount = 0;
 
 client.on('message', m => {
   if (!botMention) return;
@@ -273,7 +274,6 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     playStopped();
     return
     }
-  var voteList = [];
   if(!userIsAdmin(m.author.id) && (!(m.author.id in voteList))){
     voteCount = voteCount + 1;
     voteList.push(m.author.id);
