@@ -294,8 +294,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
         console.log("Not breaking limits........")
         console.log("The current amount of votes is " + voteCount);
         console.log("The people in the vote list is " + voteList);
-    }
-    }
+      };
   if (m.content.startsWith(`${botMention} yq`) // youtube query
     || m.content.startsWith(`${botMention} qq`) // queue query
     || m.content.startsWith(`${botMention} pq`) // play query
