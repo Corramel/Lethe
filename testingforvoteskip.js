@@ -50,7 +50,7 @@ client.on('debug', (m) => console.log('[debug]', m));
 var playQueue = [];
 var boundChannel = false;
 var currentStream = false;
-var voteList = ["memes"];
+var votingList = [];
 var voteCount = 0;
 // Video that is currently being played
 var currentVideo = false;
@@ -274,7 +274,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     playStopped();
     return
     }
-  if(!userIsAdmin(m.author.id) && voteList.indexOf(m.author.id)<0){
+  if(!userIsAdmin(m.author.id)){ // && votingList.indexOf(m.author.id)<0
     voteCount = voteCount + 1;
     voteList.push(m.author.id);
     client.sendMessage(m.channel, "Vote to next added by " + m.author.username + ".")
