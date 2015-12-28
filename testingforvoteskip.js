@@ -271,23 +271,26 @@ var voteCount = 0;
     playStopped();
     return
     } else if(!userIsAdmin(m.author.id) && (!(m.author.id in voteList))){
-    voteCount++
+    voteCount = voteCount + 1
     voteList.push(m.author.id);
     client.sendMessage(m.channel, "Vote to next added by " + m.author.username + ".")
   } else {
     client.reply(m, "You already voted!")
     }
-    console.log(voteCount);
-    var voteTotalCount = 0;
-    var voteTotalCount = voteCount + voteTotalCount;
-    console.log(voteTotalCount);
-    if (voteTotalCount >= 2){
+    console.log("The current amount of votes is " + voteCount);
+    console.log("The people in the vote list is " + voteList);
+  //  var voteTotalCount = 0;
+  //  voteTotalCount = voteCount + voteTotalCount;
+ //   console.log(voteCount);
+    if (voteCount >= 2){
         playStopped();
         var voteList = [];
         var voteCount = 0;
         return;
       } else {
-        console.log("Not yet limit")
+        console.log("Not breaking limits........")
+        console.log("The current amount of votes is " + voteCount);
+        console.log("The people in the vote list is " + voteList);
         return;
     }
     }
