@@ -42,8 +42,6 @@ var Config = require('./lib/config.js');
 var CURRENT_REV = 2;
 
 var client = new Discord.Client();
-var voteList = [];
-var voteCount = 0;
 
 // Handle discord.js warnings
 client.on('warn', (m) => console.log('[warn]', m));
@@ -266,7 +264,9 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
   }
 
   // Only respond to other messages inside the bound channel
-  if (!m.channel.equals(boundChannel)) return;
+  if (!m.channel.equals(boundChannel)) 
+  var voteList = [];
+  var voteCount = 0;
   if (m.content.startsWith(`?next`)) { // next !checkCommand(m, '?next')
     if (userIsAdmin(m.author.id)) { 
     playStopped();
