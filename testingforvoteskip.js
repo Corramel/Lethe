@@ -278,7 +278,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
   if(!userIsAdmin(m.author.id)){ // && votingList.indexOf(m.author.id)<0
     voteCount = voteCount + 1;
     var votingList = [];
-    voteList.push(m.author.id);
+    votingList.push(m.author.id);
     client.sendMessage(m.channel, "Vote to next added by " + m.author.username + ".")
   } else {
     console.log(m.author.username + " already voted!")
