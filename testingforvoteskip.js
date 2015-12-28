@@ -240,8 +240,6 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
 
   if (m.content.startsWith(`${botMention} init`)) { // init
     if (!checkCommand(m, 'init')) return;
-    var votingList = [];
-    var voteCount = 0;
     if (boundChannel) return;
     var channelToJoin = spliceArguments(m.content)[1];
     for (var channel of m.channel.server.channels) {
@@ -271,13 +269,15 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
   // Only respond to other messages inside the bound channel
   if (!m.channel.equals(boundChannel)) return;
   
-  if (m.content.startsWith(`?next`)) { // next !checkCommand(m, '?next')
+  if (m.content.startsWith(`?next`)) {
+    // next !checkCommand(m, '?next')
     if (userIsAdmin(m.author.id)) { 
     playStopped();
     return
     }
   if(!userIsAdmin(m.author.id)){ // && votingList.indexOf(m.author.id)<0
     voteCount = voteCount + 1;
+    var votingList = [];
     voteList.push(m.author.id);
     client.sendMessage(m.channel, "Vote to next added by " + m.author.username + ".")
   } else {
