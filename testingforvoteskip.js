@@ -286,6 +286,7 @@ var voteCount = 0;
         playStopped();
         var voteList = [];
         var voteCount = 0;
+        console.log("THIS RAN")
         return;
       } else {
         console.log("Not breaking limits........")
