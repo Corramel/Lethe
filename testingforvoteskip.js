@@ -274,12 +274,14 @@ var voteCount = 0;
     voteCount++
     voteList.push(m.author.id);
     client.sendMessage(m.channel, "Vote to next added by " + m.author.username + ".")
-    console.log(voteCount)
   } else {
     client.reply(m, "You already voted!")
     }
-    console.log(voteCount)
-    if (voteCount >= 2){
+    console.log(voteCount);
+    var voteTotalCount = 0;
+    var voteTotalCount = voteCount + voteTotalCount;
+    console.log(voteTotalCount);
+    if (voteTotalCount >= 2){
         playStopped();
         var voteList = [];
         var voteCount = 0;
