@@ -77,11 +77,12 @@ client.on('ready', () => {
   if (Config.configRev !== CURRENT_REV) {
     console.log('WARNING: Your lethe-config.json is out of date relative to the code using it! Please update it from the git repository, otherwise things will break!');
   }
+  var voteList = ["test"];
+  var voteCount = 0;
 });
-var voteList = ["test"];
-var voteCount = 0;
 
 client.on('message', m => {
+  
   if (!botMention) return;
   if (client.user.id == m.author.id) return;
 
