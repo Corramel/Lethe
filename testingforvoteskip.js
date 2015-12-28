@@ -69,6 +69,9 @@ if (process.argv[4]) {
   var apiKey = false;
 }
 
+// memes
+var voteList = [];
+var voteCount = 0;
 client.on('ready', () => {
   botMention = `<@${client.user.id}>`;
   console.log(`Bot mention: ${botMention}`);
@@ -264,8 +267,6 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
 
   // Only respond to other messages inside the bound channel
   if (!m.channel.equals(boundChannel)) return;
-var voteList = [];
-var voteCount = 0;
   if (m.content.startsWith(`?next`)) { // next !checkCommand(m, '?next')
     if (userIsAdmin(m.author.id)) { 
     playStopped();
