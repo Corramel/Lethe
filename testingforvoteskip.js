@@ -272,7 +272,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     if (userIsAdmin(m.author.id)) { 
     playStopped();
     return
-    } else if(!userIsAdmin(m.author.id) && (!(m.author.id in voteList)){
+    } else if(!userIsAdmin(m.author.id) && (!(m.author.id in voteList))){
     var voteCount = voteCount + 1;
     voteList.push(m.author.id);
     client.message(m.author.channel, "Vote to next added by " + m.author.username + ".")
