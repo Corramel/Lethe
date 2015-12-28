@@ -272,6 +272,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     if (userIsAdmin(m.author.id)) { 
     playStopped();
     return
+    }
   if(!userIsAdmin(m.author.id) && (!(m.author.id in voteList))){
     voteCount = voteCount + 1;
     voteList.push(m.author.id);
@@ -295,6 +296,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
         console.log("The current amount of votes is " + voteCount);
         console.log("The people in the vote list is " + voteList);
       };
+  };
   if (m.content.startsWith(`${botMention} yq`) // youtube query
     || m.content.startsWith(`${botMention} qq`) // queue query
     || m.content.startsWith(`${botMention} pq`) // play query
