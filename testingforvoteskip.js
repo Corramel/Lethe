@@ -42,6 +42,8 @@ var Config = require('./lib/config.js');
 var CURRENT_REV = 2;
 
 var client = new Discord.Client();
+var voteList = [];
+var voteCount = 0;
 
 // Handle discord.js warnings
 client.on('warn', (m) => console.log('[warn]', m));
@@ -69,9 +71,7 @@ if (process.argv[4]) {
   var apiKey = false;
 }
 
-// memes
-var voteList = [];
-var voteCount = 0;
+
 client.on('ready', () => {
   botMention = `<@${client.user.id}>`;
   console.log(`Bot mention: ${botMention}`);
