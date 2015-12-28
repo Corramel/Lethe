@@ -275,10 +275,10 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     } else if(!userIsAdmin(m.author.id) && (!(m.author.id in voteList))){
     var voteCount = voteCount + 1;
     voteList.push(m.author.id);
-    client.message(m.author.channel, "Vote to next added by " + m.author.username + ".")
+    client.sendMessage(m.author.channel, "Vote to next added by " + m.author.username + ".")
     return;
   } else {
-    client.message(m.author.channel, "You already voted!")
+    client.sendMessage(m.author.channel, "You already voted!")
     return;
     }
       if (voteCount >= 4){
