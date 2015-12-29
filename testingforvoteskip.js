@@ -276,6 +276,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
 
   // Only respond to other messages inside the bound channel
   if (!m.channel.equals(boundChannel)) return;
+  var voteTotalList = [];
   if (m.content.startsWith(`?next`)) {
     // next !checkCommand(m, '?next')
     if (userIsAdmin(m.author.id)) { 
@@ -284,14 +285,14 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     } else if(!userIsAdmin(m.author.id)){
     voteCount = 1;
     client.sendMessage(m.channel, "Vote to next added by " + m.author.username + ".")
-    voteList = m.author.id;
+    voter = m.author.id;
   } else {
     console.log(m.author.username + " already voted!")
     }
     // console.log("The current amount of votes is " + voteCount);
     // console.log("The people in the vote list is " + voteList);
     voteTotalCount = voteCount + voteTotalCount;
-    voteTotalList.push(voteList)
+    voteTotalList.push(voter)
     console.log(voteCount);
     if (voteTotalCount >= 5){
       console.log("L I M I T S  W E R E  M E A N T  T O  B E  B R O K E N . . .")
