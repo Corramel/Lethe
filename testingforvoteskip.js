@@ -277,7 +277,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
   if (!m.channel.equals(boundChannel)) return;
   if (m.content.startsWith(`?next`)) {
     var voteCount = voteCount;
-    var votingList = votingList;
+    var votingList = votingList[];
     // next !checkCommand(m, '?next')
     if (userIsAdmin(m.author.id)) { 
     playStopped();
@@ -285,15 +285,14 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     } else if(!userIsAdmin(m.author.id)){ // && votingList.indexOf(m.author.id)<0
     voteCount = 1;
     client.sendMessage(m.channel, "Vote to next added by " + m.author.username + ".")
-    votingList = [(m.author.id)];
   } else {
     console.log(m.author.username + " already voted!")
     }
-    console.log("The current amount of votes is " + voteCount);
-    console.log("The people in the vote list is " + voteList);
+    // console.log("The current amount of votes is " + voteCount);
+    // console.log("The people in the vote list is " + voteList);
     voteTotalCount = voteCount + voteTotalCount;
     console.log(voteCount);
-    if (voteCount >= 2){
+    if (voteTotalCount >= 2){
         playStopped();
         var voteList = [];
         var voteCount = 0;
@@ -301,7 +300,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
         return;
       } else {
         console.log("Not breaking limits........")
-        console.log("The current amount of votes is " + voteCount);
+        console.log("The current amount of votes is " + voteTotalCount);
         console.log("The people in the vote list is " + voteList);
       };
   };
