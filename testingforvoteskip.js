@@ -99,7 +99,7 @@ client.on('message', m => {
  }
  if (m.content.startsWith(`?ben`)) { // a meme
     if (!checkCommand(m, `?ben`)) return
-    var benArray = ["**BEN'S STATUS** \n Lips: LARGE \n Feelings: WHO CARES \n Race: SHADOW-REALM BEAST", "http://puu.sh/m3gGP/de199907f3.png", "http://puu.sh/m3gDD/3c6f7c553b.png", "http://puu.sh/m3gIA/28638cd9ad.jpg", "http://puu.sh/m9tgv/84bc2f4914.jpg", "http://puu.sh/m9tfd/fdd3ad0c46.jpg", "http://puu.sh/m9th3/12a1326552.jpg", "https://cdn.discordapp.com/attachments/93578176231374848/130413901367083008/benkms.jpg" ,"https://cdn.discordapp.com/attachments/93578176231374848/130413948091629568/ben.jpg", "https://puu.sh/ldqI3/7fe79e185e.jpg", "https://puu.sh/ldqI3/7fe79e185e.jpg", "https://puu.sh/ldqC3/563b0df440.jpg", "http://puu.sh/lvryP/a7aeb5c7f2.jpg", "http://puu.sh/l0dy0/97c6792172.jpg"]
+    var benArray = ["**BEN'S STATUS** \n Lips: LARGE \n Feelings: WHO CARES \n Race: SHADOW-REALM BEAST", "http://puu.sh/m3gGP/de199907f3.png", "http://puu.sh/m3gDD/3c6f7c553b.png", "http://puu.sh/m3gIA/28638cd9ad.jpg", "http://puu.sh/m9tgv/84bc2f4914.jpg", "http://puu.sh/m9tfd/fdd3ad0c46.jpg", "http://puu.sh/m9th3/12a1326552.jpg", "https://cdn.discordapp.com/attachments/93578176231374848/130413901367083008/benkms.jpg" ,"https://cdn.discordapp.com/attachments/93578176231374848/130413948091629568/ben.jpg", "https://puu.sh/ldqI3/7fe79e185e.jpg", "https://puu.sh/ldqI3/7fe79e185e.jpg", "https://puu.sh/ldqC3/563b0df440.jpg", "http://puu.sh/lvryP/a7aeb5c7f2.jpg", "http://puu.sh/l0dy0/97c6792172.jpg", "https://docs.google.com/document/d/1XXeZrKqhCzwAcrbD3IHsAOnwp-XhXdJWwpZQrdLLKZo/edit", "https://docs.google.com/document/d/1qvlZMQLP6BatNGCLt-wrAdVt2bFsqxshGu_RIDMngc0/edit?pref=2&pli=1"]
     client.reply(m, benArray[Math.floor(Math.random() * benArray.length)])
     return;
  }
@@ -160,6 +160,12 @@ if (m.content.startsWith(`?starterpack`)) { //memecontrol
   client.reply(m, starterpackArray[Math.floor(Math.random() * starterpackArray.length)])
   return;
 } 
+if (m.content.startsWith(`?lyin`)) { //memecontrol
+  if (!checkCommand(m, `?lyin`)) return
+  var lyinArray = ["http://puu.sh/mctJ7/cedbe724f2.png", "https://i.ytimg.com/vi/Zy6JfChIXxg/hqdefault.jpg"]
+  client.reply(m, lyingArray[Math.floor(Math.random() * lyinArray.length)])
+  return;
+} 
 /* if (m.content.startsWith(``)) { //memecontrol
   if (!checkCommand(m, ``)) return
   client.reply(m, "")
@@ -184,7 +190,7 @@ if (m.content.startsWith(`?chill`)) { //memecontrol
 } 
 if (m.content.startsWith(`?disgusting`)) { //FE disgusting
   if (!checkCommand(m, `?disgusting`)) return
-  var disgustingArray = ["http://puu.sh/m9urN/727dc202f1.jpg", "http://puu.sh/m9uHU/55e21971c4.png", "http://puu.sh/m9usJ/42f703711b.jpg", "http://puu.sh/m9uKU/8e234f5886.png"]
+  var disgustingArray = ["http://puu.sh/m9urN/727dc202f1.jpg", "http://puu.sh/m9uHU/55e21971c4.png", "http://puu.sh/m9usJ/42f703711b.jpg", "http://puu.sh/m9uKU/8e234f5886.png", ""]
   client.reply(m, disgustingArray[Math.floor(Math.random() * disgustingArray.length)])
   return
 } 
@@ -209,7 +215,7 @@ if (m.content.startsWith(`?stiff`)) { //stiffies and panties
 if (m.content.startsWith(`?sadness`)) { //memecontrol
   if (!checkCommand(m, `?sadness`)) return
   var sadArray = ["http://puu.sh/m9up0/97a92a25ae.png", "http://puu.sh/m9uua/882e72756e.png"]
-  client.reply(m, [Math.floor(Math.random()*sadArray.length)])
+  client.reply(m, sadArray[Math.floor(Math.random()*sadArray.length)])
   return
 } 
 if (m.content.startsWith(`?peace`)) { //PEACE
@@ -268,7 +274,11 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
 
   // Only respond to other messages inside the bound channel
   if (!m.channel.equals(boundChannel)) return;
-  
+  if (m.content.startsWith(`?startvote`)) {
+    client.sendMessage(m.channel, "Vote to skip current song started by " + m.author.username + ".")
+    var voteCount = 0
+    var votingList = [];
+  }
   if (m.content.startsWith(`?next`)) {
     // next !checkCommand(m, '?next')
     if (userIsAdmin(m.author.id)) { 
@@ -277,7 +287,6 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     }
   if(!userIsAdmin(m.author.id)){ // && votingList.indexOf(m.author.id)<0
     voteCount = voteCount + 1;
-    var votingList = [];
     votingList.push(m.author.id);
     client.sendMessage(m.channel, "Vote to next added by " + m.author.username + ".")
   } else {
