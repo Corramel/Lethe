@@ -53,6 +53,7 @@ var currentStream = false;
 var votingList = [];
 var voteCount = 0;
 var voteTotalCount = 0;
+var voteTotalList = [];
 // Video that is currently being played
 var currentVideo = false;
 
@@ -276,27 +277,28 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
   // Only respond to other messages inside the bound channel
   if (!m.channel.equals(boundChannel)) return;
   if (m.content.startsWith(`?next`)) {
-    var voteCount = voteCount;
-    var votingList = [];
     // next !checkCommand(m, '?next')
     if (userIsAdmin(m.author.id)) { 
     playStopped();
     return;
-    } else if(!userIsAdmin(m.author.id)){ // && votingList.indexOf(m.author.id)<0
+    } else if(!userIsAdmin(m.author.id)  && votingTotalList.indexOf(m.author.id)<0){
     voteCount = 1;
     client.sendMessage(m.channel, "Vote to next added by " + m.author.username + ".")
+    voteList = m.author.id;
   } else {
     console.log(m.author.username + " already voted!")
     }
     // console.log("The current amount of votes is " + voteCount);
     // console.log("The people in the vote list is " + voteList);
     voteTotalCount = voteCount + voteTotalCount;
+    voteTotalList.push(voteList)
     console.log(voteCount);
     if (voteTotalCount >= 2){
+      console.log("L I M I T S  W E R E  M E A N T  T O  B E  B R O K E N . . .")
+      console.log("The current amount of votes are" + voteTotalCount)
         playStopped();
-        var voteList = [];
-        var voteCount = 0;
-        console.log("THIS RAN")
+        var voteTotalList = [];
+        var voteTotalCount = 0;
         return;
       } else {
         console.log("Not breaking limits........")
