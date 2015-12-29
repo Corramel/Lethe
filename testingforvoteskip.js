@@ -298,8 +298,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
       console.log("L I M I T S  W E R E  M E A N T  T O  B E  B R O K E N . . .")
       console.log("The current amount of votes are" + voteTotalCount)
         playStopped();
-        var voteTotalList = [];
-        var voteTotalCount = 0;
+        voteTotalCount = 0;
         return;
       } else {
         console.log("Not breaking limits........")
