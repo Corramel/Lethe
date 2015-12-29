@@ -164,10 +164,19 @@ if (m.content.startsWith(`?starterpack`)) { //memecontrol
 } 
 if (m.content.startsWith(`?lyin`)) { //memecontrol
   if (!checkCommand(m, `?lyin`)) return
-  var lyinArray = ["http://puu.sh/mctJ7/cedbe724f2.png", "https://i.ytimg.com/vi/Zy6JfChIXxg/hqdefault.jpg"]
-  client.reply(m, lyingArray[Math.floor(Math.random() * lyinArray.length)])
+  var lyinArray = ["http://puu.sh/mctJ7/cedbe724f2.png", "https://i.ytimg.com/vi/Zy6JfChIXxg/hqdefault.jpg", "♫ Why the fuck you lyin', why you always lyin', mmmmohh my god, stop fuckin lyyyinn'♪♫."]
+  client.reply(m, lyinArray[Math.floor(Math.random() * lyinArray.length)])
   return;
 } 
+if (m.content.startsWith(`${botMention} hello`)) {
+  var responseArray = ["Hello, how are you?", "Hi!!!", "Why, hello there.", "Hello!", "Hai. x3", "Hi there!", "Hello! <3", "H-hi.."]
+  if (m.author.id === "81526338728501248") {
+    client.relply(m, responseArray[Math.floor(Math.random() * responseArray)]);
+    return;
+  } else {
+    client.reply(m, "Ebola-chan told me not to talk to plebeians...");
+  }
+}
 /* if (m.content.startsWith(``)) { //memecontrol
   if (!checkCommand(m, ``)) return
   client.reply(m, "")
