@@ -53,7 +53,7 @@ var currentStream = false;
 var votingList = [];
 var voteCount = 0;
 var voteTotalCount = 0;
-var voteTotalList = [];
+var voteTotalList = ["meme"];
 // Video that is currently being played
 var currentVideo = false;
 
@@ -281,7 +281,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     if (userIsAdmin(m.author.id)) { 
     playStopped();
     return;
-    } else if(!userIsAdmin(m.author.id)  && voteTotalList.indexOf(m.author.id)<0){
+    } else if(!userIsAdmin(m.author.id){
     voteCount = 1;
     client.sendMessage(m.channel, "Vote to next added by " + m.author.username + ".")
     voteList = m.author.id;
@@ -293,7 +293,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     voteTotalCount = voteCount + voteTotalCount;
     voteTotalList.push(voteList)
     console.log(voteCount);
-    if (voteTotalCount >= 2){
+    if (voteTotalCount >= 5){
       console.log("L I M I T S  W E R E  M E A N T  T O  B E  B R O K E N . . .")
       console.log("The current amount of votes are" + voteTotalCount)
         playStopped();
@@ -303,7 +303,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
       } else {
         console.log("Not breaking limits........")
         console.log("The current amount of votes is " + voteTotalCount);
-        console.log("The people in the vote list is " + voteList);
+        console.log("The people in the vote list is " + voteTotalList);
       };
   };
   if (m.content.startsWith(`${botMention} yq`) // youtube query
