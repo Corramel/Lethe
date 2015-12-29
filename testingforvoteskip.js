@@ -225,7 +225,7 @@ if (m.content.startsWith(`?chill`)) { //memecontrol
 } 
 if (m.content.startsWith(`?disgusting`)) { //FE disgusting
   if (!checkCommand(m, `?disgusting`)) return
-  var disgustingArray = ["http://puu.sh/m9urN/727dc202f1.jpg", "http://puu.sh/m9uHU/55e21971c4.png", "http://puu.sh/m9usJ/42f703711b.jpg", "http://puu.sh/m9uKU/8e234f5886.png", ""]
+  var disgustingArray = ["http://puu.sh/m9urN/727dc202f1.jpg", "http://puu.sh/m9uHU/55e21971c4.png", "http://puu.sh/m9usJ/42f703711b.jpg", "http://puu.sh/m9uKU/8e234f5886.png"]
   client.reply(m, disgustingArray[Math.floor(Math.random() * disgustingArray.length)])
   return
 } 
