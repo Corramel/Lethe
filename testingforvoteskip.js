@@ -292,7 +292,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     // console.log("The current amount of votes is " + voteCount);
     // console.log("The people in the vote list is " + voteList);
     voteTotalCount = voteCount + voteTotalCount;
-    voteTotalList.push(voter)
+    // voteTotalList.push(voter)
     console.log(voteCount);
     if (voteTotalCount >= 5){
       console.log("L I M I T S  W E R E  M E A N T  T O  B E  B R O K E N . . .")
@@ -304,7 +304,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
       } else {
         console.log("Not breaking limits........")
         console.log("The current amount of votes is " + voteTotalCount);
-        console.log("The people in the vote list is " + voteTotalList);
+       // console.log("The people in the vote list is " + voteTotalList);
       };
   };
   if (m.content.startsWith(`${botMention} yq`) // youtube query
