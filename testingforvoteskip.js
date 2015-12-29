@@ -281,7 +281,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     if (userIsAdmin(m.author.id)) { 
     playStopped();
     return;
-    } else if(!userIsAdmin(m.author.id)  && votingTotalList.indexOf(m.author.id)<0){
+    } else if(!userIsAdmin(m.author.id)  && voteTotalList.indexOf(m.author.id)<0){
     voteCount = 1;
     client.sendMessage(m.channel, "Vote to next added by " + m.author.username + ".")
     voteList = m.author.id;
