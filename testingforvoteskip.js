@@ -105,6 +105,30 @@ client.on('message', m => {
     client.reply(m, benArray[Math.floor(Math.random() * benArray.length)])
     return;
  }
+ if (m.content.startsWith(`?evan`)) { // wat a fag
+    if (!checkCommand(m, `?evan`)) return
+    var evanArray = ["http://puu.sh/mcIfe/4fd9e0578a.png"]
+    client.sendMessage(m.channel, evanArray[Math.floor(Math.random()*evanArray.length)])
+    return;
+ }
+ if (m.content.startsWith(`?fag`)) { // fags
+    if (!checkCommand(m, `?fag`)) return
+    var fagArray = ["http://puu.sh/mcIfe/4fd9e0578a.png"]
+    client.sendMessage(m.channel, fagArray[Math.floor(Math.random()*fagArray.length)]);
+    return;
+}
+/*if (m.content.startsWith(`?komari`)) { // lmao
+    if (!checkCommand(m, `?komari`)) return
+    var komariArray = ["https://i.gyazo.com/de05c41201cd9c4e402e557de475c176.png"]
+    client.sendMessage(m.channel, komariArray[Math.floor(Math.random()*komariArray.length)])
+    return;
+} */
+/* if (m.content.startsWith(`?moxie`)) { //lmao
+    if (!checkCommand(m,`?moxie`)) return
+    var moxieArray = ["http://i.imgur.com/2AP11r9.png"]
+    client.sendMessage(m.channel, moxieArray[Math.floor(Math.random()*komariArray.length)])
+    return;
+} */
  if (m.content.startsWith(`?chancey`)) { // chancey telling off darrell
     if (!checkCommand(m, `?chancey`)) return
     var chanceyArray = ["\n >attacking \n I was telling you how is it when you legit tell me to \"promise\" you to text first. \n I was implying that I cannot guarantee shit like this because it rarely happens, even if someone were to complain. \n Attack sounds like this: \n You sound like you're triggered. Where's your problem glasses? Oh wait. You're a nigger! You're just gonna complain that everything bad that happens to you is because you're black. Are you ready to get cucked by your master? Or perhaps you'd rather fuck gorillas aka your own people.", "http://puu.sh/lvpn6/2199db5dcd.png"]
@@ -125,7 +149,7 @@ client.on('message', m => {
  }
 if (m.content.startsWith(`?roast`)) { //when ya homie gets roasted
   if (!checkCommand(m, `?roast`)) return
-  var roastArray = ["https://40.media.tumblr.com/a45905c3728d9e12c0cf75f1068dc1ca/tumblr_noto8ys9Uc1rraq2ko2_1280.jpg", "https://cdn.discordapp.com/attachments/93578176231374848/130706697416081408/tumblr_nwsaleCKuD1s8as3do1_540.png"]
+  var roastArray = ["https://40.media.tumblr.com/a45905c3728d9e12c0cf75f1068dc1ca/tumblr_noto8ys9Uc1rraq2ko2_1280.jpg", "https://cdn.discordapp.com/attachments/93578176231374848/130706697416081408/tumblr_nwsaleCKuD1s8as3do1_540.png", "http://www.kappit.com/img/pics/20150116_124218_bhcdaeb_sm.jpg", "http://img.memecdn.com/n-gga-gets-roasted-even-when-he-amp-039-s-dead_o_4109505.jpg", "http://cdn.meme.am/instances/500x/52976907.jpg", "http://www.kappit.com/img/pics/201501_2208_abfbd_sm.jpg", "http://i0.kym-cdn.com/photos/images/original/000/947/153/89e.jpg", "http://img.memecdn.com/we-all-been-throught-this_o_3521609.jpg", "http://cdn.meme.am/instances/500x/55960483.jpg", "https://i.imgflip.com/ngeg6.jpg", "http://img.memecdn.com/nice-guys-get-roasted-last_o_6089935.jpg", "https://40.media.tumblr.com/1102da4ecaed1492da9ab9662d62abc0/tumblr_npu3y5uKv81swz866o1_500.jpg", "https://pbs.twimg.com/media/CJK5waPWEAAoJyE.jpg", "http://puu.sh/mcJW3/4351a36e0b.png", "http://cdn.meme.am/instances/400x/57509406.jpg", "http://www.kappit.com/img/pics/201410_1526_fihbf_sm.jpg", "http://www.kappit.com/img/pics/201501_0902_bfhia_sm.jpg", "http://img.ifcdn.com/images/d6745e26c1fadaf2fa16a130fc398b8f4ffae666b0212be26c5364550d7e7ce6_1.jpg", "https://i.imgur.com/ngWCSjh.jpg", "http://img.ifcdn.com/images/6c571851a801b64e886f01a087a82cee95089f877198d1bd846e2c30c3e66652_1.jpg", "http://img.ifcdn.com/images/a4167df60cf75c3cfec1f1d4a96f1a3bb3986bbaf900a578830c32946186f4c8_1.jpg", "http://img.ifcdn.com/images/bd19c9876aa68bcb382cd030750a7378c627e3ded10b57e052a39473e756bb88_3.jpg", "https://scontent.cdninstagram.com/hphotos-xfp1/t51.2885-15/e35/11906257_1031577300246069_1601729207_n.jpg", "http://img.ifcdn.com/images/2c4a68e9c6d80906022de1d7434e8fa2792fa9f134f8999d7fa4cbb5daa8536c_1.jpg", "https://i.imgur.com/gZAR1gC.png", "http://img.ifcdn.com/images/945df2cbec8055e5e9feb25c97efea7a23ac48de02ed4134ae421c14f51b3c00_3.jpg", "http://img.ifcdn.com/images/9b54a313f4b7c92897323d4bc3f2d0bb1c7886111524cb7a85a914798e4f155c_3.jpg", "http://img.ifcdn.com/images/4e499b636afb516ec4c2d53c5c68d1418a6734cd495a464a9b4bfdb914f74e58_3.jpg", "http://img.ifcdn.com/images/bea0a6f2fbf7fcceafaa4be3d078f20da222dea4df473e93cb6597b32ff44f5d_3.jpg", "http://puu.sh/mcKv3/0edce0b0c7.png"]
   client.reply(m, roastArray[Math.floor(Math.random()*roastArray.length)])
   return;
 }
