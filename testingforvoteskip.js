@@ -274,10 +274,6 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
 
   // Only respond to other messages inside the bound channel
   if (!m.channel.equals(boundChannel)) return;
-  if (m.content.startsWith(`?startvote`)) {
-    client.sendMessage(m.channel, "Vote to skip current song started by " + m.author.username + ".");
-    var voteCount = 0
-    var votingList = [];
   if (m.content.startsWith(`?next`)) {
     var voteCount = voteCount;
     var votingList = votingList;
