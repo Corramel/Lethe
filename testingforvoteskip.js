@@ -171,7 +171,7 @@ if (m.content.startsWith(`?lyin`)) { //memecontrol
 if (m.content.startsWith(`${botMention} hello`)) {
   var responseArray = ["Hello, how are you?", "Hi!!!", "Why, hello there.", "Hello!", "Hai. x3", "Hi there!", "Hello! <3", "H-hi.."]
   if (m.author.id === "81526338728501248") {
-    client.reply(m, responseArray[Math.floor(Math.random() * responseArray)]);
+    client.reply(m, responseArray[Math.floor(Math.random() * responseArray.length)]);
     return;
   } else {
     client.reply(m, "Ebola-chan told me not to talk to plebeians...");
