@@ -275,17 +275,17 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
   // Only respond to other messages inside the bound channel
   if (!m.channel.equals(boundChannel)) return;
   if (m.content.startsWith(`?startvote`)) {
-    client.sendMessage(m.channel, "Vote to skip current song started by " + m.author.username + ".")
+    client.sendMessage(m.channel, "Vote to skip current song started by " + m.author.username + ".");
     var voteCount = 0
     var votingList = [];
-  }
   if (m.content.startsWith(`?next`)) {
+    var voteCount = voteCount;
+    var votingList = votingList;
     // next !checkCommand(m, '?next')
     if (userIsAdmin(m.author.id)) { 
     playStopped();
-    return
-    }
-  if(!userIsAdmin(m.author.id)){ // && votingList.indexOf(m.author.id)<0
+    return }
+    if(!userIsAdmin(m.author.id)){ // && votingList.indexOf(m.author.id)<0
     voteCount = voteCount + 1;
     votingList.push(m.author.id);
     client.sendMessage(m.channel, "Vote to next added by " + m.author.username + ".")
