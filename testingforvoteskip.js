@@ -52,6 +52,7 @@ var boundChannel = false;
 var currentStream = false;
 var votingList = [];
 var voteCount = 0;
+var voteTotalCount = 0;
 // Video that is currently being played
 var currentVideo = false;
 
@@ -280,19 +281,18 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     // next !checkCommand(m, '?next')
     if (userIsAdmin(m.author.id)) { 
     playStopped();
-    return }
-    if(!userIsAdmin(m.author.id)){ // && votingList.indexOf(m.author.id)<0
-    voteCount = voteCount + 1;
-    votingList.push(m.author.id);
+    return;
+    } else if(!userIsAdmin(m.author.id)){ // && votingList.indexOf(m.author.id)<0
+    voteCount = 1;
     client.sendMessage(m.channel, "Vote to next added by " + m.author.username + ".")
+    votingList = [(m.author.id)];
   } else {
     console.log(m.author.username + " already voted!")
     }
     console.log("The current amount of votes is " + voteCount);
     console.log("The people in the vote list is " + voteList);
-  //  var voteTotalCount = 0;
-  //  voteTotalCount = voteCount + voteTotalCount;
- //   console.log(voteCount);
+    voteTotalCount = voteCount + voteTotalCount;
+    console.log(voteCount);
     if (voteCount >= 2){
         playStopped();
         var voteList = [];
