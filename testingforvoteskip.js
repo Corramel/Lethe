@@ -122,6 +122,26 @@ if (m.content.startsWith(`?komari`)) { // lmao
     client.sendMessage(m.channel, komariArray[Math.floor(Math.random()*komariArray.length)])
     return;
 } 
+if (m.content.startsWith(`?google`)) { // google
+  if (!checkCommand(m, `?google`)) return
+  var searchInfo = m.content.slice(6)
+  var lmgtfySearch = "http://lmgtfy.com/?q=" + encodeURIComponent(searchInfo);
+  client.reply(m, lmgtfySearch)
+  return;
+}
+if (m.content.startsWith(`?asexual` || `?kuro` || `?aromantic`)) { //kuro
+  if (!checkCommand(m, `?asexual`)) return
+  var kuroArray = ["http://puu.sh/mev31/7dde568741.png", "https://puu.sh/lSqgq/6015ed7c50.png", "https://puu.sh/m7mJf/3b295db195.png", "https://puu.sh/m8u7L/e20325a995.png",]
+  client.sendMessage(m.channel, kuroArray[Math.floor(Math.random()*kuroArray.length)] )
+  return;
+}
+
+if (m.content.startsWith(`?darkness`)) { //my old friend
+  if (!checkCommand(m, `?darkness`)) return
+  var darknessArray = ["https://www.youtube.com/watch?v=a5gz6KB_yvQ", "https://www.youtube.com/watch?v=ZNwICMDMV-g", "https://i.ytimg.com/vi/ZNwICMDMV-g/maxresdefault.jpg", "http://i1.kym-cdn.com/entries/icons/original/000/018/886/hello.png"]
+  client.sendMessage(m.channel, darknessArray[Math.floor(Math.random()*darknessArray.length)])
+  return;
+}
 /* if (m.content.startsWith(`?moxie`)) { //lmao
     if (!checkCommand(m,`?moxie`)) return
     var moxieArray = ["http://i.imgur.com/2AP11r9.png"]
