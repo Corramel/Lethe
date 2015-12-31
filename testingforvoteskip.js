@@ -321,6 +321,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     var voter = m.author.id;
   } else {
     client.sendMessage(m.channel, m.author.username + " already voted!")
+    voteCount = 0;
     }
     // console.log("The current amount of votes is " + voteCount);
     // console.log("The people in the vote list is " + voteList);
