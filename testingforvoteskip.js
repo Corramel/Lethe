@@ -318,9 +318,9 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     } else if(!userIsAdmin(m.author.id) && (!m.author.id in voteAllIDs)){
     voteCount = 1;
     client.sendMessage(m.channel, "Vote to next added by " + m.author.username + ".")
-    voter = m.author.id;
+    var voter = m.author.id;
   } else {
-    console.log(m.author.username + " already voted!")
+    client.sendMessage(m.channel, m.author.username + " already voted!")
     }
     // console.log("The current amount of votes is " + voteCount);
     // console.log("The people in the vote list is " + voteList);
