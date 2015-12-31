@@ -47,13 +47,12 @@ var client = new Discord.Client();
 client.on('warn', (m) => console.log('[warn]', m));
 client.on('debug', (m) => console.log('[debug]', m));
 
+var voteAllIDs = [];
 var playQueue = [];
 var boundChannel = false;
 var currentStream = false;
-var votingList = [];
 var voteCount = 0;
 var voteTotalCount = 0;
-var voteTotalList = ["meme"];
 // Video that is currently being played
 var currentVideo = false;
 
@@ -304,12 +303,13 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     boundChannel = false;
     currentStream = false;
     currentVideo = false;
+    voteTotalList = 0;
+    voteAllIDs = [];
     return;
   }
 
   // Only respond to other messages inside the bound channel
   if (!m.channel.equals(boundChannel)) return;
-  var voteTotalList = [];
   if (m.content.startsWith(`?next`)) {
     // next !checkCommand(m, '?next')
     if (userIsAdmin(m.author.id)) { 
@@ -325,7 +325,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     // console.log("The current amount of votes is " + voteCount);
     // console.log("The people in the vote list is " + voteList);
     voteTotalCount = voteCount + voteTotalCount;
-    // voteTotalList.push(voter)
+    voteAllIDs.push(voter);
     console.log(voteCount);
     if (voteTotalCount >= 5){
       console.log("L I M I T S  W E R E  M E A N T  T O  B E  B R O K E N . . .")
@@ -336,7 +336,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
       } else {
         console.log("Not breaking limits........")
         console.log("The current amount of votes is " + voteTotalCount);
-       // console.log("The people in the vote list is " + voteTotalList);
+        console.log("The people in the vote list are " + voteAllIDs);
       };
   };
   if (m.content.startsWith(`${botMention} yq`) // youtube query
@@ -651,6 +651,8 @@ function playStopped() {
   lastVideo = currentVideo;
   currentVideo = false;
   nextInQueue();
+  voteTotalCount = 0;
+  voteTotalList = [];
 }
 
 function play(video) {
