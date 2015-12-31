@@ -178,6 +178,7 @@ if (m.content.startsWith(`?edgemaster`)) {//edge
   var edgeArray = ["http://puu.sh/merq0/24e932c0e5.png", "http://puu.sh/merdn/d6c644843e.png", "http://puu.sh/mersp/b0d7487014.png", "http://puu.sh/merwB/549f239009.png", "http://puu.sh/merye/ab56b50781.png", "http://puu.sh/merzr/6e21fadfd0.png"]
   client.sendMessage(m.channel, edgeArray[Math.floor(Math.random()*edgeArray.length)])
   return;
+}
 if (m.content.startsWith(`?jimbo`)) { //shadow realm jimbo
   if (!checkCommand(m, `?jimbo`)) return
   client.reply(m, "http://puu.sh/m1Ta5/910f1b8e35.png")
