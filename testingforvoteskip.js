@@ -315,7 +315,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     if (userIsAdmin(m.author.id)) { 
     playStopped();
     return;
-    } else if(!userIsAdmin(m.author.id)){
+    } else if(!userIsAdmin(m.author.id) && (!m.author.id in voteAllIDs){
     voteCount = 1;
     client.sendMessage(m.channel, "Vote to next added by " + m.author.username + ".")
     voter = m.author.id;
@@ -332,6 +332,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
       console.log("The current amount of votes are" + voteTotalCount)
         playStopped();
         voteTotalCount = 0;
+        voteAllIDs = [];
         return;
       } else {
         console.log("Not breaking limits........")
@@ -652,7 +653,7 @@ function playStopped() {
   currentVideo = false;
   nextInQueue();
   voteTotalCount = 0;
-  voteTotalList = [];
+  voteAllIDs = [];
 }
 
 function play(video) {
