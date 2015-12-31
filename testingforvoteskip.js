@@ -95,13 +95,13 @@ client.on('message', m => {
   }
  if (m.content.startsWith(`?userID`)) { // userID
     if (!checkCommand(m, `?userID`)) return;
-    client.reply(m, m.author.id);
+    client.reply(m, "Your user ID is " + m.author.id + "!");
     return;
  }
  if (m.content.startsWith(`?ben`)) { // a meme
     if (!checkCommand(m, `?ben`)) return
     var benArray = ["**BEN'S STATUS** \n Lips: LARGE \n Feelings: WHO CARES \n Race: SHADOW-REALM BEAST", "http://puu.sh/m3gGP/de199907f3.png", "http://puu.sh/m3gDD/3c6f7c553b.png", "http://puu.sh/m3gIA/28638cd9ad.jpg", "http://puu.sh/m9tgv/84bc2f4914.jpg", "http://puu.sh/m9tfd/fdd3ad0c46.jpg", "http://puu.sh/m9th3/12a1326552.jpg", "https://cdn.discordapp.com/attachments/93578176231374848/130413901367083008/benkms.jpg" ,"https://cdn.discordapp.com/attachments/93578176231374848/130413948091629568/ben.jpg", "https://puu.sh/ldqI3/7fe79e185e.jpg", "https://puu.sh/ldqI3/7fe79e185e.jpg", "https://puu.sh/ldqC3/563b0df440.jpg", "http://puu.sh/lvryP/a7aeb5c7f2.jpg", "http://puu.sh/l0dy0/97c6792172.jpg", "https://docs.google.com/document/d/1XXeZrKqhCzwAcrbD3IHsAOnwp-XhXdJWwpZQrdLLKZo/edit", "https://docs.google.com/document/d/1qvlZMQLP6BatNGCLt-wrAdVt2bFsqxshGu_RIDMngc0/edit?pref=2&pli=1"]
-    client.reply(m, benArray[Math.floor(Math.random() * benArray.length)])
+    client.sendMessage(m.channel, benArray[Math.floor(Math.random() * benArray.length)])
     return;
  }
  if (m.content.startsWith(`?evan`)) { // wat a fag
@@ -116,12 +116,12 @@ client.on('message', m => {
     client.sendMessage(m.channel, fagArray[Math.floor(Math.random()*fagArray.length)]);
     return;
 }
-/*if (m.content.startsWith(`?komari`)) { // lmao
+if (m.content.startsWith(`?komari`)) { // lmao
     if (!checkCommand(m, `?komari`)) return
-    var komariArray = ["https://i.gyazo.com/de05c41201cd9c4e402e557de475c176.png"]
+    var komariArray = ["https://i.gyazo.com/de05c41201cd9c4e402e557de475c176.png", "https://i.gyazo.com/36d0fce02401db14680b97e276f25b4e.png", "https://i.gyazo.com/23ebae539c0c7494de1701b8676afbe0.png"]
     client.sendMessage(m.channel, komariArray[Math.floor(Math.random()*komariArray.length)])
     return;
-} */
+} 
 /* if (m.content.startsWith(`?moxie`)) { //lmao
     if (!checkCommand(m,`?moxie`)) return
     var moxieArray = ["http://i.imgur.com/2AP11r9.png"]
@@ -131,25 +131,36 @@ client.on('message', m => {
  if (m.content.startsWith(`?chancey`)) { // chancey telling off darrell
     if (!checkCommand(m, `?chancey`)) return
     var chanceyArray = ["\n >attacking \n I was telling you how is it when you legit tell me to \"promise\" you to text first. \n I was implying that I cannot guarantee shit like this because it rarely happens, even if someone were to complain. \n Attack sounds like this: \n You sound like you're triggered. Where's your problem glasses? Oh wait. You're a nigger! You're just gonna complain that everything bad that happens to you is because you're black. Are you ready to get cucked by your master? Or perhaps you'd rather fuck gorillas aka your own people.", "http://puu.sh/lvpn6/2199db5dcd.png"]
-    client.reply(m, chanceyArray[Math.floor(Math.random()*chanceyArray.length)])
+    client.sendMessage(m.channel, chanceyArray[Math.floor(Math.random()*chanceyArray.length)])
+    return;
+ }
+ if (m.content.startsWith(`?turgle`)) {//meme
+    if (!checkCommand(m,`turgle`)) return
+    client.sendMessage(m.channel, "https://i.gyazo.com/2e5e7e03320bcbdcb5e6a86ca377b3fc.png")
     return;
  }
  if (m.content.startsWith(`?nanami`)) { //nanami
   if (!checkCommand(m, `?vanilla`)) return
-  var vanillaArray = ["https://i.gyazo.com/fb6577a3239a86a24fac222e53b1e889.png", "http://puu.sh/maD1a/ebe71dec99.jpg"]
-  client.reply(m, vanillaArray[Math.floor(Math.random()*vanillaArray.length)])
+  var vanillaArray = ["https://i.gyazo.com/fb6577a3239a86a24fac222e53b1e889.png", "http://puu.sh/maD1a/ebe71dec99.jpg", "https://i.gyazo.com/af8f05c42fb749f170a3788ebae3f9c6.png", "https://i.gyazo.com/109f37eaafac9ee14669d3b9a53e11ad.png", "http://puu.sh/menhE/94c73018b1.png"]
+  client.sendMessage(m.channel, vanillaArray[Math.floor(Math.random()*vanillaArray.length)])
+  return;
+}
+ if (m.content.startsWith(`?vanilla`)) { //nanami
+  if (!checkCommand(m, `?vanilla`)) return
+  var vanillaArray = ["https://i.gyazo.com/fb6577a3239a86a24fac222e53b1e889.png", "http://puu.sh/maD1a/ebe71dec99.jpg", "https://i.gyazo.com/af8f05c42fb749f170a3788ebae3f9c6.png", "https://i.gyazo.com/109f37eaafac9ee14669d3b9a53e11ad.png", "http://puu.sh/menhE/94c73018b1.png"]
+  client.sendMessage(m.channel, vanillaArray[Math.floor(Math.random()*vanillaArray.length)])
   return;
 }
  if (m.content.startsWith(`?uni`)) { //uni
     if (!checkCommand(m, `?uni`)) return
     var uniArray = ["https://puu.sh/lTwMZ/0176bb7075.JPG", "http://puu.sh/lNwLG/47cc9cf362.png", "http://puu.sh/m9whg/187a691bc7.png",]
-    client.reply(m, uniArray[Math.floor(Math.random() * uniArray.length)])
+    client.sendMessage(m.channel, uniArray[Math.floor(Math.random() * uniArray.length)])
     return;
  }
 if (m.content.startsWith(`?roast`)) { //when ya homie gets roasted
   if (!checkCommand(m, `?roast`)) return
   var roastArray = ["https://40.media.tumblr.com/a45905c3728d9e12c0cf75f1068dc1ca/tumblr_noto8ys9Uc1rraq2ko2_1280.jpg", "https://cdn.discordapp.com/attachments/93578176231374848/130706697416081408/tumblr_nwsaleCKuD1s8as3do1_540.png", "http://www.kappit.com/img/pics/20150116_124218_bhcdaeb_sm.jpg", "http://img.memecdn.com/n-gga-gets-roasted-even-when-he-amp-039-s-dead_o_4109505.jpg", "http://cdn.meme.am/instances/500x/52976907.jpg", "http://www.kappit.com/img/pics/201501_2208_abfbd_sm.jpg", "http://i0.kym-cdn.com/photos/images/original/000/947/153/89e.jpg", "http://img.memecdn.com/we-all-been-throught-this_o_3521609.jpg", "http://cdn.meme.am/instances/500x/55960483.jpg", "https://i.imgflip.com/ngeg6.jpg", "http://img.memecdn.com/nice-guys-get-roasted-last_o_6089935.jpg", "https://40.media.tumblr.com/1102da4ecaed1492da9ab9662d62abc0/tumblr_npu3y5uKv81swz866o1_500.jpg", "https://pbs.twimg.com/media/CJK5waPWEAAoJyE.jpg", "http://puu.sh/mcJW3/4351a36e0b.png", "http://cdn.meme.am/instances/400x/57509406.jpg", "http://www.kappit.com/img/pics/201410_1526_fihbf_sm.jpg", "http://www.kappit.com/img/pics/201501_0902_bfhia_sm.jpg", "http://img.ifcdn.com/images/d6745e26c1fadaf2fa16a130fc398b8f4ffae666b0212be26c5364550d7e7ce6_1.jpg", "https://i.imgur.com/ngWCSjh.jpg", "http://img.ifcdn.com/images/6c571851a801b64e886f01a087a82cee95089f877198d1bd846e2c30c3e66652_1.jpg", "http://img.ifcdn.com/images/a4167df60cf75c3cfec1f1d4a96f1a3bb3986bbaf900a578830c32946186f4c8_1.jpg", "http://img.ifcdn.com/images/bd19c9876aa68bcb382cd030750a7378c627e3ded10b57e052a39473e756bb88_3.jpg", "https://scontent.cdninstagram.com/hphotos-xfp1/t51.2885-15/e35/11906257_1031577300246069_1601729207_n.jpg", "http://img.ifcdn.com/images/2c4a68e9c6d80906022de1d7434e8fa2792fa9f134f8999d7fa4cbb5daa8536c_1.jpg", "https://i.imgur.com/gZAR1gC.png", "http://img.ifcdn.com/images/945df2cbec8055e5e9feb25c97efea7a23ac48de02ed4134ae421c14f51b3c00_3.jpg", "http://img.ifcdn.com/images/9b54a313f4b7c92897323d4bc3f2d0bb1c7886111524cb7a85a914798e4f155c_3.jpg", "http://img.ifcdn.com/images/4e499b636afb516ec4c2d53c5c68d1418a6734cd495a464a9b4bfdb914f74e58_3.jpg", "http://img.ifcdn.com/images/bea0a6f2fbf7fcceafaa4be3d078f20da222dea4df473e93cb6597b32ff44f5d_3.jpg", "http://puu.sh/mcKv3/0edce0b0c7.png"]
-  client.reply(m, roastArray[Math.floor(Math.random()*roastArray.length)])
+  client.sendMessage(m.channel, roastArray[Math.floor(Math.random()*roastArray.length)])
   return;
 }
 if (m.content.startsWith(`?niger`)) { //niger
@@ -157,6 +168,16 @@ if (m.content.startsWith(`?niger`)) { //niger
   client.reply(m, "This is really offensive and racist. Labelling someone with the word \"niger\" is not right. We're all human and skin color, nationality, religion, political beliefs, sexual identity and orientation and lifestyle don't make us different under the skin. Pictures like this should be banned from tumblr.")
   return;
 }
+if (m.content.startsWith(`?unumii`)) { //unumii
+  if (!checkCommand(m, `?unumii`)) return
+  client.sendMessage(m.channel, "http://puu.sh/mero2/3d8fbbaacf.png")
+  return;
+}
+if (m.content.startsWith(`?edgemaster`)) {//edge
+  if(!checkCommand(m,`?edgemaster`)) return
+  var edgeArray = ["http://puu.sh/merq0/24e932c0e5.png", "http://puu.sh/merdn/d6c644843e.png", "http://puu.sh/mersp/b0d7487014.png", "http://puu.sh/merwB/549f239009.png", "http://puu.sh/merye/ab56b50781.png", "http://puu.sh/merzr/6e21fadfd0.png"]
+  client.sendMessage(m.channel, edgeArray[Math.floor(Math.random()*edgeArray.length)])
+  return;
 if (m.content.startsWith(`?jimbo`)) { //shadow realm jimbo
   if (!checkCommand(m, `?jimbo`)) return
   client.reply(m, "http://puu.sh/m1Ta5/910f1b8e35.png")
@@ -197,7 +218,8 @@ if (m.content.startsWith(`${botMention} hello`)) {
     client.reply(m, responseArray[Math.floor(Math.random() * responseArray.length)]);
     return;
   } else {
-    client.reply(m, "Ebola-chan told me not to talk to plebeians...");
+    var responseArray = ["You're actually trash! Commit Sudoku..", "Oh, hello, stupid one.", "Awww, look! It's retarded. Hi!!!", "...Ew.", "...", "LOL!", "What did you just say to me?", "Ebola-chan told me not to talk to plebeians...", "..Ew, it's a nonbeliever...", "I hope you never ever recieve Ebola-chan's love!!!! D:<", "Uh.. Hello...?", "Why are you talking to me? You're scaring me...", "Please go away.", "Hai!", "How are ya?", "Oh my god, get away from me.", "You're really 3DPD...", "I think you should commit suicide! How's that for a greeting, huh?", "Fuck you!", "Kill yourself!", "I hope you get nagasaki'd, you thundercunt."]
+    client.reply(m, responseArray[Math.floor(Math.random() * responseArray.length)]);
   }
 }
 /* if (m.content.startsWith(``)) { //memecontrol
