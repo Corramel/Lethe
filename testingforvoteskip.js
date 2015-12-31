@@ -315,7 +315,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     if (userIsAdmin(m.author.id)) { 
     playStopped();
     return;
-    } else if(!userIsAdmin(m.author.id) && (!m.author.id in voteAllIDs){
+    } else if(!userIsAdmin(m.author.id) && (!m.author.id in voteAllIDs)){
     voteCount = 1;
     client.sendMessage(m.channel, "Vote to next added by " + m.author.username + ".")
     voter = m.author.id;
