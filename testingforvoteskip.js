@@ -124,7 +124,7 @@ if (m.content.startsWith(`?komari`)) { // lmao
 } 
 if (m.content.startsWith(`?google`)) { // google
   if (!checkCommand(m, `?google`)) return
-  var searchInfo = m.content.slice(6)
+  var searchInfo = m.content.slice(8)
   var lmgtfySearch = "http://lmgtfy.com/?q=" + encodeURIComponent(searchInfo);
   client.reply(m, lmgtfySearch)
   return;
