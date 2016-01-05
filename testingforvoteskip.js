@@ -255,7 +255,6 @@ if (m.content.startsWith(`?gasthejaps`)) { //memecontrol
   client.reply(m, gastheJaps[Math.floor(Math.random() * gastheJaps.length)])
   return;
 }
-if ()
 if (m.content.startsWith(`?chill`)) { //memecontrol
   if (!checkCommand(m, `?chill`)) return
   client.reply(m, "https://puu.sh/kt0cd/76e8460d30.png")
