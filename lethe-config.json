@@ -19,11 +19,11 @@
     "81526336757174272"
   ],
   "commandsRestrictedToAdmins": {
-    "?init": true,
-    "?info": false,
-    "?help": false,
-    "?destroy": true,
-    "?yt": false,
+    "init": true,
+    "info": false,
+    "help": false,
+    "destroy": true,
+    "yt": false,
     "?list": false,
     "?list saved": false,
     "?link": false,
@@ -31,8 +31,8 @@
     "?replay": false,
     "?save": false,
     "?time": false,
-    "?yq": false,
-    "?pl": true,
-    "?shuffle": true
+    "yq": false,
+    "pl": true,
+    "shuffle": true
   }
 }
