@@ -209,6 +209,7 @@ if (m.content.startsWith(`?niggertest`)) { //niger
     client.reply(m, "This is really offensive, racist, and sexist. Labelling someone wit hthe word \"" + nigFiller + "\" is not right. We're all human and skin color, nationality, religion, political beliefs, sexual identity and orientation and lifestyle don't make us different under the skin. Things like this should be banned from tumblr." )
     return;
   }
+}
 if (m.content.startsWith(`?unumii`)) { //unumii
   if (!checkCommand(m, `?unumii`)) return
   client.sendMessage(m.channel, "http://puu.sh/mero2/3d8fbbaacf.png")
