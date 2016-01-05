@@ -60,7 +60,7 @@ client.on('message', m => {
   var antiCS = (m.content).toLowerCase()
   if (!botMention) return;
   if (client.user.id == m.author.id) return;
-  if (!m.content.startsWith(`${botMention} `) || m.content.length <= botMention.length + 1) return;
+  //if (!m.content.startsWith(`${botMention} `) || m.content.length <= botMention.length + 1) return;
 
     if (m.content.startsWith(`?info`)) {
     if (!checkCommand(m, '?info')) return;
@@ -172,9 +172,9 @@ if (m.content.startsWith(`?niger`)) { //niger
   client.reply(m, "This is really offensive and racist. Labelling someone with the word \"niger\" is not right. We're all human and skin color, nationality, religion, political beliefs, sexual identity and orientation and lifestyle don't make us different under the skin. Pictures like this should be banned from tumblr.")
   return;
 }
-if (m.content.starstWith(`?niggertest`)) { //niger
+if (m.content.startsWith(`?niggertest`)) { //niger
   if (!checkCommand(m,`?niggertest`)) return
-  if(m.content.length > 5){
+  if(m.content.length < ){
     client.reply(m, "This is really offensive, racist, and sexist. Labelling someone with the word \"niger\" is not right. We're all human and skin color, nationality, religion, political beliefs, sexual identity and orientation and lifestyle don't make us different under the skin. Pictures like this should be banned from tumblr.")
     return;
   } else {
