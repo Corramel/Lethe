@@ -18,7 +18,7 @@ var YoutubeTrack = require('./lib/youtube-track.js');
 
 var Util = require('./lib/util.js');
 var Config = require('./lib/config.js');
-var CURRENT_REV = 2;
+var CURRENT_REV = 3;
 
 var client = new Discord.Client();
 
