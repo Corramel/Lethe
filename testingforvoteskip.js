@@ -44,7 +44,7 @@ var shouldStockpile = false;
 var stockpile = '';
 
 // Handling api key
-var apiKey = process.argv[4] || (Config.apiKey !== "youtube API key (optional)") ? Config.apiKey : false;
+var apiKey = process.argv[4] || (Config.auth.apiKey !== "youtube API key (optional)") ? Config.auth.apiKey : false;
 
 
 
