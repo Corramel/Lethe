@@ -174,11 +174,11 @@ if (m.content.startsWith(`?niger`)) { //niger
 }
 if (m.content.startsWith(`?niggertest`)) { //niger
   if (!checkCommand(m,`?niggertest`)) return
-  if(m.content.length < ){
+  if(m.content.length < 12){
     client.reply(m, "This is really offensive, racist, and sexist. Labelling someone with the word \"niger\" is not right. We're all human and skin color, nationality, religion, political beliefs, sexual identity and orientation and lifestyle don't make us different under the skin. Pictures like this should be banned from tumblr.")
     return;
   } else {
-    var nigFiller = (m.content).slice(4);
+    var nigFiller = (m.content).slice(13);
     client.reply(m, "This is really offensive, racist, and sexist. Labelling someone wit hthe word \"" + nigFiller + "\" is not right. We're all human and skin color, nationality, religion, political beliefs, sexual identity and orientation and lifestyle don't make us different under the skin. Things like this should be banned from tumblr." )
     return;
   }
