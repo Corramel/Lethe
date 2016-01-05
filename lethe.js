@@ -27,10 +27,12 @@ var client = new Discord.Client();
 client.on('warn', (m) => console.log('[warn]', m));
 client.on('debug', (m) => console.log('[debug]', m));
 
+var voteAllIDs = [];
 var playQueue = [];
 var boundChannel = false;
 var currentStream = false;
-
+var voteCount = 0;
+var voteTotalCount = 0;
 // Video that is currently being played
 var currentVideo = false;
 
@@ -107,6 +109,17 @@ client.on('message', m => {
     var benArray = ["**BEN'S STATUS** \n Lips: LARGE \n Feelings: WHO CARES \n Race: SHADOW-REALM BEAST", "http://puu.sh/m3gGP/de199907f3.png", "http://puu.sh/m3gDD/3c6f7c553b.png", "http://puu.sh/m3gIA/28638cd9ad.jpg", "http://puu.sh/m9tgv/84bc2f4914.jpg", "http://puu.sh/m9tfd/fdd3ad0c46.jpg", "http://puu.sh/m9th3/12a1326552.jpg", "https://cdn.discordapp.com/attachments/93578176231374848/130413901367083008/benkms.jpg" ,"https://cdn.discordapp.com/attachments/93578176231374848/130413948091629568/ben.jpg", "https://puu.sh/ldqI3/7fe79e185e.jpg", "https://puu.sh/ldqI3/7fe79e185e.jpg", "https://puu.sh/ldqC3/563b0df440.jpg", "http://puu.sh/lvryP/a7aeb5c7f2.jpg", "http://puu.sh/l0dy0/97c6792172.jpg", "https://docs.google.com/document/d/1XXeZrKqhCzwAcrbD3IHsAOnwp-XhXdJWwpZQrdLLKZo/edit", "https://docs.google.com/document/d/1qvlZMQLP6BatNGCLt-wrAdVt2bFsqxshGu_RIDMngc0/edit?pref=2&pli=1"]
     client.sendMessage(m.channel, benArray[Math.floor(Math.random() * benArray.length)])
     return;
+ }
+ if (m.content.startsWith(`?kaio`)) { 
+   if (!checkCommand(m, `?kaio`)) return
+   var kaioArray = ["http://puu.sh/miD0v/5322ab2006.jpg" , "http://puu.sh/miFg2/b53356ef98.jpg"]
+   client.sendMessage(m.channel, kaioArray[Math.floor(Math.random()* kaioArray.length)])
+   return;
+ }
+ if (m.content.startsWith(`?anna`)) {
+   if (!checkCommand(m, `?anna`)) return
+   client.reply(m, "There seems to be nothing here.")
+   return;
  }
  if (m.content.startsWith(`?evan`)) { // wat a fag
     if (!checkCommand(m, `?evan`)) return
@@ -200,13 +213,13 @@ if (m.content.startsWith(`?niger`)) { //niger
   client.reply(m, "This is really offensive and racist. Labelling someone with the word \"niger\" is not right. We're all human and skin color, nationality, religion, political beliefs, sexual identity and orientation and lifestyle don't make us different under the skin. Pictures like this should be banned from tumblr.")
   return;
 }
-if (m.content.startsWith(`?niggertest`)) { //niger
-  if (!checkCommand(m,`?niggertest`)) return
+if (m.content.startsWith(`?nigger`)) { //niger
+  if (!checkCommand(m,`?nigger`)) return
   if(m.content.length < 12){
-    client.reply(m, "This is really offensive, racist, and sexist. Labelling someone with the word \"niger\" is not right. We're all human and skin color, nationality, religion, political beliefs, sexual identity and orientation and lifestyle don't make us different under the skin. Pictures like this should be banned from tumblr.")
+    client.reply(m, "This is really offensive, racist, and sexist. Labelling someone with the word \"nigger\" is not right. We're all human and skin color, nationality, religion, political beliefs, sexual identity and orientation and lifestyle don't make us different under the skin. Pictures like this should be banned from tumblr.")
     return;
   } else {
-    var nigFiller = (m.content).slice(13);
+    var nigFiller = (m.content).slice(12);
     client.reply(m, "This is really offensive, racist, and sexist. Labelling someone wit hthe word \"" + nigFiller + "\" is not right. We're all human and skin color, nationality, religion, political beliefs, sexual identity and orientation and lifestyle don't make us different under the skin. Things like this should be banned from tumblr." )
     return;
   }
