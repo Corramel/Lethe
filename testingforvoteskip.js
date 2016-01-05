@@ -60,7 +60,7 @@ client.on('message', m => {
 //  var antiCS = (m.content).toLowerCase()
   if (!botMention) return;
   if (client.user.id == m.author.id) return;
-  //if ((!m.content.startsWith(`${botMention} `) || m.content.length <= botMention.length + 1) || (!m.content.startsWith(`?`) || m.content.length <= 2)) return;
+  if ((!m.content.startsWith(`${botMention} `) || (!m.content.startsWith(`?`)))) return;
 
     if (m.content.startsWith(`?info`)) {
     if (!checkCommand(m, '?info')) return;
