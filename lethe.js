@@ -54,6 +54,7 @@ client.on('ready', () => {
 });
 
 client.on('message', m => {
+  var antiCS = m.content.toLowerCase()
   if (!botMention) return;
   if (client.user.id == m.author.id) return;
 
@@ -341,16 +342,39 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
   // Only respond to other messages inside the bound channel
   if (!m.channel.equals(boundChannel)) return;
 
-  if (m.content.startsWith(`${botMention} n`)) { // next
-    if (!checkCommand(m, 'next')) return;
-    if (currentVideo) {
-      playStopped();
-    } else {
-      client.reply(m, 'No video is currently playing.');
-    }
+  if (m.content.startsWith(`?next`)) {
+    // next !checkCommand(m, '?next')
+    if (userIsAdmin(m.author.id)) { 
+    playStopped();
     return;
-  }
-
+    } else if((!userIsAdmin(m.author.id)) && (voteAllIDs.indexOf(m.author.id)<0)){
+    voteCount = 1;
+    client.sendMessage(m.channel, "Vote to next added by " + m.author.username + ".")
+    var voter = m.author.id;
+  } else {
+    client.sendMessage(m.channel, m.author.username + " already voted!")
+    voteCount = 0;
+    }
+    // console.log("The current amount of votes is " + voteCount);
+    // console.log("The people in the vote list is " + voteList);
+    voteTotalCount = voteCount + voteTotalCount;
+    voteAllIDs.push(voter);
+    console.log(voteCount);
+    if (voteTotalCount >= 5){
+      console.log("L I M I T S  W E R E  M E A N T  T O  B E  B R O K E N . . .")
+      console.log("The current amount of votes are" + voteTotalCount)
+        playStopped();
+        voteTotalCount = 0;
+        voteAllIDs = [];
+        return;
+      } else {
+        console.log("Not breaking limits........")
+        console.log("The current amount of votes is " + voteTotalCount);
+        console.log("The people in the vote list are " + voteAllIDs);
+      };
+      return;
+  };
+  
   if (m.content.startsWith(`${botMention} yq`) // youtube query
     || m.content.startsWith(`${botMention} qq`) // queue query
     || m.content.startsWith(`${botMention} pq`) // play query
@@ -462,7 +486,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     return;
   }
 
-  if (m.content.startsWith(`${botMention} r`)) { // replay
+  if (m.content.startsWith(`?replay`)) { // replay
     if (!checkCommand(m, 'replay')) return;
     var videoToPlay = currentVideo ? currentVideo : lastVideo ? lastVideo : false;
     if (!videoToPlay) {
@@ -488,7 +512,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     return;
   }
 
-  if (m.content.startsWith(`${botMention} link`)) {
+  if (m.content.startsWith(`?link`)) {
     if (!checkCommand(m, 'link')) return;
     if (currentVideo) client.reply(m, `<https://youtu.be/${currentVideo.vid}>`);
     return; // stop propagation
@@ -515,8 +539,8 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     return; // so list doesn't get triggered
   }
 
-  if (m.content.startsWith(`${botMention} l`)) { // list
-    if (!checkCommand(m, 'list')) return;
+  if (m.content.startsWith(`?list`)) { // list
+    if (!checkCommand(m, '?list')) return;
 
     var formattedList = '';
     if (currentVideo) formattedList += `Currently playing: ${currentVideo.fullPrint()}\n`;
@@ -566,7 +590,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     return;
   }
 
-  if (m.content.startsWith(`${botMention} t`)) { // time
+  if (m.content.startsWith(`?time`)) { // time
     if (!checkCommand(m, 'time')) return;
     var streamTime = client.internal.voiceConnection.streamTime; // in ms
     var streamSeconds = streamTime / 1000;
