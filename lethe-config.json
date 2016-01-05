@@ -1,12 +1,13 @@
 {
-  "configRev": 2,
+  "configRev": 3,
   "timeOffset": 8000,
-  "maxLength": 600,
+  "maxLength": 6000,
   "userQueueLimit": 2,
+  "playbackNetworkMessage": true,
   "checksEnabled": {
-    "checkDuplicateVideo": true,
-    "checkDuplicateUser": true,
-    "checkVideoLength": true
+    "checkDuplicateVideo": false,
+    "checkDuplicateUser": false,
+    "checkVideoLength": false
   },
   "adminIds": [
     "81526338728501248",
