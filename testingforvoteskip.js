@@ -1,24 +1,3 @@
-process.on('uncaughtException', function(err) {
-  // Handle ECONNRESETs caused by `next` or `destroy`
-  if (err.code == 'ECONNRESET') {
-    // Yes, I'm aware this is really bad node code. However, the uncaught exception
-    // that causes this error is buried deep inside either discord.js, ytdl or node
-    // itself and after countless hours of trying to debug this issue I have simply
-    // given up. The fact that this error only happens *sometimes* while attempting
-    // to skip to the next video (at other times, I used to get an EPIPE, which was
-    // clearly an error in discord.js and was now fixed) tells me that this problem
-    // can actually be safely prevented using uncaughtException. Should this bother
-    // you, you can always try to debug the error yourself and make a PR.
-    console.log('Got an ECONNRESET! This is *probably* not an error. Stacktrace:');
-    console.log(err.stack);
-  } else {
-    // Normal error handling
-    console.log(err);
-    console.log(err.stack);
-    process.exit(0);
-  }
-});
-
 var Discord = require('discord.js');
 
 var ytdl = require('ytdl-core');
@@ -65,11 +44,7 @@ var shouldStockpile = false;
 var stockpile = '';
 
 // Handling api key
-if (process.argv[4]) {
-  var apiKey = process.argv[4];
-} else {
-  var apiKey = false;
-}
+var apiKey = process.argv[4] || (Config.apiKey !== "youtube API key (optional)") ? Config.apiKey : false;
 
 
 
@@ -82,9 +57,10 @@ client.on('ready', () => {
 });
 
 client.on('message', m => {
-  
+  var antiCS = (m.content).toLowerCase()
   if (!botMention) return;
   if (client.user.id == m.author.id) return;
+  if (!m.content.startsWith(`${botMention} `) || m.content.length <= botMention.length + 1) return;
 
     if (m.content.startsWith(`?info`)) {
     if (!checkCommand(m, '?info')) return;
@@ -159,13 +135,13 @@ if (m.content.startsWith(`?darkness`)) { //my old friend
     client.sendMessage(m.channel, "https://i.gyazo.com/2e5e7e03320bcbdcb5e6a86ca377b3fc.png")
     return;
  }
- if (m.content.startsWith(`?nanami`)) { //nanami
+/* if (m.content.startsWith(`?nanami`)) { //nanami
   if (!checkCommand(m, `?vanilla`)) return
   var vanillaArray = ["https://i.gyazo.com/fb6577a3239a86a24fac222e53b1e889.png", "http://puu.sh/maD1a/ebe71dec99.jpg", "https://i.gyazo.com/af8f05c42fb749f170a3788ebae3f9c6.png", "https://i.gyazo.com/109f37eaafac9ee14669d3b9a53e11ad.png", "http://puu.sh/menhE/94c73018b1.png"]
   client.sendMessage(m.channel, vanillaArray[Math.floor(Math.random()*vanillaArray.length)])
   return;
-}
- if (m.content.startsWith(`?vanilla`)) { //nanami
+}*/
+ if (m.content.startsWith(`?vanilla`) || m.content.startsWith(`?nanami`)) { //nanami
   if (!checkCommand(m, `?vanilla`)) return
   var vanillaArray = ["https://i.gyazo.com/fb6577a3239a86a24fac222e53b1e889.png", "http://puu.sh/maD1a/ebe71dec99.jpg", "https://i.gyazo.com/af8f05c42fb749f170a3788ebae3f9c6.png", "https://i.gyazo.com/109f37eaafac9ee14669d3b9a53e11ad.png", "http://puu.sh/menhE/94c73018b1.png"]
   client.sendMessage(m.channel, vanillaArray[Math.floor(Math.random()*vanillaArray.length)])
@@ -188,6 +164,16 @@ if (m.content.startsWith(`?niger`)) { //niger
   client.reply(m, "This is really offensive and racist. Labelling someone with the word \"niger\" is not right. We're all human and skin color, nationality, religion, political beliefs, sexual identity and orientation and lifestyle don't make us different under the skin. Pictures like this should be banned from tumblr.")
   return;
 }
+if (m.content.starstWith(`?niggertest`)) { //niger
+  if (!checkCommand(m,`?niggertest`)) return
+  if(m.content.length > 5){
+    client.reply(m, "This is really offensive, racist, and sexist. Labelling someone with the word \"niger\" is not right. We're all human and skin color, nationality, religion, political beliefs, sexual identity and orientation and lifestyle don't make us different under the skin. Pictures like this should be banned from tumblr.")
+    return;
+  } else {
+    var nigFiller = (m.content).slice(4);
+    client.reply(m, "This is really offensive, racist, and sexist. Labelling someone wit hthe word \"" + nigFiller + "\" is not right. We're all human and skin color, nationality, religion, political beliefs, sexual identity and orientation and lifestyle don't make us different under the skin. Things like this should be banned from tumblr." )
+    return;
+  }
 if (m.content.startsWith(`?unumii`)) { //unumii
   if (!checkCommand(m, `?unumii`)) return
   client.sendMessage(m.channel, "http://puu.sh/mero2/3d8fbbaacf.png")
@@ -233,7 +219,7 @@ if (m.content.startsWith(`?lyin`)) { //memecontrol
   client.reply(m, lyinArray[Math.floor(Math.random() * lyinArray.length)])
   return;
 } 
-if (m.content.startsWith(`${botMention} hello`)) {
+if (antiCS.startsWith(`${botMention} hello`) || antiCS.startsWith(`${botMention} hi`) || antiCS.startsWith(`${botMention} helo`)) {
   var responseArray = ["Hello, how are you?", "Hi!!!", "Why, hello there.", "Hello!", "Hai. x3", "Hi there!", "Hello! <3", "H-hi.."]
   if (m.author.id === "81526338728501248") {
     client.reply(m, responseArray[Math.floor(Math.random() * responseArray.length)]);
@@ -251,7 +237,8 @@ if (m.content.startsWith(`${botMention} hello`)) {
 */
 if (m.content.startsWith(`?mura`)) { //memecontrol
   if (!checkCommand(m, `?mura`)) return
-  client.reply(m, "https://i.gyazo.com/21dd51c5175d5ea00d57a15aeb95beb2.png")
+  var muraArray = ["http://puu.sh/mh7WZ/5e312bee07.png", "https://i.gyazo.com/21dd51c5175d5ea00d57a15aeb95beb2.png"]
+  client.reply(m, muraArray[Math.floor(Math.random() * muraArray.length)])
   return;
 }
 if (m.content.startsWith(`?gasthejaps`)) { //memecontrol
@@ -260,6 +247,7 @@ if (m.content.startsWith(`?gasthejaps`)) { //memecontrol
   client.reply(m, gastheJaps[Math.floor(Math.random() * gastheJaps.length)])
   return;
 }
+if ()
 if (m.content.startsWith(`?chill`)) { //memecontrol
   if (!checkCommand(m, `?chill`)) return
   client.reply(m, "https://puu.sh/kt0cd/76e8460d30.png")
@@ -335,6 +323,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
         }
       }
     }
+    return;
   }
 
   if (m.content.startsWith(`${botMention} destroy`)) { // destroy
@@ -383,6 +372,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
         console.log("The current amount of votes is " + voteTotalCount);
         console.log("The people in the vote list are " + voteAllIDs);
       };
+      return;
   };
   if (m.content.startsWith(`${botMention} yq`) // youtube query
     || m.content.startsWith(`${botMention} qq`) // queue query
@@ -391,7 +381,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
 
     if (!checkCommand(m, 'yq')) return;
 
-    if (apiKey == false) {
+    if (!apiKey) {
       client.reply(m, 'Search is disabled (no API KEY found).');
       return;
     }
@@ -435,7 +425,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
   if (m.content.startsWith(`${botMention} pl`)) { // playlist
     if (!checkCommand(m, 'pl')) return;
 
-    if (apiKey == false) {
+    if (!apiKey) {
       client.reply(m, 'Playlist adding is disabled (no API KEY found).');
       return;
     }
@@ -492,6 +482,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
       if (idx == 2) suppress = -1;
       parseVidAndQueue(vid, m, suppress);
     });
+    return;
   }
 
   if (m.content.startsWith(`?replay`)) { // replay
@@ -504,6 +495,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
 
     playQueue.push(videoToPlay);
     client.reply(m, `Queued ${videoToPlay.prettyPrint()}`);
+    return;
   }
 
   if (m.content.startsWith(`?shuffle`)) { // shuffle
@@ -514,6 +506,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     } else {
       Util.shuffle(playQueue);
       client.reply(m, 'Songs in the queue have been shuffled.');
+      return;
     }
 
     return;
@@ -593,6 +586,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
       if (err) handleYTError(err);
       else saveVideo(info, vid, splitArgs[1], m);
     });
+    return;
   }
 
   if (m.content.startsWith(`?time`)) { // time
@@ -602,6 +596,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     var videoTime = currentVideo.lengthSeconds;
     client.reply(m, `${Util.formatTime(streamSeconds)} / ${Util.formatTime(videoTime)} (${((streamSeconds * 100) / videoTime).toFixed(2)} %)`);
   }
+  return;
 });
 
 function parseVidAndQueue(vid, m, suppress) {
@@ -759,4 +754,37 @@ function error(argument) {
 }
 
 // Email and password over command line
-client.login(process.argv[2], process.argv[3]).catch((e) => console.log(e));
+client.login(process.argv[2] || Config.auth.email, process.argv[3] || Config.auth.password).catch((e) => {
+  try {
+    if(e.status === 400 && ~e.response.error.text.indexOf("email")) {
+      console.log("Error: You entered a bad email!");
+    } else if(e.status === 400 && ~e.response.error.text.indexOf("password")) {
+      console.log("Error: You entered a bad password!");
+    } else {
+      console.log(e);
+    }
+  } catch (err) {
+    console.log(e);
+  }
+});
+
+process.on('uncaughtException', function(err) {
+  // Handle ECONNRESETs caused by `next` or `destroy`
+  if (err.code == 'ECONNRESET') {
+    // Yes, I'm aware this is really bad node code. However, the uncaught exception
+    // that causes this error is buried deep inside either discord.js, ytdl or node
+    // itself and after countless hours of trying to debug this issue I have simply
+    // given up. The fact that this error only happens *sometimes* while attempting
+    // to skip to the next video (at other times, I used to get an EPIPE, which was
+    // clearly an error in discord.js and was now fixed) tells me that this problem
+    // can actually be safely prevented using uncaughtException. Should this bother
+    // you, you can always try to debug the error yourself and make a PR.
+    console.log('Got an ECONNRESET! This is *probably* not an error. Stacktrace:');
+    console.log(err.stack);
+  } else {
+    // Normal error handling
+    console.log(err);
+    console.log(err.stack);
+    process.exit(0);
+  }
+});
