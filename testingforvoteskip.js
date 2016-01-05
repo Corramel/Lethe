@@ -227,7 +227,7 @@ if (m.content.startsWith(`?lyin`)) { //memecontrol
   client.reply(m, lyinArray[Math.floor(Math.random() * lyinArray.length)])
   return;
 } 
-if (antiCS.startsWith(`${botMention} hello`) || antiCS.startsWith(`${botMention} hi`) || antiCS.startsWith(`${botMention} helo`)) {
+if (antiCS.startsWith(`hello ebolabot`) || antiCS.startsWith(`hi ebolabot`) || antiCS.startsWith(`helo ebolabot`)) {
   var responseArray = ["Hello, how are you?", "Hi!!!", "Why, hello there.", "Hello!", "Hai. x3", "Hi there!", "Hello! <3", "H-hi.."]
   if (m.author.id === "81526338728501248") {
     client.reply(m, responseArray[Math.floor(Math.random() * responseArray.length)]);
@@ -316,10 +316,10 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     return;
   }
 
-  if (m.content.startsWith(`${botMention} init`)) { // init
-    if (!checkCommand(m, 'init')) return;
+  if (m.content.startsWith(`?init`)) { // init
+    if (!checkCommand(m, '?init')) return;
     if (boundChannel) return;
-    var channelToJoin = spliceArguments(m.content)[1];
+    var channelToJoin = m.content.slice(7);
     for (var channel of m.channel.server.channels) {
       if (channel instanceof Discord.VoiceChannel) {
         if (!channelToJoin || channel.name === channelToJoin) {
@@ -333,8 +333,8 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     return;
   }
 
-  if (m.content.startsWith(`${botMention} destroy`)) { // destroy
-    if (!checkCommand(m, 'destroy')) return;
+  if (m.content.startsWith(`?destroy`)) { // destroy
+    if (!checkCommand(m, '?destroy')) return;
     if (!boundChannel) return;
     client.reply(m, `Unbinding from <#${boundChannel.id}> and destroying voice connection`);
     playQueue = [];
@@ -381,19 +381,19 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
       };
       return;
   };
-  if (m.content.startsWith(`${botMention} yq`) // youtube query
-    || m.content.startsWith(`${botMention} qq`) // queue query
-    || m.content.startsWith(`${botMention} pq`) // play query
-    || m.content.startsWith(`${botMention} ytq`)) {
+  if (m.content.startsWith(`?yq`) // youtube query
+    || m.content.startsWith(`?qq`) // queue query
+    || m.content.startsWith(`?pq`) // play query
+    || m.content.startsWith(`ytq`)) {
 
-    if (!checkCommand(m, 'yq')) return;
+    if (!checkCommand(m, '?yq')) return;
 
     if (!apiKey) {
       client.reply(m, 'Search is disabled (no API KEY found).');
       return;
     }
 
-    var args = spliceArguments(m.content)[1];
+    var args = m.content.splice(5)
 
     if (!args) {
       client.reply(m, 'You need to specify a search parameter.');
@@ -429,15 +429,15 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     return; // have to stop propagation
   }
 
-  if (m.content.startsWith(`${botMention} pl`)) { // playlist
-    if (!checkCommand(m, 'pl')) return;
+  if (m.content.startsWith(`?pl`)) { // playlist
+    if (!checkCommand(m, '?pl')) return;
 
     if (!apiKey) {
       client.reply(m, 'Playlist adding is disabled (no API KEY found).');
       return;
     }
 
-    var pid = spliceArguments(m.content)[1];
+    var pid = m.content.slice(5);
 
     if (!pid) {
       client.reply(m, 'You need to specify a playlist ID!');
@@ -474,13 +474,13 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     return;
   }
 
-  if (m.content.startsWith(`${botMention} y`) // youtube
-    || m.content.startsWith(`${botMention} q`) // queue
-    || m.content.startsWith(`${botMention} p`)) { // play
+  if (m.content.startsWith(`?y`) // youtube
+    || m.content.startsWith(`?q`) // queue
+    || m.content.startsWith(`?p`)) { // play
 
-    if (!checkCommand(m, 'yt')) return;
+    if (!checkCommand(m, '?yt')) return;
 
-    var vidList = spliceArguments(m.content)[1];
+    var vidList = m.content.slice(4);
 
     var vids = vidList.split(',');
     var suppress = 0;
@@ -553,7 +553,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     if (currentVideo) formattedList += `Currently playing: ${currentVideo.fullPrint()}\n`;
 
     if (playQueue.length == 0) {
-      formattedList += `The play queue is empty! Add something using **${botMention} yt *<video ID>***.`;
+      formattedList += `The play queue is empty! Add something using **?yt *<video ID>***.`;
     } else {
       formattedList += 'Here are the videos currently in the play queue, from first added to last added: \n';
 
@@ -576,8 +576,8 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     client.reply(m, formattedList);
   }
 
-  if (m.content.startsWith(`${botMention} s`)) { // save
-    if (!checkCommand(m, 'save')) return;
+  if (m.content.startsWith(`?save`)) { // save
+    if (!checkCommand(m, '?save')) return;
     var argument = spliceArguments(m.content)[1];
     if (!argument) {
       client.reply(m, 'You need to specify a video and a keyword!');
