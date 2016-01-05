@@ -21,8 +21,8 @@
   "homepage": "https://github.com/meew0/Lethe#readme",
   "dependencies": {
     "discord.js": "hydrabolt/discord.js#master",
-    "request": "^2.67.0",
-    "ytdl-core": "^0.7.6",
+    "superagent": "^1.6.1",
+    "ytdl-core": "^0.7.9",
     "node-opus": "^0.1.11",
     "git-rev": "^0.2.1"
   },
