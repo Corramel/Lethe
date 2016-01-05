@@ -602,9 +602,9 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     var streamSeconds = streamTime / 1000;
     var videoTime = currentVideo.lengthSeconds;
     client.reply(m, `${Util.formatTime(streamSeconds)} / ${Util.formatTime(videoTime)} (${((streamSeconds * 100) / videoTime).toFixed(2)} %)`);
+    return;
   }
-  return;
-});
+
 
 function parseVidAndQueue(vid, m, suppress) {
   vid = resolveVid(vid, m);
