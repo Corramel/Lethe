@@ -110,6 +110,14 @@ client.on('message', m => {
     client.sendMessage(m.channel, benArray[Math.floor(Math.random() * benArray.length)])
     return;
  }
+ if (m.content.startsWith(`?wakeup`)) {
+   client.sendMessage(m.channel, "http://puu.sh/mk18d/a5117ed37a.png")
+   return;
+ }
+ if (m.content.startsWith(`?partysover`)) {
+   client.sendMessage(m.channel, "https://i.4cdn.org/vg/1451833265145.png")
+   return;
+ }
  if (m.content.startsWith(`?kaio`)) { 
    if (!checkCommand(m, `?kaio`)) return
    var kaioArray = ["http://puu.sh/miD0v/5322ab2006.jpg" , "http://puu.sh/miFg2/b53356ef98.jpg"]
