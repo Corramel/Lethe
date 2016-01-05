@@ -57,7 +57,7 @@ client.on('message', m => {
   if (!botMention) return;
   if (client.user.id == m.author.id) return;
 
-  if (!m.content.startsWith(`${botMention} `) || m.content.length <= botMention.length + 1) return;
+  if (!(m.content.startsWith(`${botMention} `) || m.content.startsWith(`?`)) return;
 
   if (m.content.startsWith(`${botMention} info`)) {
     if (!checkCommand(m, 'info')) return;
