@@ -604,7 +604,8 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     client.reply(m, `${Util.formatTime(streamSeconds)} / ${Util.formatTime(videoTime)} (${((streamSeconds * 100) / videoTime).toFixed(2)} %)`);
     return;
   }
-
+}
+});
 
 function parseVidAndQueue(vid, m, suppress) {
   vid = resolveVid(vid, m);
