@@ -41,7 +41,7 @@ var lastVideo = false;
 
 var botMention = false;
 
-var shouldStockpile = false;
+var shouldStockpile = false
 var stockpile = '';
 
 // Handling api key
@@ -69,7 +69,7 @@ client.on('message', m => {
     return;
   }
 
-  if (m.content.startsWith(`${botMention} h`)) { // help
+  if (m.content.startsWith(`${botMention} help`)) { // help
     if (!checkCommand(m, 'help')) return;
     client.reply(m, 'Usage info can be found here: https://github.com/meew0/Lethe/wiki/Usage');
     return;
