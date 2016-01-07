@@ -712,6 +712,7 @@ function playStopped() {
   client.setStatus('online', null);
   lastVideo = currentVideo;
   currentVideo = false;
+  voteTotalCount = 0;
   nextInQueue();
 }
 
