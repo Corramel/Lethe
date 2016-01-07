@@ -56,7 +56,6 @@ client.on('ready', () => {
 });
 
 client.on('message', m => {
-  var antiCS = m.content.toLowerCase()
   if (!botMention) return;
   if (client.user.id == m.author.id) return;
 
