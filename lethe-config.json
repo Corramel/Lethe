@@ -5,9 +5,9 @@
   "userQueueLimit": 2,
   "playbackNetworkMessage": true,
   "checksEnabled": {
-    "checkDuplicateVideo": false,
-    "checkDuplicateUser": false,
-    "checkVideoLength": false
+    "checkDuplicateVideo": true,
+    "checkDuplicateUser": true,
+    "checkVideoLength": true
   },
   "adminIds": [
     "81526338728501248",
