@@ -712,6 +712,7 @@ function playStopped() {
   lastVideo = currentVideo;
   currentVideo = false;
   voteTotalCount = 0;
+  voteAllIDs = [];
   nextInQueue();
 }
 
