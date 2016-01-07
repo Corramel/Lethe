@@ -183,7 +183,7 @@ if (m.content.startsWith(`?darkness`)) { //my old friend
 } */
  if (m.content.startsWith(`?chancey`)) { // chancey telling off darrell
     if (!checkCommand(m, `?chancey`)) return
-    var chanceyArray = ["\n >attacking \n I was telling you how is it when you legit tell me to \"promise\" you to text first. \n I was implying that I cannot guarantee shit like this because it rarely happens, even if someone were to complain. \n Attack sounds like this: \n You sound like you're triggered. Where's your problem glasses? Oh wait. You're a nigger! You're just gonna complain that everything bad that happens to you is because you're black. Are you ready to get cucked by your master? Or perhaps you'd rather fuck gorillas aka your own people.", "http://puu.sh/lvpn6/2199db5dcd.png"]
+    var chanceyArray = ["http://puu.sh/mmmre/b40b5a1d1f.png", "\n >attacking \n I was telling you how is it when you legit tell me to \"promise\" you to text first. \n I was implying that I cannot guarantee shit like this because it rarely happens, even if someone were to complain. \n Attack sounds like this: \n You sound like you're triggered. Where's your problem glasses? Oh wait. You're a nigger! You're just gonna complain that everything bad that happens to you is because you're black. Are you ready to get cucked by your master? Or perhaps you'd rather fuck gorillas aka your own people.", "http://puu.sh/lvpn6/2199db5dcd.png"]
     client.sendMessage(m.channel, chanceyArray[Math.floor(Math.random()*chanceyArray.length)])
     return;
  }
@@ -277,7 +277,7 @@ if (m.content.startsWith(`?lyin`)) { //memecontrol
   client.reply(m, lyinArray[Math.floor(Math.random() * lyinArray.length)])
   return;
 } 
-if (antiCS.startsWith(`hello ebolabot`) || antiCS.startsWith(`hi ebolabot`) || antiCS.startsWith(`helo ebolabot`)) {
+if ((m.conent.toLowerCase()).startsWith(`${botMention} hello`) || (m.content.toLowerCase()).startsWith(`${botMention} hi`)) {
   var responseArray = ["Hello, how are you?", "Hi!!!", "Why, hello there.", "Hello!", "Hai. x3", "Hi there!", "Hello! <3", "H-hi.."]
   if (m.author.id === "81526338728501248") {
     client.reply(m, responseArray[Math.floor(Math.random() * responseArray.length)]);
