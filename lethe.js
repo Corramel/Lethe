@@ -288,9 +288,13 @@ if ((greetingsArray.indexOf(m.content.toLowerCase()>-1))) {
     client.reply(m, responseArray[Math.floor(Math.random() * responseArray.length)]);
     return;
   } else {
-    var responseArray = ["You're actually trash! Commit Sudoku..", "Oh, hello, stupid one.", "Awww, look! It's retarded. Hi!!!", "...Ew.", "...", "LOL!", "What did you just say to me?", "Ebola-chan told me not to talk to plebeians...", "..Ew, it's a nonbeliever...", "I hope you never ever recieve Ebola-chan's love!!!! D:<", "Uh.. Hello...?", "Why are you talking to me? You're scaring me...", "Please go away.", "Hai!", "How are ya?", "Oh my god, get away from me.", "You're really 3DPD...", "I think you should commit suicide! How's that for a greeting, huh?", "Fuck you!", "Kill yourself!", "I hope you get nagasaki'd, you thundercunt."]
+    var responseArray = ["Stop harassing me!", "Please don't talk to me.", "You're actually trash! Commit Sudoku..", "Oh, hello, stupid one.", "Awww, look! It's retarded. Hi!!!", "...Ew.", "...", "LOL!", "What did you just say to me?", "Ebola-chan told me not to talk to plebeians...", "..Ew, it's a nonbeliever...", "I hope you never ever recieve Ebola-chan's love!!!! D:<", "Uh.. Hello...?", "Why are you talking to me? You're scaring me...", "Please go away.", "Hai!", "How are ya?", "Oh my god, get away from me.", "You're really 3DPD...", "I think you should commit suicide! How's that for a greeting, huh?", "Fuck you!", "Kill yourself!", "I hope you get nagasaki'd, you thundercunt."]
     client.reply(m, responseArray[Math.floor(Math.random() * responseArray.length)]);
   }
+}
+if (m.content.startsWith(`?testing1`)) {
+  client.sendMessage(m.channel, `<@${81526338728501248}>`)
+  return;
 }
 /* if (m.content.startsWith(``)) { //memecontrol
   if (!checkCommand(m, ``)) return
