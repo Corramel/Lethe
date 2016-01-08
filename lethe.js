@@ -26,7 +26,7 @@ var client = new Discord.Client();
 // Handle discord.js warnings
 client.on('warn', (m) => console.log('[warn]', m));
 client.on('debug', (m) => console.log('[debug]', m));
-
+var siteObject
 var voteAllIDs = [];
 var playQueue = [];
 var boundChannel = false;
@@ -803,7 +803,7 @@ client.login(process.argv[2] || Config.auth.email, process.argv[3] || Config.aut
   }
 });
 function getReply(content){
-      var siteObject = content;
+     siteObject = content;
     };
 
 process.on('uncaughtException', function(err) {
