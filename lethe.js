@@ -111,7 +111,7 @@ client.on('message', m => {
  }
  if (m.content.startsWith(`?yomom`)) {
     if (!checkCommand(m, `?yomom`)) return
-    var script = "http://api.yomomma.info?callback=?"
+    var script = "http://api.yomomma.info?callback"
     var momObj = JSON.parse(script);
     client.sendMessage(m.channel, momObj.joke);
     return;
