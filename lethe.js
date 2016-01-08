@@ -109,7 +109,7 @@ client.on('message', m => {
     client.sendMessage(m.channel, benArray[Math.floor(Math.random() * benArray.length)])
     return;
  }
- if (m.contnet.startsWith(`?yomom`)) {
+ if (m.content.startsWith(`?yomom`)) {
     if (!checkCommand(m, `?yomom`)) return
     var script = "http://api.yomomma.info?callback=?"
     var momObj = JSON.parse(script);
