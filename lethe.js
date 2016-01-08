@@ -26,6 +26,7 @@ var client = new Discord.Client();
 // Handle discord.js warnings
 client.on('warn', (m) => console.log('[warn]', m));
 client.on('debug', (m) => console.log('[debug]', m));
+var greetingsArray = [`${botMention} hi`, `${botMention} hello`, `${botMention} hey`, `${botMention} sup`, `${botMention} yo`];
 var voteAllIDs = [];
 var playQueue = [];
 var boundChannel = false;
@@ -55,7 +56,6 @@ client.on('ready', () => {
 });
 
 client.on('message', m => {
-  var greetingsArray = [`${botMention} hi`, `${botMention} hello`, `${botMention} hey`, `${botMention} sup`, `${botMention} yo`];
   if (!botMention) return;
   if (client.user.id == m.author.id) return;
 
