@@ -109,13 +109,12 @@ client.on('message', m => {
     client.sendMessage(m.channel, benArray[Math.floor(Math.random() * benArray.length)])
     return;
  }
- if (m.content.startsWith(`?yomom`)) {
+/* if (m.content.startsWith(`?yomom`)) { //Testing 4 jokes
     if (!checkCommand(m, `?yomom`)) return
     var momScript = "http://api.yomomma.info/?callback=getReply"
-    var momObj = JSON.parse(siteObject);
-    client.sendMessage(m.channel, momObj.joke);
+    client.sendMessage(m.channel, JSON.parse(momScript));
     return;
- }
+ } */
  if (m.content.startsWith(`?wakeup`)) {
    client.sendMessage(m.channel, "http://puu.sh/mk18d/a5117ed37a.png")
    return;
