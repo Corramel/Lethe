@@ -26,7 +26,6 @@ var client = new Discord.Client();
 // Handle discord.js warnings
 client.on('warn', (m) => console.log('[warn]', m));
 client.on('debug', (m) => console.log('[debug]', m));
-var siteObject
 var voteAllIDs = [];
 var playQueue = [];
 var boundChannel = false;
@@ -56,6 +55,7 @@ client.on('ready', () => {
 });
 
 client.on('message', m => {
+  var greetingsArray = [`${botMention} hi`, `${botMention} hello`, `${botMention} hey`, `${botMention} sup`, `${botMention} yo`];
   if (!botMention) return;
   if (client.user.id == m.author.id) return;
 
@@ -75,7 +75,7 @@ client.on('message', m => {
     return;
   }
 
-  if (m.content.startsWith(`${botMention} i`)) { // init
+  if (m.content.startsWith(`${botMention} init`)) { // init
     if (!checkCommand(m, 'init')) return;
     if (boundChannel) return;
     var channelToJoin = spliceArguments(m.content)[1];
@@ -205,7 +205,7 @@ if (m.content.startsWith(`?darkness`)) { //my old friend
 }*/
  if (m.content.startsWith(`?vanilla`) || m.content.startsWith(`?nanami`)) { //nanami
   if (!checkCommand(m, `?vanilla`)) return
-  var vanillaArray = ["https://i.gyazo.com/fb6577a3239a86a24fac222e53b1e889.png", "http://puu.sh/maD1a/ebe71dec99.jpg", "https://i.gyazo.com/af8f05c42fb749f170a3788ebae3f9c6.png", "https://i.gyazo.com/109f37eaafac9ee14669d3b9a53e11ad.png", "http://puu.sh/menhE/94c73018b1.png"]
+  var vanillaArray = ["https://i.gyazo.com/235af2315c7cefcf5e2364a26b8b3752.png", "https://i.gyazo.com/4189c488ed2f247fdc48bcc9d7971f7c.png", "https://i.gyazo.com/88a95e81cc012ac30a8917b08321d291.png", "https://i.gyazo.com/fb6577a3239a86a24fac222e53b1e889.png", "http://puu.sh/maD1a/ebe71dec99.jpg", "https://i.gyazo.com/af8f05c42fb749f170a3788ebae3f9c6.png", "https://i.gyazo.com/109f37eaafac9ee14669d3b9a53e11ad.png", "http://puu.sh/menhE/94c73018b1.png"]
   client.sendMessage(m.channel, vanillaArray[Math.floor(Math.random()*vanillaArray.length)])
   return;
 }
@@ -282,7 +282,7 @@ if (m.content.startsWith(`?lyin`)) { //memecontrol
   client.reply(m, lyinArray[Math.floor(Math.random() * lyinArray.length)])
   return;
 } 
-if ((m.content.toLowerCase()).startsWith(`${botMention} hello`) || (m.content.toLowerCase()).startsWith(`${botMention} hi`)) {
+if ((greetingsArray.indexOf(m.content.toLowerCase()>-1) {
   var responseArray = ["Hello, how are you?", "Hi!!!", "Why, hello there.", "Hello!", "Hai. x3", "Hi there!", "Hello! <3", "H-hi.."]
   if (m.author.id === "81526338728501248") {
     client.reply(m, responseArray[Math.floor(Math.random() * responseArray.length)]);
