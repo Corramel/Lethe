@@ -111,8 +111,8 @@ client.on('message', m => {
  }
  if (m.content.startsWith(`?yomom`)) {
     if (!checkCommand(m, `?yomom`)) return
-    var script = "http://api.yomomma.info?callback"
-    var momObj = JSON.parse(script);
+    var momScript = "http://api.yomomma.info/?callback=getReply"
+    var momObj = JSON.parse(siteObject);
     client.sendMessage(m.channel, momObj.joke);
     return;
  }
@@ -802,6 +802,9 @@ client.login(process.argv[2] || Config.auth.email, process.argv[3] || Config.aut
     console.log(e);
   }
 });
+function getReply(content){
+      var siteObject = content;
+    };
 
 process.on('uncaughtException', function(err) {
   // Handle ECONNRESETs caused by `next` or `destroy`
