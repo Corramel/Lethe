@@ -282,7 +282,7 @@ if (m.content.startsWith(`?lyin`)) { //memecontrol
   client.reply(m, lyinArray[Math.floor(Math.random() * lyinArray.length)])
   return;
 } 
-if (greetingsArray.indexOf(m.content.toLowerCase() > 0)) {
+if (greetingsArray.indexOf(m.content.toLowerCase()) > -1) {
   var responseArray = ["Hello, how are you?", "Hi!!!", "Why, hello there.", "Hello!", "Hai. x3", "Hi there!", "Hello! <3", "H-hi.."]
   if (m.author.id === "81526338728501248") {
     client.reply(m, responseArray[Math.floor(Math.random() * responseArray.length)]);
