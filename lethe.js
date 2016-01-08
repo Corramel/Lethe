@@ -26,7 +26,6 @@ var client = new Discord.Client();
 // Handle discord.js warnings
 client.on('warn', (m) => console.log('[warn]', m));
 client.on('debug', (m) => console.log('[debug]', m));
-var greetingsArray = [`${botMention} hi`, `${botMention} hello`, `${botMention} hey`, `${botMention} sup`, `${botMention} yo`];
 var voteAllIDs = [];
 var playQueue = [];
 var boundChannel = false;
@@ -282,19 +281,15 @@ if (m.content.startsWith(`?lyin`)) { //memecontrol
   client.reply(m, lyinArray[Math.floor(Math.random() * lyinArray.length)])
   return;
 } 
-if (greetingsArray.indexOf(m.content.toLowerCase()) > -1) {
+if (m.content.toLowerCase().startsWith(`${botMention} hi`) || m.content.toLowerCase().startsWith(`${botMention} hello`) || m.content.toLowerCase().startsWith(`${botMention} hey`) || m.content.toLowerCase().startsWith(`${botMention} sup`) || m.content.toLowerCase().startsWith(`${botMention} yo`)) {
   var responseArray = ["Hello, how are you?", "Hi!!!", "Why, hello there.", "Hello!", "Hai. x3", "Hi there!", "Hello! <3", "H-hi.."]
   if (m.author.id === "81526338728501248") {
     client.reply(m, responseArray[Math.floor(Math.random() * responseArray.length)]);
     return;
   } else {
-    var responseArray = ["Stop harassing me!", "Please don't talk to me.", "You're actually trash! Commit Sudoku..", "Oh, hello, stupid one.", "Awww, look! It's retarded. Hi!!!", "...Ew.", "...", "LOL!", "What did you just say to me?", "Ebola-chan told me not to talk to plebeians...", "..Ew, it's a nonbeliever...", "I hope you never ever recieve Ebola-chan's love!!!! D:<", "Uh.. Hello...?", "Why are you talking to me? You're scaring me...", "Please go away.", "Hai!", "How are ya?", "Oh my god, get away from me.", "You're really 3DPD...", "I think you should commit suicide! How's that for a greeting, huh?", "Fuck you!", "Kill yourself!", "I hope you get nagasaki'd, you thundercunt."]
+    var responseArray = ["Please do humanity a favor and walk towards the light.","Die in a fire, you jew.", "Since when do I talk to normies?", "Are you okay? Did you hit your head?", "You look nasty.", "Hmm....", "Do you praise Ebola-chan?", "You need some oxiclean..", "Somebody, help me!!", "Stop harassing me!", "Please don't talk to me.", "You're actually trash! Commit Sudoku..", "Oh, hello, stupid one.", "Awww, look! It's retarded. Hi!!!", "...Ew.", "...", "LOL!", "What did you just say to me?", "Ebola-chan told me not to talk to plebeians...", "..Ew, it's a nonbeliever...", "I hope you never ever recieve Ebola-chan's love!!!! D:<", "Uh.. Hello...?", "Why are you talking to me? You're scaring me...", "Please go away.", "Hai!", "How are ya?", "Oh my god, get away from me.", "You're really 3DPD...", "I think you should commit suicide! How's that for a greeting, huh?", "Fuck you!", "Kill yourself!", "I hope you get nagasaki'd, you thundercunt."]
     client.reply(m, responseArray[Math.floor(Math.random() * responseArray.length)]);
   }
-}
-if (m.content.startsWith(`?testing1`)) {
-  client.sendMessage(m.channel, `<@${81526338728501248}>`)
-  return;
 }
 /* if (m.content.startsWith(``)) { //memecontrol
   if (!checkCommand(m, ``)) return
