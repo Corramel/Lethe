@@ -297,6 +297,10 @@ if (m.content.toLowerCase().startsWith(`${botMention} hi`) || m.content.toLowerC
   return
 } 
 */
+if (m.content.startsWith(`?test1`)) { 
+  client.sendMessage(m.channel, `<@81526338728501248> hi`)
+  return;
+}
 if (m.content.startsWith(`?mura`)) { //memecontrol
   if (!checkCommand(m, `?mura`)) return
   var muraArray = ["http://puu.sh/mh7WZ/5e312bee07.png", "https://i.gyazo.com/21dd51c5175d5ea00d57a15aeb95beb2.png"]
