@@ -275,7 +275,7 @@ if (m.content.startsWith(`?starterpack`)) { //memecontrol
   client.reply(m, starterpackArray[Math.floor(Math.random() * starterpackArray.length)])
   return;
 } 
-if (m.con"tent.startsWith(`?lyin`)) { //memecontrol
+if (m.content.startsWith(`?lyin`)) { //memecontrol
   if (!checkCommand(m, `?lyin`)) return
   var lyinArray = ["http://puu.sh/mctJ7/cedbe724f2.png", "https://i.ytimg.com/vi/Zy6JfChIXxg/hqdefault.jpg", "♫ Why the fuck you lyin', why you always lyin', mmmmohh my god, stop fuckin lyyyinn'♪♫."]
   client.reply(m, lyinArray[Math.floor(Math.random() * lyinArray.length)])
