@@ -299,8 +299,8 @@ if (m.content.toLowerCase().startsWith(`${botMention} hi`) || m.content.toLowerC
 */
 if (m.content.startsWith(`?8ball`)) { 
   userQuestion = `${(m.content).slice(7)}`
-  var 8ballArray = ["Signs :arrow_right:  to yes.", "Yeah.", "Reply hazy, try again.", "Without a doubt.", "Ebola-chan says no.", "I'd say yes.", "Go for it!.","It doesn't look so good...","Yep!", "Uh..  I don't think you want to know.","It seems very doubtful.", "Ebola-chan says \"Yes, definitely\"!" "Even I know it's certain!", "Err... Fog, hazy, y'know.", "Probably!", "Perhaps you should ask later?", "No.", "It seems the outlook is good!","I wouldn't count on it."]
-  client.reply(m.channel, `${userQuestion} ${8ballArray[Math.floor(Math.random()*8ballArray.length)]}`)
+  var ballArray = ["Signs :arrow_right:  to yes.", "Yeah.", "Reply hazy, try again.", "Without a doubt.", "Ebola-chan says no.", "I'd say yes.", "Go for it!.","It doesn't look so good...","Yep!", "Uh..  I don't think you want to know.","It seems very doubtful.", "Ebola-chan says \"Yes, definitely\"!" "Even I know it's certain!", "Err... Fog, hazy, y'know.", "Probably!", "Perhaps you should ask later?", "No.", "It seems the outlook is good!","I wouldn't count on it."]
+  client.reply(m.channel, `${userQuestion} ${ballArray[Math.floor(Math.random()*ballArray.length)]}`)
   return;
 }
 if (m.content.startsWith(`?mura`)) { //memecontrol
