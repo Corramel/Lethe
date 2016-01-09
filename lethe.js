@@ -275,7 +275,7 @@ if (m.content.startsWith(`?starterpack`)) { //memecontrol
   client.reply(m, starterpackArray[Math.floor(Math.random() * starterpackArray.length)])
   return;
 } 
-if (m.content.startsWith(`?lyin`)) { //memecontrol
+if (m.con"tent.startsWith(`?lyin`)) { //memecontrol
   if (!checkCommand(m, `?lyin`)) return
   var lyinArray = ["http://puu.sh/mctJ7/cedbe724f2.png", "https://i.ytimg.com/vi/Zy6JfChIXxg/hqdefault.jpg", "♫ Why the fuck you lyin', why you always lyin', mmmmohh my god, stop fuckin lyyyinn'♪♫."]
   client.reply(m, lyinArray[Math.floor(Math.random() * lyinArray.length)])
@@ -287,7 +287,7 @@ if (m.content.toLowerCase().startsWith(`${botMention} hi`) || m.content.toLowerC
     client.reply(m, responseArray[Math.floor(Math.random() * responseArray.length)]);
     return;
   } else {
-    var responseArray = ["Please do humanity a favor and walk towards the light.","Die in a fire, you jew.", "Since when do I talk to normies?", "Are you okay? Did you hit your head?", "You look nasty.", "Hmm....", "Do you praise Ebola-chan?", "You need some oxiclean..", "Somebody, help me!!", "Stop harassing me!", "Please don't talk to me.", "You're actually trash! Commit Sudoku..", "Oh, hello, stupid one.", "Awww, look! It's retarded. Hi!!!", "...Ew.", "...", "LOL!", "What did you just say to me?", "Ebola-chan told me not to talk to plebeians...", "..Ew, it's a nonbeliever...", "I hope you never ever recieve Ebola-chan's love!!!! D:<", "Uh.. Hello...?", "Why are you talking to me? You're scaring me...", "Please go away.", "Hai!", "How are ya?", "Oh my god, get away from me.", "You're really 3DPD...", "I think you should commit suicide! How's that for a greeting, huh?", "Fuck you!", "Kill yourself!", "I hope you get nagasaki'd, you thundercunt."]
+    var responseArray = ["Who the fuck are you?", "Please do humanity a favor and walk towards the light.","Die in a fire, you jew.", "Since when do I talk to normies?", "Are you okay? Did you hit your head?", "You look nasty.", "Hmm....", "Do you praise Ebola-chan?", "You need some oxiclean..", "Somebody, help me!!", "Stop harassing me!", "Please don't talk to me.", "You're actually trash! Commit Sudoku..", "Oh, hello, stupid one.", "Awww, look! It's retarded. Hi!!!", "...Ew.", "...", "LOL!", "What did you just say to me?", "Ebola-chan told me not to talk to plebeians...", "..Ew, it's a nonbeliever...", "I hope you never ever recieve Ebola-chan's love!!!! D:<", "Uh.. Hello...?", "Why are you talking to me? You're scaring me...", "Please go away.", "Hai!", "How are ya?", "Oh my god, get away from me.", "You're really 3DPD...", "I think you should commit suicide! How's that for a greeting, huh?", "Fuck you!", "Kill yourself!", "I hope you get nagasaki'd, you thundercunt."]
     client.reply(m, responseArray[Math.floor(Math.random() * responseArray.length)]);
   }
 }
@@ -297,8 +297,10 @@ if (m.content.toLowerCase().startsWith(`${botMention} hi`) || m.content.toLowerC
   return
 } 
 */
-if (m.content.startsWith(`?test1`)) { 
-  client.sendMessage(m.channel, `<@81526338728501248> hi`)
+if (m.content.startsWith(`?8ball`)) { 
+  userQuestion = `${(m.content).slice(7)}`
+  var 8ballArray = ["Signs :arrow_right:  to yes.", "Yeah.", "Reply hazy, try again.", "Without a doubt.", "Ebola-chan says no.", "I'd say yes.", "Go for it!.","It doesn't look so good...","Yep!", "Uh..  I don't think you want to know.","It seems very doubtful.", "Ebola-chan says \"Yes, definitely\"!" "Even I know it's certain!", "Err... Fog, hazy, y'know.", "Probably!", "Perhaps you should ask later?", "No.", "It seems the outlook is good!","I wouldn't count on it."]
+  client.reply(m.channel, `${userQuestion} ${8ballArray[Math.floor(Math.random()*8ballArray.length)]}`)
   return;
 }
 if (m.content.startsWith(`?mura`)) { //memecontrol
