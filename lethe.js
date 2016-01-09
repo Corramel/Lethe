@@ -301,8 +301,13 @@ if (m.content.startsWith(`?8ball`)) {
   userQuestion = (m.content).slice(7)
   var ballArray = ["Signs :arrow_right: to yes.", "Yeah.", "Reply hazy, try again.", "Without a doubt.", "Ebola-chan says no.", "I'd say yes.", "Go for it, fam.","It doesn't look so good...","Yep!", "Uh, I don't think you want to know.","It seems very doubtful.", "Ebola-chan says: \"Yes, definitely\"!", "Even I know it's certain!", "Err... Foggy, hazy, y'know.", "Probably!", "Perhaps you should ask later?", "No.", "It seems the outlook is good!","I wouldn't count on it."]
   if(m.content.length > 7){
-  client.sendMessage(m, `<@${m.author.id.toString()}> \`${userQuestion}\` ${ballArray[Math.floor(Math.random()*ballArray.length)]}`)
-  return;
+    if(m.content.indexOf("?", 7) === -1){
+      client.sendMessage(m, `<@${m.author.id.toString()}> \`${userQuestion}?\`: ${ballArray[Math.floor(Math.random()*ballArray.length)]}`)
+      return;
+    } else {
+      client.sendMessage(m, `<@${m.author.id.toString()}> \`${userQuestion}\`: ${ballArray[Math.floor(Math.random()*ballArray.length)]}`)
+      return;
+    }
   } else {
     client.reply(m, "You need to have a question or something...")
     return;
