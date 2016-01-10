@@ -2,6 +2,7 @@ var Discord = require('discord.js');
 
 var ytdl = require('ytdl-core');
 var request = require('request');
+var superagent = require('superagent');
 var url = require('url');
 var express = require('express');
 var cheerio = require('cheerio');
