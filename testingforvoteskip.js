@@ -116,10 +116,9 @@ client.on('message', m => {
     request(requestUrl, function(error, response, html){
         if(!error){
           var $ = cheerio.load(html);
-          var joke;
           $('h1').filter(function(){
           	var momData = $(this);
-          	joke = momData.text();
+          	var joke = momData.text();
           })
       }
     })
