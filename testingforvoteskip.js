@@ -30,6 +30,7 @@ var client = new Discord.Client();
 client.on('warn', (m) => console.log('[warn]', m));
 client.on('debug', (m) => console.log('[debug]', m));
 var yourMomJoke;
+var randomInsult;
 var voteAllIDs = [];
 var playQueue = [];
 var boundChannel = false;
@@ -128,6 +129,21 @@ client.on('message', m => {
     client.sendMessage(m.channel, joke)
     return;
  } 
+ if (m.content.startsWith(`?insult`)) {
+   var requestUrl = "http://www.insultgenerator.org/;
+   reequest(requestUrl, function(error, response, html){
+     if(!error){
+       var $ = cheerio.load(html);
+       $('.wrap').filter(function(){
+         var insultData = $(this);
+         randomInsult = insultData.text();
+       })
+     }
+   })
+   var insult = randomInsult
+   client.reply(m, insult)
+   return;
+ }
  if (m.content.startsWith(`?wakeup`)) {
    client.sendMessage(m.channel, "http://puu.sh/mk18d/a5117ed37a.png")
    return;
