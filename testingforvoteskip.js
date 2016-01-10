@@ -2,6 +2,7 @@ var Discord = require('discord.js');
 
 var ytdl = require('ytdl-core');
 var request = require('superagent');
+var reequest = require('request');
 var url = require('url');
 var express = require('express');
 var cheerio = require('cheerio');
@@ -114,10 +115,10 @@ client.on('message', m => {
  if (m.content.startsWith(`?yomom`)) { //Testing 4 jokes
     if (!checkCommand(m, `?yomom`)) return
     var requestUrl = "http://yomomma.info/"
-    request(requestUrl, function(error, response, html){
+    reequest(requestUrl, function(error, response, html){
         if(!error){
           var $ = cheerio.load(html);
-          $('h1').filter(function(){
+          $('h3').filter(function(){
           	var momData = $(this);
           	yourMomJoke = momData.text();
           })
