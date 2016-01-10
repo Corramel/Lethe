@@ -136,7 +136,7 @@ client.on('message', m => {
        var $ = cheerio.load(html);
        $('.wrap').filter(function(){
          var insultData = $(this);
-         randomInsult = insultData.children().last().text();
+         randomInsult = insultData.text();
        })
      }
    })
