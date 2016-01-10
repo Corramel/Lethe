@@ -118,10 +118,11 @@ client.on('message', m => {
           var $ = cheerio.load(html);
           $('h1').filter(function(){
           	var momData = $(this);
-          	var joke = momData.text();
+          	var yourMomJoke = momData.text();
           })
       }
     })
+    var joke = yourMomJoke
     client.sendMessage(m.channel, joke)
     return;
  } 
