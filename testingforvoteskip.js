@@ -28,6 +28,7 @@ var client = new Discord.Client();
 // Handle discord.js warnings
 client.on('warn', (m) => console.log('[warn]', m));
 client.on('debug', (m) => console.log('[debug]', m));
+var yourMomJoke;
 var voteAllIDs = [];
 var playQueue = [];
 var boundChannel = false;
@@ -118,7 +119,7 @@ client.on('message', m => {
           var $ = cheerio.load(html);
           $('h1').filter(function(){
           	var momData = $(this);
-          	var yourMomJoke = momData.text();
+          	yourMomJoke = momData.text();
           })
       }
     })
