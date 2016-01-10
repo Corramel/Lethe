@@ -130,7 +130,7 @@ client.on('message', m => {
     return;
  } 
  if (m.content.startsWith(`?insult`)) {
-   var requestUrl = "http://www.insultgenerator.org/;
+   var requestUrl = "http://www.insultgenerator.org/";
    reequest(requestUrl, function(error, response, html){
      if(!error){
        var $ = cheerio.load(html);
