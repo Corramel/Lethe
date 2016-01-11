@@ -379,13 +379,13 @@ if (m.content.startsWith(`?8ball`)) {
   
 }
 if (m.content.startsWith(`?test1`)){
-  requestUrl = "http://emergencycompliment.com/index.html";
+  requestUrl = "http://project-positive.org/complimentmachine.html";
     reequest(requestUrl, function(error, response, html){
       if(!error){
         var $ = cheerio.load(html);
-        $('.compliment::after').filter(function(){
+        $('.content').filter(function(){
           var complimentData = $(this);
-          randomCompliment = complimentData.text();
+          randomCompliment = complimentData.children("p").text();
         })
       }
     })
