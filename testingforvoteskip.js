@@ -385,7 +385,7 @@ if (m.content.startsWith(`?test1`)){
         var $ = cheerio.load(html);
         $('.content').filter(function(){
           var complimentData = $(this);
-          randomCompliment = complimentData.children("p").text();
+          randomCompliment = complimentData.children("p").not("script").text();
         })
       }
     })
