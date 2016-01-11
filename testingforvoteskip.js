@@ -386,7 +386,7 @@ if (m.content.startsWith(`?test1`)){
         $('.compliment').filter(function(){
           var complimentData = $(this);
           randomCompliment = complimentData.text();
-        })
+        }).delay(1000);
       }
     })
     var randomExclamatory = ["Hey. Wow, did you know ", "Hello! Whoa, did you know ", "Hey, it seems like ", "Hi there! Did you know "];
