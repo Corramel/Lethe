@@ -332,7 +332,6 @@ if (m.content.toLowerCase().startsWith(`${botMention} hi`) || m.content.toLowerC
     var responseArray = ["Hello, how are you?", "Hi!!!", "Why, hello there.", "Hello!", "Hai. x3", "Hi there!", "Hello~", "H-hi.."];
     client.reply(m, responseArray[Math.floor(Math.random() * responseArray.length)]);
     return;
-  }
   } else {
    var requestUrl = "http://www.insultgenerator.org/";
    reequest(requestUrl, function(error, response, html){
