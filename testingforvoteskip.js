@@ -328,7 +328,7 @@ if (m.content.toLowerCase().startsWith(`${botMention} hi`) || m.content.toLowerC
     reequest(requestUrl, function(error, response, html){
       if(!error){
         var $ = cheerio.load(html);
-        $('.compliment').filter(function(){
+        $('.row::after').filter(function(){
           var complimentData = $(this);
           randomCompliment = complimentData.text();
         })
@@ -383,7 +383,7 @@ if (m.content.startsWith(`?test1`)){
     reequest(requestUrl, function(error, response, html){
       if(!error){
         var $ = cheerio.load(html);
-        $('.compliment').filter(function(){
+        $('.compliment::after').filter(function(){
           var complimentData = $(this);
           randomCompliment = complimentData.text();
         })
