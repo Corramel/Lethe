@@ -383,11 +383,12 @@ if (m.content.startsWith(`?test1`)){
     reequest(requestUrl, function(error, response, html){
       if(!error){
         var $ = cheerio.load(html);
-        $('.compliment').filter(function(){
+        window.setTimeout($('.compliment').filter(function(){
           var complimentData = $(this);
           randomCompliment = complimentData.text();
-        }).delay(1000);
+        }), 1000)
       }
+
     })
     var randomExclamatory = ["Hey. Wow, did you know ", "Hello! Whoa, did you know ", "Hey, it seems like ", "Hi there! Did you know "];
     var compliment = randomExclamatory[Math.floor(Math.random()*randomExclamatory.length)] + randomCompliment;
