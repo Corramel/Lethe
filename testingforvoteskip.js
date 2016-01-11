@@ -29,6 +29,7 @@ var client = new Discord.Client();
 // Handle discord.js warnings
 client.on('warn', (m) => console.log('[warn]', m));
 client.on('debug', (m) => console.log('[debug]', m));
+var randomCompliment;
 var yourMomJoke;
 var randomInsult;
 var voteAllIDs = [];
@@ -322,12 +323,35 @@ if (m.content.startsWith(`?lyin`)) { //memecontrol
   return;
 } 
 if (m.content.toLowerCase().startsWith(`${botMention} hi`) || m.content.toLowerCase().startsWith(`${botMention} hello`) || m.content.toLowerCase().startsWith(`${botMention} hey`) || m.content.toLowerCase().startsWith(`${botMention} sup`) || m.content.toLowerCase().startsWith(`${botMention} yo`)) {
-  var responseArray = ["Hello, how are you?", "Hi!!!", "Why, hello there.", "Hello!", "Hai. x3", "Hi there!", "Hello! <3", "H-hi.."]
   if (m.author.id === "81526338728501248") {
+    requestUrl = "http://emergencycompliment.com/index.html";
+    reequest(requestUrl, function(error, response, html){
+      if(!error){
+        var $ = cheerio.load(html);
+        $('.compliment').filter(function(){
+          var complimentData = $(this);
+          randomCompliment = complimentData.text();
+        })
+      }
+    })
+    var randomExclamatory = ["Hey. Wow, did you know ", "Hello! Whoa, did you know ", "Hey, it seems like ", "Hi there! Did you know "];
+    var compliment = randomExclamatory[Math.floor(Math.random()*randomExclamatory.length)] + randomCompliment;
+    var responseArray = [compliment, "Hello, how are you?", "Hi!!!", "Why, hello there.", "Hello!", "Hai. x3", "Hi there!", "Hello! <3", "H-hi.."];
     client.reply(m, responseArray[Math.floor(Math.random() * responseArray.length)]);
     return;
   } else {
-    var responseArray = ["Who the fuck are you?", "Please do humanity a favor and walk towards the light.","Die in a fire, you jew.", "Since when do I talk to normies?", "Are you okay? Did you hit your head?", "You look nasty.", "Hmm....", "Do you praise Ebola-chan?", "You need some oxiclean..", "Somebody, help me!!", "Stop harassing me!", "Please don't talk to me.", "You're actually trash! Commit Sudoku..", "Oh, hello, stupid one.", "Awww, look! It's retarded. Hi!!!", "...Ew.", "...", "LOL!", "What did you just say to me?", "Ebola-chan told me not to talk to plebeians...", "..Ew, it's a nonbeliever...", "I hope you never ever recieve Ebola-chan's love!!!! D:<", "Uh.. Hello...?", "Why are you talking to me? You're scaring me...", "Please go away.", "Hai!", "How are ya?", "Oh my god, get away from me.", "You're really 3DPD...", "I think you should commit suicide! How's that for a greeting, huh?", "Fuck you!", "Kill yourself!", "I hope you get nagasaki'd, you thundercunt."]
+   var requestUrl = "http://www.insultgenerator.org/";
+   reequest(requestUrl, function(error, response, html){
+     if(!error){
+       var $ = cheerio.load(html);
+       $('.wrap').filter(function(){
+         var insultData = $(this);
+         randomInsult = insultData.text();
+       })
+     }
+   })
+   var insult = randomInsult
+    var responseArray = [randomInsult, "Who the fuck are you?", "Please do humanity a favor and walk towards the light.","Die in a fire, you jew.", "Since when do I talk to normies?", "Are you okay? Did you hit your head?", "You look nasty.", "Hmm....", "Do you praise Ebola-chan?", "You need some oxiclean..", "Somebody, help me!!", "Stop harassing me!", "Please don't talk to me.", "You're actually trash! Commit Sudoku..", "Oh, hello, stupid one.", "Awww, look! It's retarded. Hi!!!", "...Ew.", "...", "LOL!", "What did you just say to me?", "Ebola-chan told me not to talk to plebeians...", "..Ew, it's a nonbeliever...", "I hope you never ever recieve Ebola-chan's love!!!! D:<", "Uh.. Hello...?", "Why are you talking to me? You're scaring me...", "Please go away.", "Hai!", "How are ya?", "Oh my god, get away from me.", "You're really 3DPD...", "I think you should commit suicide! How's that for a greeting, huh?", "Fuck you!", "Kill yourself!", "I hope you get nagasaki'd, you thundercunt."]
     client.reply(m, responseArray[Math.floor(Math.random() * responseArray.length)]);
   }
 }
@@ -339,7 +363,7 @@ if (m.content.toLowerCase().startsWith(`${botMention} hi`) || m.content.toLowerC
 */
 if (m.content.startsWith(`?8ball`)) { 
   userQuestion = (m.content).slice(7)
-  var ballArray = ["Signs :arrow_right: to yes.", "Yeah.", "Reply hazy, try again.", "Without a doubt.", "Ebola-chan says no.", "I'd say yes.", "Go for it, fam.","It doesn't look so good...","Yep!", "Uh, I don't think you want to know.","It seems very doubtful.", "Ebola-chan says: \"Yes, definitely\"!", "Even I know it's certain!", "Err... Foggy, hazy, y'know.", "Probably!", "Perhaps you should ask later?", "No.", "It seems the outlook is good!","I wouldn't count on it."]
+  var ballArray = ["Signs :arrow_right: to yes.", "Yeah.", "Try again.", "Without a doubt.", "Ebola-chan says no.", "I'd say yes.", "Go for it, fam.","It doesn't look so good...","Yep!", "Uh, I don't think you want to know.","It seems very doubtful.", "Ebola-chan says: \"Yes, definitely\"!", "Even I know it's certain!", "Err... Foggy, hazy, y'know.", "Probably!", "Perhaps you should ask later?", "No.", "It seems the outlook is good!","I wouldn't count on it."]
   if(m.content.length > 7){
     if(m.content.indexOf("?", 7) === -1){
       client.sendMessage(m, `<@${m.author.id.toString()}> \`${userQuestion}?\`: ${ballArray[Math.floor(Math.random()*ballArray.length)]}`)
@@ -352,6 +376,23 @@ if (m.content.startsWith(`?8ball`)) {
     client.reply(m, "You need to have a question or something...")
     return;
   }
+  
+}
+if (m.content.startsWith(`?test1`)){
+  requestUrl = "http://emergencycompliment.com/index.html";
+    reequest(requestUrl, function(error, response, html){
+      if(!error){
+        var $ = cheerio.load(html);
+        $('.compliment').filter(function(){
+          var complimentData = $(this);
+          randomCompliment = complimentData.text();
+        })
+      }
+    })
+    var randomExclamatory = ["Hey. Wow, did you know ", "Hello! Whoa, did you know ", "Hey, it seems like ", "Hi there! Did you know "];
+    var compliment = randomExclamatory[Math.floor(Math.random()*randomExclamatory.length)] + randomCompliment;
+    client.sendMessage(m.channel, compliment)
+    return;
 }
 if (m.content.startsWith(`?mura`)) { //memecontrol
   if (!checkCommand(m, `?mura`)) return
