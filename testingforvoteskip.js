@@ -155,9 +155,16 @@ client.on('message', m => {
  }
  if (m.content.startsWith(`?kaio`)) { 
    if (!checkCommand(m, `?kaio`)) return
-   var kaioArray = ["http://puu.sh/miD0v/5322ab2006.jpg" , "http://puu.sh/miFg2/b53356ef98.jpg", "https://i.gyazo.com/7c64e7f1a945f8c856f48f75e2f80f02.png", "iou", "iou", "iou"]
+   var kaioArray = ["https://cdn.discordapp.com/attachments/93578176231374848/137512943058157568/ss_2015-09-02_at_01.18.43.jpg","https://cdn.discordapp.com/attachments/93578176231374848/137512835918987264/ss_2015-09-10_at_04.49.26.jpg","http://puu.sh/miD0v/5322ab2006.jpg" , "http://puu.sh/miFg2/b53356ef98.jpg", "https://i.gyazo.com/7c64e7f1a945f8c856f48f75e2f80f02.png", "iou", "iou", "iou"]
    client.sendMessage(m.channel, kaioArray[Math.floor(Math.random()* kaioArray.length)])
    return;
+ }
+ if (m.content.startsWith(`?blaze`)) {
+   if(m.author.id === "82975678428872704" || m.author.id === "81526338728501248"){
+     var blazeArray = ["https://cdn.discordapp.com/attachments/93578176231374848/137514138493517824/w0j9VbN.png", "https://cdn.discordapp.com/attachments/93578176231374848/137514162484936704/LuzD3fE.png", "https://cdn.discordapp.com/attachments/93578176231374848/137514196895137792/HENx6fX.png", "https://cdn.discordapp.com/attachments/93578176231374848/137514220961923074/EV1Bqy1.png"]
+     client.sendMessage(m.channel, blazeArray[Math.floor(Math.random()*blazeArray.length)])
+     return;
+   }
  }
  if (m.content.startsWith(`?anna`)) {
    if (!checkCommand(m, `?anna`)) return
