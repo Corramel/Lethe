@@ -32,6 +32,7 @@ client.on('debug', (m) => console.log('[debug]', m));
 var randomCompliment;
 var yourMomJoke;
 var randomInsult;
+var messageArray = [];
 var voteAllIDs = [];
 var playQueue = [];
 var boundChannel = false;
@@ -113,6 +114,34 @@ client.on('message', m => {
     var benArray = ["**BEN'S STATUS** \n Lips: LARGE \n Feelings: WHO CARES \n Race: SHADOW-REALM BEAST", "http://puu.sh/m3gGP/de199907f3.png", "http://puu.sh/m3gDD/3c6f7c553b.png", "http://puu.sh/m3gIA/28638cd9ad.jpg", "http://puu.sh/m9tgv/84bc2f4914.jpg", "http://puu.sh/m9tfd/fdd3ad0c46.jpg", "http://puu.sh/m9th3/12a1326552.jpg", "https://cdn.discordapp.com/attachments/93578176231374848/130413901367083008/benkms.jpg" ,"https://cdn.discordapp.com/attachments/93578176231374848/130413948091629568/ben.jpg", "https://puu.sh/ldqI3/7fe79e185e.jpg", "https://puu.sh/ldqI3/7fe79e185e.jpg", "https://puu.sh/ldqC3/563b0df440.jpg", "http://puu.sh/lvryP/a7aeb5c7f2.jpg", "http://puu.sh/l0dy0/97c6792172.jpg", "https://docs.google.com/document/d/1XXeZrKqhCzwAcrbD3IHsAOnwp-XhXdJWwpZQrdLLKZo/edit", "https://docs.google.com/document/d/1qvlZMQLP6BatNGCLt-wrAdVt2bFsqxshGu_RIDMngc0/edit?pref=2&pli=1"]
     client.sendMessage(m.channel, benArray[Math.floor(Math.random() * benArray.length)])
     return;
+ }
+ if (m.content.startsWith(`?rr`)) {
+   var eventArray = [" finds out their nervousness was just bullshit.", " pulls the trigger out of fearlessness.. and finds out they're lucky.", " makes it out alive.", " finds out that they should probably play the lottery.", " is lucky."];
+   var eventArrayFull = [" pulls the trigger... :boom: :gun: :skull: R.I.P. in pieces you unlucky piece of shit.", " finds out their nervousness was just bullshit.", " pulls the trigger out of fearlessness.. and finds out they're lucky.", " makes it out alive.", " finds out that they should probably play the lottery.", " is lucky."];
+   if(m.content.length > 4 && m.content.indexOf("|") > -1){
+      var namesArray = m.content.slice(3).split("|");
+      if(namesArray.length > 6) {
+        client.sendMessage(m.channel, "You have too many people, and not enough holes! You filthy whore.")
+        return;
+      } else {
+        var unluckyOne = namesArray[Math.floor(Math.random()*namesArray.length)]
+        var luckyOnes = namesArray.splice(namesArray.indexOf(unluckyOne), 1)
+        for(i=0; i =< namesArray.length; i++){
+          messageArray.push(`${luckyOnes[i] + eventArray[Math.floor(Math.random()*eventArray.length)]} \n`)
+        }
+        client.sendMessage(m.channel, messageAray.join("") + `${unluckyOne} + pulls the trigger... :boom: :gun: :skull: R.I.P. in pieces you unlucky piece of shit.`);
+        return;
+        }
+      } else {
+        if(m.content.length < 5 && m.content.indexOf("|") === -1){
+        client.sendMessage(m.channel, `${m.author.username + eventArrayFull[Math.floor(Math.random()*eventArrayFull.length}`)
+        return;
+        } else {
+          client.sendMessage(m.channel, "To play, just use the ?rr without any other users, otherwise, add | inbetween every user you choose, up to 6. e.g: \"?rr |player1|player2|player3|player4|etc.|etc..\"")
+          return;
+        }
+      }
+   }
  }
  if (m.content.startsWith(`?yomom`)) { //Testing 4 jokes
     if (!checkCommand(m, `?yomom`)) return
