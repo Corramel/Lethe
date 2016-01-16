@@ -142,7 +142,7 @@ client.on('message', m => {
         }
       }
    }
- }
+
  if (m.content.startsWith(`?yomom`)) { //Testing 4 jokes
     if (!checkCommand(m, `?yomom`)) return
     var requestUrl = "http://yomomma.info/"
