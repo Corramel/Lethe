@@ -128,9 +128,11 @@ client.on('message', m => {
         var luckyOnes = namesArray.splice(namesArray.indexOf(unluckyOne), 1)
         for(i=0; i <= namesArray.length; i++){
           messageArray.push(`${luckyOnes[i] + eventArray[Math.floor(Math.random()*eventArray.length)]} \n`)
+          console.log(messageArray)
         }
         client.sendMessage(m.channel,`${messageArray.join("") + unluckyOne} + pulls the trigger... :boom: :gun: :skull: R.I.P. in pieces you unlucky piece of shit.`);
         return;
+        messageArray = [];
         }
       } else {
         if(m.content.length < 5 && m.content.indexOf("|") === -1){
