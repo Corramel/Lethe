@@ -120,18 +120,19 @@ client.on('message', m => {
    var eventArray = [" puls the trigger... finds out their nervousness was just bullshit.", " pulls the trigger out of fearlessness.. and finds out they're lucky.", " pulls the trigger... mand akes it out alive.", " pulls the trigger... and finds out that they should probably play the lottery.", " pulls the trigger... and is lucky."];
    var eventArrayFull = [" pulls the trigger... :boom: :gun: :skull: R.I.P. in pieces you unlucky piece of shit.", " pulls the trigger... and finds out their nervousness was just bullshit.", " pulls the trigger out of fearlessness.. and finds out they're lucky.", " pulls the trigger... and makes it out alive.", " pulls the trigger... and finds out that they should probably play the lottery.", " pulls the trigger... and is lucky."];
    if(m.content.length > 4 && m.content.indexOf("|") > -1){
-      var namesArray = m.content.slice(3).split("|");
+      var names = m.content.slice(3)
+      var namesArray = names.split("|")
       if(namesArray.length > 6) {
         client.sendMessage(m.channel, "You have too many people, and not enough holes! You filthy whore.")
         return;
       } else {
         var unluckyOne = namesArray[Math.floor(Math.random()*namesArray.length)]
         luckyOnes = namesArray.splice(namesArray.indexOf(unluckyOne), 1)
-        for(i=0; i <= namesArray.length; i++){
+        for(i=0; i < namesArray.length; i++){
           messageArray.push(`${luckyOnes[i] + eventArray[Math.floor(Math.random()*eventArray.length)]} \n`)
           console.log(messageArray)
         }
-        client.sendMessage(m.channel,`${messageArray.join("") + unluckyOne} + pulls the trigger... :boom: :gun: :skull: R.I.P. in pieces you unlucky piece of shit.`);
+        client.sendMessage(m.channel,`${messageArray.join("") + unluckyOne} pulls the trigger... :boom: :gun: :skull: R.I.P. in pieces you unlucky piece of shit.`);
         messageArray = [];
         luckyOnes = [];
         return;
