@@ -127,8 +127,9 @@ client.on('message', m => {
         return;
       } else {
         var unluckyOne = namesArray[Math.floor(Math.random()*namesArray.length)]
-        var luckyindex = namesArray.indexOf(unluckyOne)
-        luckyOnes = namesArray.splice(luckyindex, 1)
+      //  var luckyindex = namesArray.indexOf(unluckyOne)
+      //  luckyOnes = namesArray.splice(luckyindex, 1)
+        luckyOnes = namesArray.filter(unluckyOne)
         for(i=0; i < namesArray.length; i++){
           messageArray.push(`${luckyOnes[i] + eventArray[Math.floor(Math.random()*eventArray.length)]} \n`)
           console.log(messageArray)
