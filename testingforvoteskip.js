@@ -126,7 +126,7 @@ client.on('message', m => {
       } else {
         var unluckyOne = namesArray[Math.floor(Math.random()*namesArray.length)]
         var luckyOnes = namesArray.splice(namesArray.indexOf(unluckyOne), 1)
-        for(i=0; i >= namesArray.length; i++){
+        for(i=0; i <= namesArray.length; i++){
           messageArray.push(`${luckyOnes[i] + eventArray[Math.floor(Math.random()*eventArray.length)]} \n`)
         }
         client.sendMessage(m.channel,`${messageArray.join("") + unluckyOne} + pulls the trigger... :boom: :gun: :skull: R.I.P. in pieces you unlucky piece of shit.`);
