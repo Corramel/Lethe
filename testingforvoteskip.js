@@ -134,7 +134,7 @@ client.on('message', m => {
         }
       } else {
         if(m.content.length < 5 && m.content.indexOf("|") === -1){
-        client.sendMessage(m.channel, `${m.author.username + eventArrayFull[Math.floor(Math.random()*eventArrayFull.length}`)
+        client.sendMessage(m.channel, `${m.author.username + eventArrayFull[Math.floor(Math.random()*eventArrayFull.length)}`)
         return;
         } else {
           client.sendMessage(m.channel, "To play, just use the ?rr without any other users, otherwise, add | inbetween every user you choose, up to 6. e.g: \"?rr |player1|player2|player3|player4|etc.|etc..\"")
