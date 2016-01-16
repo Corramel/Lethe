@@ -116,8 +116,8 @@ client.on('message', m => {
     return;
  }
  if (m.content.startsWith(`?rr`)) {
-   var eventArray = [" finds out their nervousness was just bullshit.", " pulls the trigger out of fearlessness.. and finds out they're lucky.", " makes it out alive.", " finds out that they should probably play the lottery.", " is lucky."];
-   var eventArrayFull = [" pulls the trigger... :boom: :gun: :skull: R.I.P. in pieces you unlucky piece of shit.", " finds out their nervousness was just bullshit.", " pulls the trigger out of fearlessness.. and finds out they're lucky.", " makes it out alive.", " finds out that they should probably play the lottery.", " is lucky."];
+   var eventArray = [" puls the trigger... finds out their nervousness was just bullshit.", " pulls the trigger out of fearlessness.. and finds out they're lucky.", " pulls the trigger... mand akes it out alive.", " pulls the trigger... and finds out that they should probably play the lottery.", " pulls the trigger... and is lucky."];
+   var eventArrayFull = [" pulls the trigger... :boom: :gun: :skull: R.I.P. in pieces you unlucky piece of shit.", " pulls the trigger... and finds out their nervousness was just bullshit.", " pulls the trigger out of fearlessness.. and finds out they're lucky.", " pulls the trigger... and makes it out alive.", " pulls the trigger... and finds out that they should probably play the lottery.", " pulls the trigger... and is lucky."];
    if(m.content.length > 4 && m.content.indexOf("|") > -1){
       var namesArray = m.content.slice(3).split("|");
       if(namesArray.length > 6) {
@@ -134,7 +134,7 @@ client.on('message', m => {
         }
       } else {
         if(m.content.length < 5 && m.content.indexOf("|") === -1){
-        client.sendMessage(m.channel, `${m.author.username + eventArrayFull[Math.floor(Math.random()*eventArrayFull.length)}`)
+        client.sendMessage(m.channel, `${m.author.username + eventArrayFull[Math.floor(Math.random()*eventArrayFull.length)]}`)
         return;
         } else {
           client.sendMessage(m.channel, "To play, just use the ?rr without any other users, otherwise, add | inbetween every user you choose, up to 6. e.g: \"?rr |player1|player2|player3|player4|etc.|etc..\"")
