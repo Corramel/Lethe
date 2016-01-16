@@ -32,6 +32,7 @@ client.on('debug', (m) => console.log('[debug]', m));
 var randomCompliment;
 var yourMomJoke;
 var randomInsult;
+var luckyOnes;
 var messageArray = [];
 var voteAllIDs = [];
 var playQueue = [];
@@ -125,14 +126,16 @@ client.on('message', m => {
         return;
       } else {
         var unluckyOne = namesArray[Math.floor(Math.random()*namesArray.length)]
-        var luckyOnes = namesArray.splice(namesArray.indexOf(unluckyOne), 1)
+        luckyOnes = namesArray.splice(namesArray.indexOf(unluckyOne), 1)
         for(i=0; i <= namesArray.length; i++){
           messageArray.push(`${luckyOnes[i] + eventArray[Math.floor(Math.random()*eventArray.length)]} \n`)
           console.log(messageArray)
         }
         client.sendMessage(m.channel,`${messageArray.join("") + unluckyOne} + pulls the trigger... :boom: :gun: :skull: R.I.P. in pieces you unlucky piece of shit.`);
-        return;
         messageArray = [];
+        luckyOnes = [];
+        return;
+
         }
       } else {
         if(m.content.length < 5 && m.content.indexOf("|") === -1){
