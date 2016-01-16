@@ -129,7 +129,10 @@ client.on('message', m => {
         var unluckyOne = namesArray[Math.floor(Math.random()*namesArray.length)]
       //  var luckyindex = namesArray.indexOf(unluckyOne)
       //  luckyOnes = namesArray.splice(luckyindex, 1)
-        luckyOnes = namesArray.filter(unluckyOne)
+      function Meme(luckyindex){
+        return luckyindex != unluckyOne
+      }
+        luckyOnes = namesArray.filter(Meme)
         for(i=0; i < namesArray.length; i++){
           messageArray.push(`${luckyOnes[i] + eventArray[Math.floor(Math.random()*eventArray.length)]} \n`)
           console.log(messageArray)
