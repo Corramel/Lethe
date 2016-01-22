@@ -175,17 +175,20 @@ client.on('message', m => {
    var requestUrl = "http://pungenerator.org/puns?q=Penis"
    reequest(requestUrl, function(error, response, html){
      if(!error){
-       var $ = cheerio.load(html)
-      randomPunInfo = $('.pun-cell').get().sort(function(){
-         return Math.round(Math.random()) - 0.5
-         }).slice(0,2)
+     var $ = cheerio.load(html)
+      //randomPunInfo = $('.pun-cell').get().sort(function(){
+       //  return Math.round(Math.random()) - 0.5
+       //  }).slice(0,2)
+       var puncellLength = $('.pun-cell td').length
+       var randomnum = Math.floor(Math.random()*length)+1
+       randomPunInfo = $(`.pun-cell td:nth-child(${randomnum})`).text()
     //     $(randomPunInfo).filter(function(){
      //      var punData = $(this);
       //     var nicePunJoke = punData.text();
       //   })
      }
    })
-   var punJoke = randomPunInfo.text()
+   var punJoke = randomPunInfo
    client.sendMessage(m.channel, punJoke)
    return;
  }
