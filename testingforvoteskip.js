@@ -170,6 +170,24 @@ client.on('message', m => {
     client.sendMessage(m.channel, joke)
     return;
  } 
+ if (m.content.startsWith(`?pun`)) {
+   var requestUrl = "http://pungenerator.org/puns?q=Penis"
+   reequest(requestUrl, function(error, response, html){
+     if(!error){
+       var $ = cheerio.load(html)
+       var randomPunInfo = $('.puncell').get().sort(function(){
+         return Math.round(Math.random()) - 0.5
+         )}.slice(0,1)
+         $(randomPunInfo).filter(function(){
+           var punData = $(this);
+           var nicePunJoke = punData.text();
+         })
+     }
+   })
+   var punJoke = nicePunJoke
+   client.sendMessage(m.channel, punJoke)
+   return;
+ }
  if (m.content.startsWith(`?insult`)) {
    var requestUrl = "http://www.insultgenerator.org/";
    reequest(requestUrl, function(error, response, html){
