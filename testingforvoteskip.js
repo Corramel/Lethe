@@ -178,14 +178,14 @@ client.on('message', m => {
        var $ = cheerio.load(html)
        var randomPunInfo = $('.pun-cell').get().sort(function(){
          return Math.round(Math.random()) - 0.5
-         }).slice(0,1)
-         $(randomPunInfo).filter(function(){
-           var punData = $(this);
-           var nicePunJoke = punData.text();
-         })
+         }).slice(0,2)
+    //     $(randomPunInfo).filter(function(){
+     //      var punData = $(this);
+      //     var nicePunJoke = punData.text();
+      //   })
      }
    })
-   var punJoke = nicePunJoke
+   var punJoke = randomPunInfo.text()
    client.sendMessage(m.channel, punJoke)
    return;
  }
