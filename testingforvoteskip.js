@@ -180,7 +180,7 @@ client.on('message', m => {
        //  return Math.round(Math.random()) - 0.5
        //  }).slice(0,2)
        var puncellLength = $('.pun-cell td').length
-       var randomnum = Math.floor(Math.random()*length)+1
+       var randomnum = Math.floor(Math.random()*puncellLength)+1
        randomPunInfo = $(`.pun-cell td:nth-child(${randomnum})`).text()
     //     $(randomPunInfo).filter(function(){
      //      var punData = $(this);
