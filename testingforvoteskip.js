@@ -29,6 +29,7 @@ var client = new Discord.Client();
 // Handle discord.js warnings
 client.on('warn', (m) => console.log('[warn]', m));
 client.on('debug', (m) => console.log('[debug]', m));
+var nicePunJoke;
 var randomCompliment;
 var yourMomJoke;
 var randomInsult;
