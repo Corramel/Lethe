@@ -29,7 +29,7 @@ var client = new Discord.Client();
 // Handle discord.js warnings
 client.on('warn', (m) => console.log('[warn]', m));
 client.on('debug', (m) => console.log('[debug]', m));
-var nicePunJoke;
+var randomPunInfo;
 var randomCompliment;
 var yourMomJoke;
 var randomInsult;
@@ -176,7 +176,7 @@ client.on('message', m => {
    reequest(requestUrl, function(error, response, html){
      if(!error){
        var $ = cheerio.load(html)
-       var randomPunInfo = $('.pun-cell').get().sort(function(){
+      randomPunInfo = $('.pun-cell').get().sort(function(){
          return Math.round(Math.random()) - 0.5
          }).slice(0,2)
     //     $(randomPunInfo).filter(function(){
