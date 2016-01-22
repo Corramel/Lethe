@@ -176,7 +176,7 @@ client.on('message', m => {
    reequest(requestUrl, function(error, response, html){
      if(!error){
        var $ = cheerio.load(html)
-       var randomPunInfo = $('.puncell').get().sort(function(){
+       var randomPunInfo = $('.pun-cell').get().sort(function(){
          return Math.round(Math.random()) - 0.5
          }).slice(0,1)
          $(randomPunInfo).filter(function(){
