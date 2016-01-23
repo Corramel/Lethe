@@ -30,6 +30,7 @@ var client = new Discord.Client();
 client.on('warn', (m) => console.log('[warn]', m));
 client.on('debug', (m) => console.log('[debug]', m));
 var randomPunInfo;
+var totalNumberNeeded;
 var randomCompliment;
 var yourMomJoke;
 var randomInsult;
@@ -530,12 +531,14 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     voteTotalCount = voteCount + voteTotalCount;
     voteAllIDs.push(voter);
     console.log(voteCount);
-    if (voteTotalCount >= 5){
+    totalNumberNeeded = (client.voiceChannel.members).length
+    if (voteTotalCount >= totalNumberNeeded - 1){
       console.log("L I M I T S  W E R E  M E A N T  T O  B E  B R O K E N . . .")
       console.log("The current amount of votes are" + voteTotalCount)
         playStopped();
         voteTotalCount = 0;
         voteAllIDs = [];
+        totalNumberNeeded = 0;
         return;
       } else {
         console.log("Not breaking limits........")
