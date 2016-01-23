@@ -532,6 +532,11 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     voteAllIDs.push(voter);
     console.log(voteCount);
     totalNumberNeeded = (client.voiceChannel.members).length
+    if(!(client.voiceChannel.members).length === totalNumberNeeded){
+      totalNumberNeeded = (client.voiceChannel.members).length
+    } else {
+      totalNumberNeeded;
+    }
     if (voteTotalCount >= totalNumberNeeded - 1){
       console.log("L I M I T S  W E R E  M E A N T  T O  B E  B R O K E N . . .")
       console.log("The current amount of votes are" + voteTotalCount)
