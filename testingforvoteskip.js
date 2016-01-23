@@ -531,7 +531,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     voteTotalCount = voteCount + voteTotalCount;
     voteAllIDs.push(voter);
     console.log(voteCount);
-    console.log(totalNumberNeeded = (Discord.VoiceChannel.members).length)
+    console.log(totalNumberNeeded = (Discord.VoiceChannel.members))
    // if(!(Discord.VoiceChannel.members).length === totalNumberNeeded){
   //    totalNumberNeeded = (Discord.VoiceChannel.members).length
   //  } else {
