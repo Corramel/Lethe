@@ -531,13 +531,13 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     voteTotalCount = voteCount + voteTotalCount;
     voteAllIDs.push(voter);
     console.log(voteCount);
-    totalNumberNeeded = (VoiceChannel.members).length
-    if(!(VoiceChannel.members).length === totalNumberNeeded){
-      totalNumberNeeded = (VoiceChannel.members).length
-    } else {
-      totalNumberNeeded;
-    }
-    if (voteTotalCount >= totalNumberNeeded - 1){
+    console.log(totalNumberNeeded = (Discord.VoiceChannel.members).length)
+   // if(!(Discord.VoiceChannel.members).length === totalNumberNeeded){
+  //    totalNumberNeeded = (Discord.VoiceChannel.members).length
+  //  } else {
+   //   totalNumberNeeded;
+ //   }
+    if (voteTotalCount >= 3){
       console.log("L I M I T S  W E R E  M E A N T  T O  B E  B R O K E N . . .")
       console.log("The current amount of votes are" + voteTotalCount)
         playStopped();
