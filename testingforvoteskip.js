@@ -417,7 +417,7 @@ if (m.content.startsWith(`?compliment`)){
    })
    var insult = randomInsult
    if(m.author.id === ownerID){
-   	client.reply(m, complimentArray)
+   	client.reply(m, complimentArray[Math.floor(Math.random()*complimentArray.length)])
    	return;
    } else {
    	client.reply(m, insult)
