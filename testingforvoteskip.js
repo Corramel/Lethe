@@ -127,10 +127,13 @@ client.on('message', m => {
     return;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
   if (m.content.startsWith(`?EbolaChan`)){
     var messageanswer = randEbolaPic.data.images[Math.floor(Math.random()*72)]
     client.sendMessage(m.channel, messageanswer.replace(/\//g, "/"));
   }
+=======
+>>>>>>> parent of 0a0d2e3... formatted output.json and added pics
 =======
 >>>>>>> parent of 0a0d2e3... formatted output.json and added pics
   if (m.content.startsWith(`?popcorn`)){
