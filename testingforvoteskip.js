@@ -22,7 +22,6 @@ var YoutubeTrack = require('./lib/youtube-track.js');
 
 var Util = require('./lib/util.js');
 var Config = require('./lib/config.js');
-var randEbolaPic = require('./output.json');
 var CURRENT_REV = 3;
 
 var client = new Discord.Client();
@@ -127,10 +126,6 @@ client.on('message', m => {
     }
     return;
   }
-  if (m.content.startsWith(`?EbolaChan`)){
-    var messageanswer = randEbolaPic.data.images[Math.floor(Math.random*72)]
-    client.sendMessage(m.channel, messageanswer.replace(/\//g, "/"));
-  }
   if (m.content.startsWith(`?popcorn`)){
   	client.sendMessage(m.channel, "https://pbs.twimg.com/profile_images/597538481225752577/93eMVOd3.jpg")
   	return;
@@ -194,7 +189,7 @@ client.on('message', m => {
     var joke = yourMomJoke
     client.sendMessage(m.channel, joke)
     return;
- }
+ } 
 /* if (m.content.startsWith(`?phrase`)) {
    var requestUrl = "http://www.randomwordgenerator.com/phrase.html"
    reequest(requestUrl, function(error, response, html){
@@ -235,7 +230,7 @@ client.on('message', m => {
    client.sendMessage(m.channel, "https://i.4cdn.org/vg/1451833265145.png")
    return;
  }
- if (m.content.startsWith(`?kaio`)) {
+ if (m.content.startsWith(`?kaio`)) { 
    if (!checkCommand(m, `?kaio`)) return
    var kaioArray = ["https://cdn.discordapp.com/attachments/93578176231374848/137512943058157568/ss_2015-09-02_at_01.18.43.jpg","https://cdn.discordapp.com/attachments/93578176231374848/137512835918987264/ss_2015-09-10_at_04.49.26.jpg","http://puu.sh/miD0v/5322ab2006.jpg" , "http://puu.sh/miFg2/b53356ef98.jpg", "https://i.gyazo.com/7c64e7f1a945f8c856f48f75e2f80f02.png", "iou", "iou", "iou"]
    client.sendMessage(m.channel, kaioArray[Math.floor(Math.random()* kaioArray.length)])
@@ -278,7 +273,7 @@ if (m.content.startsWith(`?komari`)) { // lmao
     var komariArray = ["https://i.gyazo.com/de05c41201cd9c4e402e557de475c176.png", "https://i.gyazo.com/36d0fce02401db14680b97e276f25b4e.png", "https://i.gyazo.com/23ebae539c0c7494de1701b8676afbe0.png"]
     client.sendMessage(m.channel, komariArray[Math.floor(Math.random()*komariArray.length)])
     return;
-}
+} 
 if (m.content.startsWith(`?tumblr`)) {
   var tumblrArray1 = ["***AFAB*** - Assigned female at birth.","***Agender***, ***Agendered*** - A non-binary identity, meaning without a gender or gender identity.","***Alia***, ***Aliagender*** - A gender experience which is \"other\", or stands apart from existing gender constructs","***AMAB*** - Assigned male at birth.","***Ambigender*** - _1._ Available or common to more than one gender. \n _2._ A non-binary identity related to androgyne, bigender, and/or genderfluid.","***Androgens*** - Hormones such as testosterone, sometimes called \"male sex hormones,\" although people of any gender can have high androgen levels, and not all men have high androgen levels.","***Androgyne*** - A non-binary identity, meaning a combination, blending, or in-between point between two genders (usually between male and female). Androgynes may or may not present androgynously, and may or may not experience multiple genders..","***Androgynous***, ***Androgyny*** - _1._ Related to an androgyne gender identity. \n _2._ A gender presentation that is ambiguous between male and female, or which blends them, or lies in the middle between them.","***Androgynous of Center*** - Any of several gender identities that lean closer to \"androgyne\" than to male or female.","***Androsexual*** - Sexually attracted to masculinity or to men. _Warning: this word is sometimes used in transphobic ways._","***Anti-Androgens*** - Drugs that negate the effects of testosterone, usually given during adolescence to trans youth who do not wish to develop conventionally \"masculine\" features. A type of hormone blockers.","***Anti-Estrogens*** - Drugs that negate the effects of estradiol and other estrogens, usually given during adolescence to trans youth who do not wish to develop conventionally \"feminine features.\" A type of hormone blockers.","***ASAB*** - Assigned sex at birth.","***Assigned Sex (At Birth)*** - The gender identity imposed on someone by their family and by society. This gender is usually decided at birth or in utero, and is usually based on genitalia. Almost all people are assigned male or female at birth, even if they are intersex.","***Autoandrophilia*** - Pleasure, sexual or otherwise, derived from imagining oneself as a man. The much rarer counterpart to autogynephilia, and also not recommended.","***Autogynephilia*** - Pleasure, sexual or otherwise, derived from imagining oneself as a woman. Historically, diagnosis of autogynephilia was/is commonly used to restrict trans women’s access to transitioning, and to pathologize them as mentally ill. Not recommended for general discourse.","***Being Read*** 📖 - An alternative phrase to \"passing\" that shifts responsibility of correct gendering onto onlookers, instead of on the person who is read. A trans person who is read correctly is recognized as their correct gender.","***Bigender*** - A non-binary identity in which a person has two or more genders. Any combination of genders is possible, not just male/female. These genders may be present simultaneously, they may fluctuate, or both.","***Binarism*** - The belief, prejudice or social force that claims only two genders exist, male and female, and that all non-binary and genderqueer gender identities are invalid. Binarism is inextricably tied to colonialism and racism, and is a way that Western European cultures attack the gender expression of other cultures and ethnic groups.","***Binary Gender*** - A gender that is either strictly male or strictly female. This is not affected by whether a person is cis or trans: a trans man or trans woman has a binary gender, unless he or she also identifies as non-binary.","***Binder*** - In trans discussions, a garment used to minimize or alter the appearance of breasts.","***Binding*** - The practice of hiding or reshaping breasts, usually to achieve a more masculine or androgynous appearance.","***Biological Essentialism*** - In trans discussions, the belief that a person's gender can only be defined by their genes and/or genitalia at birth. Biological essentialism usually ignores the existence of intersex people and is a major component of transphobia.","***Biological Sex*** - A social construct that categorizes human bodies as male or female based on chromosomes or genitalia. Contrary to popular belief, there are not two biological sexes, because people can be born with a wide variety of sexual characteristics, and many different combinations of sexual characteristics. Many trans and/or intersex people find the phrase or concept offensive, and prefer the phrase \"assigned sex,\" or \"designated sex.\"","***Body Dysphoria*** - A feeling of stress or unhappiness related to one's body. In trans discussions, it is a type of gender dysphoria caused by the body’s appearance clashing with one's internal gender identity.","***Bottom Surgery*** - A colloquial term for surgery that corrects one's genitalia to better match one’s preferred gender presentation.","***Brain Sex*** - A controversial idea that posits that a person’s gender identity may be reflected by the structure of their brain.","***Butch*** - More reminiscent of what is traditionally considered boyish or masculine than feminine. May refer to a gender identity, gender presentation, or a style of dress. Often associated with lesbian culture.","***CAFAB*** - Coercively assigned female at birth.","***CAMAB*** - Coercively assigned male at birth.","***CASAB*** - Coercively assigned sex at birth. See assigned sex at birth.","***Cis*** - Short for cisgender or cissexual.","***Cis Privilege*** - Short for cisgender privilege.","***Cisgender*** - Consistently experiencing your gender in a way that matches the gender assigned to you at birth. Not trans.","***Cisgender Privilege*** - The benefits, opportunities and everyday courtesies that cisgender people are able to take for granted, and which trans and non-binary people may not be able to count on.","***Cishet*** - A person who is cisgender, hetero-romantic and heterosexual.","***Cissexism*** - The unjust social institution that validates cisgender identities more than trans identities, and which grants privileges to cis people while oppressing trans people.","***Cissexual*** - Usually a synonym for cisgender, though some people make a distinction, similar to the transgender/transsexual distinction.","***Chaser*** - A person who seeks out trans people for dating or sex. Chasers have a bad reputation for fetishizing, disrespecting and mistreating trans people, especially trans women.","***Chromosomes*** - Gene sequences that determine how an organism's body develops and reproduces. The human sex chromosomes, X and Y, usually determine whether a fetus develops typical egg-producing anatomy or typical sperm-producing anatomy. However, other factors can affect a person’s anatomical and psychological development, and the chromosomes do not necessarily reflect a person’s true gender.","***Clocking*** - An event in which an observer notices or realizes a trans person's assigned sex at birth, without the trans person's consent.","***Colonialism*** - In trans discussions, colonialism is the practice of imposing Western systems of gender onto non-Western cultures, invalidating native people's gender identities in the process. Colonialism can involve either denying that a gender exists, or reinterpreting the gender to fit a Western model, e.g. by claiming that a hijra person must be transgender. Binarism is a form of colonialism.","***Coming Out*** - In trans discussions, the process of telling someone that one is trans. This applies both to trans people who have transitioned to live as their correct gender, as well as to those who have not.","***Correct Pronouns*** - Alternate phrase for \"preferred pronouns\".","***Corrective Rape*** - Sexual assault done with the intent to change someone's sexual or romantic orientation, or gender identity. Trans people, especially trans women and sex workers, are sometimes victimized by corrective rape.","***Crossdresser*** - A person who chooses to wear clothing that does not match their gender identity or usual gender presentation. A controversial concept because clothing is not intrinsically gendered, and the wearer may define it as appropriate to their own gender regardless of social norms. This is a loaded term and should not be used without the permission of the person being referred to.","***Crossdressing*** - The act of wearing clothing that does not match one's gender identity. A controversial concept because clothing is not intrinsically gendered, and the wearer may define it as appropriate to their own gender regardless of social norms. Trans people who wear the clothing of their assigned sex may consider themselves as crossdressing; when wearing clothing of their actual gender, they are not crossdressing, though they may appear that way to uninformed people.","***Crossplay*** - To dress up as a fictional or historical character that is of a different gender than oneself. A controversial concept because clothing is not intrinsically gendered, and the wearer may define it as appropriate to their own gender regardless of social norms.","***Deep Stealth*** - Living full-time as one's correct gender, without any of the people one regularly interacts with knowing that one is trans.","***Degender*** - To ignore or invalidate someone's gender. Similar to misgendering, but does not necessarily impose a different, inaccurate gender onto the target person while invalidating them.","***Dehumanization*** - A kind of stigma that lessens a person by making them seem less than human; often likening them to an animal, machine or monster. A common component of transphobia.","***Demiboy*** - See demiguy.","***Demienby*** - A gender that is partly one non-biinary gender, and partly another non-binary gender."];
   var tumblrArray2 = ["***Demigender*** - Umbrella term for demigirl, demiguy, demienby, demiboy, and similar genders.","***Demigirl*** - A gender that is partly female and partly non-binary. Can be AFAB or AMAB.","***Demiguy*** - A gender that is partly male and partly non-binary. Can be AMAB or AFAB.","***Detransition*** - To stop, pause, or reverse some or all of the effects of transitioning.","***DFAB*** - Designated female at birth. Alternative to AFAB.","***Desexualization*** - A stigma that denies a person’s sexuality or sexual agency. A common component of transphobia.","***Designated Sex (At Birth)*** - An alternative phrase for assigned sex at birth.","***DMAB*** - Designated male at birth. Alternative to AMAB.","***Drag*** - Crossdressing. Drag is done for a wide variety of reasons and purposes. People in drag may attempt to plausibly appear as their target gender, parody gender, exaggerate gender, or deconstruct gender. Some people who wear drag are trans and some are not. See \"Crossdressing\" for problematic elements of this concept.","***Drag King*** - A person who does not identify as male but dresses up to resemble one. Trans men are not drag kings, because they are men. However, some people who appear to be drag kings may later come to identify as trans men. See \"Crossdressing\" for problematic elements of this concept.","***Drag Queen*** - A person who does not identify as female but dresses up to resemble one. Trans women are not drag queens, because they are women. However, some people who appear to be drag queens may later come to identify as trans women. See \"Crossdressing\" for problematic elements of this concept.","***DSM*** - The Diagnostic and Statistical Manual of Mental Disorders. The DSM-IV includes Gender Identity Disorder, which was renamed Gender Dysphoria in the DSM-V. There is controversy over whether these ideas should be included in the DSM or not.","***Dysphoria*** - In trans discussions, a feeling of displeasure, stress, anxiety or depression related to one's gender. See gender dysphoria.","***Dyadic*** - Having a stereotypical male or female anatomy, as Western culture would define it; not intersex.","**Electrolysis*** - Permanent hair removal. Sometimes taken by trans people to achieve a better gender presentation or feel more comfortable in their bodies.","***Enby*** - Casual term for a non-binary person. Not all non-binary people want to be referred to as enbies, so individual preferences should be respected here.","***Endocrinologist*** - A doctor who specializes in hormones. Trans people may need to see endocrinologists as they transition.","***Epicene*** - An archaic term for someone who has characteristics of both genders, or who can't be classified as purely male or female. Most often used for male-assigned people with feminine tendencies. Like most of these older terms, you shouldn't refer to someone this way unless they give you permission.","***Erasure*** - A lack of representation of a group in media, news and pop culture. Erasure may be either deliberate or accidental, and targets _all_ queer identities to varying degrees.","***Estradiol*** - The most potent and common form of estrogen in the human body. Supplemental estradiol is sometimes taken by trans people, usually with the intent of achieving a more feminine appearance.","***Estrogens*** - Hormones such as estradiol. Sometimes called \"female hormones,\" although people of any gender can have high levels of estrogens, and not all women have high estrogen levels.","***Eunuch*** - A man whose penis has been removed, or (rarely) a man who has been sterilized. This term should _not_ be used to refer to trans people.","***FAAB*** - Female-assigned at birth. Alternative to AFAB.","***Female-bodied*** - A common but problematic term used for cis women and AFAB trans people who have not undergone transitional surgery. AFAB and DFAB are recommended instead.","***Feminine of Center*** - Having a gender that is closer to \"female\" than to \"male\" or other genders.","***Femme*** - Reminiscent of what is traditionally considered femininity. May refer to a gender identity, gender presentation, or a style of dress. Strongly associated with lesbian culture.","***Fluid*** - Changeable, not static. Some people have fluid sexual orientations or gender identities. See genderfluid.","***FTM***, ***F2M*** - Female to male.","***FTN***, ***F2N*** - Female to neutral.","***FTX***, ***F2X*** - Female to an unspecified gender.","***Full Time*** - Living as one's correct gender every day, in all circumstances, in a way publicly visible to all people. Gatekeepers often require a period of living full-time before they are willing to approve of hormone therapy or surgery; this restriction can be dangerous or impossible for some trans people.","***Gaff*** - Underwear used for tucking. Sometimes used by DMAB trans people.","***Gatekeepers*** - People who have the power to progress or halt a trans person's journey of transition. These can include doctors, government officials, employers, family members, and more.","***Gender*** _n._ - A person's internal mental experience of their self and their relationship to \"male,\" \"female,\" \"androgynous,”\" \"genderless,\" and other identities. It is distinct from a person's assigned sex, anatomy, gender presentation, pronouns, socialization, and sexual orientation. Some people do not have a gender.","***Gender*** _v._ - To treat someone as if they are of a particular gender. This takes many forms, the most common of which are pronouns.","***Gender Affirmation Surgery*** - Surgery that alters a person's appearance to better reflect their preferred gender presentation. Also called gender confirmation surgery.","***Gender Bender***, ***Gender Bending*** - _1._ Altering or playing with gender presentation. \n _2._ In fiction, changing either a character’s gender identity, gender presentation, or both. A problematic concept because it tends to conflate gender identity with gender presentation or assigned sex.","***Gender Binary*** - The Western social construct that only grants legitimacy to two genders, male and female. Is frequently oppressive towards people who are trans and/or intersex.","***Gender Confirmation Surgery*** - Surgery that alters a person's appearance to better reflect their preferred gender presentation. Also called gender affirmation surgery.","***Gender Diversity*** - The inclusion of many or all genders, not just male and female.","***Gender Dysphoria*** - _1._ A feeling of discomfort, stress, confusion or negativity that is caused by a mismatch between one's assigned sex and one's actual gender. Can be either body dysphoria or social dysphoria, or both. Many trans and/or non-binary people experience gender dysphoria, but not all do. \n _2._ The phrase used for transgender experiences in the DSM-V.","***Gender Identity Disorder*** - The phrase used for transgender experiences in the DSM-IV.","***Gender Essentialism*** - The belief that there are intrinsic and unchangeable differences between genders, and that these differences manifest as anatomy, chromosomes, behavior, socialization and/or gender roles. A key component of transphobia.","***Gender Expression*** - The speech, clothing, body modification choices, gestures, behavior, and social role through which a person demonstrates their gender.","***Gender Neutral*** - Not specific or restricted to any particular gender.","***Gender Neutral Language*** - The use of nouns, titles and pronouns in such a way as to avoid specifying gender. This is useful for making environments and discussions more accessible to trans and non-binary people.","***Gender Nonconformity*** - Acting, speaking or dressing in a manner that is not traditionally encouraged for members of one’s gender.","***Gender Norm*** - An arbitrary expectation or standard that is applied to people of a certain gender.","***Gender Presentation*** - The way that a person's gender superficially appears to onlookers, which may be affected by anatomy, clothing, makeup, hairstyle, speech patterns and body language. May also include a person's stated desire to be treated as a certain gender and referred to with certain pronouns.","***Gender Reassignment Surgery*** - An older term for gender affirmation surgery or gender confirmation surgery. It is rather inaccurate because the surgery _does not_ change the recipient's gender, but alters the body to better reflect the gender.","***Gender Role*** - A set of expectations, standards, and cultural pressures associated with a particular gender. People may freely choose to follow or disregard gender roles. Conformity to gender roles does not reflect a person’s actual gender; cis people who violate gender roles do not become trans, nor do trans people need to follow traditional gender roles in order for their genders to be valid.","***Gender-Variant*** - _1._ Behaving or presenting one’s gender in a way that does not fit traditional models of male or female. \n _2._ An umbrella term, similar to non-binary and genderqueer.","***Genderflexible*** - See genderfluid.","***Genderfluid*** - Having a gender that is changeable. Genderfluid people may shift between multiple genders over time, or feel gender in different ways over time. Their preferred pronouns and gender presentation may or may not reflect these changes. Related to but distinct from genderflux.","***Genderflux*** - Having a gender that varies in intensity or degree over time; related to but distinct from genderfluid.","***Genderfuck*** - Gender presentation that deliberately seeks to violate conventional standards of male or female presentation.","***Genderless*** - Without a gender or gender identity. Similar to agender.","***Genderqueer*** - 1. An umbrella(☔) term that includes all gender identities other than strictly male or strictly female. Covers the same set of people as \"non-binary,\" but it has different social and political connotations, and is more strongly associated with \"queering gender\" and the queer political movement. \n _2._ Gender presentation that is not strictly male or female."];
@@ -405,13 +400,13 @@ if (m.content.startsWith(`?starterpack`)) { //memecontrol
   var starterpackArray = ["https://puu.sh/l4EIB/6e34ebbe36.jpg", "https://puu.sh/l4EAy/ecd052884e.jpg", "https://puu.sh/l4EtZ/a4f6819dfe.jpg", "https://puu.sh/l4Em3/e065f1a648.jpg", "https://puu.sh/l4EiX/4058337b49.jpg", "https://puu.sh/l4E38/787f1d7295.jpg", "https://puu.sh/l4E1q/a5c291f274.jpg", "http://cdn2.gurl.com/wp-content/uploads/2014/11/real-music-starter-pack.jpg", "http://socawlege.com/wp-content/uploads/2015/05/14.png", "http://socawlege.com/wp-content/uploads/2015/05/7.png", "http://cdn3.gurl.com/wp-content/uploads/2014/11/tumblr-white-girl-starter-pack.jpg", "https://puu.sh/m9PKe/fe80e20b66.png", "http://puu.sh/m9POD/7627d3cc78.png", "https://i.imgur.com/r3kOR9J.png", "http://puu.sh/m9PQ0/1a26c2f439.png", "http://orig10.deviantart.net/ae07/f/2015/169/0/c/the_i_hate_capitalism_starter_pack_by_billwilsoncia-d8xuw2b.png", "http://puu.sh/m9PR1/eeac97339a.png", "http://puu.sh/m9PRF/9946c618e1.png", "http://puu.sh/m9PSl/0dbfa24b47.png", "http://cdn.hiphopwired.com/wp-content/uploads/2014/11/starter-pack-2.png", "http://puu.sh/m9PTb/b73f4677d5.png", "http://puu.sh/m9PTX/2762d24475.png", "http://socawlege.com/wp-content/uploads/2014/12/kush.jpg", "https://i.imgur.com/lCWov56.jpg", "https://i.imgur.com/BfUDdnl.png", "http://cdn.hiphopwired.com/wp-content/uploads/2014/11/starter-pack-1.png", "http://www.starter-packs.com/wp-content/uploads/2014/12/home-alone.jpg", "http://cdn3.gurl.com/wp-content/uploads/2014/11/college-student-starter-pack.jpg", "https://i.imgur.com/M0oP8m4.jpg", "http://puu.sh/m9PZd/a0b5745764.png", "https://i.imgur.com/pDehVAX.jpg", "http://puu.sh/m9PZP/dc11be8fd2.png"];
   client.reply(m, starterpackArray[Math.floor(Math.random() * starterpackArray.length)])
   return;
-}
+} 
 if (m.content.startsWith(`?lyin`)) { //memecontrol
   if (!checkCommand(m, `?lyin`)) return
   var lyinArray = ["http://puu.sh/mctJ7/cedbe724f2.png", "https://i.ytimg.com/vi/Zy6JfChIXxg/hqdefault.jpg", "♫ Why the fuck you lyin', why you always lyin', mmmmohh my god, stop fuckin lyyyinn'♪♫."]
   client.reply(m, lyinArray[Math.floor(Math.random() * lyinArray.length)])
   return;
-}
+} 
 if (m.content.startsWith(`?compliment`)){
 	var complimentArray = ["Hiya! Did you know any day spent with you is my favorite day?","Heya, I just wanted to tell you: when in doubt, smile!","Hey man, my life would suck without you. Thanks, you're great.","Phew! You're back. there’s rarely any dull moment when I’m with you. You're fabulous.", "Whoa, I like your socks. #sockswag ","Hey! I think our friendship is like a cup of tea, a special blend of you and me.","Hi! LOL your status was super funny!","Hey! I think you have a good fashion sense.","Hi! I wanted to let you know that you wear really cute sweaters.","Hi! You're my number one.","Hey, do you wanna build a snowman? It doesn't have to be a snowman~","Hey... I'd give you a tissue, for your issues.","Hi! Just letting you know that you can copy my math homework!","Heya, you're so fancy, you already know.","Hey friend, I'd invite you to my birthday party.","Hi! Just letting you know that your personality is brighter than the stars.","I love you!","Hi! You're spontaneous, and I love it!","Hey, I appreciate all of your opinions.","W-whoa... Your smile is breath taking.","Hi! You are the gravy to my mashed potatoes.","Hey, I'm so glad we met.","Hey, is it hot in here or is it just you?","Hi. I don't speak much English, but with you all I really need to say is beautiful.","Hey, I think you could survive a zombie apocalypse.","Y-you're so rad...","Heya friend! You're more fun than a barrel of monkeys.","Hi! You're nicer than a day on the beach.","Hey, you make me think of beautiful things, like strawberries.","Hi. You're more fun than bubble wrap.","Man, playing video games with you would be fun.","Hello, I'd like to know why you're so beautiful.","Hey, I think you could invent words and people would use them.","Hey, did you know there's 21 letters in the Alphabet? Oh wait. I forgot u, r, a, q, t! How stupid of me... :wink:","Hey! You're tastier than chicken soup when I have the flu.","Hi, are you a Beaver? Cause Dam!","Hey, why are you so talented? I can't Handel your musicality.", "Hi! Are you a train? because I choo,choo,choose you!", "You're beautiful no matter what they say","Hey... You're the apple in my eye, it still hurts but I love pain~", "Hey, are you wifi? Because I'm feeling a connection ;)", "Hey, did you know you are the USB port to my USB? We fit perfectly together.","Hi. Did you know you're the smoothest one of all? <3"]
 	var requestUrl = "http://www.insultgenerator.org/";
@@ -463,9 +458,9 @@ if (m.content.toLowerCase().startsWith(`${botMention} hi`) || m.content.toLowerC
   if (!checkCommand(m, ``)) return
   client.reply(m, "")
   return
-}
+} 
 */
-if (m.content.startsWith(`?8ball`)) {
+if (m.content.startsWith(`?8ball`)) { 
   userQuestion = (m.content).slice(7)
   var ballArray = ["Signs :arrow_right: to yes.", "Yeah.", "Try again.", "Without a doubt.", "Ebola-chan says no.", "I'd say yes.", "Go for it, fam.","It doesn't look so good...","Yep!", "Uh, I don't think you want to know.","It seems very doubtful.", "Ebola-chan says: \"Yes, definitely\"!", "Even I know it's certain!", "Err... Foggy, hazy, y'know.", "Probably!", "Perhaps you should ask later?", "No.", "It seems the outlook is good!","I wouldn't count on it."]
   if(m.content.length > 7){
@@ -480,7 +475,7 @@ if (m.content.startsWith(`?8ball`)) {
     client.reply(m, "You need to have a question or something...")
     return;
   }
-
+  
 }
 //if (m.content.startsWith(`?test1`)){}
 if (m.content.startsWith(`?mura`)) { //memecontrol
@@ -499,52 +494,52 @@ if (m.content.startsWith(`?chill`)) { //memecontrol
   if (!checkCommand(m, `?chill`)) return
   client.reply(m, "https://puu.sh/kt0cd/76e8460d30.png")
   return
-}
+} 
 if (m.content.startsWith(`?disgusting`)) { //FE disgusting
   if (!checkCommand(m, `?disgusting`)) return
   var disgustingArray = ["http://puu.sh/m9urN/727dc202f1.jpg", "http://puu.sh/m9uHU/55e21971c4.png", "http://puu.sh/m9usJ/42f703711b.jpg", "http://puu.sh/m9uKU/8e234f5886.png"]
   client.reply(m, disgustingArray[Math.floor(Math.random() * disgustingArray.length)])
   return
-}
+} 
 if (m.content.startsWith(`?murder`)) { //FE murder
   if (!checkCommand(m, `?murder`)) return
   var murderArray = ["http://puu.sh/m9uEl/c078d7d7e3.jpg", "http://puu.sh/m9uDB/66606e1c4d.png", "http://puu.sh/m9uFf/5c50e06e88.png", "http://puu.sh/m9uCe/e950f095af.png"]
   client.reply(m, murderArray[Math.floor(Math.random() * murderArray.length)])
   return
-}
+} 
 if (m.content.startsWith(`?clearly`)) { //embarassing...
   if (!checkCommand(m, `?clearly`)) return
   var ruseArray = ["http://puu.sh/m9upL/d08c7cae41.jpg", "http://puu.sh/m9uuY/c73bdb1d8c.jpg", "http://puu.sh/m9uJx/88d050f6fd.png"]
   client.reply(m, ruseArray[Math.floor(Math.random()*ruseArray.length)])
   return
-}
+} 
 if (m.content.startsWith(`?stiff`)) { //stiffies and panties
   if (!checkCommand(m, `?stiff`)) return
   var stiffArray = ["http://puu.sh/m9vhb/e8eb27f5e8.png", "http://puu.sh/m9unQ/5e94a9615e.jpg"]
   client.reply(m, stiffArray[Math.floor(Math.random()*stiffArray.length)])
   return
-}
+} 
 if (m.content.startsWith(`?sadness`)) { //memecontrol
   if (!checkCommand(m, `?sadness`)) return
   var sadArray = ["http://puu.sh/m9up0/97a92a25ae.png", "http://puu.sh/m9uua/882e72756e.png"]
   client.reply(m, sadArray[Math.floor(Math.random()*sadArray.length)])
   return
-}
+} 
 if (m.content.startsWith(`?peace`)) { //PEACE
   if (!checkCommand(m, `?peace`)) return
   client.reply(m, "http://puu.sh/m9uG8/de8d3f9f9e.png")
   return
-}
+} 
 if (m.content.startsWith(`?friends`)) { //PEACE
   if (!checkCommand(m, `?friends`)) return
   client.reply(m, "http://puu.sh/m9ux9/c2b3d3bfda.png")
   return
-}
+} 
 if (m.content.startsWith(`?shock`)) { //PEACE
   if (!checkCommand(m, `?shock`)) return
   client.reply(m, "http://puu.sh/m9uBc/f5f18e509c.png")
   return
-}
+} 
 if (m.content.startsWith(`?goodgirls`)){ //goodgrils
   if (!checkCommand(m, `?goodgirls`)) return
   client.reply(m, "http://puu.sh/m2X9z/d979127608.png")
@@ -555,7 +550,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
 
   if (m.content.startsWith(`?next`)) {
     // next !checkCommand(m, '?next')
-    if (userIsAdmin(m.author.id)) {
+    if (userIsAdmin(m.author.id)) { 
     playStopped();
     return;
     } else if((!userIsAdmin(m.author.id)) && (voteAllIDs.indexOf(m.author.id)<0)){
@@ -592,7 +587,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
       };
       return;
   };
-
+  
   if (m.content.startsWith(`${botMention} yq`) // youtube query
     || m.content.startsWith(`${botMention} qq`) // queue query
     || m.content.startsWith(`${botMention} pq`) // play query
