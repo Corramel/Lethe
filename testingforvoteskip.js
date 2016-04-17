@@ -126,13 +126,6 @@ client.on('message', m => {
     }
     return;
   }
-<<<<<<< HEAD
-  if (m.content.startsWith(`?EbolaChan`)){
-    var messageanswer = randEbolaPic.data.images[Math.floor(Math.random()*72)]
-    client.sendMessage(m.channel, messageanswer.replace(/\//g, "/"));
-  }
-=======
->>>>>>> parent of 0a0d2e3... formatted output.json and added pics
   if (m.content.startsWith(`?popcorn`)){
   	client.sendMessage(m.channel, "https://pbs.twimg.com/profile_images/597538481225752577/93eMVOd3.jpg")
   	return;
