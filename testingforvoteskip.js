@@ -37,6 +37,7 @@ var randomCompliment;
 var yourMomJoke;
 var randomInsult;
 var luckyOnes;
+var toParse;
 var messageArray = [];
 var voteAllIDs = [];
 var playQueue = [];
@@ -189,11 +190,12 @@ client.on('message', m => {
        var $ = cheerio.load(html);
        $('posts').filter(function(){
          var postData = $(this);
-         var toParse = postData.text();
+         toParse = postData.text();
        })
      }
    })
-   parseString(toParse, function(err, result){
+   var parsingINfo = toParse
+   parseString(parsingINfo, function(err, result){
      var fireemblemJSON = result
    });
    var randomPost = fireemblemJSON.posts.post[Math.floor(Math.random()*100)]
