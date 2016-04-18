@@ -190,7 +190,7 @@ client.on('message', m => {
      //console.log(body)
      if(!error){
        var $ = cheerio.load(body, {xmlMode : true});
-       global toParse = $('posts').text();
+       var toParse = $('posts').text();
        console.log(toParse);
        //console.log(toParse);
        /*(function(){
