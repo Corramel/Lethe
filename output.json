@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 {
    "data":{
       "id":"Xor4A",
@@ -3184,11 +3184,11 @@
             "section":null,
             "account_url":null,
             "account_id":null,
-            "in_gallery":false,
             "deletehash":"1k6FegUswP4kAR0",
             "name":"1427534111779-0",
             "link":"http:\/\/i.imgur.com\/fLx0SiR.png"
          },
+         "in_gallery":false,
          {
             "id":"556Ivv5",
             "title":null,
@@ -3378,4 +3378,3 @@
    "success":true,
    "status":200
 }
->>>>>>> 9ed1cbaa327fc4631ddeecf64e1ff728f82e98ec
