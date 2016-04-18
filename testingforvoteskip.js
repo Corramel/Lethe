@@ -192,6 +192,7 @@ client.on('message', m => {
        $('posts').filter(function(){
          var postData = $(this);
          toParse = postData.text();
+         console.log(toParse)
        })
      }
    })
