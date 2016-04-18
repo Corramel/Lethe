@@ -128,13 +128,10 @@ client.on('message', m => {
     return;
   }
   if (m.content.startsWith(`?EbolaChan`)){
-    var messageanswer = randEbolaPic.data.images[Math.floor(Math.random()*72)]
-<<<<<<< HEAD
+    var messageanswer = randEbolaPic.data.images[Math.floor(Math.random()*72)].link
+
     client.sendMessage(m.channel, messageanswer.replace(/\\\//g, "/"));
     return;
-=======
-    client.sendMessage(m.channel, messageanswer.replace(/\//g, "/"));
->>>>>>> parent of 72f258c... aaa
   }
   if (m.content.startsWith(`?popcorn`)){
   	client.sendMessage(m.channel, "https://pbs.twimg.com/profile_images/597538481225752577/93eMVOd3.jpg")
