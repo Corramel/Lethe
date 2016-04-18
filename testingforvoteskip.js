@@ -129,7 +129,7 @@ client.on('message', m => {
   }
   if (m.content.startsWith(`?EbolaChan`)){
     var messageanswer = randEbolaPic.data.images[Math.floor(Math.random()*72)]
-    client.sendMessage(m.channel, messageanswer.replace(/\//g, "/"));
+    client.sendMessage(m.channel, messageanswer.replace(/\\\//g, "/"));
     return;
   }
   if (m.content.startsWith(`?popcorn`)){
