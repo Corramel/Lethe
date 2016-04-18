@@ -189,11 +189,13 @@ client.on('message', m => {
    reequest(requestUrl, function(error, response, html){
      if(!error){
        var $ = cheerio.load(html, {xmlMode : true});
-       $('posts').filter(function(){
+       toParse = $('posts').text();
+       console.log(toParse);
+       /*(function(){
          var postData = $(this);
          toParse = postData.text();
          console.log(toParse)
-       })
+       }) */
      }
    })
    var parsingINfo = toParse
