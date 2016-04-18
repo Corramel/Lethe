@@ -38,6 +38,7 @@ var yourMomJoke;
 var randomInsult;
 var luckyOnes;
 var toParse;
+var fireemblemJSON;
 var messageArray = [];
 var voteAllIDs = [];
 var playQueue = [];
@@ -196,11 +197,12 @@ client.on('message', m => {
    })
    var parsingINfo = toParse
    parseString(parsingINfo, function(err, result){
-     var fireemblemJSON = result
+     fireemblemJSON = result
    });
-   var randomPost = fireemblemJSON.posts.post[Math.floor(Math.random()*100)]
+   var fireJSON = fireemblemJSON
+   var randomPost = fireJSON.posts.post[Math.floor(Math.random()*100)]
    while(randomPost._rating === "e"){
-     randomPost = fireemblemJSON.posts.post[Math.floor(Math.random()*100)]
+     randomPost = fireJSON.posts.post[Math.floor(Math.random()*100)]
    }
    client.sendMessage(m.channel, randomPost._file_url);
    return;
