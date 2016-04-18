@@ -187,6 +187,7 @@ client.on('message', m => {
  if (m.content.startsWith(`?fireemblempic`)){
    var requestUrl = "http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=fire_emblem_if&rating=s"
    reequest(requestUrl, function(error, response, body){
+     console.log(body)
      if(!error){
        var $ = cheerio.load(body, {xmlMode : true});
        toParse = $('posts').text();
