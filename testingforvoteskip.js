@@ -198,6 +198,7 @@ client.on('message', m => {
    var parsingINfo = toParse
    parseString(parsingINfo, function(err, result){
      fireemblemJSON = result
+     console.log(result)
    });
    var fireJSON = fireemblemJSON
    var randomPost = fireJSON.posts.post[Math.floor(Math.random()*100)]
