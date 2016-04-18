@@ -190,7 +190,7 @@ client.on('message', m => {
      //console.log(body)
      if(!error){
        var $ = cheerio.load(body, {xmlMode : true});
-       toParse = $('posts').text();
+       global toParse = $('posts').text();
        console.log(toParse);
        //console.log(toParse);
        /*(function(){
@@ -201,6 +201,7 @@ client.on('message', m => {
      }
    })
    var parsingINfo = toParse
+   console.log(parsingINfo)
    parseString(parsingINfo, function(err, result){
      fireemblemJSON = result
      console.log(result)
