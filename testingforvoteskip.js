@@ -187,11 +187,11 @@ client.on('message', m => {
  if (m.content.startsWith(`?fireemblempic`)){
    var requestUrl = "http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=fire_emblem_if&rating=s"
    reequest(requestUrl, function(error, response, body){
-     console.log(body)
+     //console.log(body)
      if(!error){
        var $ = cheerio.load(body, {xmlMode : true});
        toParse = $('posts').text();
-       console.log(toParse);
+       //console.log(toParse);
        /*(function(){
          var postData = $(this);
          toParse = postData.text();
@@ -203,8 +203,9 @@ client.on('message', m => {
    parseString(parsingINfo, function(err, result){
      fireemblemJSON = result
      console.log(result)
+     console.log(fireemblemJSON)
    });
-   var fireJSON = fireemblemJSON
+   //var fireJSON = fireemblemJSON
    var randomPost = fireJSON.posts.post[Math.floor(Math.random()*100)]
    while(randomPost._rating === "e"){
      randomPost = fireJSON.posts.post[Math.floor(Math.random()*100)]
