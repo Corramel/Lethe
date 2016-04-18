@@ -6,6 +6,7 @@ var reequest = require('request');
 var url = require('url');
 var express = require('express');
 var cheerio = require('cheerio');
+var parseString = require('xml2js').parseString;
 var app = express();
 // Output version information in console
 var git = require('git-rev');
@@ -134,9 +135,6 @@ client.on('message', m => {
     client.sendMessage(m.channel, messageanswer.replace(/\\\//g, "/"));
     return;
   }
-  if (m.content.startsWith(`?imgur`)){
-
-  }
   if (m.content.startsWith(`?popcorn`)){
   	client.sendMessage(m.channel, "https://pbs.twimg.com/profile_images/597538481225752577/93eMVOd3.jpg")
   	return;
@@ -184,7 +182,28 @@ client.on('message', m => {
         }
       }
    }
+ if (m.content.startsWith(`?fireemblempic`)){
+   var requestUrl = "http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=fire_emblem_if&rating=s"
+   reequest(requestUrl, function(error, response, html){
+     if(!error){
+       var $ = cheerio.load(html);
+       $('posts').filter(function(){
+         var postData = $(this);
+         var toParse = postData.text();
+       })
+     }
+   })
+   parseString(toParse, function(err, result){
+     var fireemblemJSON = result
+   });
+   var randomPost = fireemblemJSON.posts.post[Math.floor(Math.random()*100)]
+   while(randomPost._rating === "e"){
+     randomPost = fireemblemJSON.posts.post[Math.floor(Math.random()*100)]
+   }
+   client.sendMessage(m.channel, randomPost._file_url);
+   return;
 
+ }
  if (m.content.startsWith(`?yomom`)) { //Testing 4 jokes
     if (!checkCommand(m, `?yomom`)) return
     var requestUrl = "http://yomomma.info/"

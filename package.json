@@ -27,7 +27,7 @@
     "git-rev": "^0.2.1",
     "express": "latest",
     "cheerio": "latest",
-    "node-xml2js": "latest"
+    "xml2js": "latest"
   },
   "version": "1.0.0"
 }
