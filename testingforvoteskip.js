@@ -22,7 +22,7 @@ var YoutubeTrack = require('./lib/youtube-track.js');
 
 var Util = require('./lib/util.js');
 var Config = require('./lib/config.js');
-var randEbolaPic = require('./output.json');
+var randEbolaPic = require('./lib/ebolachaninfo.json');
 var CURRENT_REV = 3;
 
 var client = new Discord.Client();
@@ -42,6 +42,7 @@ var playQueue = [];
 var boundChannel = false;
 var currentStream = false;
 var ownerID = "81526338728501248"
+var imgurKey = "7e434a22b72652ce49644e5fc337e5711327f1f4"
 var voteCount = 0;
 var voteTotalCount = 0;
 // Video that is currently being played
@@ -132,6 +133,9 @@ client.on('message', m => {
 
     client.sendMessage(m.channel, messageanswer.replace(/\\\//g, "/"));
     return;
+  }
+  if (m.content.startsWith(`?imgur`)){
+
   }
   if (m.content.startsWith(`?popcorn`)){
   	client.sendMessage(m.channel, "https://pbs.twimg.com/profile_images/597538481225752577/93eMVOd3.jpg")

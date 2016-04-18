@@ -26,7 +26,8 @@
     "node-opus": "^0.1.11",
     "git-rev": "^0.2.1",
     "express": "latest",
-    "cheerio": "latest"
+    "cheerio": "latest",
+    "node-xml2js": "latest"
   },
   "version": "1.0.0"
 }
