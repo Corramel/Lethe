@@ -198,15 +198,16 @@ client.on('message', m => {
          toParse = postData.text();
          console.log(toParse)
        }) */
+       var parsingINfo = toParse
+       console.log(parsingINfo)
+       parseString(parsingINfo, function(err, result){
+         fireemblemJSON = result
+         console.log(result)
+         console.log(fireemblemJSON)
+       });
      }
    })
-   var parsingINfo = toParse
-   console.log(parsingINfo)
-   parseString(parsingINfo, function(err, result){
-     fireemblemJSON = result
-     console.log(result)
-     console.log(fireemblemJSON)
-   });
+
    //var fireJSON = fireemblemJSON
    var randomPost = fireJSON.posts.post[Math.floor(Math.random()*100)]
    while(randomPost._rating === "e"){
