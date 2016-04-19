@@ -198,9 +198,9 @@ client.on('message', m => {
          toParse = postData.text();
          console.log(toParse)
        }) */
-       var parsingINfo = toParse
-       console.log(parsingINfo)
-       parseString(parsingINfo, function(err, result){
+       //var parsingINfo = toParse
+       //console.log(parsingINfo)
+       parseString(toParse, function(err, result){
          fireemblemJSON = result
          console.log(result)
          console.log(fireemblemJSON)
