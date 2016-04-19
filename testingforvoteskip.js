@@ -209,7 +209,7 @@ client.on('message', m => {
        });
      }
    }
-});
+};
  };
  if (m.content.startsWith(`?dspic`)){
    var requestUrl = "http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=dark_souls&rating=s"
@@ -234,7 +234,7 @@ client.on('message', m => {
          )
        });
      }
-});
+};
  }
  };
  if (m.content.startsWith(`?yomom`)) { //Testing 4 jokes
