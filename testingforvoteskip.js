@@ -185,7 +185,7 @@ client.on('message', m => {
         }
       }
    }
- if (m.content.startsWith(`?fireemblempic`)){
+ if (m.content.startsWith(`?fepic`)){
    var requestUrl = "http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=fire_emblem_if&rating=s"
    reequest(requestUrl, function(error, response, html){
      //console.log(body)
@@ -211,7 +211,7 @@ client.on('message', m => {
              var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
              //console.log(result.posts.post[Math.floor(Math.random()*result.posts.post.length)].file_url)
              while(randomPost.rating === "e"){
-               randomPost = result.posts.post[Math.floor(Math.random()*results.posts.post.length)].$
+               randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
              }
              client.sendMessage(m.channel, randomPost.file_url);
              return;
