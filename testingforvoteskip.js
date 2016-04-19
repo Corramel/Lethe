@@ -189,16 +189,17 @@ client.on('message', m => {
    reequest(requestUrl, function(error, response, body){
      //console.log(body)
      if(!error){
+       var XMLS = new XMLSerializer();
        var $ = cheerio.load(body, {xmlMode : true});
        var toParse = $('posts').text();
-       console.log(toParse);
+       console.log(XML.serializeToString(toParse));
        //console.log(toParse);
        /*(function(){
          var postData = $(this);
          toParse = postData.text();
          console.log(toParse)
        }) */
-       //var parsingINfo = toParse
+       var parsingINfo = XML.serializeToString(toParse);
        //console.log(parsingINfo)
        parseString(toParse, function(err, result){
          fireemblemJSON = result
