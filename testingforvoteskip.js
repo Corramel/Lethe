@@ -202,7 +202,7 @@ client.on('message', m => {
          }) */
          var parsingINfo = parsingInfo;
          //console.log(parsingINfo)
-         parseString(toParse, function(err, result){
+         parseString(parsingINfo, function(err, result){
            fireemblemJSON = result
            console.log(result)
            console.log(fireemblemJSON)
