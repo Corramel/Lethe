@@ -1,5 +1,6 @@
 var Discord = require('discord.js');
 
+var util = require('util');
 var ytdl = require('ytdl-core');
 var request = require('superagent');
 var reequest = require('request');
