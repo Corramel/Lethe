@@ -205,8 +205,7 @@ client.on('message', m => {
          //console.log(parsingINfo)
          parseString(toParse, function(err, result){
            //console.log(util.inspect(result, false, null))
-             var fireJSON = JSON.parse(result)
-
+             var fireJSON = JSON.parse(result.posts);
              console.log(util.inspect(fireJSON.posts.post[1].sample_url,false,null));
             //console.log(util.inspect(fireJSON, false, null));
              var randomPost = fireJSON.posts.post[Math.floor(Math.random()*100)]
