@@ -206,10 +206,10 @@ client.on('message', m => {
          parseString(toParse, function(err, result){
            //console.log(util.inspect(result, false, null))
              var fireJSON = result
-            console.log(util.inspect(fireJSON, false, null))
-             var randomPost = fireJSON.posts.$[Math.floor(Math.random()*100)]
+            console.log(fireJSON)
+             var randomPost = fireJSON.posts.post[Math.floor(Math.random()*100)]
              while(randomPost.rating === "e"){
-               randomPost = fireJSON.posts.$[Math.floor(Math.random()*100)]
+               randomPost = fireJSON.posts.post[Math.floor(Math.random()*100)]
              }
              client.sendMessage(m.channel, randomPost.file_url);
              return;
