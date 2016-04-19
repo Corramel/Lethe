@@ -192,14 +192,14 @@ client.on('message', m => {
        var XMLS = new XMLSerializer();
        var $ = cheerio.load(body, {xmlMode : true});
        var toParse = $('posts').text();
-       console.log(XMLS.serializeToString(toParse));
+       console.log(XMLSerializer.serializeToString(toParse));
        //console.log(toParse);
        /*(function(){
          var postData = $(this);
          toParse = postData.text();
          console.log(toParse)
        }) */
-       var parsingINfo = XMLS.serializeToString(toParse);
+       var parsingINfo = XMLSerializer.serializeToString(toParse);
        //console.log(parsingINfo)
        parseString(toParse, function(err, result){
          fireemblemJSON = result
