@@ -207,6 +207,7 @@ client.on('message', m => {
            //console.log(util.inspect(result, false, null))
              var fireJSON = result
              console.log(util.inspect(fireJSON, false, null));
+             console.log(util.inspect(result.posts.post),false,null);
              var randomPost = fireJSON.posts.post[Math.floor(Math.random()*100)]
              console.log(result.posts.post[Math.floor(Math.random()*result.posts.post.length)].file_url)
              client.sendMessage(m.channel, JSON.stringify(result.posts.post[Math.floor(Math.random()*result.posts.post.length)].file_url));
