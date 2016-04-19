@@ -190,9 +190,9 @@ client.on('message', m => {
    reequest(requestUrl, function(error, response, html){
      //console.log(body)
      if(!error){
-       var $ = cheerio.load(html, {xmlMode : true});
-       $('posts').filter(function(){
-         var toParse = $(this);
+       var cheerio$ = cheerio.load(html, {xmlMode : true});
+       cheerio$('posts').filter(function(){
+         var toParse = cheerio$(this);
          var parsingInfo = toParse.text();
          console.log(parsingInfo);
          //console.log(toParse);
