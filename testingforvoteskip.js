@@ -186,60 +186,54 @@ client.on('message', m => {
       }
    }
  if (m.content.startsWith(`?fepic`)){
-   var requestUrl = "http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=fire_emblem_if&rating=s"
+   var requestUrl = "http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=fire_emblem&rating=s"
    reequest(requestUrl, function(error, response, html){
-     //console.log(body)
+
      if(!error){
        var cheerio$ = cheerio.load(html, {xmlMode : true});
        cheerio$('posts').filter(function(){
          var toParse = cheerio$(this);
          var parsingInfo = toParse.text();
-         //console.log(parsingInfo);
-         //console.log(toParse);
-         /*(function(){
-           var postData = $(this);
-           toParse = postData.text();
-           console.log(toParse)
-         }) */
-         var parsingINfo = parsingInfo;
-         //console.log(parsingINfo)
-         parseString(toParse, function(err, result){
-           //console.log(util.inspect(result, false, null))
-             //var fireJSON = result.posts
-             //console.log(util.inspect(result.posts.post[1].$.rating,false,null));
-            //console.log(util.inspect(fireJSON, false, null));
+
+         parseString(toParse, function(err, result
+
              var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
-             //console.log(result.posts.post[Math.floor(Math.random()*result.posts.post.length)].file_url)
+
              while(randomPost.rating === "e" || randomPost.rating === "q"){
                randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
              }
              client.sendMessage(m.channel, randomPost.file_url);
              return;
+           )
+         )
        });
-       /* console.log(parsingInfo);
-       //console.log(toParse);
-       /*(function(){
-         var postData = $(this);
-         toParse = postData.text();
-         console.log(toParse)
-       })
-       var parsingINfo = parsingInfo;
-       //console.log(parsingINfo)
-       parseString(toParse, function(err, result){
-         fireemblemJSON = result
-         console.log(result)
-         console.log(fireemblemJSON)
-           var fireJSON = fireemblemJSON
-           var randomPost = fireJSON.posts.post[Math.floor(Math.random()*100)]
-           while(randomPost._rating === "e"){
-             randomPost = fireJSON.posts.post[Math.floor(Math.random()*100)]
-           }
-           client.sendMessage(m.channel, randomPost._file_url);
-           return;
-       }); */
-   });
- }
- })
+     }
+});
+ };
+ if (m.content.startsWith(`?dspic`)){
+   var requestUrl = "http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=dark_souls&rating=s"
+   reequest(requestUrl, function(error, response, html){
+
+     if(!error){
+       var cheerio$ = cheerio.load(html, {xmlMode : true});
+       cheerio$('posts').filter(function(){
+         var toParse = cheerio$(this);
+         var parsingInfo = toParse.text();
+
+         parseString(toParse, function(err, result
+
+             var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
+
+             while(randomPost.rating === "e" || randomPost.rating === "q"){
+               randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
+             }
+             client.sendMessage(m.channel, randomPost.file_url);
+             return;
+           )
+         )
+       });
+     }
+});
  };
  if (m.content.startsWith(`?yomom`)) { //Testing 4 jokes
     if (!checkCommand(m, `?yomom`)) return
