@@ -205,12 +205,15 @@ client.on('message', m => {
          //console.log(parsingINfo)
          parseString(toParse, function(err, result){
            //console.log(util.inspect(result, false, null))
-             var fireJSON = result.posts
-             console.log(util.inspect(result.posts.post[1].$.rating,false,null));
+             //var fireJSON = result.posts
+             //console.log(util.inspect(result.posts.post[1].$.rating,false,null));
             //console.log(util.inspect(fireJSON, false, null));
-             var randomPost = fireJSON.posts.post[Math.floor(Math.random()*100)]
+             var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
              //console.log(result.posts.post[Math.floor(Math.random()*result.posts.post.length)].file_url)
-             client.sendMessage(m.channel, JSON.stringify(result.posts.post[Math.floor(Math.random()*result.posts.post.length)]. file_url));
+             while(randomPost.rating === "e"){
+               randomPost = result.posts.post[Math.floor(Math.random()*results.posts.post.length)].$
+             }
+             client.sendMessage(m.channel, randomPost.file_url));
              return;
        });
        /* console.log(parsingInfo);
