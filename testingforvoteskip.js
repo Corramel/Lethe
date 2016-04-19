@@ -206,7 +206,7 @@ client.on('message', m => {
          parseString(toParse, function(err, result){
            //console.log(util.inspect(result, false, null))
              var fireJSON = result.posts
-             console.log(util.inspect(result.posts.post[1]. file_url,false,null));
+             console.log(util.inspect(result.posts.post[1].rating,false,null));
             //console.log(util.inspect(fireJSON, false, null));
              var randomPost = fireJSON.posts.post[Math.floor(Math.random()*100)]
              //console.log(result.posts.post[Math.floor(Math.random()*result.posts.post.length)].file_url)
