@@ -208,6 +208,7 @@ client.on('message', m => {
              var fireJSON = result
             console.log(fireJSON)
              var randomPost = fireJSON.posts.post[Math.floor(Math.random()*100)]
+             console.log(fireJSON.posts.post[Math.floor(Math.random()*100)].file_url)
              client.sendMessage(m.channel, fireJSON.posts.post[Math.floor(Math.random()*100)].file_url);
              return;
        });
