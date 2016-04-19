@@ -195,7 +195,7 @@ client.on('message', m => {
          var toParse = cheerio$(this);
          var parsingInfo = toParse.text();
 
-         parseString(toParse, function(err, result
+         parseString(toParse, function(err, result)
 
              var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
 
@@ -220,7 +220,7 @@ client.on('message', m => {
          var toParse = cheerio$(this);
          var parsingInfo = toParse.text();
 
-         parseString(toParse, function(err, result
+         parseString(toParse, function(err, result)
 
              var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
 
