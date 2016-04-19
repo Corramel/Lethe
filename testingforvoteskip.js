@@ -194,7 +194,7 @@ client.on('message', m => {
        cheerio$('posts').filter(function(){
          var toParse = cheerio$(this);
          var parsingInfo = toParse.text();
-         console.log(parsingInfo);
+         //console.log(parsingInfo);
          //console.log(toParse);
          /*(function(){
            var postData = $(this);
@@ -205,8 +205,8 @@ client.on('message', m => {
          //console.log(parsingINfo)
          parseString(toParse, function(err, result){
            //console.log(util.inspect(result, false, null))
-             var fireJSON = JSON.parse(result.posts);
-             console.log(util.inspect(fireJSON.posts.post[1].sample_url,false,null));
+             var fireJSON = result.posts
+             console.log(util.inspect(fireJSON.post[1].sample_url,false,null));
             //console.log(util.inspect(fireJSON, false, null));
              var randomPost = fireJSON.posts.post[Math.floor(Math.random()*100)]
              //console.log(result.posts.post[Math.floor(Math.random()*result.posts.post.length)].file_url)
