@@ -204,13 +204,12 @@ client.on('message', m => {
              }
              client.sendMessage(m.channel, randomPost.file_url);
              return;
-           )
-         )
-       });
-     }
-   }
+           });
+         });
+     };
+   });
 };
- };
+
  if (m.content.startsWith(`?dspic`)){
    var requestUrl = "http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=dark_souls&rating=s"
    reequest(requestUrl, function(error, response, html){
@@ -230,13 +229,12 @@ client.on('message', m => {
              }
              client.sendMessage(m.channel, randomPost.file_url);
              return;
-           )
-         )
-       });
-     }
+           });
+         });
+       }
+     });
 };
- }
- };
+
  if (m.content.startsWith(`?yomom`)) { //Testing 4 jokes
     if (!checkCommand(m, `?yomom`)) return
     var requestUrl = "http://yomomma.info/"
