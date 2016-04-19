@@ -213,7 +213,7 @@ client.on('message', m => {
              while(randomPost.rating === "e"){
                randomPost = result.posts.post[Math.floor(Math.random()*results.posts.post.length)].$
              }
-             client.sendMessage(m.channel, randomPost.file_url));
+             client.sendMessage(m.channel, randomPost.file_url);
              return;
        });
        /* console.log(parsingInfo);
