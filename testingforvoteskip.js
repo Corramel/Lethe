@@ -209,7 +209,7 @@ client.on('message', m => {
             console.log(fireJSON)
              var randomPost = fireJSON.posts.post[Math.floor(Math.random()*100)]
              console.log(fireJSON.posts.post[Math.floor(Math.random()*100)].file_url)
-             client.sendMessage(m.channel, fireJSON.posts.post[Math.floor(Math.random()*100)].file_url);
+             client.sendMessage(m.channel, JSON.stringify(fireJSON.posts.post[Math.floor(Math.random()*100)].file_url));
              return;
        });
        /* console.log(parsingInfo);
