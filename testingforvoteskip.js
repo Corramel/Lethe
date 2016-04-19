@@ -134,7 +134,7 @@ client.on('message', m => {
   }
   if (m.content.startsWith(`?EbolaChan`)){
     var messageanswer = randEbolaPic.data.images[Math.floor(Math.random()*72)].link
-
+    console.log(randEbolaPic)
     client.sendMessage(m.channel, messageanswer.replace(/\\\//g, "/"));
     return;
   }
