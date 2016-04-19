@@ -204,14 +204,14 @@ client.on('message', m => {
          var parsingINfo = parsingInfo;
          //console.log(parsingINfo)
          parseString(toParse, function(err, result){
-           console.log(util.inspect(result, false, null))
-           console.log(fireemblemJSON)
+           //console.log(util.inspect(result, false, null))
              var fireJSON = result
-             var randomPost = fireJSON.posts.post[Math.floor(Math.random()*100)]
-             while(randomPost._rating === "e"){
-               randomPost = fireJSON.posts.post[Math.floor(Math.random()*100)]
+            console.log(util.inspect(fireJSON, false, null))
+             var randomPost = fireJSON.posts.$[Math.floor(Math.random()*100)]
+             while(randomPost.rating === "e"){
+               randomPost = fireJSON.posts.$[Math.floor(Math.random()*100)]
              }
-             client.sendMessage(m.channel, randomPost._file_url);
+             client.sendMessage(m.channel, randomPost.file_url);
              return;
        });
        /* console.log(parsingInfo);
