@@ -27,7 +27,6 @@ var randEbolaPic = require('./lib/ebolachaninfo.json');
 var CURRENT_REV = 3;
 
 var client = new Discord.Client();
-var XMLS = new XMLSerializer();
 
 // Handle discord.js warnings
 client.on('warn', (m) => console.log('[warn]', m));
@@ -192,14 +191,14 @@ client.on('message', m => {
      if(!error){
        var $ = cheerio.load(html, {xmlMode : true});
        var toParse = $('posts').text();
-       console.log(XMLS.serializeToString(toParse));
+       console.log(toParse);
        //console.log(toParse);
        /*(function(){
          var postData = $(this);
          toParse = postData.text();
          console.log(toParse)
        }) */
-       var parsingINfo = XMLS.serializeToString(toParse);
+       var parsingINfo = toParse;
        //console.log(parsingINfo)
        parseString(toParse, function(err, result){
          fireemblemJSON = result
