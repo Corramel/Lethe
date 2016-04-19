@@ -235,9 +235,9 @@ client.on('message', m => {
            client.sendMessage(m.channel, randomPost._file_url);
            return;
        }); */
-     }
-   })
+   });
  }
+ })
  };
  if (m.content.startsWith(`?yomom`)) { //Testing 4 jokes
     if (!checkCommand(m, `?yomom`)) return
