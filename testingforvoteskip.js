@@ -210,7 +210,7 @@ client.on('message', m => {
             //console.log(util.inspect(fireJSON, false, null));
              var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
              //console.log(result.posts.post[Math.floor(Math.random()*result.posts.post.length)].file_url)
-             while(randomPost.rating === "e"){
+             while(randomPost.rating === "e" || randomPost.rating === "q"){
                randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
              }
              client.sendMessage(m.channel, randomPost.file_url);
