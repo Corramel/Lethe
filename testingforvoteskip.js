@@ -193,14 +193,34 @@ client.on('message', m => {
        $('posts').filter(function(){
          var toParse = $(this);
          var parsingInfo = toParse.text();
+         console.log(parsingInfo);
+         //console.log(toParse);
+         /*(function(){
+           var postData = $(this);
+           toParse = postData.text();
+           console.log(toParse)
+         }) */
+         var parsingINfo = parsingInfo;
+         //console.log(parsingINfo)
+         parseString(toParse, function(err, result){
+           fireemblemJSON = result
+           console.log(result)
+           console.log(fireemblemJSON)
+             var fireJSON = fireemblemJSON
+             var randomPost = fireJSON.posts.post[Math.floor(Math.random()*100)]
+             while(randomPost._rating === "e"){
+               randomPost = fireJSON.posts.post[Math.floor(Math.random()*100)]
+             }
+             client.sendMessage(m.channel, randomPost._file_url);
+             return;
        });
-       console.log(parsingInfo);
+       /* console.log(parsingInfo);
        //console.log(toParse);
        /*(function(){
          var postData = $(this);
          toParse = postData.text();
          console.log(toParse)
-       }) */
+       })
        var parsingINfo = parsingInfo;
        //console.log(parsingINfo)
        parseString(toParse, function(err, result){
@@ -214,7 +234,7 @@ client.on('message', m => {
            }
            client.sendMessage(m.channel, randomPost._file_url);
            return;
-       });
+       }); */
      }
    })
  };
