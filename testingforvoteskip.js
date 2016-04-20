@@ -186,7 +186,7 @@ client.on('message', m => {
       }
    }
  if (m.content.startsWith(`?fepic`)){
-   var requestUrl = "http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=fire_emblem&rating=s"
+   var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=fire_emblem&rating=s&pid=${Math.floor(Math.random()*100)}`
    reequest(requestUrl, function(error, response, html){
 
      if(!error){
