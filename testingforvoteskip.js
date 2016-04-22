@@ -80,14 +80,14 @@ client.on('message', m => {
   if (m.content.startsWith(`${botMention} info`)) {
     if (!checkCommand(m, 'info')) return;
     git.short(commit => git.branch(branch => {
-      client.reply(m, `Version: \`Lethe#${branch}@${commit}\` (cf: ${Config.configRev} cr: ${CURRENT_REV}). Info about Lethe can be found at https://github.com/meew0/Lethe.`);
+      client.reply(m, `https://github.com/Corramel/Lethe; a bot that has been modified for memes and other funposting. Original bot can be found here:https://github.com/meew0/Lethe`);
     }));
     return;
   }
 
   if (m.content.startsWith(`${botMention} help`)) { // help
     if (!checkCommand(m, 'help')) return;
-    client.reply(m, 'Usage info can be found here: https://github.com/meew0/Lethe/wiki/Usage');
+    client.reply(m, 'commands are coming soon, there are a lot of commands.');
     return;
   }
 
