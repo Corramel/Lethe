@@ -135,7 +135,7 @@ client.on('message', m => {
 
   if (m.content.startsWith(`?yourdone`)){
     midoriArray = [`http://i.imgur.com/ki4865P.png`, `https://youtu.be/8S_8CX4YD-8?t=832`]
-    client.sendMessage(m.channel, midoriArray[Math.Floor(Math.random())])
+    client.sendMessage(m.channel, midoriArray[Math.floor(Math.random())])
   }
   if (m.content.startsWith(`?EbolaChan`)){
     var messageanswer = randEbolaPic.data.images[Math.floor(Math.random()*72)].link
