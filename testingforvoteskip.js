@@ -191,7 +191,7 @@ client.on('message', m => {
       }
    }
    if (m.content.startsWith(`?perfect`)){
-     var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=lucina&rating=s&pid=${Math.floor(Math.random()*100)}`
+     var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=lucina&rating=s&pid=${Math.floor(Math.random()*25)}`
      reequest(requestUrl, function(error, response, html){
 
        if(!error){
