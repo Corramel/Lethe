@@ -190,6 +190,30 @@ client.on('message', m => {
         }
       }
    }
+   if (m.content.startsWith(`?perfect`)){
+     var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=lucina&rating=s&pid=${Math.floor(Math.random()*100)}`
+     reequest(requestUrl, function(error, response, html){
+
+       if(!error){
+         var cheerio$ = cheerio.load(html, {xmlMode : true});
+         cheerio$('posts').filter(function(){
+           var toParse = cheerio$(this);
+           var parsingInfo = toParse.text();
+
+           parseString(toParse, function(err, result){
+
+               var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
+
+               while(randomPost.rating === "e" || randomPost.rating === "q"){
+                 randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
+               }
+               client.sendMessage(m.channel, randomPost.file_url);
+               return;
+             });
+           });
+       };
+     });
+  };
  if (m.content.startsWith(`?fepic`)){
    var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=fire_emblem&rating=s&pid=${Math.floor(Math.random()*100)}`
    reequest(requestUrl, function(error, response, html){
