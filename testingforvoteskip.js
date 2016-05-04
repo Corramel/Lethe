@@ -381,6 +381,10 @@ if (m.content.startsWith(`?google`)) { // google
   client.reply(m, googleSearch)
   return;
 }
+if (m.content.startsWith(`?justacustom`)){
+  client.sendMessage(m.channel, "http://puu.sh/oDGoc/41e9c94583.jpg")
+  return;
+}
 if (m.content.startsWith(`?asexual`) || m.content.startsWith(`?kuro`) || m.content.startsWith(`?aromantic`)) { //kuro
   if (!checkCommand(m, `?asexual`)) return
   var kuroArray = ["http://puu.sh/mev31/7dde568741.png", "https://puu.sh/lSqgq/6015ed7c50.png", "https://puu.sh/m7mJf/3b295db195.png", "https://puu.sh/m8u7L/e20325a995.png",]
