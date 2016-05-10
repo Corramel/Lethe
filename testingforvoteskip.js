@@ -230,8 +230,8 @@ client.on('message', m => {
           var parsingInfo = toParse.text();
 
           parseString(toParse, function(err, result){
-              var lengthOfPosts = result.posts.post.length
-              console.log(lengthOfPosts);
+              //var lengthOfPosts = result.posts.post.length
+              //console.log(lengthOfPosts);
               var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
 
               while(randomPost.rating === "e" || randomPost.rating === "q"){
