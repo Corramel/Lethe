@@ -201,11 +201,13 @@ client.on('message', m => {
            var parsingInfo = toParse.text();
 
            parseString(toParse, function(err, result){
+             var lengthOfPosts = result.posts.post.length
+             console.log(lengthOfPosts);
 
-               var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
+               var randomPost = result.posts.post[Math.floor(Math.random()*lengthOfPosts)].$
 
                while(randomPost.rating === "e" || randomPost.rating === "q"){
-                 randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
+                 randomPost = result.posts.post[Math.floor(Math.random()*lengthOfPosts)].$
                }
                client.sendMessage(m.channel, randomPost.file_url);
                return;
