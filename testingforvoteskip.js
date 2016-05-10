@@ -244,7 +244,9 @@ client.on('message', m => {
       };
     });
  }
- };
+ }.addEventListener(error, function(){
+   console.log("An Error occurred, this is most likely not an issue.")
+ });
  if (m.content.startsWith(`?fepic`)){
    var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=fire_emblem&rating=s&`
    reequest(requestUrl, function(error, response, html){
