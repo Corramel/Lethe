@@ -201,13 +201,12 @@ client.on('message', m => {
            var parsingInfo = toParse.text();
 
            parseString(toParse, function(err, result){
-             console.log(result.posts.post.length);
-             //console.log(lengthOfPosts);
 
-               var randomPost = result.posts.post[Math.floor(Math.random()*1)].$
+
+               var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
 
                while(randomPost.rating === "e" || randomPost.rating === "q"){
-                 randomPost = result.posts.post[Math.floor(Math.random()*1)].$
+                 randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
                }
                client.sendMessage(m.channel, randomPost.file_url);
                return;
@@ -233,10 +232,10 @@ client.on('message', m => {
           parseString(toParse, function(err, result){
               var lengthOfPosts = result.posts.post.length
               console.log(lengthOfPosts);
-              var randomPost = result.posts.post[Math.floor(Math.random()*lengthOfPosts)].$
+              var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
 
               while(randomPost.rating === "e" || randomPost.rating === "q"){
-                randomPost = result.posts.post[Math.floor(Math.random()*lengthOfPosts)].$
+                randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
               }
               client.sendMessage(m.channel, randomPost.file_url);
               return;
