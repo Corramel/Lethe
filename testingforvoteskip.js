@@ -215,7 +215,7 @@ client.on('message', m => {
      });
   };
  if (m.content.startsWith(`?fepic`)){
-   var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=fire_emblem&rating=s&pid=${Math.floor(Math.random()*100)}`
+   var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=fire_emblem&rating=s&pid=${Math.floor(Math.random()*14 + 1)}`
    reequest(requestUrl, function(error, response, html){
 
      if(!error){
@@ -240,7 +240,7 @@ client.on('message', m => {
 };
 
  if (m.content.startsWith(`?dspic`)){
-   var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=dark_souls&rating=s&pid=${Math.floor(Math.random()*100)}`
+   var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=dark_souls&rating=s&pid=${Math.floor(Math.random()*14 + 1)}`
    reequest(requestUrl, function(error, response, html){
 
      if(!error){
@@ -264,7 +264,7 @@ client.on('message', m => {
      });
 };
 if (m.content.startsWith(`?hibiki`)){
-  var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=hibiki_(kantai_collection)&rating=s&pid=${Math.floor(Math.random()*100)}`
+  var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=hibiki_(kantai_collection)&rating=s&pid=${Math.floor(Math.random()*14 + 1)}`
   reequest(requestUrl, function(error, response, html){
 
     if(!error){
@@ -288,7 +288,7 @@ if (m.content.startsWith(`?hibiki`)){
     });
 };
 if (m.content.startsWith(`?akatsuki`)){
-  var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=akatsuki_(kantai_collection)&rating=s&pid=${Math.floor(Math.random()*100)}`
+  var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=akatsuki_(kantai_collection)&rating=s&pid=${Math.floor(Math.random()*14 + 1)}`
   reequest(requestUrl, function(error, response, html){
 
     if(!error){
@@ -312,7 +312,7 @@ if (m.content.startsWith(`?akatsuki`)){
     });
 };
 if (m.content.startsWith(`?cc`)){
-  var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=c.c&rating=s&pid=${Math.floor(Math.random()*100)}`
+  var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=c.c.&rating=s&pid=${Math.floor(Math.random()*14 + 1)}`
   reequest(requestUrl, function(error, response, html){
 
     if(!error){
