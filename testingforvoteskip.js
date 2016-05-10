@@ -232,10 +232,16 @@ client.on('message', m => {
           parseString(toParse, function(err, result){
               //var lengthOfPosts = result.posts.post.length
               //console.log(lengthOfPosts);
-              var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
+              var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$.addEventListener(error, function(){
+                console.log("An Error occurred, this is most likely not an issue.")
+                return;
+              });
 
               while(randomPost.rating === "e" || randomPost.rating === "q"){
-                randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
+                randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$.addEventListener(error, function(){
+                  console.log("An Error occurred, this is most likely not an issue.")
+                  return;
+                });
               }
               client.sendMessage(m.channel, randomPost.file_url);
               return;
@@ -244,9 +250,7 @@ client.on('message', m => {
       };
     });
  }
- }.addEventListener(error, function(){
-   console.log("An Error occurred, this is most likely not an issue.")
- });
+ }
  if (m.content.startsWith(`?fepic`)){
    var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=fire_emblem&rating=s&`
    reequest(requestUrl, function(error, response, html){
