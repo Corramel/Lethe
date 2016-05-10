@@ -335,6 +335,30 @@ if (m.content.startsWith(`?hirasawa`)){
       }
     });
 };
+if (m.content.startsWith(`?bismarck`)){
+  var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=bismarck_(kantai_collection)&rating=s&pid=${Math.floor(Math.random()*14 + 1)}`
+  reequest(requestUrl, function(error, response, html){
+
+    if(!error){
+      var cheerio$ = cheerio.load(html, {xmlMode : true});
+      cheerio$('posts').filter(function(){
+        var toParse = cheerio$(this);
+        var parsingInfo = toParse.text();
+
+        parseString(toParse, function(err, result){
+
+            var randomPost = result.posts.post[Math.floor(Math.random()*100)].$
+
+            while(randomPost.rating === "e" || randomPost.rating === "q"){
+              randomPost = result.posts.post[Math.floor(Math.random()*100)].$
+            }
+            client.sendMessage(m.channel, randomPost.file_url);
+            return;
+          });
+        });
+      }
+    });
+};
 if (m.content.startsWith(`?cc`)){
   var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=c.c.&rating=s&pid=${Math.floor(Math.random()*14 + 1)}`
   reequest(requestUrl, function(error, response, html){
