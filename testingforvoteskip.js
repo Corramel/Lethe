@@ -201,7 +201,7 @@ client.on('message', m => {
            var parsingInfo = toParse.text();
 
            parseString(toParse, function(err, result){
-             var lengthOfPosts = result.posts.post.length
+             var lengthOfPosts = result.posts.post.$.length
              console.log(lengthOfPosts);
 
                var randomPost = result.posts.post[Math.floor(Math.random()*lengthOfPosts)].$
