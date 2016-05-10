@@ -230,10 +230,10 @@ client.on('message', m => {
 
           parseString(toParse, function(err, result){
 
-              var randomPost = result.posts.post[Math.floor(Math.random()*100)].$
+              var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.length)].$
 
               while(randomPost.rating === "e" || randomPost.rating === "q"){
-                randomPost = result.posts.post[Math.floor(Math.random()*100)].$
+                randomPost = result.posts.post[Math.floor(Math.random()*result.posts.length)].$
               }
               client.sendMessage(m.channel, randomPost.file_url);
               return;
@@ -244,7 +244,7 @@ client.on('message', m => {
  }
  };
  if (m.content.startsWith(`?fepic`)){
-   var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=fire_emblem&rating=s&pid=${Math.floor(Math.random()*14 + 1)}`
+   var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=fire_emblem&rating=s&`
    reequest(requestUrl, function(error, response, html){
 
      if(!error){
