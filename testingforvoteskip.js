@@ -205,7 +205,7 @@ client.on('message', m => {
                var randomPost = result.posts.post[Math.floor(Math.random()*Object.keys(result.posts).length)].$
 
                while(randomPost.rating === "e" || randomPost.rating === "q"){
-                 randomPost = result.posts.post[Math.floor(Math.random()*Object.keys(result.posts).length))].$
+                 randomPost = result.posts.post[Math.floor(Math.random()*Object.keys(result.posts).length)].$
                }
                client.sendMessage(m.channel, randomPost.file_url);
                return;
