@@ -220,7 +220,7 @@ client.on('message', m => {
        var tags = m.content.slice(9)
        var tagsArray = tags.split(";")
        var tagsJoined = tagsArray.join(" ")
-    var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=${tagsJoined}&rating=s&pid=${Math.floor(Math.random()*14 + 1)}`
+    var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=${tagsJoined}&rating=s&pid=${Math.floor(Math.random())}`
     reequest(requestUrl, function(error, response, html){
 
       if(!error){
@@ -257,10 +257,10 @@ client.on('message', m => {
 
          parseString(toParse, function(err, result){
 
-             var randomPost = result.posts.post[Math.floor(Math.random()*100)].$
+             var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
 
              while(randomPost.rating === "e" || randomPost.rating === "q"){
-               randomPost = result.posts.post[Math.floor(Math.random()*100)].$
+               randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
              }
              client.sendMessage(m.channel, randomPost.file_url);
              return;
@@ -306,10 +306,10 @@ if (m.content.startsWith(`?hibiki`)){
 
         parseString(toParse, function(err, result){
 
-            var randomPost = result.posts.post[Math.floor(Math.random()*100)].$
+            var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
 
             while(randomPost.rating === "e" || randomPost.rating === "q"){
-              randomPost = result.posts.post[Math.floor(Math.random()*100)].$
+              randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
             }
             client.sendMessage(m.channel, randomPost.file_url);
             return;
@@ -330,10 +330,10 @@ if (m.content.startsWith(`?akatsuki`)){
 
         parseString(toParse, function(err, result){
 
-            var randomPost = result.posts.post[Math.floor(Math.random()*100)].$
+            var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
 
             while(randomPost.rating === "e" || randomPost.rating === "q"){
-              randomPost = result.posts.post[Math.floor(Math.random()*100)].$
+              randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
             }
             client.sendMessage(m.channel, randomPost.file_url);
             return;
@@ -354,10 +354,10 @@ if (m.content.startsWith(`?hirasawa`)){
 
         parseString(toParse, function(err, result){
 
-            var randomPost = result.posts.post[Math.floor(Math.random()*100)].$
+            var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
 
             while(randomPost.rating === "e" || randomPost.rating === "q"){
-              randomPost = result.posts.post[Math.floor(Math.random()*100)].$
+              randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
             }
             client.sendMessage(m.channel, randomPost.file_url);
             return;
@@ -378,10 +378,10 @@ if (m.content.startsWith(`?bismarck`)){
 
         parseString(toParse, function(err, result){
 
-            var randomPost = result.posts.post[Math.floor(Math.random()*100)].$
+            var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
 
             while(randomPost.rating === "e" || randomPost.rating === "q"){
-              randomPost = result.posts.post[Math.floor(Math.random()*100)].$
+              randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
             }
             client.sendMessage(m.channel, randomPost.file_url);
             return;
@@ -402,10 +402,10 @@ if (m.content.startsWith(`?cc`)){
 
         parseString(toParse, function(err, result){
 
-            var randomPost = result.posts.post[Math.floor(Math.random()*100)].$
+            var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
 
             while(randomPost.rating === "e" || randomPost.rating === "q"){
-              randomPost = result.posts.post[Math.floor(Math.random()*100)].$
+              randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
             }
             client.sendMessage(m.channel, randomPost.file_url);
             return;
