@@ -1238,6 +1238,7 @@ client.login(process.argv[2] || Config.auth.email, process.argv[3] || Config.aut
     console.log(e);
   }
 });
+
 function getReply(content){
      siteObject = content;
     };
