@@ -224,7 +224,7 @@ client.on('message', m => {
        var tags = m.content.slice(9)
        var tagsArray = tags.split(";")
        var tagsJoined = tagsArray.join(" ")
-    var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=${tagsJoined}&rating=s&pid=${Math.floor(Math.random())}`
+    var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=${tagsJoined}&rating=s&pid=${Math.floor(Math.random()*20)}`
     reequest(requestUrl, function(error, response, html){
 
       if(!error){
