@@ -1225,7 +1225,7 @@ function error(argument) {
 }
 
 // Email and password over command line
-client.login(process.argv[2] || Config.auth.email, process.argv[3] || Config.auth.password).((e) => {
+/*client.login(process.argv[2] || Config.auth.email, process.argv[3] || Config.auth.password).((e) => {
   try {
     if(e.status === 400 && ~e.response.error.text.indexOf("email")) {
       console.log("Error: You entered a bad email!");
@@ -1237,6 +1237,10 @@ client.login(process.argv[2] || Config.auth.email, process.argv[3] || Config.aut
   } catch (err) {
     console.log(e);
   }
+});*/
+client.login("ebolachanslove3@gmail.com", "Rainbowz123", function(error, token){
+  console.log(token);
+  return;
 });
 
 function getReply(content){
