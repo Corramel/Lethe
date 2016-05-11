@@ -25,7 +25,7 @@ var YoutubeTrack = require('./lib/youtube-track.js');
 var Util = require('./lib/util.js');
 var Config = require('./lib/config.js');
 var randEbolaPic = require('./lib/ebolachaninfo.json');
-var CURRENT_REV = 3;
+var CURRENT_REV = 4;
 
 var client = new Discord.Client();
 
@@ -64,7 +64,11 @@ var stockpile = '';
 var apiKey = process.argv[4] || (Config.auth.apiKey !== "youtube API key (optional)") ? Config.auth.apiKey : false;
 
 client.on('ready', () => {
-  botMention = `<@${client.user.id}>`;
+  if (Config.botHasNickname) {
+    botMention = `<@!${client.user.id}>`;
+  } else {
+   botMention = `<@${client.user.id}>`;
+ }
   console.log(`Bot mention: ${botMention}`);
   if (Config.configRev !== CURRENT_REV) {
     console.log('WARNING: Your lethe-config.json is out of date relative to the code using it! Please update it from the git repository, otherwise things will break!');
@@ -232,16 +236,10 @@ client.on('message', m => {
           parseString(toParse, function(err, result){
               //var lengthOfPosts = result.posts.post.length
               //console.log(lengthOfPosts);
-              var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$.addEventListener(error, function(){
-                console.log("An Error occurred, this is most likely not an issue.")
-                return;
-              });
+              var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
 
               while(randomPost.rating === "e" || randomPost.rating === "q"){
-                randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$.addEventListener(error, function(){
-                  console.log("An Error occurred, this is most likely not an issue.")
-                  return;
-                });
+                randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
               }
               client.sendMessage(m.channel, randomPost.file_url);
               return;
@@ -349,7 +347,7 @@ if (m.content.startsWith(`?akatsuki`)){
     });
 };
 if (m.content.startsWith(`?hirasawa`)){
-  var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=hirasawa_yui&rating=s&pid=${Math.floor(Math.random()*14 + 1)}`
+  var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=hirasawa_yui&rating=s&pid=${Math.floor(Math.random()*20 + 1)}`
   reequest(requestUrl, function(error, response, html){
 
     if(!error){
@@ -1227,7 +1225,7 @@ function error(argument) {
 }
 
 // Email and password over command line
-client.login(process.argv[2] || Config.auth.email, process.argv[3] || Config.auth.password).catch((e) => {
+client.login(process.argv[2] || Config.auth.email, process.argv[3] || Config.auth.password).((e) => {
   try {
     if(e.status === 400 && ~e.response.error.text.indexOf("email")) {
       console.log("Error: You entered a bad email!");
