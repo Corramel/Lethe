@@ -137,7 +137,7 @@ client.on('message', m => {
     return;
   }
 
-  if (m.content.startsWith(`?gin`){
+  if (m.content.startsWith(`?gin`)){
     client.sendMessage(m.channel, "http://puu.sh/paA9X/111dceef42.png");
     return;
   }
