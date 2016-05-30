@@ -137,6 +137,10 @@ client.on('message', m => {
     return;
   }
 
+  if (m.content.toLowerCase().startsWith(`?gin`){
+    client.sendMessage(m.channel, "http://puu.sh/paA9X/111dceef42.png");
+    return;
+  }
   if (m.content.startsWith(`?yourdone`)){
     midoriArray = [`http://i.imgur.com/ki4865P.png`, `https://youtu.be/8S_8CX4YD-8?t=832`]
     client.sendMessage(m.channel, midoriArray[Math.floor(Math.random())])
