@@ -24,6 +24,7 @@ var YoutubeTrack = require('./lib/youtube-track.js');
 
 var Util = require('./lib/util.js');
 var Config = require('./lib/config.js');
+var adminIds = Config.adminIds;
 var randEbolaPic = require('./lib/ebolachaninfo.json');
 var CURRENT_REV = 4;
 
@@ -674,7 +675,7 @@ if (m.content.startsWith(`?compliment`)){
      }
    })
    var insult = randomInsult
-   if(userIsAdmin(m.author.id)){
+   if(adminIds.indexOf(m.user.id) > -1){
    	client.reply(m, complimentArray[Math.floor(Math.random()*complimentArray.length)])
    	return;
    } else {
@@ -688,7 +689,7 @@ if (m.content.toLowerCase().startsWith(`${botMention} hi`) || m.content.toLowerC
     var responseArray = [complimentArray[Math.floor(Math.random()*complimentArray.length)], complimentArray[Math.floor(Math.random()*complimentArray.length)], complimentArray[Math.floor(Math.random()*complimentArray.length)], "Hello, how are you?", "Hi!!!", "Why, hello there.", "Hello!", "Hai. x3", "Hi there!", "Hello! <3", "H-hi.."];
     client.reply(m, responseArray[Math.floor(Math.random() * responseArray.length)]);
     return;
-  } else if(m.author.id === "81633420542742528" || m.author.id === "81635977314963456"){
+  } else if(adminIds.indexOf(m.user.id) > -1)){
     var responseArray = ["Hello, how are you?", "Hi!!!", "Why, hello there.", "Hello!", "Hai. x3", "Hi there!", "Hello~", "H-hi.."];
     client.reply(m, responseArray[Math.floor(Math.random() * responseArray.length)]);
     return;
