@@ -1190,7 +1190,7 @@ function play(video) {
 }
 
 function userIs(userId) {
-  return Config..indexOf(userId) > -1;
+  return Config.indexOf(userId) > -1;
 }
 
 function checkCommand(m, command) {
