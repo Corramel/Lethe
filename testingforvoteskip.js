@@ -674,7 +674,7 @@ if (m.content.startsWith(`?compliment`)){
      }
    })
    var insult = randomInsult
-   if(m.author.id === ownerID){
+   if(userIsAdmin(m.author.id)){
    	client.reply(m, complimentArray[Math.floor(Math.random()*complimentArray.length)])
    	return;
    } else {
@@ -804,10 +804,10 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
 
   if (m.content.startsWith(`?next`)) {
     // next !checkCommand(m, '?next')
-    if (userIsAdmin(m.author.id)) {
+    if (userIs(m.author.id)) {
     playStopped();
     return;
-    } else if((!userIsAdmin(m.author.id)) && (voteAllIDs.indexOf(m.author.id)<0)){
+    } else if((!userIs(m.author.id)) && (voteAllIDs.indexOf(m.author.id)<0)){
     voteCount = 1;
     client.sendMessage(m.channel, "Vote to next added by " + m.author.username + ".")
     var voter = m.author.id;
@@ -1188,13 +1188,13 @@ function play(video) {
   }
 }
 
-function userIsAdmin(userId) {
-  return Config.adminIds.indexOf(userId) > -1;
+function userIs(userId) {
+  return Config..indexOf(userId) > -1;
 }
 
 function checkCommand(m, command) {
-  if (Config.commandsRestrictedToAdmins[command]) {
-    if (!userIsAdmin(m.author.id)) {
+  if (Config.commandsRestrictedTos[command]) {
+    if (!userIs(m.author.id)) {
       client.reply(m, `You don't have permission to execute that command! (user ID: \`${m.author.id}\`)`);
       return false;
     }
