@@ -689,7 +689,7 @@ if (m.content.toLowerCase().startsWith(`${botMention} hi`) || m.content.toLowerC
     var responseArray = [complimentArray[Math.floor(Math.random()*complimentArray.length)], complimentArray[Math.floor(Math.random()*complimentArray.length)], complimentArray[Math.floor(Math.random()*complimentArray.length)], "Hello, how are you?", "Hi!!!", "Why, hello there.", "Hello!", "Hai. x3", "Hi there!", "Hello! <3", "H-hi.."];
     client.reply(m, responseArray[Math.floor(Math.random() * responseArray.length)]);
     return;
-  } else if(adminIds.indexOf(m.user.id) > -1)){
+  } else if(adminIds.indexOf(m.user.id) > -1){
     var responseArray = ["Hello, how are you?", "Hi!!!", "Why, hello there.", "Hello!", "Hai. x3", "Hi there!", "Hello~", "H-hi.."];
     client.reply(m, responseArray[Math.floor(Math.random() * responseArray.length)]);
     return;
