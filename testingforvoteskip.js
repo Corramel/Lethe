@@ -1195,7 +1195,7 @@ function userIs(userId) {
 
 function checkCommand(m, command) {
   if (Config.commandsRestrictedTos[command]) {
-    if (!userIs(m.author.id)) {
+    if (!userIsAdmin(m.author.id)) {
       client.reply(m, `You don't have permission to execute that command! (user ID: \`${m.author.id}\`)`);
       return false;
     }
