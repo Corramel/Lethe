@@ -1189,7 +1189,7 @@ function play(video) {
   }
 }
 
-function userIs(userId) {
+function userIsAdmin(userId) {
   return Config.adminIds.indexOf(userId) > -1;
 }
 
