@@ -647,7 +647,7 @@ if (m.content.startsWith(`?dion`)) { //fuckin spooked
 }
 if (m.content.startsWith(`?fang`)) { // what a fuckin retard
   if (!checkCommand(m, `?fang`)) return
-  var messageanswer = randFangCringe.data.images[Math.floor(Math.random()*72)].link
+  var messageanswer = randFangCringe.data.images[Math.floor(Math.random()*40)].link
   client.sendMessage(m.channel, messageanswer.replace(/\\\//g, "/"));
 }
 if (m.content.startsWith(`?starterpack`)) { //memecontrol
