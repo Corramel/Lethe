@@ -26,6 +26,7 @@ var Util = require('./lib/util.js');
 var Config = require('./lib/config.js');
 var adminIds = Config.adminIds;
 var randEbolaPic = require('./lib/ebolachaninfo.json');
+var randFangCringe = require('./lib/fangsmemes.json');
 var CURRENT_REV = 4;
 
 var client = new Discord.Client();
@@ -646,9 +647,8 @@ if (m.content.startsWith(`?dion`)) { //fuckin spooked
 }
 if (m.content.startsWith(`?fang`)) { // what a fuckin retard
   if (!checkCommand(m, `?fang`)) return
-  var fangArray = ["http://puu.sh/m2Xfd/bdfa504036.png", "http://puu.sh/m2Wew/d1fd328349.png", "http://puu.sh/m2VSU/b481f10fe6.png","http://puu.sh/m2VQa/85113beedc.png"]
-  client.reply(m, fangArray[Math.floor(Math.random() * fangArray.length)])
-  return;
+  var messageanswer = randFangCringe.data.images[Math.floor(Math.random()*72)].link
+  client.sendMessage(m.channel, messageanswer.replace(/\\\//g, "/"));
 }
 if (m.content.startsWith(`?starterpack`)) { //memecontrol
   if (!checkCommand(m, `?pack`)) return
