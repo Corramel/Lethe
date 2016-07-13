@@ -709,6 +709,22 @@ if (m.content.toLowerCase().startsWith(`${botMention} hi`) || m.content.toLowerC
     client.reply(m, responseArray[Math.floor(Math.random() * responseArray.length)]);
   }
 }
+
+if(m.content.toLowerCase().startswith(`?haiku`)){
+  var requestUrl = "http://www.randomhaiku.com/";
+  reequest(requestUrl, function(error, response, html){
+    if(!error){
+      var $ = cheerio.load(html);
+      $('.poem').filter(function(){
+        var insultData = $(this);
+        randomInsult = insultData.text();
+        client.sendMessage(m.channel, randomInsult);
+        return;
+      })
+    }
+  })
+  var insult = randomInsult;
+}
 /* if (m.content.startsWith(``)) { //memecontrol
   if (!checkCommand(m, ``)) return
   client.reply(m, "")
