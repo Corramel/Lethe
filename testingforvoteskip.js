@@ -710,7 +710,7 @@ if (m.content.toLowerCase().startsWith(`${botMention} hi`) || m.content.toLowerC
   }
 }
 
-if(m.content.toLowerCase().startswith(`?haiku`)){
+if(m.content.startsWith(`?haiku`)){
   var requestUrl = "http://www.randomhaiku.com/";
   reequest(requestUrl, function(error, response, html){
     if(!error){
