@@ -711,11 +711,11 @@ if (m.content.toLowerCase().startsWith(`${botMention} hi`) || m.content.toLowerC
 }
 
 if(m.content.startsWith(`?haiku`)){
-  var requestUrl = "http://www.randomhaiku.com/";
+  var requestUrl = "http://www.smalltime.com/Haiku?square=";
   reequest(requestUrl, function(error, response, html){
     if(!error){
       var $ = cheerio.load(html);
-      $('.poem').filter(function(){
+      $('body').filter(function(){
         var insultData = $(this);
         randomInsult = insultData.text();
         client.sendMessage(m.channel, randomInsult);
