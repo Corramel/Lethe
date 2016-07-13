@@ -715,7 +715,7 @@ if(m.content.startsWith(`?haiku`)){
   reequest(requestUrl, function(error, response, html){
     if(!error){
       var $ = cheerio.load(html);
-      $('body').filter(function(){
+      $('tr').filter(function(){
         var insultData = $(this);
         randomInsult = insultData.text();
         client.sendMessage(m.channel, randomInsult);
