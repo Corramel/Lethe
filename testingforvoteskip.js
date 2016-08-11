@@ -144,7 +144,7 @@ client.on('message', m => {
     client.sendMessage(m.channel, "http://puu.sh/paA9X/111dceef42.png");
     return;
   }
-  if (m.content.startsWith(`?slash `) && timeCommandUsedFirst > (timeCommandUsedFirst +((1000*60)*30)){
+  if (m.content.startsWith(`?slash `) && timeCommandUsedFirst > (timeCommandUsedFirst +((1000*60)*30))){
     var timeCommandUsedFirst = Date.now()/(1000*60)
     var infoWanted = m.content.slice(7)
     //var mentionInMessage = m;
