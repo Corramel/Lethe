@@ -146,6 +146,7 @@ client.on('message', m => {
   }
   if (m.content.startsWith(`?slash `)){
     //var mentionInMessage = m;
+    var infoWanted = m.content.slice(7)
     var allMentionsArray = infoWanted.split(" ");
     var allMentions = allMentionsArray.toString()
     var cleanUpMessage = allMentions.replace(",", ", ");
