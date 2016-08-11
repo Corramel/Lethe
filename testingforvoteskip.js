@@ -146,6 +146,7 @@ client.on('message', m => {
   if (m.content.startsWith(`?slash `)){
     var mentionInMessage = m.mentions.id
     console.log(m.mentions);
+    console.log(m.mentions.User);
     var slashArray = ["http://i.imgur.com/RH2yX.jpg", "http://media.giphy.com/media/daDA43pfSyeHK/giphy.gif", "http://i.imgur.com/7JNeSzT.jpg", "http://i.imgur.com/ZgR1USn.png", "http://i.imgur.com/2KTyI5n.png", "http://i.imgur.com/WnHUFcB.jpg", "http://i.imgur.com/34X6qf4.jpg", "http://i.imgur.com/Oy49Zln.png"]
     client.sendMessage(m.channel, `${mentionInMessage} you have been slashed by ${m.author}! ${slashArray[Math.floor(Math.random()*slashArray.length)]}`);
   }
