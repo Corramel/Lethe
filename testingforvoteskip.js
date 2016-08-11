@@ -143,6 +143,11 @@ client.on('message', m => {
     client.sendMessage(m.channel, "http://puu.sh/paA9X/111dceef42.png");
     return;
   }
+  if (m.content.startsWith(`?slash `)){
+    var mentionInMessage = m.mentions.id
+    var slashArray = ["http://i.imgur.com/RH2yX.jpg", "http://media.giphy.com/media/daDA43pfSyeHK/giphy.gif", "http://i.imgur.com/7JNeSzT.jpg", "http://i.imgur.com/ZgR1USn.png", "http://i.imgur.com/2KTyI5n.png", "http://i.imgur.com/WnHUFcB.jpg", "http://i.imgur.com/34X6qf4.jpg", "http://i.imgur.com/Oy49Zln.png"]
+    client.sendMessage(m.channel, `${mentionInMessage} you have been slashed by ${m.author}! ${slashArray[Math.floor(Math.random()*slashArray.length)]}`);
+  }
   if (m.content.startsWith(`?yourdone`)){
     midoriArray = [`http://i.imgur.com/ki4865P.png`, `https://youtu.be/8S_8CX4YD-8?t=832`]
     client.sendMessage(m.channel, midoriArray[Math.floor(Math.random())])
