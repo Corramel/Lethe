@@ -147,8 +147,8 @@ client.on('message', m => {
     var infoWanted = m.content.slice(7)
     //var mentionInMessage = m;
     var allMentionsArray = infoWanted.split(" ");
-    var allMentions = allMentionsArray
-    var cleanUpMessage = allMentionsArray.replace(",", ", ");
+    var allMentions = allMentionsArray.toString()
+    var cleanUpMessage = allMentions.replace(",", ", ");
     console.log(cleanUpMessage);
     //console.log(mentionInMessage);
     var slashArray = ["http://i.imgur.com/RH2yX.jpg", "http://media.giphy.com/media/daDA43pfSyeHK/giphy.gif", "http://i.imgur.com/7JNeSzT.jpg", "http://i.imgur.com/ZgR1USn.png", "http://i.imgur.com/2KTyI5n.png", "http://i.imgur.com/WnHUFcB.jpg", "http://i.imgur.com/34X6qf4.jpg", "http://i.imgur.com/Oy49Zln.png"]
