@@ -166,26 +166,6 @@ client.on('message', m => {
     client.sendMessage(m.channel, messageanswer.replace(/\\\//g, "/"));
     return;
   }
-  if(m.content.startsWith(`?pickBotOn`)){
-    if(pickBotOn){
-      pickBotOn = false;
-    } else {
-      pickBotOn = true;
-    }
-  }
-  if(m.content.startsWith('❗')){
-    var messageContent = m.content.slice(2);
-    var indexTrivia = -1;
-    var len = trivAnswers.length;
-    for(var i = 0; i < len; i++){
-      if(trivAnswers[i].Question.indexOf(messageContent) > -1){
-        indexTrivia = i;
-        client.sendMessage(m.channel, trivAnswers[indexTrivia].Answer);
-        break;
-      }
-    }
-  }
-
   if (m.content.startsWith(`?popcorn`)){
   	client.sendMessage(m.channel, "https://pbs.twimg.com/profile_images/597538481225752577/93eMVOd3.jpg")
   	return;
