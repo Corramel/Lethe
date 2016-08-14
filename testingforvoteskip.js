@@ -41,6 +41,7 @@ var yourMomJoke;
 var randomInsult;
 var luckyOnes;
 var toParse;
+var pickBotOn = false;
 var timeCommandUsedFirst;
 var fireemblemJSON;
 var messageArray = [];
@@ -91,7 +92,6 @@ client.on('message', m => {
     }));
     return;
   }
-
   if (m.content.startsWith(`${botMention} help`)) { // help
     if (!checkCommand(m, 'help')) return;
     client.reply(m, 'commands are coming soon, there are a lot of commands.');
@@ -267,6 +267,36 @@ client.on('message', m => {
     });
  }
  }
+ if (m.content.startsWith(`?ngelbooru`)){
+   if(m.content.length > 11 && m.content.indexOf(";") > -1){
+      var tags = m.content.slice(9)
+      var tagsArray = tags.split(";")
+      var tagsJoined = tagsArray.join(" ")
+   var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=${tagsJoined}&rating=e&pid=${Math.floor(Math.random()*20)}`
+   reequest(requestUrl, function(error, response, html){
+
+     if(!error){
+       var cheerio$ = cheerio.load(html, {xmlMode : true});
+       cheerio$('posts').filter(function(){
+         var toParse = cheerio$(this);
+         var parsingInfo = toParse.text();
+
+         parseString(toParse, function(err, result){
+             //var lengthOfPosts = result.posts.post.length
+             //console.log(lengthOfPosts);
+             var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
+
+             while(randomPost.rating === "s"){
+               randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
+             }
+             client.sendMessage(m.channel, randomPost.file_url);
+             return;
+           });
+         });
+     };
+   });
+}
+}
  if (m.content.startsWith(`?fepic`)){
    var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=fire_emblem&rating=s&`
    reequest(requestUrl, function(error, response, html){
