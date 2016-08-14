@@ -173,7 +173,7 @@ client.on('message', m => {
       pickBotOn = true;
     }
   }
-  if(pickBotOn && (m.author.id === "116275390695079945" || m.author.id === "81526338728501248")){
+  if(pickBotOn && (m.content.startsWith('❗'){
     var messageContent = m.content;
     var indexTrivia = -1;
     var len = trivAnswers.length;
@@ -186,6 +186,7 @@ client.on('message', m => {
     }
 
   }
+
   if (m.content.startsWith(`?popcorn`)){
   	client.sendMessage(m.channel, "https://pbs.twimg.com/profile_images/597538481225752577/93eMVOd3.jpg")
   	return;
