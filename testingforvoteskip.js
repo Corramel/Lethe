@@ -269,7 +269,7 @@ client.on('message', m => {
  }
  if (m.content.startsWith(`?ngelbooru`)){
    if(m.content.length > 11 && m.content.indexOf(";") > -1){
-      var tags = m.content.slice(9)
+      var tags = m.content.slice(10)
       var tagsArray = tags.split(";")
       var tagsJoined = tagsArray.join(" ")
    var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=${tagsJoined}&rating=e&pid=${Math.floor(Math.random()*20)}`
