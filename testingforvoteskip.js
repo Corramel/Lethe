@@ -176,7 +176,8 @@ client.on('message', m => {
   if(pickBotOn && (m.channel === '87987962385559552')){
     var messageContent = m.content;
     var indexTrivia = -1;
-    for(var i = 0; len = triviaAnswers.length; i < len; i++){
+    var len = triviaAnswers.length;
+    for(var i = 0; i < len; i++){
       if(triviaAnswers[i].Question === messageContent){
         indexTrivia = i;
         break;
