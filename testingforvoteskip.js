@@ -178,7 +178,7 @@ client.on('message', m => {
     var indexTrivia = -1;
     var len = triviaAnswers.length;
     for(var i = 0; i < len; i++){
-      if(triviaAnswers[i].Question === messageContent){
+      if(triviaAnswers[i].Question.indexOf(messageContent) > -1){
         indexTrivia = i;
         break;
       }
