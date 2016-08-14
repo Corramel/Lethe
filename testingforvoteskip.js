@@ -27,6 +27,7 @@ var Config = require('./lib/config.js');
 var adminIds = Config.adminIds;
 var randEbolaPic = require('./lib/ebolachaninfo.json');
 var randFangCringe = require('./lib/fangsmemes.json');
+var triviaAnswers = require('./lib/questionsNadeko.json');
 var CURRENT_REV = 4;
 
 var client = new Discord.Client();
@@ -164,6 +165,24 @@ client.on('message', m => {
 
     client.sendMessage(m.channel, messageanswer.replace(/\\\//g, "/"));
     return;
+  }
+  if(m.content.startsWith(`?pickBotOn`)){
+    if(pickBotOn){
+      pickBotOn = false;
+    } else {
+      pickBotOn = true;
+    }
+  }
+  if(pickBotOn && (m.channel === '87987962385559552')){
+    var messageContent = m.content;
+    var indexTrivia = -1;
+    for(var i = 0; len = triviaAnswers.length; i < len; i++){
+      if(triviaAnswers[i].Question === messageContent){
+        indexTrivia = i;
+        break;
+      }
+    }
+    client.sendMessage(m.channel, triviaAnswers[i].Answer);
   }
   if (m.content.startsWith(`?popcorn`)){
   	client.sendMessage(m.channel, "https://pbs.twimg.com/profile_images/597538481225752577/93eMVOd3.jpg")
