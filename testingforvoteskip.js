@@ -174,7 +174,7 @@ client.on('message', m => {
     }
   }
   if(pickBotOn && m.content.startsWith('❗')){
-    var messageContent = m.content;
+    var messageContent = m.content.slice(2);
     var indexTrivia = -1;
     var len = trivAnswers.length;
     for(var i = 0; i < len; i++){
