@@ -183,7 +183,7 @@ client.on('message', m => {
         break;
       }
     }
-    client.sendMessage(m.channel, trivAnswers[indxTrivia].Answer);
+    client.sendMessage(m.channel, trivAnswers[indexTrivia].Answer);
   }
   if (m.content.startsWith(`?popcorn`)){
   	client.sendMessage(m.channel, "https://pbs.twimg.com/profile_images/597538481225752577/93eMVOd3.jpg")
