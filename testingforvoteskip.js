@@ -180,10 +180,11 @@ client.on('message', m => {
     for(var i = 0; i < len; i++){
       if(trivAnswers[i].Question.indexOf(messageContent) > -1){
         indexTrivia = i;
+        client.sendMessage(m.channel, trivAnswers[indexTrivia].Answer);
         break;
       }
     }
-    client.sendMessage(m.channel, trivAnswers[indexTrivia].Answer);
+
   }
   if (m.content.startsWith(`?popcorn`)){
   	client.sendMessage(m.channel, "https://pbs.twimg.com/profile_images/597538481225752577/93eMVOd3.jpg")
