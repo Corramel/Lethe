@@ -173,7 +173,7 @@ client.on('message', m => {
       pickBotOn = true;
     }
   }
-  if(pickBotOn && (m.author.id === "116275390695079945" || m.author.id === "81526338728501248"){
+  if(pickBotOn && (m.author.id === "116275390695079945" || m.author.id === "81526338728501248")){
     var messageContent = m.content;
     var indexTrivia = -1;
     var len = trivAnswers.length;
