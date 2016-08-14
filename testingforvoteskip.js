@@ -173,7 +173,7 @@ client.on('message', m => {
       pickBotOn = true;
     }
   }
-  if(pickBotOn && (m.channel === '87987962385559552')){
+  if(pickBotOn){
     var messageContent = m.content;
     var indexTrivia = -1;
     var len = triviaAnswers.length;
