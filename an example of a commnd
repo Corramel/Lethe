@@ -1,0 +1,22 @@
+var meme = {
+  "Commands": {
+    "PingCommands" : {
+      "botinfo" : {
+        "Command" : "@Bot'sname info",
+        "Usage" : "This command returns the bot's information, (git stuff)"
+        },
+      "bothelp" : {}
+      },
+    "UtilityCommands" : {
+      "yt" : "memes"
+      },
+      "JokeCommands" : {
+        "nicememe1" : "meme"
+      },
+      "ListofCommands" : [
+        ]
+  }
+}
+var memeArray = [Object.keys(meme.Commands.PingCommands), Object.keys(meme.Commands.UtilityCommands), Object.keys(meme.Commands.JokeCommands),]
+
+console.log(memeArray.toString())
