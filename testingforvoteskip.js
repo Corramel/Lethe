@@ -149,6 +149,9 @@ client.on('message', m => {
   }
   if (m.content.startsWith(`?tarot`)){
     var cardNames = ["Sharpshooter", "Pugilist", "Neophyte", "Vagabond", "Arbiter", "Chaplain", "Sovereign", "Troubadour", "Oracle", "Cavalier", "Tactician", "Ambsace", "Fortuitous"];
+    console.log(cardNames);
+    console.log(tarots);
+    console.log(tarots.Sharpshooter.Card);
     client.sendMessage(m.channel, `${tarots.cardNames[Math.floor(Math.random()*cardNames.length)].Card}`);
     client.sendMessage(m.channel, `${tarots.cardNames[Math.floor(Math.random()*cardNames.length)].Description}`);
     return;
