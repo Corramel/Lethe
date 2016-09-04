@@ -155,9 +155,9 @@ client.on('message', m => {
     console.log(tarots.Sharpshooter.Card);
     var chosenCard = cardNames[Math.floor(Math.random()*cardNames.length)];
     console.log(chosenCard);
-    var chosenCardPic = tarots.${chosenCard}.Card;
+    var chosenCardPic = tarots[chosenCard].Card;
     console.log(chosenCardPic);
-    var chosenCardDesc = tarots.${chosenCard}.Description
+    var chosenCardDesc = tarots[chosenCard].Description
     client.sendMessage(m.channel, `${chosenCardPic}`);
     client.sendMessage(m.channel, `${chosenCardDesc}`);
     return;
