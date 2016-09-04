@@ -147,13 +147,9 @@ client.on('message', m => {
     return;
   }
   if (m.content.startsWith(`?tarot`)){
-    var cardNames = ["Sharpshooter", "Pugilist", "Neophyte", "Vagabond", "Arbiter", "Chaplain", "Sovereign", "Troubadour", "Oracle", "Cavalier", "Tactician"];
-    var rareCards = ["Ambsace", "Fortuitous"];
-    var allCards = [cardNames, cardNames, cardNames, cardNames, cardNames, cardNames, cardNames, cardNames, cardNames, rareCards];
-    var chosenCards = allCards[Math.floor(Math.random()*allCards.length)]
-    var chosenCard = chosenCards[Math.floor(Math.random()*chosenCards.length)]
-    client.sendMessage(m.channel, `${tarots.chosenCard.Card}`);
-    client.sendMessage(m.channel, `${tarrots.chosenCard.Description}`);
+    var cardNames = ["Sharpshooter", "Pugilist", "Neophyte", "Vagabond", "Arbiter", "Chaplain", "Sovereign", "Troubadour", "Oracle", "Cavalier", "Tactician", "Ambsace", "Fortuitous"];
+    client.sendMessage(m.channel, `${tarots.cardNames[Math.floor(Math.random()*cardNames.length)].Card}`);
+    client.sendMessage(m.channel, `${tarrots.cardNames[Math.floor(Math.random()*cardNames.length)].Description}`);
     return;
   }
   if (m.content.startsWith(`?slash `)){
