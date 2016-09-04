@@ -49,6 +49,7 @@ var fireemblemJSON;
 var messageArray = [];
 var voteAllIDs = [];
 var playQueue = [];
+var cardNames = ["Sharpshooter", "Pugilist", "Neophyte", "Vagabond", "Arbiter", "Chaplain", "Sovereign", "Troubadour", "Oracle", "Cavalier", "Tactician", "Ambsace", "Fortuitous"];
 var boundChannel = false;
 var currentStream = false;
 var ownerID = "81526338728501248"
@@ -147,7 +148,6 @@ client.on('message', m => {
     return;
   }
   if (m.content.startsWith(`?tarot`)){
-    var cardNames = ["Sharpshooter", "Pugilist", "Neophyte", "Vagabond", "Arbiter", "Chaplain", "Sovereign", "Troubadour", "Oracle", "Cavalier", "Tactician", "Ambsace", "Fortuitous"];
     client.sendMessage(m.channel, `${tarots.cardNames[Math.floor(Math.random()*cardNames.length)].Card}`);
     client.sendMessage(m.channel, `${tarrots.cardNames[Math.floor(Math.random()*cardNames.length)].Description}`);
     return;
