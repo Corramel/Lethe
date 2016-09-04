@@ -22,6 +22,7 @@ Saved.read();
 
 var YoutubeTrack = require('./lib/youtube-track.js');
 
+var tarots = require('./lib/magical-cards.json');
 var Util = require('./lib/util.js');
 var Config = require('./lib/config.js');
 var adminIds = Config.adminIds;
@@ -144,6 +145,16 @@ client.on('message', m => {
   if (m.content.startsWith(`?gin`)){
     client.sendMessage(m.channel, "http://puu.sh/paA9X/111dceef42.png");
     return;
+  }
+  if (m.content.startsWith(`?tarot`)){
+    var cardNames = ["Sharpshooter", "Pugilist", "Neophyte", "Vagabond", "Arbiter", "Chaplain", "Sovereign", "Troubadour", "Oracle", "Cavalier", "Tactician"];
+    var rareCards = ["Ambsace", "Fortuitous"];
+    var allCards = [cardNames, cardNames, cardNames, cardNames, cardNames, cardNames, cardNames, cardNames, cardNames, rareCards];
+    var chosenCards = allCards[Math.floor(Math.random()*allCards.length)]
+    var chosenCard = chosenCards[Math.floor(Math.random()*chosenCards.length())]
+    client.sendMessage(m.channel, `${tarots.chosenCard.Card}`);
+    client.sendMessage(m.channel, `${tarrots.chosenCard.Description}`);
+    return
   }
   if (m.content.startsWith(`?slash `)){
     //var mentionInMessage = m;

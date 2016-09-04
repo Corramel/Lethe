@@ -1,0 +1,54 @@
+{
+    "Sharpshooter" : {
+      "Card" : "http://i.imgur.com/0wUsgXG.jpg",
+      "Description" : "A clear objective lies before you. To draw The Sharpshooter signifies a goal completely within your grasp and able to be realized. While attainable, know that you must also be aware of changes in events around you as well, else when actualized, you'll have missed even more."
+    },
+    "Neophyte" : {
+      "Card" : "http://i.imgur.com/Lca3uny.jpg",
+      "Description" : "A new path opens. To draw The Neophyte suggests a new adventures lies before you. A new chapter in your life where you will find yourself the beginner again. Remember, failure in this period is welcome, to forge the mastery you can potentially wield."
+    },
+    "Pugilist" : {
+      "Card" : "http://i.imgur.com/9uLfRVA.jpg",
+      "Description" : "Pushing against rather than flowing with. To draw The Pugilist means there is something you are fighting against. It is recommended to change tactics for this situation, you are likely to get farther by going with the stream, and not against."
+    },
+    "Arbiter" : {
+      "Card" : "http://i.imgur.com/5P6zqlL.jpg",
+      "Description":"A complex decision. To draw The Arbiter predicts multiple choices before you. Take some time and think out your options, and their outcomes. Bare in mind, sometimes no choice at all is a valid option and may be the wisest."
+    },
+    "Chaplain" : {
+      "Card": "http://i.imgur.com/KuvNNAd.jpg",
+      "Description":"Difficult times are coming. To draw The Chaplain denotes a period of turmoil for a close one. You will do well to help comfort them, even if you can only provide soothing words as aid."
+    },
+    "Tactician" : {
+      "Card" : "http://i.imgur.com/4TXAHjl.jpg",
+      "Description":"The ability to create lies at your fingers. To draw The Tactician implies the ability to help make change. While you yourself may not actualize these events, you find that your words find themselves planted in others who can. Take this opportunity to appreciate the effort."
+    },
+    "Sovereign" : {
+      "Card" : "http://i.imgur.com/0TNcAVC.jpg",
+      "Description":"The role of leader has opened to you. To draw The Sovereign bespeaks of a chance to lead. Dirty your hands first and you will find people willing to follow and help you in your actions. Talk will not be enough, you must show your resolve by example."
+    },
+    "Troubadour": {
+      "Card" : "http://i.imgur.com/5pWiTH5.jpg",
+      "Description" : "A time of relaxation dawns. To draw The Troubadour insinuates of a coming time of peace and tranquility. You will soon find yourself past your troubles and tribulations, and find time to focus on what you hold dear."
+    },
+    "Oracle" : {
+      "Card" : "http://i.imgur.com/g8ffOFt.jpg",
+      "Description" : "Planning becomes necessary. To draw The Oracle hints at large events approaching, with many chances for chaos. It would be wise now to take the time to ponder strategy and preemptive solutions for fall out."
+    },
+    "Vagabond" : {
+      "Card" : "http://i.imgur.com/HXC0r3x.jpg",
+      "Description" : "Betrayal looms close. To draw The Vagabond indicates an unhappy surprise from a close source. Something you had been unworried by finds itself abusing your trust."
+    },
+    "Cavalier" : {
+      "Card" : "http://i.imgur.com/ja34qKI.jpg",
+      "Description" : "The time to defend is now. To draw The Cavalier shows that soon you must stand up for either yourself or what you love. A call to action that you will actively be able to help in, though it is on you to decide whether it is a battle you want to join."
+    },
+    "Ambsace" : {
+      "Card" : "http://i.imgur.com/7jHiHAY.jpg",
+      "Description":"An unfortunate outcome that took a certain breed of luck to transpire. Drawing The Ambsace foreshadows a failure, an outcome unwanted that is beyond ones grasp to control. Life is filled with inevitability, misfortune simply one of them, the downswing on its pendulum. However remember: this, too, shall pass. \" A man's worst day can be another's best. Young apprentice, if you want to walk the path of the seer, you must experience the best and worst of any man's life if you ever wish to See it. Do not hide from horror, you are denying a critical part of your tool set, and of human experience.\""
+    },
+    "Fortuitous" : {
+      "Card" : "http://i.imgur.com/MIKqpD6.jpg",
+      "Description" : "\" Careful, apprentice. Fortune can still be dangerous. Many a man gained affluence but lost decency in exchange. The two cards have both good and bad in them, it isn't just one and the other. One can reap success and dwindle. The other can learn from failure and grow. \""
+    }
+}
