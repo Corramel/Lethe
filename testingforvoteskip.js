@@ -22,10 +22,11 @@ Saved.read();
 
 var YoutubeTrack = require('./lib/youtube-track.js');
 
-var tarots = require('./lib/magical-cards.json');
+
 var Util = require('./lib/util.js');
 var Config = require('./lib/config.js');
 var adminIds = Config.adminIds;
+var tarots = require('./lib/magical-cards.json');
 var randEbolaPic = require('./lib/ebolachaninfo.json');
 var randFangCringe = require('./lib/fangsmemes.json');
 var trivAnswers = require('./lib/questionsNadeko.json');
@@ -154,8 +155,11 @@ client.on('message', m => {
     console.log(tarots.Sharpshooter.Card);
     var chosenCard = cardNames[Math.floor(Math.random()*cardNames.length)];
     console.log(chosenCard);
-    client.sendMessage(m.channel, `${tarots.chosenCard.Card}`);
-    client.sendMessage(m.channel, `${tarots.cardNames[Math.floor(Math.random()*cardNames.length)].Description}`);
+    var chosenCardPic = tarots.chosenCard.Card;
+    console.log(chosenCardPic);
+    var chosenCardDesc = tarots.chosenCard.Description
+    client.sendMessage(m.channel, `${chosenCardPic}`);
+    client.sendMessage(m.channel, `${chosenCardDesc}`);
     return;
   }
   if (m.content.startsWith(`?slash `)){
