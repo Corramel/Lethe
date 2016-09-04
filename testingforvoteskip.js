@@ -151,7 +151,7 @@ client.on('message', m => {
     var rareCards = ["Ambsace", "Fortuitous"];
     var allCards = [cardNames, cardNames, cardNames, cardNames, cardNames, cardNames, cardNames, cardNames, cardNames, rareCards];
     var chosenCards = allCards[Math.floor(Math.random()*allCards.length)]
-    var chosenCard = chosenCards[Math.floor(Math.random()*chosenCards.length]
+    var chosenCard = chosenCards[Math.floor(Math.random()*chosenCards.length)]
     client.sendMessage(m.channel, `${tarots.chosenCard.Card}`);
     client.sendMessage(m.channel, `${tarrots.chosenCard.Description}`);
     return;
