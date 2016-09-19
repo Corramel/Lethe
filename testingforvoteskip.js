@@ -805,7 +805,7 @@ if (m.content.startsWith(`?choice `)){
 
 }
 if(m.content.startsWith(`?roll`)){
-  client.sendMessage(m, `${Math.floor(Math.random*100)}`);
+  client.sendMessage(m, `${Math.floor(Math.random()*100)}`);
   return;
 }
 if (m.content.startsWith(`?8ball`)) {
