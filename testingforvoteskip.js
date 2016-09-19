@@ -803,7 +803,7 @@ if (m.content.startsWith(`?choice `)){
     client.sendMessage(m, `You either didn't format it correctly, or only have one choice. Use ';' to split your choices.`)
   }
 
-})
+}
 if (m.content.startsWith(`?8ball`)) {
   userQuestion = (m.content).slice(7)
   var ballArray = ["Signs :arrow_right: to yes.", "Yeah.", "Try again.", "Without a doubt.", "Ebola-chan says no.", "I'd say yes.", "Go for it, fam.","It doesn't look so good...","Yep!", "Uh, I don't think you want to know.","It seems very doubtful.", "Ebola-chan says: \"Yes, definitely\"!", "Even I know it's certain!", "Err... Foggy, hazy, y'know.", "Probably!", "Perhaps you should ask later?", "No.", "It seems the outlook is good!","I wouldn't count on it."]
