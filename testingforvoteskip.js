@@ -743,6 +743,7 @@ if (m.content.startsWith(`?compliment`)){
    	return;
    }
 }
+
 if (m.content.toLowerCase().startsWith(`${botMention} hi`) || m.content.toLowerCase().startsWith(`${botMention} hello`) || m.content.toLowerCase().startsWith(`${botMention} hey`) || m.content.toLowerCase().startsWith(`${botMention} sup`) || m.content.toLowerCase().startsWith(`${botMention} yo`)) {
   if (m.author.id === "81526338728501248") {
     var complimentArray = ["Hiya! Did you know any day spent with you is my favorite day?","Heya, I just wanted to tell you: when in doubt, smile!","Hey man, my life would suck without you. Thanks, you're great.","Phew! You're back. there’s rarely any dull moment when I’m with you. You're fabulous.", "Whoa, I like your socks. #sockswag ","Hey! I think our friendship is like a cup of tea, a special blend of you and me.","Hi! LOL your status was super funny!","Hey! I think you have a good fashion sense.","Hi! I wanted to let you know that you wear really cute sweaters.","Hi! You're my number one.","Hey, do you wanna build a snowman? It doesn't have to be a snowman~","Hey... I'd give you a tissue, for your issues.","Hi! Just letting you know that you can copy my math homework!","Heya, you're so fancy, you already know.","Hey friend, I'd invite you to my birthday party.","Hi! Just letting you know that your personality is brighter than the stars.","I love you!","Hi! You're spontaneous, and I love it!","Hey, I appreciate all of your opinions.","W-whoa... Your smile is breath taking.","Hi! You are the gravy to my mashed potatoes.","Hey, I'm so glad we met.","Hey, is it hot in here or is it just you?","Hi. I don't speak much English, but with you all I really need to say is beautiful.","Hey, I think you could survive a zombie apocalypse.","Y-you're so rad...","Heya friend! You're more fun than a barrel of monkeys.","Hi! You're nicer than a day on the beach.","Hey, you make me think of beautiful things, like strawberries.","Hi. You're more fun than bubble wrap.","Man, playing video games with you would be fun.","Hello, I'd like to know why you're so beautiful.","Hey, I think you could invent words and people would use them.","Hey, did you know there's 21 letters in the Alphabet? Oh wait. I forgot u, r, a, q, t! How stupid of me... :wink:","Hey! You're tastier than chicken soup when I have the flu.","Hi, are you a Beaver? Cause Dam!","Hey, why are you so talented? I can't Handel your musicality.", "Hi! Are you a train? because I choo,choo,choose you!", "You're beautiful no matter what they say","Hey... You're the apple in my eye, it still hurts but I love pain~", "Hey, are you wifi? Because I'm feeling a connection ;)", "Hey, did you know you are the USB port to my USB? We fit perfectly together.","Hi. Did you know you're the smoothest one of all? <3"]
@@ -791,6 +792,18 @@ if(m.content.startsWith(`?haiku`)){
   return
 }
 */
+if (m.content.startsWith(`?choice `){
+  var userChoices = (m.content).slice(8);
+  var userChoicesArray = userChoices.split(";");
+  if(userChoicesArray.length > 1){
+    var botChoice = userChoicesArray[Math.floor(Math.random()*userChoicesArray.length)];
+    client.sendMessage(m, `${botChoice}`);
+    return;
+  } else {
+    client.sendMessage(m, `You either didn't format it correctly, or only have one choice. Use ';' to split your choices.`)
+  }
+
+})
 if (m.content.startsWith(`?8ball`)) {
   userQuestion = (m.content).slice(7)
   var ballArray = ["Signs :arrow_right: to yes.", "Yeah.", "Try again.", "Without a doubt.", "Ebola-chan says no.", "I'd say yes.", "Go for it, fam.","It doesn't look so good...","Yep!", "Uh, I don't think you want to know.","It seems very doubtful.", "Ebola-chan says: \"Yes, definitely\"!", "Even I know it's certain!", "Err... Foggy, hazy, y'know.", "Probably!", "Perhaps you should ask later?", "No.", "It seems the outlook is good!","I wouldn't count on it."]
