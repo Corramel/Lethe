@@ -792,7 +792,7 @@ if(m.content.startsWith(`?haiku`)){
   return
 }
 */
-if (m.content.startsWith(`?choice `){
+if (m.content.startsWith(`?choice `)){
   var userChoices = (m.content).slice(8);
   var userChoicesArray = userChoices.split(";");
   if(userChoicesArray.length > 1){
