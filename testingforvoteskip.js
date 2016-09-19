@@ -797,7 +797,7 @@ if (m.content.startsWith(`?choice `)){
   var userChoicesArray = userChoices.split(";");
   if(userChoicesArray.length > 1){
     var botChoice = userChoicesArray[Math.floor(Math.random()*userChoicesArray.length)];
-    client.sendMessage(m, `${botChoice}`);
+    client.sendMessage(m, `Ebola-chan has decided... \`${botChoice}\`!`);
     return;
   } else {
     client.sendMessage(m, `You either didn't format it correctly, or only have one choice. Use ';' to split your choices.`)
