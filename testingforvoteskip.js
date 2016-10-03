@@ -131,7 +131,7 @@ client.on('message', m => {
     return;
   }
   if(m.content.startsWith(`?goodbye`)){
-    client.sendFile(m.channel,'http://i.imgur.com/1jO2x12.jpg', ".png", "https://www.youtube.com/watch?v=gsxXvKnuZ7s" )
+    client.sendFile(m.channel,'http://i.imgur.com/NYbyPzQ.jpg', ".png", "https://www.youtube.com/watch?v=gsxXvKnuZ7s" )
   }
   if(m.content.startsWith(`?musicHelp`)){
     client.sendMessage(`To queue up a song, type "@{BotName} yq {song name}", and the bot will attempt to queue a song based on your query. If the song is not found, grab the youtube link and type "@{BotName} yt {yt link}". \n To get a list of the queue, type ?list.\n To replay the last song played, type ?replay.\n To get the current time, type ?time.\n To get the link of the current song, type ?link.\n To vote to skip the current time, type ?next. If you are an admin, the song is automatically skipped. `)
