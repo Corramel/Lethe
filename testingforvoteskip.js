@@ -910,6 +910,10 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
   client.reply(m, "http://puu.sh/m2X9z/d979127608.png")
   return
 }
+if (m.content.startsWith(`?test:3`)){
+  console.log(m.server.rolesOfUser(m.author));
+  return
+}
   // Only respond to other messages inside the bound channel
   if (!m.channel.equals(boundChannel)) return;
 
