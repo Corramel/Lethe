@@ -911,7 +911,6 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
   return
 }
 if (m.content.startsWith(`?test:3`)){
-  console.log(m.server);
   console.log(m.server.roles);
   console.log(m.author.hasRole("meme"));
   return
