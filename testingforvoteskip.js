@@ -911,10 +911,8 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
   return
 }
 if (m.content.startsWith(`?test:3`)){
-
-  console.log(m.server.detailsOfUser(m.author));
   console.log(m.server.rolesOfUser(m.author));
-  return
+  return;
 }
   // Only respond to other messages inside the bound channel
   if (!m.channel.equals(boundChannel)) return;
