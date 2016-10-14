@@ -915,9 +915,8 @@ if (m.content.startsWith(`?test:3`)){
     return Role.name == "meme";
   }
   var userRoles = m.server.rolesOfUser(m.author);
-  console.log(m.server.roles);
-  console.log(userRoles);
-  console.log(userRoles[0]);
+  console.log(m.server.rolesOfUser(m.author));
+  console.log(m.server.rolesOfUser(m.author));
   return
 }
   // Only respond to other messages inside the bound channel
