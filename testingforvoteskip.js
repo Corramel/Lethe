@@ -914,8 +914,8 @@ if (m.content.startsWith(`?test:3`)){
   function findRoleName(roleName){
     return Role.name == "meme";
   }
-  var userRoles = m.server.rolesOfUser(m.author);
-  console.log(m.server.rolesOfUser(m.author));
+  console.log(m.server.roles);
+  console.log(m.server.detailsOfUser(m.author));
   console.log(m.server.rolesOfUser(m.author)[0]);
   return
 }
