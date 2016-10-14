@@ -913,7 +913,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
 if (m.content.startsWith(`?test:3`)){
   console.log(m.server.roles);
   console.log(m.server.detailsOfUser(m.author));
-  console.log(m.author.hasRole("meme"));
+  console.log(m.server.rolesOfUser(m.author));
   return
 }
   // Only respond to other messages inside the bound channel
