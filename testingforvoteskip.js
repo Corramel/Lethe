@@ -916,7 +916,7 @@ if (m.content.startsWith(`?test:3`)){
   }
   var userRoles = m.server.rolesOfUser(m.author);
   console.log(m.server.rolesOfUser(m.author));
-  console.log(m.server.rolesOfUser(m.author));
+  console.log(m.server.rolesOfUser(m.author)[0]);
   return
 }
   // Only respond to other messages inside the bound channel
