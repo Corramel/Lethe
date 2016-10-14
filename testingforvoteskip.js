@@ -911,12 +911,9 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
   return
 }
 if (m.content.startsWith(`?test:3`)){
-  function findRoleName(roleName){
-    return Role.name == "meme";
-  }
-  console.log(m.server.roles);
+
   console.log(m.server.detailsOfUser(m.author));
-  console.log(m.server.rolesOfUser(m.author)[0]);
+  console.log(m.server.rolesOfUser(m.author));
   return
 }
   // Only respond to other messages inside the bound channel
