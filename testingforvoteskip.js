@@ -930,7 +930,6 @@ if (m.content.startsWith(`?test:3`)){
     function findAdmin(roleName){
         return roleName.name === "Squad";
       }
-    }
     if (userIsAdmin(m.author.id) || (m.server.rolesOfUser(m.author).find(findRole) === "Squad")) {
     playStopped();
     return;
