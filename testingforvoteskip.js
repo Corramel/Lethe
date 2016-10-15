@@ -85,7 +85,7 @@ client.on('ready', () => {
 
 client.on('message', m => {
   if (!botMention) return;
-  if (client.user.id == m.author.id) return;
+  //if (client.user.id == m.author.id) return;
 
   if (!(m.content.startsWith(`${botMention} `) || m.content.startsWith(`?`))) return;
 
