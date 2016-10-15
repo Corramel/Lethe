@@ -1,4 +1,4 @@
-var Discord = require('discord.js');
+const Discord = require('discord.js');
 
 var util = require('util');
 var ytdl = require('ytdl-core');
