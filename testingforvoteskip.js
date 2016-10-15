@@ -931,7 +931,7 @@ if (m.content.startsWith(`?test:3`)){
         return roleName.name === "Squad";
       }
     }
-    if (userIsAdmin(m.author.id) || (m.server.rolesOfUser(m.author).find(findRole) === "Squad") {
+    if (userIsAdmin(m.author.id) || (m.server.rolesOfUser(m.author).find(findRole) === "Squad")) {
     playStopped();
     return;
   } else if((!userIsAdmin(m.author.id)) && (voteAllIDs.indexOf(m.author.id)<0)){
