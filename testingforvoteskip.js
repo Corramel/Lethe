@@ -930,6 +930,7 @@ if (m.content.startsWith(`?test:3`)){
     function findAdmin(roleName){
         return roleName.name === "Squad";
       }
+    if (userIsAdmin(m.author.id) || (m.server.rolesOfUser(m.author).find(findAdmin).name === "Squad")) {
     playStopped();
     return;
   } else if((!userIsAdmin(m.author.id)) && (voteAllIDs.indexOf(m.author.id)<0)){
