@@ -1355,10 +1355,10 @@ function error(argument) {
     console.log(e);
   }
 });*/
-client.login(token){function(error, token){
+client.login(token, {function(error, token){
   console.log(token);
   return;
-});*/
+});
 
 function getReply(content){
      siteObject = content;
