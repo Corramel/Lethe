@@ -910,7 +910,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
   client.reply(m, "http://puu.sh/m2X9z/d979127608.png")
   return
 }
-if (m.content.startsWith(`?test:3`)){
+/*if (m.content.startsWith(`?test:3`)){
   function findRole(roleName){
     return roleName.name === "Nadeko";
   }
@@ -921,7 +921,7 @@ if (m.content.startsWith(`?test:3`)){
   console.log(m.server.rolesOfUser(m.author).find(findRoleTwo));
 
   return;
-}
+}*/
   // Only respond to other messages inside the bound channel
   if (!m.channel.equals(boundChannel)) return;
 
@@ -930,7 +930,7 @@ if (m.content.startsWith(`?test:3`)){
     function findAdmin(roleName){
         return roleName.name === "Squad";
       }
-    if (userIsAdmin(m.author.id) || (m.server.rolesOfUser(m.author).find(findAdmin).name === "Squad")) {
+    if (userIsAdmin(m.author.id) || (!m.server.rolesOfUser(m.author).find(findAdmin) === undefined)) {
     playStopped();
     return;
   } else if((!userIsAdmin(m.author.id)) && (voteAllIDs.indexOf(m.author.id)<0)){
