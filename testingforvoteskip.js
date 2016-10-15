@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const token = ('MjM2ODM0NDY1MzY2NjcxMzYw.CuO8Rg.8l7I_E7sJHI2IMb7VlHm1GMPHCA');
+const token = ('MjM2ODM0NDY1MzY2NjcxMzYw.CuO-Aw.CabhcQFkXAD5MBhgw_FrBkHvN0k');
 
 var util = require('util');
 var ytdl = require('ytdl-core');
@@ -1355,8 +1355,7 @@ function error(argument) {
     console.log(e);
   }
 });*/
-client.login(token)
-/* function(error, token){
+client.login(token){function(error, token){
   console.log(token);
   return;
 });*/
