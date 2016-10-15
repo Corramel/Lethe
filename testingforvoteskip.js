@@ -1,39 +1,39 @@
 const Discord = require('discord.js');
 const token = ('MjM2ODM0NDY1MzY2NjcxMzYw.CuO-Aw.CabhcQFkXAD5MBhgw_FrBkHvN0k');
 
-var util = require('util');
-var ytdl = require('ytdl-core');
-var request = require('superagent');
-var reequest = require('request');
-var url = require('url');
-var express = require('express');
-var cheerio = require('cheerio');
-var parseString = require('xml2js').parseString;
-var app = express();
+const util = require('util');
+const ytdl = require('ytdl-core');
+const request = require('superagent');
+const reequest = require('request');
+const url = require('url');
+const express = require('express');
+const cheerio = require('cheerio');
+const parseString = require('xml2js').parseString;
+const app = express();
 // Output version information in console
-var git = require('git-rev');
+const git = require('git-rev');
 
 git.short(commit => git.branch(branch => {
   console.log(`Lethe#${branch}@${commit}`);
 }));
 
-var shouldDisallowQueue = require('./lib/permission-checks.js');
-var Saved = require('./lib/saved.js');
+const shouldDisallowQueue = require('./lib/permission-checks.js');
+const Saved = require('./lib/saved.js');
 Saved.read();
 
-var YoutubeTrack = require('./lib/youtube-track.js');
+const YoutubeTrack = require('./lib/youtube-track.js');
 
 
-var Util = require('./lib/util.js');
-var Config = require('./lib/config.js');
-var adminIds = Config.adminIds;
-var tarots = require('./lib/magical-cards.json');
-var randEbolaPic = require('./lib/ebolachaninfo.json');
-var randFangCringe = require('./lib/fangsmemes.json');
-var trivAnswers = require('./lib/questionsNadeko.json');
+const Util = require('./lib/util.js');
+const Config = require('./lib/config.js');
+const adminIds = Config.adminIds;
+const tarots = require('./lib/magical-cards.json');
+const randEbolaPic = require('./lib/ebolachaninfo.json');
+const randFangCringe = require('./lib/fangsmemes.json');
+const trivAnswers = require('./lib/questionsNadeko.json');
 var CURRENT_REV = 4;
 
-var client = new Discord.Client();
+const client = new Discord.Client();
 
 // Handle discord.js warnings
 client.on('warn', (m) => console.log('[warn]', m));
@@ -1355,10 +1355,7 @@ function error(argument) {
     console.log(e);
   }
 });*/
-client.login(token, {function(error, token){
-  console.log(token);
-  return;
-});
+client.login(token)
 
 function getReply(content){
      siteObject = content;
