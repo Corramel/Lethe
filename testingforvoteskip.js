@@ -133,7 +133,7 @@ client.on('message', m => {
     return;
   }
   if(m.content.startsWith(`?goodbye`)){
-    client.sendFile(m.channel,'http://i.imgur.com/NYbyPzQ.jpg', ".png", "https://www.youtube.com/watch?v=gsxXvKnuZ7s" );
+    m.channel.sendFile('http://i.imgur.com/NYbyPzQ.jpg', ".png", "https://www.youtube.com/watch?v=gsxXvKnuZ7s" );
     return;
   }
   if(m.content.startsWith(`?understand`)){
@@ -233,7 +233,7 @@ client.on('message', m => {
           messageArray.push(`${luckyOnes[i] + eventArray[Math.floor(Math.random()*eventArray.length)]} \n`)
           console.log(messageArray)
         }
-        m.channel.sendMessage(,`${messageArray.join("") + unluckyOne} pulls the trigger... :boom: :gun: :skull: R.I.P. in pieces you unlucky piece of shit.`);
+        m.channel.sendMessage(`${messageArray.join("") + unluckyOne} pulls the trigger... :boom: :gun: :skull: R.I.P. in pieces you unlucky piece of shit.`);
         messageArray = [];
         luckyOnes = [];
         return;
