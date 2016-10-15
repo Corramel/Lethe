@@ -77,6 +77,8 @@ client.on('ready', () => {
   } else {
    botMention = `<@${client.user.id}>`;
  }
+  console.log(client);
+  console.log(client.user);
   console.log(`Bot mention: ${botMention}`);
   if (Config.configRev !== CURRENT_REV) {
     console.log('WARNING: Your lethe-config.json is out of date relative to the code using it! Please update it from the git repository, otherwise things will break!');
@@ -85,7 +87,7 @@ client.on('ready', () => {
 
 client.on('message', m => {
   if (!botMention) return;
-  //if (client.user.id == m.author.id) return;
+  if (client.user.id == m.author.id) return;
 
   if (!(m.content.startsWith(`${botMention} `) || m.content.startsWith(`?`))) return;
 
