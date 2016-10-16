@@ -38,6 +38,8 @@ const client = new Discord.Client();
 // Handle discord.js warnings
 client.on('warn', (m) => console.log('[warn]', m));
 client.on('debug', (m) => console.log('[debug]', m));
+var channelToJoin = "";
+var dispatcher;
 var randomPunInfo;
 var totalNumberNeeded;
 var randomCompliment;
@@ -111,7 +113,7 @@ client.on('message', m => {
     for (var channel of m.guild.channel.type === "voice") {
       if (channel instanceof Discord.VoiceChannel) {
         if (!channelToJoin || VoiceChannel.name === channelToJoin) { */
-        var channelToJoin = m.member.voiceChannel;
+        channelToJoin = m.guild.channels.findAll("name", spliceArguments(m.content)[1])[0];
           boundChannel = m.channel;
           m.reply(`Binding to text channel <#${boundChannel.id}> and voice channel **${channelToJoin.name}** \`(${channelToJoin.id})\``);
           channelToJoin.join().catch(error);
@@ -120,13 +122,18 @@ client.on('message', m => {
     //}
     return;
   }
+  if(m.content.startsWith(`?test21`)){
+    console.log(m.guild.channels);
+    console.log(m.guild.channels.findAll("type", "voice"))
+    console.log(m.guild.channels.findAll("name", "just-voice"))
+  }
 
   if (m.content.startsWith(`${botMention} destroy`)) { // destroy
     if (!checkCommand(m, 'destroy')) return;
     if (!boundChannel) return;
     m.reply(`Unbinding from <#${boundChannel.id}> and destroying voice connection`);
     playQueue = [];
-    voiceChannel.leave();
+    channelToJoin.connection.disconnect();
     boundChannel = false;
     currentStream = false;
     currentVideo = false;
@@ -912,11 +919,17 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
   m.reply("http://puu.sh/m2X9z/d979127608.png")
   return
 }
+if (m.content.startsWith(`?hehexd`)){
+
+  return;
+}
   // Only respond to other messages inside the bound channel
-  if (!m.channel.equals(boundChannel)) return;
+  //if (!m.channel.equals(boundChannel)) return;
 
   if (m.content.startsWith(`?next`)) {
+    console.log(channelToJoin.members);
     // next !checkCommand(m, '?next')
+    if(playQueue.length > 0){
     if (userIsAdmin(m.author.id)) {
     playStopped();
     return;
@@ -933,7 +946,6 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     voteTotalCount = voteCount + voteTotalCount;
     voteAllIDs.push(voter);
     console.log(voteCount);
-    console.log(totalNumberNeeded = (Discord.VoiceChannel.members).length())
    // if(!(Discord.VoiceChannel.members).length === totalNumberNeeded){
   //    totalNumberNeeded = (Discord.VoiceChannel.members).length
   //  } else {
@@ -953,7 +965,11 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
         console.log("The people in the vote list are " + voteAllIDs);
       };
       return;
-  };
+  } else {
+    m.channel.sendMessage("Nothing in Queue!");
+    return;
+  }
+};
 
   if (m.content.startsWith(`${botMention} yq`) // youtube query
     || m.content.startsWith(`${botMention} qq`) // queue query
@@ -975,7 +991,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
     }
 
     var requestUrl = 'https://www.googleapis.com/youtube/v3/search' +
-      `?part=snippet&q=${escape(args)}&key=${apiKey}`;
+      `?part=snippet&q=${args}&key=AIzaSyAqroFUTU83XuAa6x_--vI3AAzESiWHbH4`;
 
     request(requestUrl, (error, response) => {
       if (!error && response.statusCode == 200) {
@@ -1145,7 +1161,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
         }
       });
     }
-
+    console.log(formattedList);
     m.reply(formattedList);
     return;
   }
@@ -1172,7 +1188,7 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
 
   if (m.content.startsWith(`?time`)) { // time
     if (!checkCommand(m, 'time')) return;
-    var streamTime = client.internal.voiceConnection.streamTime; // in ms
+    var streamTime = dispatcher.time; // in ms
     var streamSeconds = streamTime / 1000;
     var videoTime = currentVideo.lengthSeconds;
     m.reply(`${Util.formatTime(streamSeconds)} / ${Util.formatTime(videoTime)} (${((streamSeconds * 100) / videoTime).toFixed(2)} %)`);
@@ -1265,10 +1281,10 @@ function handleYTError(err) {
 }
 
 function playStopped() {
-  if (client.internal.voiceConnection) client.internal.voiceConnection.stopPlaying();
+  if (channelToJoin.connection) dispatcher.end();
 
   boundChannel.sendMessage(`Finished playing **${currentVideo.title}**`);
-  client.setStatus('online', null);
+  client.user.setStatus('online', null);
   lastVideo = currentVideo;
   currentVideo = false;
   voteTotalCount = 0;
@@ -1278,8 +1294,8 @@ function playStopped() {
 
 function play(video) {
   currentVideo = video;
-  if (client.internal.voiceConnection) {
-    var connection = client.internal.voiceConnection;
+  if (channelToJoin.connection) {
+    var connection = channelToJoin.connection;
     currentStream = video.getStream();
 
     currentStream.on('error', (err) => {
@@ -1294,10 +1310,11 @@ function play(video) {
     });
 
     currentStream.on('end', () => setTimeout(playStopped, Config.timeOffset || 8000)); // 8 second leeway for bad timing
-    connection.playRawStream(currentStream).then(intent => {
+  dispatcher = channelToJoin.connection.playStream(currentStream)
+    //.then(intent => {
       boundChannel.sendMessage(`Playing ${video.prettyPrint()}`);
-      client.setStatus('online', video.title);
-    });
+      client.user.setStatus('online', video.title);
+  //  });
   }
 }
 
