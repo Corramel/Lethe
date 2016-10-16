@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const token = ('MjM2ODM0NDY1MzY2NjcxMzYw.CuO-Aw.CabhcQFkXAD5MBhgw_FrBkHvN0k');
+const token = ('MjM2ODM0NDY1MzY2NjcxMzYw.CuRSoQ.xZbEciqbAuwmgSN3JmRdxQugmeU');
 
 const util = require('util');
 const ytdl = require('ytdl-core');
@@ -107,17 +107,17 @@ client.on('message', m => {
   if (m.content.startsWith(`${botMention} init`)) { // init
     if (!checkCommand(m, 'init')) return;
     if (boundChannel) return;
-    var channelToJoin = spliceArguments(m.content)[1];
-    for (var channel of m.channel.guild.channels) {
+    /*var channelToJoin = spliceArguments(m.content)[1];
+    for (var channel of m.guild.channel.type === "voice") {
       if (channel instanceof Discord.VoiceChannel) {
-        if (!channelToJoin || guildchannel.name === channelToJoin) {
+        if (!channelToJoin || VoiceChannel.name === channelToJoin) { */
+        var channelToJoin = m.member.voiceChannel;
           boundChannel = m.channel;
-          m.reply(`Binding to text channel <#${boundChannel.id}> and voice channel **${guildchannel.name}** \`(${guildchannel.id})\``);
-          channel.join().catch(error);
-          break;
-        }
-      }
-    }
+          m.reply(`Binding to text channel <#${boundChannel.id}> and voice channel **${channelToJoin.name}** \`(${channelToJoin.id})\``);
+          channelToJoin.join().catch(error);
+        //}
+      //}
+    //}
     return;
   }
 
@@ -1355,7 +1355,9 @@ function error(argument) {
     console.log(e);
   }
 });*/
-client.login(token)
+client.login(token).then(output => {
+  console.log(token)
+}).catch(err => {console.error(err)});
 
 function getReply(content){
      siteObject = content;

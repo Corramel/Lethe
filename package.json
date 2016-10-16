@@ -21,6 +21,7 @@
   "homepage": "https://github.com/meew0/Lethe#readme",
   "dependencies": {
     "cheerio": "latest",
+    "discord.js": "github:hydrabolt/discord.js",
     "express": "latest",
     "git-rev": "^0.2.1",
     "node-opus": "^0.1.11",
