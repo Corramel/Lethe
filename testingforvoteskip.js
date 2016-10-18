@@ -30,7 +30,6 @@ const adminIds = Config.adminIds;
 const tarots = require('./lib/magical-cards.json');
 const randEbolaPic = require('./lib/ebolachaninfo.json');
 const randFangCringe = require('./lib/fangsmemes.json');
-const trivAnswers = require('./lib/questionsNadeko.json');
 var CURRENT_REV = 4;
 
 const client = new Discord.Client();
@@ -113,19 +112,27 @@ client.on('message', m => {
     for (var channel of m.guild.channel.type === "voice") {
       if (channel instanceof Discord.VoiceChannel) {
         if (!channelToJoin || VoiceChannel.name === channelToJoin) { */
+        if(spliceArguments(m.content)[1] > 0){
         channelToJoin = m.guild.channels.findAll("name", spliceArguments(m.content)[1])[0];
           boundChannel = m.channel;
           m.reply(`Binding to text channel <#${boundChannel.id}> and voice channel **${channelToJoin.name}** \`(${channelToJoin.id})\``);
           channelToJoin.join().catch(error);
-        //}
+          return;
+        } else {
+          channelToJoin = m.guild.channels.find("type", "voice");
+          boundChannel = m.channel;
+          m.reply(`Binding to text channel <#${boundChannel.id}> and voice channel **${channelToJoin.name}** \`(${channelToJoin.id})\``);
+          channelToJoin.join().catch(error);
+          return;
+        }
       //}
     //}
-    return;
+
   }
   if(m.content.startsWith(`?test21`)){
-    console.log(m.guild.channels);
-    console.log(m.guild.channels.findAll("type", "voice"))
-    console.log(m.guild.channels.findAll("name", "just-voice"))
+    console.log(m.channel.id);
+    console.log(boundChannel.id);
+    return;
   }
 
   if (m.content.startsWith(`${botMention} destroy`)) { // destroy
@@ -920,16 +927,22 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
   return
 }
 if (m.content.startsWith(`?hehexd`)){
-
+  //console.log(m.channel.id);
+  //console.log(boundChannel.id)
+  let roleToFindId = m.guild.roles.find("name", "admin")
+  //168091626563043328
+  //console.log(roleToFindId);
+  //console.log(roleToFindId);
+  console.log(m.guild.members.filter(m => m.roles.has(roleToFindId.id));
   return;
 }
   // Only respond to other messages inside the bound channel
-  //if (!m.channel.equals(boundChannel)) return;
+if (!(m.channel.id === boundChannel.id)) return;
 
   if (m.content.startsWith(`?next`)) {
     console.log(channelToJoin.members);
     // next !checkCommand(m, '?next')
-    if(playQueue.length > 0){
+    if(currentVideo){
     if (userIsAdmin(m.author.id)) {
     playStopped();
     return;
@@ -966,7 +979,7 @@ if (m.content.startsWith(`?hehexd`)){
       };
       return;
   } else {
-    m.channel.sendMessage("Nothing in Queue!");
+    m.channel.sendMessage("Hey, nothing's playing!");
     return;
   }
 };
