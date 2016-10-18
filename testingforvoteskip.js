@@ -926,15 +926,18 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
   m.reply("http://puu.sh/m2X9z/d979127608.png")
   return
 }
+/*if ((m.content.toLowerCase().includes(`thicc`) || m.content.toLowerCase().includes(`thick`) || m.content.toLowerCase().includes(`thic`)) && (!m.author.id === "81526338728501248")){
+  m.sendMessage()
+}*/
 if (m.content.startsWith(`?hehexd`)){
   //console.log(m.channel.id);
   //console.log(boundChannel.id)
-  let roleToFindId = m.guild.roles.find("name", "admin")
+  //let roleToFindId = m.guild.roles.find("name", "admin")
   //168091626563043328
   //console.log(roleToFindId);
   //console.log(roleToFindId);
-  console.log(m.guild.members.filter(m => m.roles.has(roleToFindId.id));
-  return;
+  //console.log(m.guild.members.filter(m => m.roles.has(roleToFindId.id));
+  //return;
 }
   // Only respond to other messages inside the bound channel
 if (!(m.channel.id === boundChannel.id)) return;
