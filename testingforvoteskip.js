@@ -38,6 +38,7 @@ const client = new Discord.Client();
 client.on('warn', (m) => console.log('[warn]', m));
 client.on('debug', (m) => console.log('[debug]', m));
 var channelToJoin = "";
+var userToPing;
 var dispatcher;
 var randomPunInfo;
 var totalNumberNeeded;
@@ -90,7 +91,7 @@ client.on('message', m => {
   if (!botMention) return;
   if (client.user.id == m.author.id) return;
 
-  if (!(m.content.startsWith(`${botMention} `) || m.content.startsWith(`?`))) return;
+  //if (!(m.content.startsWith(`${botMention} `) || m.content.startsWith(`?`))) return;
 
   if (m.content.startsWith(`${botMention} info`)) {
     if (!checkCommand(m, 'info')) return;
@@ -926,10 +927,52 @@ if (m.content.startsWith(`?goodgirls`)){ //goodgrils
   m.reply("http://puu.sh/m2X9z/d979127608.png")
   return
 }
-/*if ((m.content.toLowerCase().includes(`thicc`) || m.content.toLowerCase().includes(`thick`) || m.content.toLowerCase().includes(`thic`)) && (!m.author.id === "81526338728501248")){
-  m.sendMessage()
-}*/
+if(m.content.toLowerCase().includes("thicc") || m.content.toLowerCase().includes("thick") || m.content.toLowerCase().includes("thic")){
+  //console.log(userToPing);
+  //console.log("Test");
+  //  console.log("Step2");
+  if(!(userToPing === undefined)){
+    if(!(m.author.id == "81526338728501248")){
+      console.log("Step3");
+        userToPing.sendMessage(`${m.author.username} said something about thiccness in \`${m.channel.name}\` in \`${m.guild.name}\`.`);
+        console.log("Step 3a");
+        return;
+    } else {
+      console.log("Step 3b");
+      return;
+    }
+  } else {
+    return;
+  }
+}
+if(m.content.startsWith(`?mana`)){
+  var ManaTerribleArray = ["http://www.tennesseedrivertraining.com/wp-content/uploads/2014/09/Milenio-Wholesale-Flip-Flops-e1347649613637.jpg", "http://www.tennesseedrivertraining.com/wp-content/uploads/2014/09/Milenio-Wholesale-Flip-Flops-e1347649613637.jpg", "http://ak9.picdn.net/shutterstock/videos/2631068/thumb/1.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/88/Bright_red_tomato_and_cross_section02.jpg", "http://paleotable.com/wp-content/uploads/2012/11/mayonnaise.jpeg", "http://img.ezinemark.com/imagemanager2/files/30003693/2010/09/2010-09-17-17-27-01-5-how-hot-is-the-sahara-desert.jpeg"];
+  m.channel.sendFile(ManaTerribleArray[Math.floor(Math.random()*ManaTerribleArray.length)]);
+  return;
+}
+if(m.content.startsWith(`?supersekrit`)){
+  userToPing = m.author;
+  console.log("User set!");
+  console.log(userToPing);
+  userToPing
+}
+
 if (m.content.startsWith(`?hehexd`)){
+  console.log(m.content.includes("hehe"));
+  console.log(userToPing);
+  console.log("Test");
+  //if(!userToPing === undefined){
+    console.log("Step2");
+    if(!(m.author.id == "81526338728501248")){
+      console.log("Step3");
+        userToPing.sendMessage(`${m.author.username} said something about thicc in ${m.channel.name} in ${m.guild.name}.`);
+        console.log("Step 3a");
+        return;
+    } else {
+      console.log("Step 3b");
+      return;
+    }
+  //}
   //console.log(m.channel.id);
   //console.log(boundChannel.id)
   //let roleToFindId = m.guild.roles.find("name", "admin")
