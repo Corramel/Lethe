@@ -120,7 +120,8 @@ client.on('message', m => {
           channelToJoin = m.guild.channels.findAll("name", m.content.replace(`${botMention} init `, ""));
           boundChannel = m.channel;
           m.reply(`Binding to text channel <#${boundChannel.id}> and voice channel **${channelToJoin.name}** \`(${channelToJoin.id})\``);
-          channelToJoin.join().catch(error);
+          channelToJoin.join()
+          //.catch(error);
           return;
         } else {
           console.log("I'm not running!");
