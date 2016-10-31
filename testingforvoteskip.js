@@ -134,9 +134,10 @@ client.on('message', m => {
   }
   if(m.content.startsWith(`?test21`)){
     console.log(m.channel.id);
-    console.log(boundChannel.id);
+    //console.log(boundChannel.id);
     //console.log(m.guild.channels);
-    console.log(m.guild.channels.findAll("name","Meme name"));
+    //console.log(m.guild.channels.findAll("name","Meme name"));
+    console.log(m.content);
     console.log(m.guild.channels.findAll("name", m.content.slice(6)));
     return;
   }
