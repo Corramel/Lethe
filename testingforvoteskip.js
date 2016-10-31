@@ -118,10 +118,10 @@ client.on('message', m => {
         if(m.content.replace(`${botMention} init`, "").length > 1){
           if((!(m.guild.channels.findAll("name", m.content.replace(`${botMention} init `, "")) === undefined))){
           console.log("Im running!");
-          channelToJoin = m.guild.channels.findAll("name", m.content.replace(`${botMention} init `, ""));
+          channelToJoin = m.guild.channels.findAll("name", m.content.replace(`${botMention} init `, ""))[0];
           boundChannel = m.channel;
           m.reply(`Binding to text channel <#${boundChannel.id}> and voice channel **${channelToJoin.name}** \`(${channelToJoin.id})\``);
-          channelToJoin.join().catch(console.error);
+          channelToJoin.join().then(connection => console.log("Voice connected")).catch(console.error);
           return;
         } else {
           m.reply("That channel doesn't exist!");
