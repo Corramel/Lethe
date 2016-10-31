@@ -137,9 +137,11 @@ client.on('message', m => {
     //console.log(boundChannel.id);
     //console.log(m.guild.channels);
     //console.log(m.guild.channels.findAll("name","Meme name"));
+
     console.log(m.content);
     console.log(m.content.slice(8));
     console.log(m.guild.channels.findAll("name", m.content.slice(8)));
+    console.log(m.guild.channels.findAll("name", m.content.replace(`?test21`, "")));
     return;
   }
 
