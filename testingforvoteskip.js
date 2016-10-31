@@ -115,7 +115,8 @@ client.on('message', m => {
     for (var channel of m.guild.channel.type === "voice") {
       if (channel instanceof Discord.VoiceChannel) {
         if (!channelToJoin || VoiceChannel.name === channelToJoin) { */
-        if(m.content.replace(`${botMention} init`, "").length > 1 && (!(m.guild.channels.findAll("name", m.content.replace(`${botMention} init `, "").name) === undefined))){
+        if(m.content.replace(`${botMention} init`, "").length > 1){
+          if((!(m.guild.channels.findAll("name", m.content.replace(`${botMention} init `, "")) === undefined))){
           console.log("Im running!");
           channelToJoin = m.guild.channels.findAll("name", m.content.replace(`${botMention} init `, ""));
           boundChannel = m.channel;
@@ -123,6 +124,10 @@ client.on('message', m => {
           channelToJoin.join()
           //.catch(error);
           return;
+        } else {
+          m.reply("That channel doesn't exist!");
+          return;
+        }
         } else {
           console.log("I'm not running!");
           channelToJoin = m.guild.channels.find("type", "voice");
