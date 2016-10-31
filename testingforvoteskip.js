@@ -115,7 +115,7 @@ client.on('message', m => {
     for (var channel of m.guild.channel.type === "voice") {
       if (channel instanceof Discord.VoiceChannel) {
         if (!channelToJoin || VoiceChannel.name === channelToJoin) { */
-        if(spliceArguments(m.content)[1] > 0){
+        if(m.content.replace(`${botMention} init`, "").length > 1){
           console.log("Im running!");
           channelToJoin = m.guild.channels.findAll("name", m.content.replace(`${botMention} init `, ""));
           boundChannel = m.channel;
