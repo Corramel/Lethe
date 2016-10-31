@@ -116,7 +116,7 @@ client.on('message', m => {
       if (channel instanceof Discord.VoiceChannel) {
         if (!channelToJoin || VoiceChannel.name === channelToJoin) { */
         if(spliceArguments(m.content)[1] > 0){
-        channelToJoin = m.guild.channels.findAll("name", m.content.replace(`${botMention} init`, ""));
+        channelToJoin = m.guild.channels.findAll("name", m.content.replace(`${botMention} init `, ""));
           boundChannel = m.channel;
           m.reply(`Binding to text channel <#${boundChannel.id}> and voice channel **${channelToJoin.name}** \`(${channelToJoin.id})\``);
           channelToJoin.join().catch(error);
@@ -141,8 +141,8 @@ client.on('message', m => {
     console.log(m.content);
     console.log(m.content.slice(8));
     console.log(m.guild.channels.findAll("name", m.content.slice(8)));
-    console.log(m.guild.channels.findAll("name", m.content.replace(`?test21`, "")));
-    console.log(m.content.replace(`?test21`, ""));
+    console.log(m.guild.channels.findAll("name", m.content.replace(`?test21 `, "")));
+    console.log(m.content.replace(`?test21 `, ""));
     return;
   }
 
