@@ -142,6 +142,7 @@ client.on('message', m => {
     console.log(m.content.slice(8));
     console.log(m.guild.channels.findAll("name", m.content.slice(8)));
     console.log(m.guild.channels.findAll("name", m.content.replace(`?test21`, "")));
+    console.log(m.content.replace(`?test21`, ""));
     return;
   }
 
