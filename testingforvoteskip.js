@@ -110,7 +110,7 @@ client.on('message', m => {
     if (!checkCommand(m, 'init')) return;
     if (boundChannel) return;
     var rest = m.content.split(' ');
-    var removed = rest.splice(0, 2);
+    var removed = rest.splice(0, 1);
     /*var channelToJoin = spliceArguments(m.content)[1];
     for (var channel of m.guild.channel.type === "voice") {
       if (channel instanceof Discord.VoiceChannel) {
@@ -138,8 +138,8 @@ client.on('message', m => {
     //console.log(m.guild.channels);
     //console.log(m.guild.channels.findAll("name","Meme name"));
     console.log(m.content);
-    console.log(m.content.slice(9));
-    console.log(m.guild.channels.findAll("name", m.content.slice(9)));
+    console.log(m.content.slice(8));
+    console.log(m.guild.channels.findAll("name", m.content.slice(8)));
     return;
   }
 
