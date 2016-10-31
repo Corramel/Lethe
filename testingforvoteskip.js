@@ -136,8 +136,8 @@ client.on('message', m => {
     console.log(m.channel.id);
     console.log(boundChannel.id);
     console.log(m.guild.channels);
-    console.log(m.guild.channels.findAll("type","voice"));
-    console.log(m.guild.channels.findAll("type", "voice").findAll("name", m.content.slice(7)));
+    console.log(m.guild.channels.findAll("name","Meme name"));
+    console.log(m.guild.channels.findAll("name", m.content.slice(7)));
     return;
   }
 
