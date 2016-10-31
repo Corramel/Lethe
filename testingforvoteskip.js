@@ -109,12 +109,14 @@ client.on('message', m => {
   if (m.content.startsWith(`${botMention} init`)) { // init
     if (!checkCommand(m, 'init')) return;
     if (boundChannel) return;
+    var rest = m.content.split(' ');
+    var removed = rest.splice(0, 2);
     /*var channelToJoin = spliceArguments(m.content)[1];
     for (var channel of m.guild.channel.type === "voice") {
       if (channel instanceof Discord.VoiceChannel) {
         if (!channelToJoin || VoiceChannel.name === channelToJoin) { */
         if(spliceArguments(m.content)[1] > 0){
-        channelToJoin = m.guild.channels.findAll("name", spliceArguments(m.content)[1])[0];
+        channelToJoin = m.guild.channels.findAll("name", removed)[0];
           boundChannel = m.channel;
           m.reply(`Binding to text channel <#${boundChannel.id}> and voice channel **${channelToJoin.name}** \`(${channelToJoin.id})\``);
           channelToJoin.join().catch(error);
