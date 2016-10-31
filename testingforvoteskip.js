@@ -135,6 +135,8 @@ client.on('message', m => {
   if(m.content.startsWith(`?test21`)){
     console.log(m.channel.id);
     console.log(boundChannel.id);
+    console.log(m.guild.channels);
+    console.log(m.guild.channels.findAll("type","voice"));
     console.log(m.guild.channels.findAll("type", "voice").findAll("name", m.content.slice(7)));
     return;
   }
