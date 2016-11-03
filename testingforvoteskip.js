@@ -821,6 +821,20 @@ if (m.content.toLowerCase().startsWith(`${botMention} hi`) || m.content.toLowerC
     m.reply(responseArray[Math.floor(Math.random() * responseArray.length)]);
   }
 }
+if(m.content.startsWith(`?catfax`)){
+  var requestUrl = ` http://catfacts-api.appspot.com/api/facts`;
+  reequest({url:requestUrl, json:true, headers: {'User-Agent': 'request'}}, (err, res, data) => {
+    if(err){
+      console.log("Error:", err);
+    } else if(res.statusCode !== 200){
+      console.log("Got a bad response", res.statusCode);
+    } else {
+      console.log(data);
+      m.reply(data.facts);
+    };
+  });
+  return;
+};
 
 if(m.content.startsWith(`?haiku`)){
   var requestUrl = "http://www.smalltime.com/Haiku?square=";
