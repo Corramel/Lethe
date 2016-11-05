@@ -835,6 +835,20 @@ if(m.content.startsWith(`?catfax`)){
   });
   return;
 };
+if(m.content.startsWith(`?catpix`)){
+  var requestUrl = `http://random.cat/meow`;
+  reequest({url:requestUrl, headers: {'User-Agent': 'request'}}, (err, res, data) =>{
+    if(err){
+      console.log(err);
+    } else if(res.statusCode !== 200){
+      console.log("Got a bad response", res.statusCode);
+    } else {
+      console.log(data);
+      var parsedData = JSON.parse(data);
+      m.channel.sendFile(parsedData.file.replace('\/', '/'))
+    }
+  })
+}
 
 if(m.content.startsWith(`?haiku`)){
   var requestUrl = "http://www.smalltime.com/Haiku?square=";
