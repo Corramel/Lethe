@@ -214,13 +214,11 @@ client.on('message', m => {
     return;
   }
   if (m.content.startsWith(`?slash `)){
-    //var mentionInMessage = m;
     var infoWanted = m.content.slice(7)
     var allMentionsArray = infoWanted.split(" ");
     var allMentions = allMentionsArray.toString()
     var cleanUpMessage = allMentions.replace(",", ", ");
     console.log(cleanUpMessage);
-    //console.log(mentionInMessage);
     var slashArray = ["http://i.imgur.com/RH2yX.jpg", "http://media.giphy.com/media/daDA43pfSyeHK/giphy.gif", "http://i.imgur.com/7JNeSzT.jpg", "http://i.imgur.com/ZgR1USn.png", "http://i.imgur.com/2KTyI5n.png", "http://i.imgur.com/WnHUFcB.jpg", "http://i.imgur.com/34X6qf4.jpg", "http://i.imgur.com/Oy49Zln.png"]
     m.channel.sendMessage(`${cleanUpMessage} you have been slashed by ${m.author}! ${slashArray[Math.floor(Math.random()*slashArray.length)]}`);
   }
@@ -752,14 +750,14 @@ if (m.content.startsWith(`?stayfree`)) { //FREE
 }
 if (m.content.startsWith(`?dion`)) { //fuckin spooked
   if (!checkCommand(m, `?dion`)) return
-  var dionArray = ["http://puu.sh/m9kCz/81350ea87f.jpg", "http://puu.sh/m9oFW/fda62eb112.png", "https://i.gyazo.com/8606fb25fb564bd0235f482edb9dc921.png", "https://cdn.discordapp.com/attachments/128148462683422720/130425654255681536/IMG_1515.PNG", "http://puu.sh/lzAgv/55c4276d7c.png"]
-  m.reply(dionArray[Math.floor(Math.random() * dionArray.length)])
+  var dionArray = ["https://cdn.discordapp.com/attachments/103601699930791936/244569655811899402/IMG_20161105_161134.jpg", "http://puu.sh/m9kCz/81350ea87f.jpg", "http://puu.sh/m9oFW/fda62eb112.png", "https://i.gyazo.com/8606fb25fb564bd0235f482edb9dc921.png", "https://cdn.discordapp.com/attachments/128148462683422720/130425654255681536/IMG_1515.PNG", "http://puu.sh/lzAgv/55c4276d7c.png"]
+  m.channel.sendFile(dionArray[Math.floor(Math.random() * dionArray.length)])
   return;
 }
 if (m.content.startsWith(`?fang`)) { // what a fuckin retard
   if (!checkCommand(m, `?fang`)) return
   var messageanswer = randFangCringe.data.images[Math.floor(Math.random()*40)].link
-  m.channel.sendMessage(messageanswer.replace(/\\\//g, "/"));
+  m.channel.sendFile(messageanswer.replace(/\\\//g, "/"));
 }
 if (m.content.startsWith(`?starterpack`)) { //memecontrol
   if (!checkCommand(m, `?pack`)) return
@@ -1327,8 +1325,9 @@ function resolveVid(thing, m) {
 
 function getInfoAndQueue(vid, m, suppress) {
   YoutubeTrack.getInfoFromVid(vid, m, (err, video) => {
-    if (err) handleYTError(err);
-    else {
+    if (err) {
+      handleYTError(err);
+    } else {
       possiblyQueue(video, m.author.id, m, suppress);
     }
   });
@@ -1372,9 +1371,9 @@ function possiblyQueue(video, userId, m, suppress) {
 function handleYTError(err) {
   if (err.toString().indexOf('Code 150') > -1) {
     // Video unavailable in country
-    boundChannel.sendMessage('This video is unavailable in the country the bot is running in! Please try a different video.');
+    boundChannel.sendMessage(`This video is unavailable in the country the bot is running in! Please try a different video. (Most likely Copyrighted) \n Error Message: ${err}`);
   } else if (err.message == 'Could not extract signature deciphering actions') {
-    boundChannel.sendMessage('YouTube streams have changed their formats, please update `ytdl-core` to account for the change!');
+    boundChannel.sendMessage(`YouTube streams have changed their formats, please update 'ytdl-core' to account for the change!(This means I'm being lazy)`);
   } else if (err.message == 'status code 404') {
     boundChannel.sendMessage('That video does not exist!');
   } else {
