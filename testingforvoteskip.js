@@ -164,15 +164,20 @@ client.on('message', m => {
     weather.current({method:'name',location:m.content.slice(9), appid:'9d456f29174a2626137d59075d2737a4', units:'metric'},function(err, data){
       if(!err){
         console.log(data);
+        if(!(data.cod == "200")){
+          m.reply("Typo? Or maybe that place doesn't exist.");
+          console.log(data.cod + data.message)
+          return;
+        } else {
         var weatherInfo = data.weather[0];
         var dayOrNight = "";
-        if(data.dt <= data.sys.sunset && data.dt >= data.sys.sunrise){ //Night
-          dayOrNight = "🌃";
+        if((data.dt >= data.sys.sunset) || (data.dt <= data.sys.sunrise)){ //Night
+          dayOrNight = "🌃 It's night-time.";
         } else {
           //Day
-          dayOrNight = "🏙";
+          dayOrNight = "🏙 It's day-time.";
         }
-        currentWeather = data.name + "'s temperature is: " + Math.round(data.main.temp) + "° Celsius or " + (Math.round(parseInt(data.main.temp)*1.8+32)) + "° Farenheit." + dayOrNight;
+        currentWeather = ":flag_" + data.sys.country.toLowerCase() + ": " +  data.name + ", " + data.sys.country + "'s temperature is: " + Math.round(data.main.temp) + "° Celsius or " + (Math.round(parseInt(data.main.temp)*1.8+32)) + "° Farenheit. " + dayOrNight;
         if(weatherInfo.id <= 531  && weatherInfo.id >= 500){//rain
           var rainArray = ["Stay indoors!", "Get comfy.", "Bring an umbrella.", "Hope you have an umbrella.", "Hope for a rainbow!", "Wait it out.", "Pitter, patter.", "Don't get a cold.", "Don't slip!"];
           currentWeather = currentWeather + "\n It's currently raining! 🌧 " + rainArray[Math.floor(Math.random()*rainArray.length)] + "\n Windspeed: " + data.wind.speed + "km/h";
@@ -198,8 +203,11 @@ client.on('message', m => {
           currentWeather = currentWeather + "\n It's calm outside. Relax, friend. 🌞" + "\n Windspeed: " + data.wind.speed + "km/h";
         }else {
           m.reply("Something went wrong.");
+          return;
         }
         m.reply(currentWeather);
+        return;
+      }
       }
     });
   }
@@ -354,7 +362,10 @@ client.on('message', m => {
            var parsingInfo = toParse.text();
 
            parseString(toParse, function(err, result){
-
+             if(result.posts.post == undefined){
+               m.reply("Sorry, no images were found during this iteration of the search.")
+               return;
+             }
 
                var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
 
@@ -385,6 +396,10 @@ client.on('message', m => {
           parseString(toParse, function(err, result){
               //var lengthOfPosts = result.posts.post.length
               //console.log(lengthOfPosts);
+              if(result.posts.post == undefined){
+                m.reply("Sorry, no images were found during this iteration of the search.")
+                return;
+              }
               var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
 
               while(randomPost.rating === "e" || randomPost.rating === "q"){
@@ -415,6 +430,10 @@ client.on('message', m => {
          parseString(toParse, function(err, result){
              //var lengthOfPosts = result.posts.post.length
              //console.log(lengthOfPosts);
+             if(result.posts.post == undefined){
+               m.reply("Sorry, no images were found during this iteration of the search.")
+               return;
+             }
              var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
 
              while(randomPost.rating === "s"){
@@ -439,7 +458,10 @@ client.on('message', m => {
          var parsingInfo = toParse.text();
 
          parseString(toParse, function(err, result){
-
+           if(result.posts.post == undefined){
+             m.reply("Sorry, no images were found during this iteration of the search.")
+             return;
+           }
              var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
 
              while(randomPost.rating === "e" || randomPost.rating === "q"){
@@ -464,7 +486,10 @@ client.on('message', m => {
          var parsingInfo = toParse.text();
 
          parseString(toParse, function(err, result){
-
+           if(result.posts.post == undefined){
+             m.reply("Sorry, no images were found during this iteration of the search.")
+             return;
+           }
              var randomPost = result.posts.post[Math.floor(Math.random()*100)].$
 
              while(randomPost.rating === "e" || randomPost.rating === "q"){
@@ -486,7 +511,10 @@ if (m.content.startsWith(`?hibiki`)){
       cheerio$('posts').filter(function(){
         var toParse = cheerio$(this);
         var parsingInfo = toParse.text();
-
+        if(result.posts.post == undefined){
+          m.reply("Sorry, no images were found during this iteration of the search.")
+          return;
+        }
         parseString(toParse, function(err, result){
 
             var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
@@ -510,7 +538,10 @@ if (m.content.startsWith(`?akatsuki`)){
       cheerio$('posts').filter(function(){
         var toParse = cheerio$(this);
         var parsingInfo = toParse.text();
-
+        if(result.posts.post == undefined){
+          m.reply("Sorry, no images were found during this iteration of the search.")
+          return;
+        }
         parseString(toParse, function(err, result){
 
             var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
@@ -536,7 +567,10 @@ if (m.content.startsWith(`?hirasawa`)){
         var parsingInfo = toParse.text();
 
         parseString(toParse, function(err, result){
-
+          if(result.posts.post == undefined){
+            m.reply("Sorry, no images were found during this iteration of the search.")
+            return;
+          }
             var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
 
             while(randomPost.rating === "e" || randomPost.rating === "q"){
@@ -560,7 +594,10 @@ if (m.content.startsWith(`?bismarck`)){
         var parsingInfo = toParse.text();
 
         parseString(toParse, function(err, result){
-
+          if(result.posts.post == undefined){
+            m.reply("Sorry, no images were found during this iteration of the search.")
+            return;
+          }
             var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
 
             while(randomPost.rating === "e" || randomPost.rating === "q"){
@@ -584,7 +621,10 @@ if (m.content.startsWith(`?cc`)){
         var parsingInfo = toParse.text();
 
         parseString(toParse, function(err, result){
-
+          if(result.posts.post == undefined){
+            m.reply("Sorry, no images were found during this iteration of the search.")
+            return;
+          }
             var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
 
             while(randomPost.rating === "e" || randomPost.rating === "q"){
