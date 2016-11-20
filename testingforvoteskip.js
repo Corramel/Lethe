@@ -181,27 +181,27 @@ client.on('message', m => {
         currentWeather = ":flag_" + data.sys.country.toLowerCase() + ": " +  data.name + ", " + data.sys.country + "'s temperature is: " + Math.round(data.main.temp) + "° Celsius or " + (Math.round(parseInt(data.main.temp)*1.8+32)) + "° Farenheit. " + dayOrNight;
         if(weatherInfo.id <= 531  && weatherInfo.id >= 500){//rain
           var rainArray = ["Stay indoors!", "Get comfy.", "Bring an umbrella.", "Hope you have an umbrella.", "Hope for a rainbow!", "Wait it out.", "Pitter, patter.", "Don't get a cold.", "Don't slip!"];
-          currentWeather = currentWeather + "\n It's currently raining! 🌧 " + rainArray[Math.floor(Math.random()*rainArray.length)] + "\n Windspeed: " + data.wind.speed + "km/h or " + kmToMph "mph";
+          currentWeather = currentWeather + "\n It's currently raining! 🌧 " + rainArray[Math.floor(Math.random()*rainArray.length)] + "\n Windspeed: " + data.wind.speed + "km/h or " + kmToMph + "mph";
         } else if(weatherInfo.id <= 232 && weatherInfo.id >= 200){ //thunderstorm
           var rainArray = ["Stay indoors!", "Get comfy.", "Bring an umbrella.", "Hope you have an umbrella.", "Hope for a rainbow!", "Wait it out.", "Pitter, patter.", "Don't go outside.", "Don't slip!"];
-          urrentWeather = currentWeather + "\n It's currently raining! 🌧 " + rainArray[Math.floor(Math.random()*rainArray.length)] + "\n Windspeed: " + data.wind.speed + "km/h or " + kmToMph "mph";
+          urrentWeather = currentWeather + "\n It's currently raining! 🌧 " + rainArray[Math.floor(Math.random()*rainArray.length)] + "\n Windspeed: " + data.wind.speed + "km/h or " + kmToMph + "mph";
         } else if(weatherInfo.id <= 321 && weatherInfo.id >= 300 ){//drizzle
           var rainArray = ["Stay indoors!", "Get comfy.", "Bring an umbrella.", "Hope you have an umbrella.", "Hope for a rainbow!", "Wait it out.", "Pitter, patter.", "Don't get a cold.", "Don't slip!"];
-          currentWeather = currentWeather + "\n It's currently drizzling outside. 🌧" + rainArray[Math.floor(Math.random()*rainArray.length)] + "\n Windspeed: " + data.wind.speed + "km/h or " + kmToMph "mph";
+          currentWeather = currentWeather + "\n It's currently drizzling outside. 🌧" + rainArray[Math.floor(Math.random()*rainArray.length)] + "\n Windspeed: " + data.wind.speed + "km/h or " + kmToMph + "mph";
         } else if(weatherInfo.id <= 622 && weatherInfo.id >= 600){//snow
-          currentWeather = currentWeather + "\n It's snowing! ❄️ \n Windspeed: " + data.wind.speed + "km/h or " + kmToMph "mph";
+          currentWeather = currentWeather + "\n It's snowing! ❄️ \n Windspeed: " + data.wind.speed + "km/h or " + kmToMph + "mph";
         } else if(weatherInfo.id <= 781 && weatherInfo.id >= 701){//atmosphere, ex: mist
-          currentWeather = currentWeather + "\n There's " + weatherInfo.description + " in the air. 🌫 \n Windspeed: " + data.wind.speed + "km/h or " + kmToMph "mph";
+          currentWeather = currentWeather + "\n There's " + weatherInfo.description + " in the air. 🌫 \n Windspeed: " + data.wind.speed + "km/h or " + kmToMph + "mph";
         } else if(weatherInfo.id == 800){//It's clear outside.
-          currentWeather = currentWeather + "\n It's clear outside! Nice and clear. 🌞 \n Windspeed: " + data.wind.speed + "km/h or " + kmToMph "mph";
+          currentWeather = currentWeather + "\n It's clear outside! Nice and clear. 🌞 \n Windspeed: " + data.wind.speed + "km/h or " + kmToMph + "mph";
         } else if(weatherInfo.id <= 804 && weatherInfo.id >= 801 ){//clouds
-          currentWeather = currentWeather + "\n It's cloudy outside. ☁️ \n Windspeed: " + data.wind.speed + "km/h or " + kmToMph "mph";
+          currentWeather = currentWeather + "\n It's cloudy outside. ☁️ \n Windspeed: " + data.wind.speed + "km/h or " + kmToMph + "mph";
         } else if(weatherInfo.id <= 906 && weatherInfo.id >= 900 ){// it's extreme
-          curentWeather = currentWeather + "\n ⚠️⚠️⚠️ There is an extreme condition outside! Condition description: " + weatherInfo.description + ". Careful out there. \n Windspeed: " + data.wind.speed + "km/h or " + kmToMph "mph";
+          curentWeather = currentWeather + "\n ⚠️⚠️⚠️ There is an extreme condition outside! Condition description: " + weatherInfo.description + ". Careful out there. \n Windspeed: " + data.wind.speed + "km/h or " + kmToMph + "mph";
         } else if(weatherInfo.id <= 962 && weatherInfo.id >= 952 ){//gusts
-          currentWeather = currentWeather + "\n It's breezy outside! 💨" + "\n Windspeed: " + data.wind.speed + "km/h or " + kmToMph "mph";
+          currentWeather = currentWeather + "\n It's breezy outside! 💨" + "\n Windspeed: " + data.wind.speed + "km/h or " + kmToMph + "mph";
         } else if(weatherInfo.id == 951){
-          currentWeather = currentWeather + "\n It's calm outside. Relax, friend. 🌞" + "\n Windspeed: " + data.wind.speed + "km/h or " + kmToMph "mph";
+          currentWeather = currentWeather + "\n It's calm outside. Relax, friend. 🌞" + "\n Windspeed: " + data.wind.speed + "km/h or " + kmToMph + "mph";
         }else {
           m.reply("Something went wrong.");
           return;
