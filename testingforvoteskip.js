@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const token = ('MjM2ODM0NDY1MzY2NjcxMzYw.CuRSoQ.xZbEciqbAuwmgSN3JmRdxQugmeU');
 
 const util = require('util');
+const weather = require('openweathermap-js');
 const ytdl = require('ytdl-core');
 const request = require('superagent');
 const reequest = require('request');
@@ -38,6 +39,25 @@ const client = new Discord.Client();
 client.on('warn', (m) => console.log('[warn]', m));
 client.on('debug', (m) => console.log('[debug]', m));
 var channelToJoin = "";
+var options = {
+    appid: '9d456f29174a2626137d59075d2737a4', // Your Openweathermap api Key
+    location: 'London', // City for which you want the weather
+    cityID: 2172797, // City ID of the location
+    coord: {
+        lat: 35, // Location latitude…
+        lon: 139 // … and longitude
+    },
+    ZIPcode: '94040,us', // Zipcode
+    bbox: '12,32,15,37,10', // Box if you want weather for multiple cities
+    cluster: true, // Use server clustering of points (only with bbox)
+    cnt: 10, // Number of cities around coordinates (in current weather with cycle mode) or number of lines you want (in forecast)
+    method: 'name', // Which method you want to use to choose the location : [name, cityID, coord, ZIPcode, box, cycle]
+    format: 'JSON', // Format you want the data to be returned (if JSON, returns parsed JSON object)
+    accuracy: 'like', // Accuracy (check openweathermap API documentation)
+    units: 'metric', // Units : [metric, imperial, undefined] (°C, °F, K)
+    lang: 'en' // Language for weather description
+}
+var currentWeather = "";
 var userToPing;
 var dispatcher;
 var randomPunInfo;
@@ -138,6 +158,50 @@ client.on('message', m => {
       //}
     //}
 
+  }
+  if(m.content.startsWith(`?weather`)){
+    currentWeather = "";
+    weather.current({method:'name',location:m.content.slice(9), appid:'9d456f29174a2626137d59075d2737a4', units:'metric'},function(err, data){
+      if(!err){
+        console.log(data);
+        var weatherInfo = data.weather[0];
+        var dayOrNight = "";
+        if(data.dt <= data.sys.sunset && data.dt >= data.sys.sunrise){ //Night
+          dayOrNight = "🌃";
+        } else {
+          //Day
+          dayOrNight = "🏙";
+        }
+        currentWeather = data.name + "'s temperature is: " + Math.round(data.main.temp) + "° Celsius or " + (Math.round(parseInt(data.main.temp)*1.8+32)) + "° Farenheit." + dayOrNight;
+        if(weatherInfo.id <= 531  && weatherInfo.id >= 500){//rain
+          var rainArray = ["Stay indoors!", "Get comfy.", "Bring an umbrella.", "Hope you have an umbrella.", "Hope for a rainbow!", "Wait it out.", "Pitter, patter.", "Don't get a cold.", "Don't slip!"];
+          currentWeather = currentWeather + "\n It's currently raining! 🌧 " + rainArray[Math.floor(Math.random()*rainArray.length)] + "\n Windspeed: " + data.wind.speed + "km/h";
+        } else if(weatherInfo.id <= 232 && weatherInfo.id >= 200){ //thunderstorm
+          var rainArray = ["Stay indoors!", "Get comfy.", "Bring an umbrella.", "Hope you have an umbrella.", "Hope for a rainbow!", "Wait it out.", "Pitter, patter.", "Don't go outside.", "Don't slip!"];
+          urrentWeather = currentWeather + "\n It's currently raining! 🌧 " + rainArray[Math.floor(Math.random()*rainArray.length)] + "\n Windspeed: " + data.wind.speed + "km/h";
+        } else if(weatherInfo.id <= 321 && weatherInfo.id >= 300 ){//drizzle
+          var rainArray = ["Stay indoors!", "Get comfy.", "Bring an umbrella.", "Hope you have an umbrella.", "Hope for a rainbow!", "Wait it out.", "Pitter, patter.", "Don't get a cold.", "Don't slip!"];
+          currentWeather = currentWeather + "\n It's currently drizzling outside. 🌧" + rainArray[Math.floor(Math.random()*rainArray.length)] + "\n Windspeed: " + data.wind.speed + "km/h";
+        } else if(weatherInfo.id <= 622 && weatherInfo.id >= 600){//snow
+          currentWeather = currentWeather + "\n It's snowing! ❄️ \n Windspeed: " + data.wind.speed + "km/h";
+        } else if(weatherInfo.id <= 781 && weatherInfo.id >= 701){//atmosphere, ex: mist
+          currentWeather = currentWeather + "\n There's " + weatherInfo.description + " in the air. 🌫 \n Windspeed: " + data.wind.speed + "km/h";
+        } else if(weatherInfo.id == 800){//It's clear outside.
+          currentWeather = currentWeather + "\n It's clear outside! Nice and clear. 🌞 \n Windspeed: " + data.wind.speed + "km/h";;
+        } else if(weatherInfo.id <= 804 && weatherInfo.id >= 801 ){//clouds
+          currentWeather = currentWeather + "\n It's cloudy outside. ☁️ \n Windspeed: " + data.wind.speed + "km/h";
+        } else if(weatherInfo.id <= 906 && weatherInfo.id >= 900 ){// it's extreme
+          curentWeather = currentWeather + "\n ⚠️⚠️⚠️ There is an extreme condition outside! Condition description: " + weatherInfo.description + ". Careful out there. \n Windspeed: " + data.wind.speed + "km/h";
+        } else if(weatherInfo.id <= 962 && weatherInfo.id >= 952 ){//gusts
+          currentWeather = currentWeather + "\n It's breezy outside! 💨" + "\n Windspeed: " + data.wind.speed + "km/h";
+        } else if(weatherInfo.id == 951){
+          currentWeather = currentWeather + "\n It's calm outside. Relax, friend. 🌞" + "\n Windspeed: " + data.wind.speed + "km/h";
+        }else {
+          m.reply("Something went wrong.");
+        }
+        m.reply(currentWeather);
+      }
+    });
   }
   if(m.content.startsWith(`?test21`)){
     console.log(m.channel.id);
