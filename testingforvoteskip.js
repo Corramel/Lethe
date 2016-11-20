@@ -224,7 +224,10 @@ client.on('message', m => {
     console.log(m.content.replace(`?test21 `, ""));
     return;
   }
-
+    if(m.content.startsWith(`?fast`)){
+      m.reply("https://www.youtube.com/watch?v=Xw1k20DpHfA");
+      return;
+    }
   if (m.content.startsWith(`${botMention} destroy`)) { // destroy
     if (!checkCommand(m, 'destroy')) return;
     if (!boundChannel) return;
