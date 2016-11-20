@@ -312,6 +312,12 @@ client.on('message', m => {
   	m.channel.sendMessage("https://pbs.twimg.com/profile_images/597538481225752577/93eMVOd3.jpg")
   	return;
   }
+  if(m.content.startsWith(`?cliff`)){
+    m.channel.sendFile("http://img07.deviantart.net/80c7/i/2009/106/9/c/cliff_001_by_neverfading_stock.jpg");
+  }
+  if(m.content.startsWith(`?tofu`)) {
+    m.channel.sendMessage("https://www.youtube.com/watch?v=QFrd5Dr5ZCs");
+  }
  if (m.content.startsWith(`?ben`)) { // a meme
     if (!checkCommand(m, `?ben`)) return
     var benArray = ["**BEN'S STATUS** \n Lips: LARGE \n Feelings: WHO CARES \n Race: SHADOW-REALM BEAST", "http://puu.sh/m3gGP/de199907f3.png", "http://puu.sh/m3gDD/3c6f7c553b.png", "http://puu.sh/m3gIA/28638cd9ad.jpg", "http://puu.sh/m9tgv/84bc2f4914.jpg", "http://puu.sh/m9tfd/fdd3ad0c46.jpg", "http://puu.sh/m9th3/12a1326552.jpg", "https://cdn.discordapp.com/attachments/93578176231374848/130413901367083008/benkms.jpg" ,"https://cdn.discordapp.com/attachments/93578176231374848/130413948091629568/ben.jpg", "https://puu.sh/ldqI3/7fe79e185e.jpg", "https://puu.sh/ldqI3/7fe79e185e.jpg", "https://puu.sh/ldqC3/563b0df440.jpg", "http://puu.sh/lvryP/a7aeb5c7f2.jpg", "http://puu.sh/l0dy0/97c6792172.jpg", "https://docs.google.com/document/d/1XXeZrKqhCzwAcrbD3IHsAOnwp-XhXdJWwpZQrdLLKZo/edit", "https://docs.google.com/document/d/1qvlZMQLP6BatNGCLt-wrAdVt2bFsqxshGu_RIDMngc0/edit?pref=2&pli=1"]
