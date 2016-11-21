@@ -1167,9 +1167,10 @@ if (!(m.channel.id === boundChannel.id)) return;
   //  } else {
    //   totalNumberNeeded;
  //   }
-    if (voteTotalCount >= 3){
+ var peopleinCall = channelToJoin.members.array();
+    if (voteTotalCount >= (Math.floor(peopleinCall.length / 2))){
       console.log("L I M I T S  W E R E  M E A N T  T O  B E  B R O K E N . . .")
-      console.log("The current amount of votes are" + voteTotalCount)
+      console.log("The current amount of votes are " + voteTotalCount)
         playStopped();
         voteTotalCount = 0;
         voteAllIDs = [];
