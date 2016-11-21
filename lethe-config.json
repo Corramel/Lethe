@@ -1,7 +1,7 @@
 {
   "configRev": 4,
   "timeOffset": 8000,
-  "maxLength": 6000,
+  "maxLength": 600,
   "userQueueLimit": 2,
   "playbackNetworkMessage": true,
    "botHasNickname": false,
