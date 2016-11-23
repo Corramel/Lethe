@@ -1144,6 +1144,7 @@ if (!(m.channel.id === boundChannel.id)) return;
 
   if (m.content.startsWith(`?next`)) {
     console.log(channelToJoin.members);
+    var peopleinCall = channelToJoin.members.array();
     // next !checkCommand(m, '?next')
     if(currentVideo){
     if (userIsAdmin(m.author.id)) {
@@ -1169,6 +1170,7 @@ if (!(m.channel.id === boundChannel.id)) return;
  //   }
  var peopleinCall = channelToJoin.members.array();
     if (voteTotalCount >= (Math.floor(peopleinCall.length / 2))){
+      m.channel.sendMessage(`Skipping **${currentVideo.title}**... `)
       console.log("L I M I T S  W E R E  M E A N T  T O  B E  B R O K E N . . .")
       console.log("The current amount of votes are " + voteTotalCount)
         playStopped();
@@ -1177,6 +1179,7 @@ if (!(m.channel.id === boundChannel.id)) return;
       //  totalNumberNeeded = 0;
         return;
       } else {
+        m.channel.sendMessage("The current amount of votes are " + voteTotalCount + ". " + peopleinCall.length/2 + " votes are needed.")
         console.log("Not breaking limits........")
         console.log("The current amount of votes is " + voteTotalCount);
         console.log("The people in the vote list are " + voteAllIDs);
