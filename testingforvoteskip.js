@@ -449,12 +449,46 @@ client.on('message', m => {
              while(randomPost.rating === "s"){
                randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
              }
-             m.channel.sendMessage(randomPost.file_url);
+             m.channel.sendFile(randomPost.file_url);
              return;
            });
          });
      };
    });
+}
+}
+if (m.content.startsWith(`?rule34`)){
+  if(m.content.length > 8 && m.content.indexOf(";") > -1){
+     var tags = m.content.slice(7)
+     var tagsArray = tags.split(";")
+     var tagsJoined = tagsArray.join(" ")
+  var requestUrl = `http://rule34.xxx/index.php?page=dapi&s=post&q=index&tags=${tagsJoined}&pid=${Math.floor(Math.random()*10)}`
+  reequest(requestUrl, function(error, response, html){
+
+    if(!error){
+      var cheerio$ = cheerio.load(html, {xmlMode : true});
+      cheerio$('posts').filter(function(){
+        var toParse = cheerio$(this);
+        var parsingInfo = toParse.text();
+
+        parseString(toParse, function(err, result){
+            //var lengthOfPosts = result.posts.post.length
+            //console.log(lengthOfPosts);
+            if(result.posts.post == undefined){
+              m.reply("Sorry, no images were found during this iteration of the search.")
+              return;
+            }
+            var randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
+
+            while(randomPost.rating === "s"){
+              randomPost = result.posts.post[Math.floor(Math.random()*result.posts.post.length)].$
+            }
+            m.channel.sendFile("http:" + randomPost.file_url);
+            return;
+          });
+        });
+    };
+  });
 }
 }
  if (m.content.startsWith(`?fepic`)){
