@@ -159,6 +159,10 @@ client.on('message', m => {
     //}
 
   }
+  if(m.content.startsWith(`?wontstop`)){
+    m.channel.sendFile("https://cdn.discordapp.com/attachments/103601699930791936/260911839704121344/maxresdefault.png");
+    return;
+  }
   if(m.content.startsWith(`?weather`)){
     currentWeather = "";
     weather.current({method:'name',location:m.content.slice(9), appid:'9d456f29174a2626137d59075d2737a4', units:'metric'},function(err, data){
@@ -728,7 +732,7 @@ if (m.content.startsWith(`?cc`)){
      }
    })
    var insult = randomInsult
-   m.reply(insult)
+   m.reply(insult);
    return;
  }
  if (m.content.startsWith(`?wakeup`)) {
