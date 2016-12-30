@@ -178,7 +178,7 @@ client.on('message', m => {
     m.channel.sendFile("https://cdn.discordapp.com/attachments/103601699930791936/260911839704121344/maxresdefault.png");
     return;
   }
-  if(m.content.startsWith(`?userInfo`)){
+  if(m.content.toLowerCase().startsWith(`?userinfo`)){
     if(m.content.length > 10){
       //console.log(m.mentions.users.firstKey());
     //  console.log(m.guild.member(m.mentions.users.firstKey()));
