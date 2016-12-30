@@ -10,6 +10,7 @@ const url = require('url');
 const express = require('express');
 const cheerio = require('cheerio');
 const parseString = require('xml2js').parseString;
+const moment = require('moment');
 const app = express();
 // Output version information in console
 const git = require('git-rev');
@@ -24,13 +25,14 @@ Saved.read();
 
 const YoutubeTrack = require('./lib/youtube-track.js');
 
-
+const feCalcs = require('./lib/FEFunctions.js')
 const Util = require('./lib/util.js');
 const Config = require('./lib/config.js');
 const adminIds = Config.adminIds;
 const tarots = require('./lib/magical-cards.json');
 const randEbolaPic = require('./lib/ebolachaninfo.json');
 const randFangCringe = require('./lib/fangsmemes.json');
+const feSys = require('./lib/FEClasses.json');
 var CURRENT_REV = 4;
 
 const client = new Discord.Client();
@@ -58,6 +60,7 @@ var options = {
     lang: 'en' // Language for weather description
 }
 var currentWeather = "";
+var battleLog = "";
 var userToPing;
 var dispatcher;
 var randomPunInfo;
@@ -69,12 +72,18 @@ var luckyOnes;
 var toParse;
 var pickBotOn = false;
 var timeCommandUsedFirst;
+var channelEquals = false;
 var fireemblemJSON;
 var messageArray = [];
 var voteAllIDs = [];
 var playQueue = [];
 var cardNames = ["Sharpshooter", "Pugilist", "Neophyte", "Vagabond", "Arbiter", "Chaplain", "Sovereign", "Troubadour", "Oracle", "Cavalier", "Tactician", "Ambsace", "Fortuitous"];
+var shitpostCommands = ["?musicHelp", "?wontstop", "?weather", "?fast", "?goodbye", "?understand", "?ohno", "?phrase", "?gin", "?tarot", "?slash ", "?yourdone", "?EbolaChan", "?popcorn", "?cliff", "?tofu", "?ben", "?rr", '?perfect',
+'?gelbooru', '?ngelbooru', '?rule34', '?fepic', '?dspic', '?hibiki', '?atasuki', '?hirasawa', '?bismarck', '?cc', '?yomom', '?insult', '?wakeup', '?partysover', '?kaio', '?blaze', '?anna', '?evan', '?fag', '?simmer',
+ '?komari', '?tumblr', '?google', '?justacustom', '?asexual', '?darkness', '?chancey', 'nanami', '?uni', '?niger', '?unumii', '?edgemaster', '?jimbo', '?stayfree', '?dion', '?fang', '?starterpack', '?lyin', '?compliment', '?catfax',
+ '?catpix', '?haiku', '?choice', '?8ball', '?mura', '?gasthejaps', '?chill', '?disgusting', '?murder', '?clearly', '?stiff', '?sadness', '?peace', '?friends', '?shock', '?goodgirls', '?mana'];
 var boundChannel = false;
+var boundChannelArr = [];
 var currentStream = false;
 var ownerID = "81526338728501248"
 var imgurKey = "7e434a22b72652ce49644e5fc337e5711327f1f4"
@@ -128,7 +137,7 @@ client.on('message', m => {
 
   if (m.content.startsWith(`${botMention} init`)) { // init
     if (!checkCommand(m, 'init')) return;
-    if (boundChannel) return;
+    //if (boundChannel) return;
     var rest = m.content.split(' ');
     var removed = rest.splice(0, 1);
     /*var channelToJoin = spliceArguments(m.content)[1];
@@ -151,6 +160,7 @@ client.on('message', m => {
           console.log("I'm not running!");
           channelToJoin = m.guild.channels.find("type", "voice");
           boundChannel = m.channel;
+          boundChannelArr.push(m.channel);
           m.reply(`Binding to text channel <#${boundChannel.id}> and voice channel **${channelToJoin.name}** \`(${channelToJoin.id})\``);
           channelToJoin.join().catch(error);
           return;
@@ -159,9 +169,65 @@ client.on('message', m => {
     //}
 
   }
+
+  if(m.content.startsWith(`?jokecommands`)){
+    m.reply(shitpostCommands.join().replace(",", ", "));
+    return;
+  }
   if(m.content.startsWith(`?wontstop`)){
     m.channel.sendFile("https://cdn.discordapp.com/attachments/103601699930791936/260911839704121344/maxresdefault.png");
     return;
+  }
+  if(m.content.startsWith(`userInfo`)){
+    if(m.content.length > 8){
+      console.log(m.mentions.users.firstKey());
+      console.log(m.guild.member(m.mentions.users.firstKey()));
+      var target = m.guild.member(m.mentions.users.firstKey());
+      console.log(target.highestRole);
+      var targetUser = m.mentions.users.first();
+    } else {
+      var target = m.member;
+      console.log(target.highestRole);
+      var targetUser = m.author;
+    }
+    //console.log(target);
+    //console.log(targetUser);
+    var joinedAt = target.joinedAt;
+    var discordJoin = target.createdAt;
+    var momentDiscord = moment(discordJoin);
+    var momentJoin = moment(joinedAt);
+    var embed = new Discord.RichEmbed();
+    var statusInd;
+    switch(targetUser.presence.status){
+      case 'online':
+      statusInd = 'http://i.imgur.com/9NRaPDH.png';
+      break;
+      case 'idle':
+      statusInd = 'http://i.imgur.com/w6b6hDD.png';
+      break;
+      case 'dnd':
+      statusInd = 'http://i.imgur.com/j3tcfEZ.png';
+      break;
+      case 'offline':
+      statusInd = 'http://i.imgur.com/Vt6CyJh.png';
+      break;
+    }
+    if(target){
+    var roleColor = target.highestRole.hexColor.slice(1);
+  } else {
+    var roleColor = "fffff"
+  }
+  console.log(statusInd);
+  embed.addField("Joined at", momentJoin.format('MMMM DD YYYY') + " (" + moment().diff(momentJoin, 'days') + "  days ago)", true);
+  embed.addField("Joined Discord on", momentDiscord.format('MMMM DD YYYY') + " (" + moment().diff(momentDiscord, 'days') + " days ago)", true);
+  embed.setAuthor(targetUser.username + "#" + targetUser.discriminator, statusInd, targetUser.displayAvatarURL);
+  embed.setColor("#" + roleColor);
+  //embed.setDescription();
+    embed.setFooter("User ID:" + targetUser.id);
+  //embed.setImage("https://cdn.discordapp.com/attachments/103601699930791936/264005163667161108/IMG_3572.JPG");
+  embed.setThumbnail(targetUser.avatarURL);
+  //embed.setTitle(m.author.username + "#" + m.author.discriminator + " user information");
+    m.channel.sendEmbed(embed)
   }
   if(m.content.startsWith(`?weather`)){
     currentWeather = "";
@@ -301,6 +367,113 @@ client.on('message', m => {
     console.log(cleanUpMessage);
     var slashArray = ["http://i.imgur.com/RH2yX.jpg", "http://media.giphy.com/media/daDA43pfSyeHK/giphy.gif", "http://i.imgur.com/7JNeSzT.jpg", "http://i.imgur.com/ZgR1USn.png", "http://i.imgur.com/2KTyI5n.png", "http://i.imgur.com/WnHUFcB.jpg", "http://i.imgur.com/34X6qf4.jpg", "http://i.imgur.com/Oy49Zln.png"]
     m.channel.sendMessage(`${cleanUpMessage} you have been slashed by ${m.author}! ${slashArray[Math.floor(Math.random()*slashArray.length)]}`);
+  }
+  if(m.content.startsWith(`?battle `)){
+    var battleWon = false;
+    var player1name = `<@${m.author.id}>`;
+    var player2name = m.content.slice(8);
+    var infoWanted = m.content.slice(8);
+    var feClasses = Object.keys(feSys.classes);
+    var player1class = feClasses[Math.round(Math.random()*feClasses.length)];
+    var player2class = feClasses[Math.round(Math.random()*feClasses.length)];
+    var player1 = feSys.classes[player1class];
+    var player2 = feSys.classes[player2class];
+    var attackLogp1 = feCalcs.player1Attack(player1, feSys.weapons.iron.sword, player1name, player2, feSys.weapons.iron.sword, player2name);
+    var attackLogp2 = feCalcs.player1Attack(player2, feSys.weapons.iron.sword, player1name, player1, feSys.weapons.iron.sword, player1name);
+    var meme = [];
+    var battleMsg = player1name + " is a " + player1.name + "! " + player2name + " is a " + player2.name + "! Let the battle begin! \n";
+    var p1HP = player1.hp;
+    var p2HP = player2.hp;
+    var turn = "";
+    var turnNum = 1;
+    while (!battleWon) {
+        if (!(turnNum % 2 == 0)) {
+
+            if (feCalcs.calculateDoubleAtk(player1.spd, player2.spd)) {
+                for (var i = 0; i < 2; i++) {
+                    meme = feCalcs.enemyDefense(player1, feSys.weapons.iron.sword, attackLogp1, player1name, (p1HP), player2, player2name, p2HP);
+                    battleMsg = battleMsg + meme[0];
+                    p2HP = meme[1];
+                    if (meme[2] == true) {
+                        battleWon = true;
+                        break;
+                    }
+                    p1HP = meme[3];
+                    attackLogp1 = feCalcs.player1Attack(player1, feSys.weapons.iron.sword, player1name, player2, feSys.weapons.iron.sword, player2name);
+                    if(battleWon){
+                      break;
+                    }
+                }
+            } else {
+                meme = feCalcs.enemyDefense(player1, feSys.weapons.iron.sword, attackLogp1, player1name, p1HP, player2, player2name, p2HP);
+                battleMsg = battleMsg + meme[0];
+                p2HP = meme[1];
+                if(meme[2] == true){
+                  battleWon = true;
+                  break;
+                }
+                p1HP = meme[3];
+                attackLogp1 = feCalcs.player1Attack(player1, feSys.weapons.iron.sword, player1name, player2, feSys.weapons.iron.sword, player2name);
+                if(battleWon){
+                  break;
+                }
+            }
+
+            if(p1HP > 0 && p2HP <= 0){
+              break;
+            }
+            console.log(turnNum + " p1");
+            console.log(p2HP>0 + " p2HP");
+            console.log(p1HP>0 + " p1HP");
+            turnNum++;
+        } else {
+          if (feCalcs.calculateDoubleAtk(player2.spd, player1.spd)) {
+            for (var i = 0; i < 2; i++) {
+              meme = feCalcs.enemyDefense(player2, feSys.weapons.iron.sword, attackLogp2, player2name, p2HP, player1, player1name, p1HP);
+              battleMsg = battleMsg + meme[0];
+              p1HP = meme[1];
+              if (meme[2] == true) {
+                battleWon = true;
+                break;
+              }
+              p2HP = meme[3];
+              attackLogp2 = feCalcs.player1Attack(player2, feSys.weapons.iron.sword, player2name, player1, feSys.weapons.iron.sword, player1name);
+              if(battleWon){
+                break;
+              }
+            }
+          } else {
+            meme = feCalcs.enemyDefense(player2, feSys.weapons.iron.sword, attackLogp2, player2name, p2HP, player1, player1name, p1HP);
+            battleMsg = battleMsg + meme[0];
+            p1HP = meme[1];
+            if (meme[2] == true) {
+              battleWon = true;
+              break;
+            }
+            p2HP = meme[3];
+            attackLogp2 = feCalcs.player1Attack(player2, feSys.weapons.iron.sword, player2name, player1, feSys.weapons.iron.sword, player1name);
+            if(battleWon){
+              break;
+            }
+          }
+
+          if(p2HP > 0 && p1HP <= 0){
+            break;
+          }
+          console.log(turnNum + " p2")
+          console.log(p2HP>0 + " p2HP");
+          console.log(p1HP>0 + " p1HP");
+          turnNum++;
+        }
+    }
+    console.log(turnNum);
+    if(p2HP > 0 && p1HP <= 0){
+      battleMsg = battleMsg + `***` + player2name + " wins!***";
+    } else {
+      battleMsg = battleMsg + `***` + player1name + " wins!***";
+    }
+    m.reply(battleMsg);
+    return;
   }
   if (m.content.startsWith(`?yourdone`)){
     midoriArray = [`http://i.imgur.com/ki4865P.png`, `https://youtu.be/8S_8CX4YD-8?t=832`]
@@ -1178,7 +1351,17 @@ if (m.content.startsWith(`?hehexd`)){
   //return;
 }
   // Only respond to other messages inside the bound channel
-if (!(m.channel.id === boundChannel.id)) return;
+//if (!(m.channel.id === boundChannel.id)) return;
+for(i=0; i < boundChannelArr.length; i++){
+  if(!(boundChannelArr[i].id === m.channel.id)){
+    console.log(boundChannelArr[i]);
+    channelEquals = false;
+  } else {
+    channelEquals = true;
+    break;
+  }
+}
+if(channelEquals) return;
 
   if (m.content.startsWith(`?next`)) {
     console.log(channelToJoin.members);

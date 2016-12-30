@@ -1,0 +1,43 @@
+{
+  "classes": {
+    "nohrPrince/ss":{
+      "hp" : 40,
+      "str" : 23,
+      "skl" : 19,
+      "lck" : 22,
+      "def" : 21,
+      "res" : 19,
+      "skills" : {
+        "dragonFang" : {
+          "chanceType" : "skl",
+          "chanceMultiplier" : 0.75,
+          "effect" : "50% more damage",
+          "damageMultiplier" : 1.50
+        }
+      }
+    },
+    "samurai" : {
+        "hp" : 40,
+        "str" : 20,
+        "skl" : 23,
+        "lck" : 24,
+        "def" : 18,
+        "res" : 20,
+        "skills" : {
+          "astra" : {
+            "chanceType" : "skl",
+            "chanceMultiplier" : 0.5,
+            "effect" : "150% more damage",
+            "damageMultiplier" : 2.50
+          }
+        }
+    }
+  },
+  "weapons": {
+    "iron" : {
+      "sword" : {
+        "damage" : 6
+        }
+      }
+    }
+  }

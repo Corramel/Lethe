@@ -1,0 +1,153 @@
+{
+  "classes": {
+    "nohrPrince/ss":{
+      "name" : "Nohr Prince/Princess",
+      "hp" : 40,
+      "str" : 23,
+      "spd" : 21,
+      "skl" : 19,
+      "lck" : 22,
+      "def" : 21,
+      "res" : 19,
+      "skills" : {
+        "dragonFang" : {
+          "name" : "Dragon Fang",
+          "chanceType" : "skl",
+          "chanceMultiplier" : 0.75,
+          "effect" : "+dmgdealt",
+          "damageMultiplier" : 1.50,
+          "multihit" : 1,
+          "heal" : 0,
+          "healtype" : "N/A",
+          "turnType" : "attack"
+        },
+        "dragonWard" : {
+          "name" : "Dragon Ward",
+          "chanceType" : "lck",
+          "chanceMultiplier" : 0.5,
+          "effect" : "-dmgtakenchnc",
+          "damageMultiplier" : 1,
+          "multihit" : 0,
+          "heal" : 0,
+          "healtype" : "N/A",
+          "turnType" : "defend",
+          "dmgRed" : 0.5
+        },
+        "goodFortune" : {
+          "name" : "Good Fortune",
+          "chanceType" : "lck",
+          "chanceMultiplier" : 1,
+          "effect" : "+hp",
+          "damageMultiplier" : 0,
+          "multihit" : 0,
+          "heal" : 0.20,
+          "healtype" : "percenthp",
+          "turnType" : "start"
+        }
+
+      }
+    },
+    "samurai" : {
+        "name" : "Samurai",
+        "hp" : 40,
+        "str" : 20,
+        "skl" : 23,
+        "spd" : 25,
+        "lck" : 24,
+        "def" : 18,
+        "res" : 20,
+        "skills" : {
+          "astra" : {
+            "name" : "Astra",
+            "chanceType" : "skl",
+            "chanceMultiplier" : 0.5,
+            "effect" : "+dmgdealt",
+            "damageMultiplier" : 0.50,
+            "multihit" : 5,
+            "heal" : 0,
+            "healtype" : "N/A",
+            "turnType" : "attack"
+          },
+          "sol" : {
+            "name" : "Sol",
+            "chanceType" : "skl",
+            "chanceMultiplier" : 2,
+            "effect" : "+hp",
+            "damageMultiplier" : 1,
+            "multihit" : 1,
+            "heal" : 0.50,
+            "healtype" : "dmg",
+            "turnType" : "attack"
+          },
+          "luna" : {
+            "name" : "Luna",
+            "chanceType" : "skl",
+            "chanceMultiplier" : 1,
+            "effect" : "reddef",
+            "damageMultiplier" : 1,
+            "multihit" : 1,
+            "heal" : 0,
+            "healtype" : "N/A",
+            "turnType" : "attack",
+            "defAtkMod" : 0.5
+          }
+        }
+    },
+    "wyvernRider" : {
+      "name" : "Wyvern Rider",
+      "hp" : 40,
+      "str" : 27,
+      "skl" : 21,
+      "spd" : 20,
+      "lck" : 19,
+      "def" : 24,
+      "res" : 15,
+      "skills" : {
+        "luna" : {
+          "name" : "Luna",
+          "chanceType" : "skl",
+          "chanceMultiplier" : 1,
+          "effect" : "reddef",
+          "damageMultiplier" : 1,
+          "multihit" : 1,
+          "heal" : 0,
+          "healtype" : "N/A",
+          "turnType" : "attack",
+          "defAtkMod" : 0.5
+        }
+      }
+    },
+    "fighter" : {
+      "name" : "Fighter",
+      "hp" : 45,
+      "str" : 25,
+      "skl" : 23,
+      "spd" : 20,
+      "lck" : 21,
+      "def" : 19,
+      "res" : 18,
+      "skills" : {
+        "pavise" : {
+          "name" : "Pavise",
+          "chanceType" : "skl",
+          "chanceMultiplier" : 1,
+          "effect" : "dmgtakenchnc",
+          "damageMultiplier" : 1,
+          "multihit" : 1,
+          "heal" : 0,
+          "healtype" : "N/A",
+          "turnType" : "defend",
+          "dmgRed" : 0.5
+        }
+      }
+    }
+  },
+  "weapons": {
+    "iron" : {
+      "sword" : {
+        "damage" : 6,
+        "hit" : 0.90
+        }
+      }
+    }
+  }
