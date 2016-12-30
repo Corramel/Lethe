@@ -180,20 +180,20 @@ client.on('message', m => {
   }
   if(m.content.startsWith(`?userInfo`)){
     if(m.content.length > 8){
-      console.log(m.mentions.users.firstKey());
-      console.log(m.guild.member(m.mentions.users.firstKey()));
+      //console.log(m.mentions.users.firstKey());
+    //  console.log(m.guild.member(m.mentions.users.firstKey()));
       var target = m.guild.member(m.mentions.users.firstKey());
-      console.log(target.highestRole);
+    //  console.log(target.highestRole);
       var targetUser = m.mentions.users.first();
     } else {
       var target = m.member;
-      console.log(target.highestRole);
+    //  console.log(target.highestRole);
       var targetUser = m.author;
     }
     //console.log(target);
     //console.log(targetUser);
     var joinedAt = target.joinedAt;
-    var discordJoin = target.createdAt;
+    var discordJoin = targetUser.createdAt;
     var momentDiscord = moment(discordJoin);
     var momentJoin = moment(joinedAt);
     var embed = new Discord.RichEmbed();
@@ -217,7 +217,8 @@ client.on('message', m => {
   } else {
     var roleColor = "fffff"
   }
-  console.log(statusInd);
+  console.log(momentDiscord);
+  console.log(targetUser.createdAt);
   embed.addField("Joined at", momentJoin.format('MMMM DD YYYY') + " (" + moment().diff(momentJoin, 'days') + "  days ago)", true);
   embed.addField("Joined Discord on", momentDiscord.format('MMMM DD YYYY') + " (" + moment().diff(momentDiscord, 'days') + " days ago)", true);
   embed.setAuthor(targetUser.username + "#" + targetUser.discriminator, statusInd, targetUser.displayAvatarURL);
