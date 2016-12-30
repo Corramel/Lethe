@@ -87,7 +87,9 @@ var boundChannel = false;
 var boundChannelArr = [];
 var currentStream = false;
 var ownerID = "81526338728501248"
-var imgurKey = "7e434a22b72652ce49644e5fc337e5711327f1f4"
+var imgurToken = "538304a26a119fe123a5074216590ab2e877d163"
+var imgurClientID = "714c0e3e7e06dfd";
+var imgurClientSecret = "ed8502d3ebb267dbd8a226cacb1223500c0c34ce";
 var voteCount = 0;
 var voteTotalCount = 0;
 // Video that is currently being played
