@@ -137,7 +137,7 @@ client.on('message', m => {
 
   if (m.content.startsWith(`${botMention} init`)) { // init
     if (!checkCommand(m, 'init')) return;
-    //if (boundChannel) return;
+  if (boundChannel) return;
     var rest = m.content.split(' ');
     var removed = rest.splice(0, 1);
     /*var channelToJoin = spliceArguments(m.content)[1];
@@ -1352,7 +1352,7 @@ if (m.content.startsWith(`?hehexd`)){
   //return;
 }
   // Only respond to other messages inside the bound channel
-//if (!(m.channel.id === boundChannel.id)) return;
+if (!(m.channel.id === boundChannel.id)) return;
 for(i=0; i < boundChannelArr.length; i++){
   if(!(boundChannelArr[i].id === m.channel.id)){
     console.log(boundChannelArr[i]);
