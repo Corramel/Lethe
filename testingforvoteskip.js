@@ -184,7 +184,7 @@ client.on('message', m => {
       console.log(m.guild.member(m.mentions.users.firstKey()));
       var target = m.guild.member(m.mentions.users.firstKey());
       console.log(target.highestRole);
-      var targetUser = m.mentions.users.firstKey();
+      var targetUser = m.mentions.users.first();
     } else {
       var target = m.member;
       console.log(target.highestRole);
