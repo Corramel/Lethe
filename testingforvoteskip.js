@@ -178,13 +178,13 @@ client.on('message', m => {
     m.channel.sendFile("https://cdn.discordapp.com/attachments/103601699930791936/260911839704121344/maxresdefault.png");
     return;
   }
-  if(m.content.startsWith(`userInfo`)){
+  if(m.content.startsWith(`?userInfo`)){
     if(m.content.length > 8){
       console.log(m.mentions.users.firstKey());
       console.log(m.guild.member(m.mentions.users.firstKey()));
       var target = m.guild.member(m.mentions.users.firstKey());
       console.log(target.highestRole);
-      var targetUser = m.mentions.users.first();
+      var targetUser = m.mentions.users.firstKey();
     } else {
       var target = m.member;
       console.log(target.highestRole);
