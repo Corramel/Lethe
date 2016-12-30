@@ -179,7 +179,7 @@ client.on('message', m => {
     return;
   }
   if(m.content.startsWith(`?userInfo`)){
-    if(m.content.length > 8){
+    if(m.content.length > 10){
       //console.log(m.mentions.users.firstKey());
     //  console.log(m.guild.member(m.mentions.users.firstKey()));
       var target = m.guild.member(m.mentions.users.firstKey());
@@ -217,8 +217,8 @@ client.on('message', m => {
   } else {
     var roleColor = "fffff"
   }
-  console.log(momentDiscord);
-  console.log(targetUser.createdAt);
+//  console.log(momentDiscord);
+//  console.log(targetUser.createdAt);
   embed.addField("Joined at", momentJoin.format('MMMM DD YYYY') + " (" + moment().diff(momentJoin, 'days') + "  days ago)", true);
   embed.addField("Joined Discord on", momentDiscord.format('MMMM DD YYYY') + " (" + moment().diff(momentDiscord, 'days') + " days ago)", true);
   embed.setAuthor(targetUser.username + "#" + targetUser.discriminator, statusInd, targetUser.displayAvatarURL);
