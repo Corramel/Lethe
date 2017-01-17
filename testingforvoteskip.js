@@ -172,6 +172,165 @@ client.on('message', m => {
         //}
 
     }
+    if (m.content.startsWith(`?randomBird`)) {
+        var birdArray = [];
+        var birdObj = {};
+        reequest.get({
+            url: "https://api.imgur.com/3/gallery/r/birdpics",
+            headers: {
+                "Authorization": 'Client-ID ' + imgurClientID
+            },
+            json: true
+        }, function(error, response, body) {
+            if (!error) {
+                birdObj = body;
+                birdArray = birdObj["data"]
+                    /*.filter(function(a){
+                      return !(a.is_album);
+                    }); */
+                birdRandomImage = birdArray[Math.floor(Math.random() * birdArray.length)];
+                if (birdRandomImage.is_album) {
+                  var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
+                  var title = birdRandomImage.title || "/r/birdpics";
+                  var embed = new Discord.RichEmbed();
+                  embed.setColor("#c39582");
+                  embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.cover)
+                  embed.setImage(image);
+                  m.channel.sendEmbed(embed);
+              } else {
+                  var image = birdRandomImage.link.replace(`\\/`, `/`);
+                  var title = birdRandomImage.title || "/r/birdpics";
+                  var embed = new Discord.RichEmbed();
+                  embed.setColor("#c39582");
+                  embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.id)
+                  embed.setImage(image);
+                  m.channel.sendEmbed(embed);
+              }
+
+            } else {
+                console.log("An error!");
+                console.log(error);
+                m.reply(error);
+            }
+        });
+        console.log("Finished");
+    }
+
+    if (m.content.startsWith(`?randomDog`)) {
+        var birdArray = [];
+        var birdObj = {};
+        reequest.get({
+            url: "https://api.imgur.com/3/gallery/r/dogpics",
+            headers: {
+                "Authorization":'Client-ID ' + imgurClientID
+            },
+            json: true
+        }, function(error, response, body) {
+            if (!error) {
+                birdObj = body;
+                birdArray = birdObj["data"]
+                    /*.filter(function(a){
+                      return !(a.is_album);
+                    }); */
+                birdRandomImage = birdArray[Math.floor(Math.random() * birdArray.length)];
+                if (birdRandomImage.is_album) {
+                  var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
+                  var title = birdRandomImage.title || "/r/birdpics";
+                  var embed = new Discord.RichEmbed();
+                  embed.setColor("#fdc6b2");
+                  embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.cover)
+                  embed.setImage(image);
+                  m.channel.sendEmbed(embed);
+              } else {
+                  var image = birdRandomImage.link.replace(`\\/`, `/`);
+                  var title = birdRandomImage.title || "/r/birdpics";
+                  var embed = new Discord.RichEmbed();
+                  embed.setColor("#e91e63");
+                  embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.id)
+                  embed.setImage(image);
+                  m.channel.sendEmbed(embed);
+              }
+
+            } else {
+                console.log(error);
+                m.reply(error);
+            }
+        });
+    }
+if(m.content.startsWith(`?quote`)){
+  reequest.get({
+    url: "https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous",
+    headers: {
+      "X-Mashape-Key": quoteKey
+    },
+    json:true
+  }, function(error, response, body){
+    if(!error){
+      var embed = new Discord.RichEmbed();
+      embed.setColor("#d546d5");
+      embed.setAuthor(body.quote);
+      embed.setFooter("-" + body.author);
+      m.channel.sendEmbed(embed);
+    } else {
+      console.log(error);
+    }
+  });
+}
+if (m.content.startsWith(`?thick`)) {
+    var roll = Math.round(Math.random()*5);
+   if(roll == 0){
+     var imgurURL = "https://api.imgur.com/3/gallery/r/thick";
+   } else if(roll = 1) {
+     var imgurURL = "https://api.imgur.com/3/gallery/r/Stacked";
+   } else if(roll = 2){
+     var imgurURL = "https://api.imgur.com/3/gallery/r/boltedontits";
+   } else if(roll = 3){
+     var imgurURL = "https://api.imgur.com/3/gallery/r/thickthighs";
+   } else {
+     var imgurURL = "https://api.imgur.com/3/gallery/r/thick_clothed";
+   }
+    var birdArray = [];
+    var birdObj = {};
+    console.log("Hello?");
+    reequest.get({
+        url: imgurURL,
+        headers: {
+            "Authorization":'Client-ID ' + imgurClientID
+        },
+        json: true
+    }, function(error, response, body) {
+        if (!error) {
+            birdObj = body;
+            birdArray = birdObj["data"]
+                /*.filter(function(a){
+                  return !(a.is_album);
+                }); */
+            birdRandomImage = birdArray[Math.floor(Math.random() * birdArray.length)];
+            if (birdRandomImage.is_album) {
+                var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
+                var title = birdRandomImage.title || "/r/Thick";
+                var embed = new Discord.RichEmbed();
+                embed.setColor("#cdcdcd");
+                embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.cover)
+                embed.setImage(image);
+                m.channel.sendEmbed(embed);
+            } else {
+                var image = birdRandomImage.link.replace(`\\/`, `/`);
+                var title = birdRandomImage.title || "/r/Thick";
+                var embed = new Discord.RichEmbed();
+                embed.setColor("#cdcdcd");
+                embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.id)
+                embed.setImage(image);
+                m.channel.sendEmbed(embed);
+            }
+
+        } else {
+            console.log(error);
+            m.reply(error);
+        }
+    });
+}
+
 
     if (m.content.startsWith(`?jokecommands`)) {
         m.reply(shitpostCommands.join().replace(",", ", "));
@@ -1025,12 +1184,7 @@ client.on('message', m => {
         m.channel.sendMessage(darknessArray[Math.floor(Math.random() * darknessArray.length)])
         return;
     }
-    /* if (m.content.startsWith(`?moxie`)) { //lmao
-        if (!checkCommand(m,`?moxie`)) return
-        var moxieArray = ["http://i.imgur.com/2AP11r9.png"]
-        m.channel.sendMessage(moxieArray[Math.floor(Math.random()*komariArray.length)])
-        return;
-    } */
+
     if (m.content.startsWith(`?chancey`)) { // chancey telling off darrell
         if (!checkCommand(m, `?chancey`)) return
         var chanceyArray = ["http://puu.sh/mmmre/b40b5a1d1f.png", "\n >attacking \n I was telling you how is it when you legit tell me to \"promise\" you to text first. \n I was implying that I cannot guarantee shit like this because it rarely happens, even if someone were to complain. \n Attack sounds like this: \n You sound like you're triggered. Where's your problem glasses? Oh wait. You're a nigger! You're just gonna complain that everything bad that happens to you is because you're black. Are you ready to get cucked by your master? Or perhaps you'd rather fuck gorillas aka your own people.", "http://puu.sh/lvpn6/2199db5dcd.png"]
@@ -1116,10 +1270,44 @@ client.on('message', m => {
         m.channel.sendFile(messageanswer.replace(/\\\//g, "/"));
     }
     if (m.content.startsWith(`?starterpack`)) { //memecontrol
-        if (!checkCommand(m, `?pack`)) return
-        var starterpackArray = ["https://puu.sh/l4EIB/6e34ebbe36.jpg", "https://puu.sh/l4EAy/ecd052884e.jpg", "https://puu.sh/l4EtZ/a4f6819dfe.jpg", "https://puu.sh/l4Em3/e065f1a648.jpg", "https://puu.sh/l4EiX/4058337b49.jpg", "https://puu.sh/l4E38/787f1d7295.jpg", "https://puu.sh/l4E1q/a5c291f274.jpg", "http://cdn2.gurl.com/wp-content/uploads/2014/11/real-music-starter-pack.jpg", "http://socawlege.com/wp-content/uploads/2015/05/14.png", "http://socawlege.com/wp-content/uploads/2015/05/7.png", "http://cdn3.gurl.com/wp-content/uploads/2014/11/tumblr-white-girl-starter-pack.jpg", "https://puu.sh/m9PKe/fe80e20b66.png", "http://puu.sh/m9POD/7627d3cc78.png", "https://i.imgur.com/r3kOR9J.png", "http://puu.sh/m9PQ0/1a26c2f439.png", "http://orig10.deviantart.net/ae07/f/2015/169/0/c/the_i_hate_capitalism_starter_pack_by_billwilsoncia-d8xuw2b.png", "http://puu.sh/m9PR1/eeac97339a.png", "http://puu.sh/m9PRF/9946c618e1.png", "http://puu.sh/m9PSl/0dbfa24b47.png", "http://cdn.hiphopwired.com/wp-content/uploads/2014/11/starter-pack-2.png", "http://puu.sh/m9PTb/b73f4677d5.png", "http://puu.sh/m9PTX/2762d24475.png", "http://socawlege.com/wp-content/uploads/2014/12/kush.jpg", "https://i.imgur.com/lCWov56.jpg", "https://i.imgur.com/BfUDdnl.png", "http://cdn.hiphopwired.com/wp-content/uploads/2014/11/starter-pack-1.png", "http://www.starter-packs.com/wp-content/uploads/2014/12/home-alone.jpg", "http://cdn3.gurl.com/wp-content/uploads/2014/11/college-student-starter-pack.jpg", "https://i.imgur.com/M0oP8m4.jpg", "http://puu.sh/m9PZd/a0b5745764.png", "https://i.imgur.com/pDehVAX.jpg", "http://puu.sh/m9PZP/dc11be8fd2.png"];
-        m.reply(starterpackArray[Math.floor(Math.random() * starterpackArray.length)])
-        return;
+      var birdArray = [];
+      var birdObj = {};
+      console.log("Hello?");
+      reequest.get({
+          url: "https://imgur.com/r/starterpacks/",
+          headers: {
+              "Authorization":'Client-ID ' + imgurClientID
+          },
+          json: true
+      }, function(error, response, body) {
+          if (!error) {
+              birdObj = body;
+              birdArray = birdObj["data"]
+                  /*.filter(function(a){
+                    return !(a.is_album);
+                  }); */
+              birdRandomImage = birdArray[Math.floor(Math.random() * birdArray.length)];
+              if (birdRandomImage.is_album) {
+                  var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
+                  var embed = new Discord.RichEmbed();
+                  embed.setColor("#1bb76e");
+                  embed.setImage(image);
+                  m.channel.sendEmbed(embed);
+              } else {
+                  var image = birdRandomImage.link.replace(`\\/`, `/`);
+                  var embed = new Discord.RichEmbed();
+                  embed.setColor("#1bb76e");
+                  embed.setImage(image);
+                  m.channel.sendEmbed(embed);
+              }
+
+          } else {
+              console.log(error);
+              m.reply(error);
+          }
+      });
+  }
+
     }
     if (m.content.startsWith(`?lyin`)) { //memecontrol
         if (!checkCommand(m, `?lyin`)) return
@@ -1251,97 +1439,6 @@ client.on('message', m => {
     if (m.content.startsWith(`?roll`)) {
         m.channel.sendMessage(`${Math.floor(Math.random()*100)}`);
         return;
-    }
-    if (m.content.startsWith(`?randomBird`)) {
-        var birdArray = [];
-        var birdObj = {};
-        reequest.get({
-            url: "https://api.imgur.com/3/gallery/r/birdpics",
-            headers: {
-                "Authorization": 'Bearer ' + imgurToken
-            },
-            json: true
-        }, function(error, response, body) {
-            if (!error) {
-                birdObj = body;
-                birdArray = birdObj["data"]
-                    /*.filter(function(a){
-                      return !(a.is_album);
-                    }); */
-                birdRandomImage = birdArray[Math.floor(Math.random() * birdArray.length)];
-                if (birdRandomImage.is_album) {
-                    m.channel.sendFile("http://i.imgur.com/" + birdRandomImage.cover + ".jpg");
-                } else {
-                    m.channel.sendFile(birdRandomImage.link.replace(`\\/`, `/`));
-                }
-
-            } else {
-                console.log(error);
-                m.reply(error);
-            }
-        });
-        console.log("Finished");
-    }
-
-    if (m.content.startsWith(`?randomDog`)) {
-        var birdArray = [];
-        var birdObj = {};
-        reequest.get({
-            url: "https://api.imgur.com/3/gallery/r/dogpics",
-            headers: {
-                "Authorization": 'Bearer ' + imgurToken
-            },
-            json: true
-        }, function(error, response, body) {
-            if (!error) {
-                birdObj = body;
-                birdArray = birdObj["data"]
-                    /*.filter(function(a){
-                      return !(a.is_album);
-                    }); */
-                birdRandomImage = birdArray[Math.floor(Math.random() * birdArray.length)];
-                if (birdRandomImage.is_album) {
-                    m.channel.sendFile("http://i.imgur.com/" + birdRandomImage.cover + ".jpg");
-                } else {
-                    m.channel.sendFile(birdRandomImage.link.replace(`\\/`, `/`));
-                }
-
-            } else {
-                console.log(error);
-                m.reply(error);
-            }
-        });
-    }
-
-    if (m.content.startsWith(`?thick`)) {
-        var birdArray = [];
-        var birdObj = {};
-        console.log("Hello?");
-        reequest.get({
-            url: "https://api.imgur.com/3/gallery/r/thick",
-            headers: {
-                "Authorization": 'Bearer ' + imgurToken
-            },
-            json: true
-        }, function(error, response, body) {
-            if (!error) {
-                birdObj = body;
-                birdArray = birdObj["data"]
-                    /*.filter(function(a){
-                      return !(a.is_album);
-                    }); */
-                birdRandomImage = birdArray[Math.floor(Math.random() * birdArray.length)];
-                if (birdRandomImage.is_album) {
-                    m.channel.sendFile("http://i.imgur.com/" + birdRandomImage.cover + ".jpg");
-                } else {
-                    m.channel.sendFile(birdRandomImage.link.replace(`\\/`, `/`));
-                }
-
-            } else {
-                console.log(error);
-                m.reply(error);
-            }
-        });
     }
 
     if (m.content.startsWith(`?8ball`)) {
