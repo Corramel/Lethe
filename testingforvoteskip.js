@@ -1288,6 +1288,7 @@ if (m.content.startsWith(`?thick`)) {
                   birdRandomImage = birdArray[Math.floor(Math.random() * birdArray.length)];
                   if (birdRandomImage.is_album) {
                     var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
+                    var title = birdRandomImage.title || "/r/starterpacks";
                     var embed = new Discord.RichEmbed();
                     embed.setColor("#1bb76e");
                     embed.setImage(image);
