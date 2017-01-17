@@ -1295,6 +1295,7 @@ if (m.content.startsWith(`?thick`)) {
                     m.channel.sendEmbed(embed);
                 } else {
                     var image = birdRandomImage.link.replace(`\\/`, `/`);
+                    var title = birdRandomImage.title || "/r/starterpacks";
                     var embed = new Discord.RichEmbed();
                     embed.setColor("#1bb76e");
                     embed.setImage(image);
