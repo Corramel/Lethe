@@ -1292,12 +1292,14 @@ if (m.content.startsWith(`?thick`)) {
                     var embed = new Discord.RichEmbed();
                     embed.setColor("#1bb76e");
                     embed.setImage(image);
+                    embed.setAuthor(title);
                     m.channel.sendEmbed(embed);
                 } else {
                     var image = birdRandomImage.link.replace(`\\/`, `/`);
                     var title = birdRandomImage.title || "/r/starterpacks";
                     var embed = new Discord.RichEmbed();
                     embed.setColor("#1bb76e");
+                    embed.setAuthor(title);
                     embed.setImage(image);
                     m.channel.sendEmbed(embed);
                 }
