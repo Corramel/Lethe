@@ -90,6 +90,7 @@ var ownerID = "81526338728501248"
 var imgurToken = "538304a26a119fe123a5074216590ab2e877d163"
 var imgurClientID = "714c0e3e7e06dfd";
 var imgurClientSecret = "ed8502d3ebb267dbd8a226cacb1223500c0c34ce";
+var quoteKey = "pjH2CNeLrYmshTdw2SBV61vNBWiBp1dGTDOjsnedWRo6C44xqr";
 var voteCount = 0;
 var voteTotalCount = 0;
 // Video that is currently being played
@@ -277,7 +278,7 @@ if(m.content.startsWith(`?quote`)){
   });
 }
 if (m.content.startsWith(`?thick`)) {
-    var roll = Math.round(Math.random()*5);
+    var roll = Math.round(Math.random()*6);
    if(roll == 0){
      var imgurURL = "https://api.imgur.com/3/gallery/r/thick";
    } else if(roll = 1) {
@@ -286,7 +287,9 @@ if (m.content.startsWith(`?thick`)) {
      var imgurURL = "https://api.imgur.com/3/gallery/r/boltedontits";
    } else if(roll = 3){
      var imgurURL = "https://api.imgur.com/3/gallery/r/thickthighs";
-   } else {
+   } else if(roll = 4){
+     var imgurURL = "https://api.imgur.com/3/gallery/r/gonewildcurvy"
+  } else {
      var imgurURL = "https://api.imgur.com/3/gallery/r/thick_clothed";
    }
     var birdArray = [];
