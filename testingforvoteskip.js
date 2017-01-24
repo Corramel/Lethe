@@ -311,7 +311,7 @@ if (m.content.startsWith(`?thick`)) {
             birdRandomImage = birdArray[Math.floor(Math.random() * birdArray.length)];
             if (birdRandomImage.is_album) {
                 var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
-                var title = birdRandomImage.title || "/r/Thick";
+                var title = birdRandomImage.title || "Thick Chicks";
                 var embed = new Discord.RichEmbed();
                 embed.setColor("#cdcdcd");
                 embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.cover)
@@ -319,7 +319,7 @@ if (m.content.startsWith(`?thick`)) {
                 m.channel.sendEmbed(embed);
             } else {
                 var image = birdRandomImage.link.replace(`\\/`, `/`);
-                var title = birdRandomImage.title || "/r/Thick";
+                var title = birdRandomImage.title || "Thick Chicks";
                 var embed = new Discord.RichEmbed();
                 embed.setColor("#cdcdcd");
                 embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.id)
@@ -333,6 +333,64 @@ if (m.content.startsWith(`?thick`)) {
         }
     });
 }
+
+if (m.content.startsWith(`?thin`)) {
+    var roll = Math.round(Math.random()*5);
+   if(roll == 0){
+     var imgurURL = "https://api.imgur.com/3/gallery/r/petite";
+   } else if(roll = 1) {
+     var imgurURL = "https://api.imgur.com/3/gallery/r/PetiteGoneWild";
+   } else if(roll = 2){
+     var imgurURL = "https://api.imgur.com/3/gallery/r/SexiestPetites";
+   } else if(roll = 3){
+     var imgurURL = "https://api.imgur.com/3/gallery/r/dirtysmall";
+   } else if(roll = 4){
+     var imgurURL = "https://api.imgur.com/3/gallery/r/xsmallgirls";
+  } else {
+     var imgurURL = "https://api.imgur.com/3/gallery/r/funsized";
+   }
+    var birdArray = [];
+    var birdObj = {};
+    console.log("Hello?");
+    reequest.get({
+        url: imgurURL,
+        headers: {
+            "Authorization":'Client-ID ' + imgurClientID
+        },
+        json: true
+    }, function(error, response, body) {
+        if (!error) {
+            birdObj = body;
+            birdArray = birdObj["data"]
+                /*.filter(function(a){
+                  return !(a.is_album);
+                }); */
+            birdRandomImage = birdArray[Math.floor(Math.random() * birdArray.length)];
+            if (birdRandomImage.is_album) {
+                var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
+                var title = birdRandomImage.title || "Thin Girls";
+                var embed = new Discord.RichEmbed();
+                embed.setColor("#cdcdcd");
+                embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.cover)
+                embed.setImage(image);
+                m.channel.sendEmbed(embed);
+            } else {
+                var image = birdRandomImage.link.replace(`\\/`, `/`);
+                var title = birdRandomImage.title || "Thin Girls";
+                var embed = new Discord.RichEmbed();
+                embed.setColor("#cdcdcd");
+                embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.id)
+                embed.setImage(image);
+                m.channel.sendEmbed(embed);
+            }
+
+        } else {
+            console.log(error);
+            m.reply(error);
+        }
+    });
+}
+
 
 
     if (m.content.startsWith(`?jokecommands`)) {
@@ -709,36 +767,42 @@ if (m.content.startsWith(`?thick`)) {
             }
         }
     }
-    if (m.content.startsWith(`?perfect`)) {
-        var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=lucina&rating=s&pid=${Math.floor(Math.random()*14 + 1)}`
-        reequest(requestUrl, function(error, response, html) {
+    if (m.content.startsWith(`?lucina`) || m.content.startsWith(`?perfect`)) {
+    var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=lucina&rating=s&pid=${Math.round(Math.random()*10)}`
+    reequest(requestUrl, function(error, response, html) {
 
-            if (!error) {
-                var cheerio$ = cheerio.load(html, {
-                    xmlMode: true
-                });
-                cheerio$('posts').filter(function() {
-                    var toParse = cheerio$(this);
-                    var parsingInfo = toParse.text();
+        if (!error) {
+            var cheerio$ = cheerio.load(html, {
+                xmlMode: true
+            });
+            cheerio$('posts').filter(function() {
+                var toParse = cheerio$(this);
+                var parsingInfo = toParse.text();
 
-                    parseString(toParse, function(err, result) {
-                        if (result.posts.post == undefined) {
-                            m.reply("Sorry, no images were found during this iteration of the search.")
-                            return;
-                        }
-
-                        var randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
-
-                        while (randomPost.rating === "e" || randomPost.rating === "q") {
-                            randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
-                        }
-                        m.channel.sendMessage(randomPost.file_url);
+                parseString(toParse, function(err, result) {
+                    if (result.posts.post == undefined) {
+                        m.reply("Sorry, no images were found during this iteration of the search.")
                         return;
-                    });
+                    }
+
+                    var randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
+
+                    while (randomPost.rating === "e" || randomPost.rating === "q") {
+                        randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
+                    }
+                    var embed = new Discord.RichEmbed();
+                    embed.setColor("#406b99");
+                    embed.setAuthor("Source for image");
+                    embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
+                    embed.setFooter("Score: " + randomPost.score)
+                    embed.setImage(randomPost.file_url)
+                    m.channel.sendEmbed(embed);
+                    return;
                 });
-            };
-        });
-    };
+            });
+        };
+    });
+};
     if (m.content.startsWith(`?gelbooru`)) {
         if (m.content.length > 10 && m.content.indexOf(";") > -1) {
             var tags = m.content.slice(9)
@@ -767,7 +831,13 @@ if (m.content.startsWith(`?thick`)) {
                             while (randomPost.rating === "e" || randomPost.rating === "q") {
                                 randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
                             }
-                            m.channel.sendMessage(randomPost.file_url);
+                            var embed = new Discord.RichEmbed();
+                            embed.setColor("#406b99");
+                            embed.setAuthor("Source for image");
+                            embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
+                            embed.setFooter("Score: " + randomPost.score)
+                            embed.setImage(randomPost.file_url)
+                            m.channel.sendEmbed(embed);
                             return;
                         });
                     });
@@ -803,7 +873,13 @@ if (m.content.startsWith(`?thick`)) {
                             while (randomPost.rating === "s") {
                                 randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
                             }
-                            m.channel.sendFile(randomPost.file_url);
+                            var embed = new Discord.RichEmbed();
+                            embed.setColor("#406b99");
+                            embed.setAuthor("Source for image");
+                            embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
+                            embed.setFooter("Score: " + randomPost.score)
+                            embed.setImage(randomPost.file_url)
+                            m.channel.sendEmbed(embed);
                             return;
                         });
                     });
@@ -839,7 +915,13 @@ if (m.content.startsWith(`?thick`)) {
                             while (randomPost.rating === "s") {
                                 randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
                             }
-                            m.channel.sendFile("http:" + randomPost.file_url);
+                            var embed = new Discord.RichEmbed();
+                            embed.setColor("#406b99");
+                            embed.setAuthor("Source for image");
+                            embed.setURL("http://rule34.xxx/index.php?page=post&s=view&id=" + randomPost.id);
+                            embed.setFooter("Score: " + randomPost.score)
+                            embed.setImage(randomPost.file_url)
+                            m.channel.sendEmbed(embed);
                             return;
                         });
                     });
@@ -869,7 +951,13 @@ if (m.content.startsWith(`?thick`)) {
                         while (randomPost.rating === "e" || randomPost.rating === "q") {
                             randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
                         }
-                        m.channel.sendMessage(randomPost.file_url);
+                        var embed = new Discord.RichEmbed();
+                        embed.setColor("#406b99");
+                        embed.setAuthor("Source for image");
+                        embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
+                        embed.setFooter("Score: " + randomPost.score)
+                        embed.setImage(randomPost.file_url)
+                        m.channel.sendEmbed(embed);
                         return;
                     });
                 });
@@ -899,7 +987,13 @@ if (m.content.startsWith(`?thick`)) {
                         while (randomPost.rating === "e" || randomPost.rating === "q") {
                             randomPost = result.posts.post[Math.floor(Math.random() * 100)].$
                         }
-                        m.channel.sendMessage(randomPost.file_url);
+                        var embed = new Discord.RichEmbed();
+                        embed.setColor("#406b99");
+                        embed.setAuthor("Source for image");
+                        embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
+                        embed.setFooter("Score: " + randomPost.score)
+                        embed.setImage(randomPost.file_url)
+                        m.channel.sendEmbed(embed);
                         return;
                     });
                 });
@@ -928,7 +1022,13 @@ if (m.content.startsWith(`?thick`)) {
                         while (randomPost.rating === "e" || randomPost.rating === "q") {
                             randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
                         }
-                        m.channel.sendMessage(randomPost.file_url);
+                        var embed = new Discord.RichEmbed();
+                        embed.setColor("#406b99");
+                        embed.setAuthor("Source for image");
+                        embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
+                        embed.setFooter("Score: " + randomPost.score)
+                        embed.setImage(randomPost.file_url)
+                        m.channel.sendEmbed(embed);
                         return;
                     });
                 });
@@ -957,7 +1057,13 @@ if (m.content.startsWith(`?thick`)) {
                         while (randomPost.rating === "e" || randomPost.rating === "q") {
                             randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
                         }
-                        m.channel.sendMessage(randomPost.file_url);
+                        var embed = new Discord.RichEmbed();
+                        embed.setColor("#406b99");
+                        embed.setAuthor("Source for image");
+                        embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
+                        embed.setFooter("Score: " + randomPost.score)
+                        embed.setImage(randomPost.file_url)
+                        m.channel.sendEmbed(embed);
                         return;
                     });
                 });
@@ -986,7 +1092,13 @@ if (m.content.startsWith(`?thick`)) {
                         while (randomPost.rating === "e" || randomPost.rating === "q") {
                             randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
                         }
-                        m.channel.sendMessage(randomPost.file_url);
+                        var embed = new Discord.RichEmbed();
+                        embed.setColor("#406b99");
+                        embed.setAuthor("Source for image");
+                        embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
+                        embed.setFooter("Score: " + randomPost.score)
+                        embed.setImage(randomPost.file_url)
+                        m.channel.sendEmbed(embed);
                         return;
                     });
                 });
@@ -1015,7 +1127,13 @@ if (m.content.startsWith(`?thick`)) {
                         while (randomPost.rating === "e" || randomPost.rating === "q") {
                             randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
                         }
-                        m.channel.sendMessage(randomPost.file_url);
+                        var embed = new Discord.RichEmbed();
+                        embed.setColor("#406b99");
+                        embed.setAuthor("Source for image");
+                        embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
+                        embed.setFooter("Score: " + randomPost.score)
+                        embed.setImage(randomPost.file_url)
+                        m.channel.sendEmbed(embed);
                         return;
                     });
                 });
@@ -1044,7 +1162,13 @@ if (m.content.startsWith(`?thick`)) {
                         while (randomPost.rating === "e" || randomPost.rating === "q") {
                             randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
                         }
-                        m.channel.sendMessage(randomPost.file_url);
+                        var embed = new Discord.RichEmbed();
+                        embed.setColor("#406b99");
+                        embed.setAuthor("Source for image");
+                        embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
+                        embed.setFooter("Score: " + randomPost.score)
+                        embed.setImage(randomPost.file_url)
+                        m.channel.sendEmbed(embed);
                         return;
                     });
                 });
