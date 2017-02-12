@@ -278,17 +278,17 @@ if(m.content.startsWith(`?quote`)){
   });
 }
 if (m.content.startsWith(`?thick`)) {
-    var roll = Math.round(Math.random()*6);
+    var roll = Math.floor(Math.random()*6);
    if(roll == 0){
-     var imgurURL = "https://api.imgur.com/3/gallery/r/thick";
+     var imgurURL = "https://api.imgur.com/3/gallery/r/ass/";
    } else if(roll = 1) {
-     var imgurURL = "https://api.imgur.com/3/gallery/r/Stacked";
+     var imgurURL = "https://api.imgur.com/3/gallery/r/thick";
    } else if(roll = 2){
      var imgurURL = "https://api.imgur.com/3/gallery/r/boltedontits";
    } else if(roll = 3){
      var imgurURL = "https://api.imgur.com/3/gallery/r/thickthighs";
    } else if(roll = 4){
-     var imgurURL = "https://api.imgur.com/3/gallery/r/gonewildcurvy"
+     var imgurURL = "https://api.imgur.com/3/gallery/r/thick"
   } else {
      var imgurURL = "https://api.imgur.com/3/gallery/r/thick_clothed";
    }
@@ -1879,8 +1879,9 @@ if (m.content.startsWith(`?thin`)) {
         if (!checkCommand(m, 'yt')) return;
 
         var vidList = spliceArguments(m.content)[1];
-
+        console.log(vidList);
         var vids = vidList.split(',');
+        console.log(vids);
         var suppress = 0;
         vids.forEach((vid, idx) => {
             if (idx == 1) suppress = vids.length - 2;
@@ -2007,7 +2008,7 @@ if (m.content.startsWith(`?thin`)) {
 function parseVidAndQueue(vid, m, suppress) {
     vid = resolveVid(vid, m);
     if (!vid) {
-        m.reply('You need to specify a video!');
+        //m.reply('You need to specify a video!');
         return;
     }
 
@@ -2016,6 +2017,8 @@ function parseVidAndQueue(vid, m, suppress) {
 
 function resolveVid(thing, m) {
     thing = thing.trim();
+    console.log(thing + " meme");
+
     if (thing === 'current') {
         if (currentVideo) return currentVideo.vid;
         m.reply('No video currently playing!');
@@ -2026,6 +2029,9 @@ function resolveVid(thing, m) {
         return false;
     } else if (/^http/.test(thing)) {
         var parsed = url.parse(thing, true);
+        if(parsed.host === 'youtu.be'){
+          return parsed.path.slice(1);
+        }
         if (parsed.query.v) return parsed.query.v;
         m.reply('Not a YouTube URL!');
         return false;
@@ -2046,6 +2052,7 @@ function spliceArguments(message, after) {
     after = after || 2;
     var rest = message.split(' ');
     var removed = rest.splice(0, after);
+    console.log([removed.join(' '), rest.join(' ')] + " splice arguments");
     return [removed.join(' '), rest.join(' ')];
 }
 
