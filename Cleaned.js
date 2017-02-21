@@ -430,23 +430,19 @@ client.on('message', m => {
         return;
     }
     if (m.content.startsWith(`?yomom`)) { //Testing 4 jokes
-        if (!checkCommand(m, `?yomom`)) return
-        var requestUrl = "http://yomomma.info/"
-        reequest(requestUrl, function(error, response, html) {
-            if (!error) {
-                var $ = cheerio.load(html);
-                $('h3').filter(function() {
-                    var momData = $(this);
-                    yourMomJoke = momData.text();
-                })
+        var requestUrl = "http://api.yomomma.info/"
+        reequest.get({
+          url: requestUrl,
+          json: true
+      }, function(error, response, body) {
+            if (!error){
+              var joke = body
+              m.channel.sendMessage(joke["joke"]);
             }
-        })
-        var joke = yourMomJoke
-        m.channel.sendMessage(joke)
-        return;
-    }
+          });
+          return;
+        }
     if (m.content.startsWith(`?darkness`)) { //my old friend
-        if (!checkCommand(m, `?darkness`)) return
         var darknessArray = ["https://www.youtube.com/watch?v=a5gz6KB_yvQ", "https://www.youtube.com/watch?v=ZNwICMDMV-g", "https://i.ytimg.com/vi/ZNwICMDMV-g/maxresdefault.jpg", "http://i1.kym-cdn.com/entries/icons/original/000/018/886/hello.png"]
         m.channel.sendMessage(darknessArray[Math.floor(Math.random() * darknessArray.length)])
         return;

@@ -1178,21 +1178,18 @@ if (m.content.startsWith(`?thin`)) {
 
 
     if (m.content.startsWith(`?yomom`)) { //Testing 4 jokes
-        if (!checkCommand(m, `?yomom`)) return
-        var requestUrl = "http://yomomma.info/"
-        reequest(requestUrl, function(error, response, html) {
-            if (!error) {
-                var $ = cheerio.load(html);
-                $('h3').filter(function() {
-                    var momData = $(this);
-                    yourMomJoke = momData.text();
-                })
+        var requestUrl = "http://api.yomomma.info/"
+        reequest.get({
+          url: requestUrl,
+          json: true
+      }, function(error, response, body) {
+            if (!error){
+              var joke = body
+              m.channel.sendMessage(joke["joke"]);
             }
-        })
-        var joke = yourMomJoke
-        m.channel.sendMessage(joke)
-        return;
-    }
+          });
+          return;
+        }
     /* if (m.content.startsWith(`?phrase`)) {
        var requestUrl = "http://www.randomwordgenerator.com/phrase.html"
        reequest(requestUrl, function(error, response, html){
