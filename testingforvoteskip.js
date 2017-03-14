@@ -278,19 +278,23 @@ if(m.content.startsWith(`?quote`)){
   });
 }
 if (m.content.startsWith(`?thick`)) {
-    var roll = Math.floor(Math.random()*6);
+    var roll = Math.floor(Math.random()*7);
    if(roll == 0){
      var imgurURL = "https://api.imgur.com/3/gallery/r/ass/";
-   } else if(roll = 1) {
+   } else if(roll == 1) {
      var imgurURL = "https://api.imgur.com/3/gallery/r/thick";
-   } else if(roll = 2){
+   } else if(roll == 2){
      var imgurURL = "https://api.imgur.com/3/gallery/r/boltedontits";
-   } else if(roll = 3){
+   } else if(roll == 3){
      var imgurURL = "https://api.imgur.com/3/gallery/r/thickthighs";
-   } else if(roll = 4){
+   } else if(roll == 4){
      var imgurURL = "https://api.imgur.com/3/gallery/r/thick"
+  } else if(roll == 5){
+    var imgurURL = "https://api.imgur.com/3/gallery/r/pawg";
+  } else if(roll == 6){
+    var imgurURL = "https://api.imgur.com/3/gallery/r/Stacked";
   } else {
-     var imgurURL = "https://api.imgur.com/3/gallery/r/thick_clothed";
+     var imgurURL = "https://api.imgur.com/3/gallery/r/pawg";
    }
     var birdArray = [];
     var birdObj = {};
