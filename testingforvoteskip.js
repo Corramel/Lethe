@@ -602,6 +602,7 @@ if (m.content.startsWith(`?thin`)) {
         m.channel.sendMessage(`${cleanUpMessage} you have been slashed by ${m.author}! ${slashArray[Math.floor(Math.random()*slashArray.length)]}`);
     }
     if (m.content.startsWith(`?battle `)) {
+        try{
         var battleWon = false;
         var player1name = `<@${m.author.id}>`;
         var player2name = m.content.slice(8);
@@ -707,6 +708,15 @@ if (m.content.startsWith(`?thin`)) {
         }
         m.reply(battleMsg);
         return;
+      } catch(err) {
+        var player2name = m.content.slice(8);
+        if(Math.round(Math.random()) == 0){
+          m.channel.sendMessage(`<@${m.author.id}> punches ${player2name} right in their face! \n They die of a SHEER HEART ATTACK! \n <@${m.author.id}> wins!`);
+        } else {m.channel.sendMessage(`${player2name} touches <@${m.author.id}> with their stando! \n "Dai ichisan no backudan, switch on!" \n <@${m.author.id}> explodes! \n ${player2name} wins!`);
+
+        }
+
+      }
     }
     if (m.content.startsWith(`?yourdone`)) {
         midoriArray = [`http://i.imgur.com/ki4865P.png`, `https://youtu.be/8S_8CX4YD-8?t=832`]
