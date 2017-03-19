@@ -27,7 +27,7 @@ const YoutubeTrack = require('./lib/youtube-track.js');
 
 const feCalcs = require('./lib/FEFunctions.js')
 const Util = require('./lib/util.js');
-const Config = require('./lib/config.js');
+const Config = require('./lethe-config.json');
 const adminIds = Config.adminIds;
 const tarots = require('./lib/magical-cards.json');
 const randEbolaPic = require('./lib/ebolachaninfo.json');
@@ -105,7 +105,7 @@ var shouldStockpile = false
 var stockpile = '';
 
 // Handling api key
-var apiKey = process.argv[4] || (Config.auth.apiKey !== "youtube API key (optional)") ? Config.auth.apiKey : false;
+var apiKey = "AIzaSyAqroFUTU83XuAa6x_--vI3AAzESiWHbH4";
 
 client.on('ready', () => {
     if (Config.botHasNickname) {
@@ -2129,7 +2129,7 @@ function play(video) {
             playStopped(); // skip to next video
         });
 
-        currentStream.on('end', () => setTimeout(playStopped, Config.timeOffset || 8000)); // 8 second leeway for bad timing
+        currentStream.on('end', () => setTimeout(playStopped, Config.timeOffset || 10000)); // 8 second leeway for bad timing
         dispatcher = channelToJoin.connection.playStream(currentStream)
             //.then(intent => {
         boundChannel.sendMessage(`Playing ${video.prettyPrint()}`);
