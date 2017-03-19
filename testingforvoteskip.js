@@ -2132,6 +2132,8 @@ function play(video) {
         currentStream.on('end', () => setTimeout(playStopped, Config.timeOffset || 10000)); // 8 second leeway for bad timing
         dispatcher = channelToJoin.connection.playStream(currentStream)
             //.then(intent => {
+            console.log(video.author);
+            console.log(video);
         boundChannel.sendMessage(`Playing ${video.prettyPrint()}`);
         client.user.setStatus('online', video.title);
         //  });
