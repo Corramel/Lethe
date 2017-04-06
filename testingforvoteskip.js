@@ -220,7 +220,7 @@ client.on('message', m => {
 
     if (m.content.startsWith(`?tarot`)) {
         var embed = new Discord.RichEmbed();
-        //embed.setColor("#7A3B81")
+        embed.setColor("#7A3B81")
         var roll = Math.round(Math.random());
         console.log(roll);
         if (roll>0) {
@@ -229,9 +229,9 @@ client.on('message', m => {
                 console.log(tarotKeys);
                 var randCard = tarotKeys[Math.floor(Math.random() * tarotKeys.length)];
                 console.log(randCard);
-                embed.setAuthor(tarot.upRightCards[randCard].name);
-                embed.setImage(tarot.upRightCards[randCard].link);
-                embed.addField("What It Means", tarot.upRightCards[randCard].desc);
+                embed.setAuthor(tarot.uprightCards[randCard].name);
+                embed.setImage(tarot.uprightCards[randCard].link);
+                embed.addField("What It Means", tarot.uprightCards[randCard].desc);
             } catch (err) {
                 m.channel.sendMessage("An error occurred");
                 //return;
