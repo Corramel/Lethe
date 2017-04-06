@@ -27,9 +27,10 @@ const YoutubeTrack = require('./lib/youtube-track.js');
 
 const feCalcs = require('./lib/FEFunctions.js')
 const Util = require('./lib/util.js');
-const Config = require('./lethe-config.json');
+const Config = require('./lib/config.js');
 const adminIds = Config.adminIds;
-const tarots = require('./lib/magical-cards.json');
+const arcana = require('./lib/magical-cards.json');
+const tarot = require('./lib/tarotcards.json');
 const randEbolaPic = require('./lib/ebolachaninfo.json');
 const randFangCringe = require('./lib/fangsmemes.json');
 const feSys = require('./lib/FEClasses.json');
@@ -186,27 +187,27 @@ client.on('message', m => {
             if (!error) {
                 birdObj = body;
                 birdArray = birdObj["data"]
-                    /*.filter(function(a){
-                      return !(a.is_album);
-                    }); */
+                /*.filter(function(a){
+                  return !(a.is_album);
+                }); */
                 birdRandomImage = birdArray[Math.floor(Math.random() * birdArray.length)];
                 if (birdRandomImage.is_album) {
-                  var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
-                  var title = birdRandomImage.title || "/r/birdpics";
-                  var embed = new Discord.RichEmbed();
-                  embed.setColor("#c39582");
-                  embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.cover)
-                  embed.setImage(image);
-                  m.channel.sendEmbed(embed);
-              } else {
-                  var image = birdRandomImage.link.replace(`\\/`, `/`);
-                  var title = birdRandomImage.title || "/r/birdpics";
-                  var embed = new Discord.RichEmbed();
-                  embed.setColor("#c39582");
-                  embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.id)
-                  embed.setImage(image);
-                  m.channel.sendEmbed(embed);
-              }
+                    var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
+                    var title = birdRandomImage.title || "/r/birdpics";
+                    var embed = new Discord.RichEmbed();
+                    embed.setColor("#c39582");
+                    embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.cover)
+                    embed.setImage(image);
+                    m.channel.sendEmbed(embed);
+                } else {
+                    var image = birdRandomImage.link.replace(`\\/`, `/`);
+                    var title = birdRandomImage.title || "/r/birdpics";
+                    var embed = new Discord.RichEmbed();
+                    embed.setColor("#c39582");
+                    embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.id)
+                    embed.setImage(image);
+                    m.channel.sendEmbed(embed);
+                }
 
             } else {
                 console.log("An error!");
@@ -217,40 +218,74 @@ client.on('message', m => {
         console.log("Finished");
     }
 
+    if (m.content.startsWith(`?tarot`)) {
+        var embed = new Discord.RichEmbed();
+        //embed.setColor("#7A3B81")
+        if (Math.floor(Math.random()) > 0) {
+            try {
+                var tarotKeys = Object.keys(tarot.uprightCards);
+                console.log(tarotKeys);
+                var randCard = tarotKeys[Math.floor(Math.random() * tarotKeys.length)];
+                console.log(randCard);
+                embed.setAuthor(tarot.upRightCards[randCard].name);
+                embed.setImage(tarot.upRightCards[randCard].link);
+                embed.addField("What It Means", tarot.upRightCards[randCard].desc);
+            } catch (err) {
+                m.channel.sendMessage("An error occurred");
+                //return;
+            }
+        } else {
+            try {
+                var tarotKeys = Object.keys(tarot.reversedCards);
+                console.log(tarotKeys);
+                var randCard = tarotKeys[Math.floor(Math.random() * tarotKeys.length)];
+                console.log(randCard);
+                embed.setAuthor(tarot.reversedCards[randCard].name);
+                embed.setImage(tarot.reversedCards[randCard].link);
+                embed.addField("What It Means", tarot.reversedCards[randCard].desc);
+            } catch (err) {
+                m.channel.sendMessage("An error occurred");
+                return;
+            }
+        }
+        m.channel.sendEmbed(embed);
+        return;
+    }
+
     if (m.content.startsWith(`?randomDog`)) {
         var birdArray = [];
         var birdObj = {};
         reequest.get({
             url: "https://api.imgur.com/3/gallery/r/dogpics",
             headers: {
-                "Authorization":'Client-ID ' + imgurClientID
+                "Authorization": 'Client-ID ' + imgurClientID
             },
             json: true
         }, function(error, response, body) {
             if (!error) {
                 birdObj = body;
                 birdArray = birdObj["data"]
-                    /*.filter(function(a){
-                      return !(a.is_album);
-                    }); */
+                /*.filter(function(a){
+                  return !(a.is_album);
+                }); */
                 birdRandomImage = birdArray[Math.floor(Math.random() * birdArray.length)];
                 if (birdRandomImage.is_album) {
-                  var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
-                  var title = birdRandomImage.title || "/r/birdpics";
-                  var embed = new Discord.RichEmbed();
-                  embed.setColor("#fdc6b2");
-                  embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.cover)
-                  embed.setImage(image);
-                  m.channel.sendEmbed(embed);
-              } else {
-                  var image = birdRandomImage.link.replace(`\\/`, `/`);
-                  var title = birdRandomImage.title || "/r/birdpics";
-                  var embed = new Discord.RichEmbed();
-                  embed.setColor("#e91e63");
-                  embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.id)
-                  embed.setImage(image);
-                  m.channel.sendEmbed(embed);
-              }
+                    var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
+                    var title = birdRandomImage.title || "/r/birdpics";
+                    var embed = new Discord.RichEmbed();
+                    embed.setColor("#fdc6b2");
+                    embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.cover)
+                    embed.setImage(image);
+                    m.channel.sendEmbed(embed);
+                } else {
+                    var image = birdRandomImage.link.replace(`\\/`, `/`);
+                    var title = birdRandomImage.title || "/r/birdpics";
+                    var embed = new Discord.RichEmbed();
+                    embed.setColor("#e91e63");
+                    embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.id)
+                    embed.setImage(image);
+                    m.channel.sendEmbed(embed);
+                }
 
             } else {
                 console.log(error);
@@ -258,142 +293,142 @@ client.on('message', m => {
             }
         });
     }
-if(m.content.startsWith(`?quote`)){
-  reequest.get({
-    url: "https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous",
-    headers: {
-      "X-Mashape-Key": quoteKey
-    },
-    json:true
-  }, function(error, response, body){
-    if(!error){
-      var embed = new Discord.RichEmbed();
-      embed.setColor("#d546d5");
-      embed.setAuthor(body.quote);
-      embed.setFooter("-" + body.author);
-      m.channel.sendEmbed(embed);
-    } else {
-      console.log(error);
+    if (m.content.startsWith(`?quote`)) {
+        reequest.get({
+            url: "https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous",
+            headers: {
+                "X-Mashape-Key": quoteKey
+            },
+            json: true
+        }, function(error, response, body) {
+            if (!error) {
+                var embed = new Discord.RichEmbed();
+                embed.setColor("#d546d5");
+                embed.setAuthor(body.quote);
+                embed.setFooter("-" + body.author);
+                m.channel.sendEmbed(embed);
+            } else {
+                console.log(error);
+            }
+        });
     }
-  });
-}
-if (m.content.startsWith(`?thick`)) {
-    var roll = Math.floor(Math.random()*7);
-   if(roll == 0){
-     var imgurURL = "https://api.imgur.com/3/gallery/r/ass/";
-   } else if(roll == 1) {
-     var imgurURL = "https://api.imgur.com/3/gallery/r/thick";
-   } else if(roll == 2){
-     var imgurURL = "https://api.imgur.com/3/gallery/r/boltedontits";
-   } else if(roll == 3){
-     var imgurURL = "https://api.imgur.com/3/gallery/r/thickthighs";
-   } else if(roll == 4){
-     var imgurURL = "https://api.imgur.com/3/gallery/r/thick"
-  } else if(roll == 5){
-    var imgurURL = "https://api.imgur.com/3/gallery/r/pawg";
-  } else if(roll == 6){
-    var imgurURL = "https://api.imgur.com/3/gallery/r/Stacked";
-  } else {
-     var imgurURL = "https://api.imgur.com/3/gallery/r/pawg";
-   }
-    var birdArray = [];
-    var birdObj = {};
-    console.log("Hello?");
-    reequest.get({
-        url: imgurURL,
-        headers: {
-            "Authorization":'Client-ID ' + imgurClientID
-        },
-        json: true
-    }, function(error, response, body) {
-        if (!error) {
-            birdObj = body;
-            birdArray = birdObj["data"]
+    if (m.content.startsWith(`?thick`)) {
+        var roll = Math.floor(Math.random() * 7);
+        if (roll == 0) {
+            var imgurURL = "https://api.imgur.com/3/gallery/r/ass/";
+        } else if (roll == 1) {
+            var imgurURL = "https://api.imgur.com/3/gallery/r/thick";
+        } else if (roll == 2) {
+            var imgurURL = "https://api.imgur.com/3/gallery/r/boltedontits";
+        } else if (roll == 3) {
+            var imgurURL = "https://api.imgur.com/3/gallery/r/thickthighs";
+        } else if (roll == 4) {
+            var imgurURL = "https://api.imgur.com/3/gallery/r/thick"
+        } else if (roll == 5) {
+            var imgurURL = "https://api.imgur.com/3/gallery/r/pawg";
+        } else if (roll == 6) {
+            var imgurURL = "https://api.imgur.com/3/gallery/r/Stacked";
+        } else {
+            var imgurURL = "https://api.imgur.com/3/gallery/r/pawg";
+        }
+        var birdArray = [];
+        var birdObj = {};
+        console.log("Hello?");
+        reequest.get({
+            url: imgurURL,
+            headers: {
+                "Authorization": 'Client-ID ' + imgurClientID
+            },
+            json: true
+        }, function(error, response, body) {
+            if (!error) {
+                birdObj = body;
+                birdArray = birdObj["data"]
                 /*.filter(function(a){
                   return !(a.is_album);
                 }); */
-            birdRandomImage = birdArray[Math.floor(Math.random() * birdArray.length)];
-            if (birdRandomImage.is_album) {
-                var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
-                var title = birdRandomImage.title || "Thick Chicks";
-                var embed = new Discord.RichEmbed();
-                embed.setColor("#cdcdcd");
-                embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.cover)
-                embed.setImage(image);
-                m.channel.sendEmbed(embed);
+                birdRandomImage = birdArray[Math.floor(Math.random() * birdArray.length)];
+                if (birdRandomImage.is_album) {
+                    var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
+                    var title = birdRandomImage.title || "Thick Chicks";
+                    var embed = new Discord.RichEmbed();
+                    embed.setColor("#cdcdcd");
+                    embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.cover)
+                    embed.setImage(image);
+                    m.channel.sendEmbed(embed);
+                } else {
+                    var image = birdRandomImage.link.replace(`\\/`, `/`);
+                    var title = birdRandomImage.title || "Thick Chicks";
+                    var embed = new Discord.RichEmbed();
+                    embed.setColor("#cdcdcd");
+                    embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.id)
+                    embed.setImage(image);
+                    m.channel.sendEmbed(embed);
+                }
+
             } else {
-                var image = birdRandomImage.link.replace(`\\/`, `/`);
-                var title = birdRandomImage.title || "Thick Chicks";
-                var embed = new Discord.RichEmbed();
-                embed.setColor("#cdcdcd");
-                embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.id)
-                embed.setImage(image);
-                m.channel.sendEmbed(embed);
+                console.log(error);
+                m.reply(error);
             }
+        });
+    }
 
+    if (m.content.startsWith(`?thin`)) {
+        var roll = Math.round(Math.random() * 5);
+        if (roll == 0) {
+            var imgurURL = "https://api.imgur.com/3/gallery/r/petite";
+        } else if (roll = 1) {
+            var imgurURL = "https://api.imgur.com/3/gallery/r/PetiteGoneWild";
+        } else if (roll = 2) {
+            var imgurURL = "https://api.imgur.com/3/gallery/r/SexiestPetites";
+        } else if (roll = 3) {
+            var imgurURL = "https://api.imgur.com/3/gallery/r/dirtysmall";
+        } else if (roll = 4) {
+            var imgurURL = "https://api.imgur.com/3/gallery/r/xsmallgirls";
         } else {
-            console.log(error);
-            m.reply(error);
+            var imgurURL = "https://api.imgur.com/3/gallery/r/funsized";
         }
-    });
-}
-
-if (m.content.startsWith(`?thin`)) {
-    var roll = Math.round(Math.random()*5);
-   if(roll == 0){
-     var imgurURL = "https://api.imgur.com/3/gallery/r/petite";
-   } else if(roll = 1) {
-     var imgurURL = "https://api.imgur.com/3/gallery/r/PetiteGoneWild";
-   } else if(roll = 2){
-     var imgurURL = "https://api.imgur.com/3/gallery/r/SexiestPetites";
-   } else if(roll = 3){
-     var imgurURL = "https://api.imgur.com/3/gallery/r/dirtysmall";
-   } else if(roll = 4){
-     var imgurURL = "https://api.imgur.com/3/gallery/r/xsmallgirls";
-  } else {
-     var imgurURL = "https://api.imgur.com/3/gallery/r/funsized";
-   }
-    var birdArray = [];
-    var birdObj = {};
-    console.log("Hello?");
-    reequest.get({
-        url: imgurURL,
-        headers: {
-            "Authorization":'Client-ID ' + imgurClientID
-        },
-        json: true
-    }, function(error, response, body) {
-        if (!error) {
-            birdObj = body;
-            birdArray = birdObj["data"]
+        var birdArray = [];
+        var birdObj = {};
+        console.log("Hello?");
+        reequest.get({
+            url: imgurURL,
+            headers: {
+                "Authorization": 'Client-ID ' + imgurClientID
+            },
+            json: true
+        }, function(error, response, body) {
+            if (!error) {
+                birdObj = body;
+                birdArray = birdObj["data"]
                 /*.filter(function(a){
                   return !(a.is_album);
                 }); */
-            birdRandomImage = birdArray[Math.floor(Math.random() * birdArray.length)];
-            if (birdRandomImage.is_album) {
-                var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
-                var title = birdRandomImage.title || "Thin Girls";
-                var embed = new Discord.RichEmbed();
-                embed.setColor("#cdcdcd");
-                embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.cover)
-                embed.setImage(image);
-                m.channel.sendEmbed(embed);
-            } else {
-                var image = birdRandomImage.link.replace(`\\/`, `/`);
-                var title = birdRandomImage.title || "Thin Girls";
-                var embed = new Discord.RichEmbed();
-                embed.setColor("#cdcdcd");
-                embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.id)
-                embed.setImage(image);
-                m.channel.sendEmbed(embed);
-            }
+                birdRandomImage = birdArray[Math.floor(Math.random() * birdArray.length)];
+                if (birdRandomImage.is_album) {
+                    var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
+                    var title = birdRandomImage.title || "Thin Girls";
+                    var embed = new Discord.RichEmbed();
+                    embed.setColor("#cdcdcd");
+                    embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.cover)
+                    embed.setImage(image);
+                    m.channel.sendEmbed(embed);
+                } else {
+                    var image = birdRandomImage.link.replace(`\\/`, `/`);
+                    var title = birdRandomImage.title || "Thin Girls";
+                    var embed = new Discord.RichEmbed();
+                    embed.setColor("#cdcdcd");
+                    embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.id)
+                    embed.setImage(image);
+                    m.channel.sendEmbed(embed);
+                }
 
-        } else {
-            console.log(error);
-            m.reply(error);
-        }
-    });
-}
+            } else {
+                console.log(error);
+                m.reply(error);
+            }
+        });
+    }
 
 
 
@@ -578,16 +613,11 @@ if (m.content.startsWith(`?thin`)) {
         m.channel.sendMessage("http://puu.sh/paA9X/111dceef42.png");
         return;
     }
-    if (m.content.startsWith(`?tarot`)) {
+    if (m.content.startsWith(`?arcana`)) {
         var cardNames = ["Sharpshooter", "Pugilist", "Neophyte", "Vagabond", "Arbiter", "Chaplain", "Sovereign", "Troubadour", "Oracle", "Cavalier", "Tactician", "Ambsace", "Fortuitous"];
-        console.log(cardNames);
-        console.log(tarots);
-        console.log(tarots.Sharpshooter.Card);
         var chosenCard = cardNames[Math.floor(Math.random() * cardNames.length)];
-        console.log(chosenCard);
-        var chosenCardPic = tarots[chosenCard].Card;
-        console.log(chosenCardPic);
-        var chosenCardDesc = tarots[chosenCard].Description
+        var chosenCardPic = arcana[chosenCard].Card;
+        var chosenCardDesc = arcana[chosenCard].Description
         m.channel.sendMessage(`${chosenCardPic}`);
         m.channel.sendMessage(`${chosenCardDesc}`);
         return;
@@ -602,30 +632,44 @@ if (m.content.startsWith(`?thin`)) {
         m.channel.sendMessage(`${cleanUpMessage} you have been slashed by ${m.author}! ${slashArray[Math.floor(Math.random()*slashArray.length)]}`);
     }
     if (m.content.startsWith(`?battle `)) {
-        try{
-        var battleWon = false;
-        var player1name = `<@${m.author.id}>`;
-        var player2name = m.content.slice(8);
-        var infoWanted = m.content.slice(8);
-        var feClasses = Object.keys(feSys.classes);
-        var player1class = feClasses[Math.round(Math.random() * feClasses.length)];
-        var player2class = feClasses[Math.round(Math.random() * feClasses.length)];
-        var player1 = feSys.classes[player1class];
-        var player2 = feSys.classes[player2class];
-        var attackLogp1 = feCalcs.player1Attack(player1, feSys.weapons.iron.sword, player1name, player2, feSys.weapons.iron.sword, player2name);
-        var attackLogp2 = feCalcs.player1Attack(player2, feSys.weapons.iron.sword, player1name, player1, feSys.weapons.iron.sword, player1name);
-        var meme = [];
-        var battleMsg = player1name + " is a " + player1.name + "! " + player2name + " is a " + player2.name + "! Let the battle begin! \n";
-        var p1HP = player1.hp;
-        var p2HP = player2.hp;
-        var turn = "";
-        var turnNum = 1;
-        while (!battleWon) {
-            if (!(turnNum % 2 == 0)) {
+        try {
+            var battleWon = false;
+            var player1name = `<@${m.author.id}>`;
+            var player2name = m.content.slice(8);
+            var infoWanted = m.content.slice(8);
+            var feClasses = Object.keys(feSys.classes);
+            var player1class = feClasses[Math.round(Math.random() * feClasses.length)];
+            var player2class = feClasses[Math.round(Math.random() * feClasses.length)];
+            var player1 = feSys.classes[player1class];
+            var player2 = feSys.classes[player2class];
+            var attackLogp1 = feCalcs.player1Attack(player1, feSys.weapons.iron.sword, player1name, player2, feSys.weapons.iron.sword, player2name);
+            var attackLogp2 = feCalcs.player1Attack(player2, feSys.weapons.iron.sword, player1name, player1, feSys.weapons.iron.sword, player1name);
+            var meme = [];
+            var battleMsg = player1name + " is a " + player1.name + "! " + player2name + " is a " + player2.name + "! Let the battle begin! \n";
+            var p1HP = player1.hp;
+            var p2HP = player2.hp;
+            var turn = "";
+            var turnNum = 1;
+            while (!battleWon) {
+                if (!(turnNum % 2 == 0)) {
 
-                if (feCalcs.calculateDoubleAtk(player1.spd, player2.spd)) {
-                    for (var i = 0; i < 2; i++) {
-                        meme = feCalcs.enemyDefense(player1, feSys.weapons.iron.sword, attackLogp1, player1name, (p1HP), player2, player2name, p2HP);
+                    if (feCalcs.calculateDoubleAtk(player1.spd, player2.spd)) {
+                        for (var i = 0; i < 2; i++) {
+                            meme = feCalcs.enemyDefense(player1, feSys.weapons.iron.sword, attackLogp1, player1name, (p1HP), player2, player2name, p2HP);
+                            battleMsg = battleMsg + meme[0];
+                            p2HP = meme[1];
+                            if (meme[2] == true) {
+                                battleWon = true;
+                                break;
+                            }
+                            p1HP = meme[3];
+                            attackLogp1 = feCalcs.player1Attack(player1, feSys.weapons.iron.sword, player1name, player2, feSys.weapons.iron.sword, player2name);
+                            if (battleWon) {
+                                break;
+                            }
+                        }
+                    } else {
+                        meme = feCalcs.enemyDefense(player1, feSys.weapons.iron.sword, attackLogp1, player1name, p1HP, player2, player2name, p2HP);
                         battleMsg = battleMsg + meme[0];
                         p2HP = meme[1];
                         if (meme[2] == true) {
@@ -638,31 +682,31 @@ if (m.content.startsWith(`?thin`)) {
                             break;
                         }
                     }
-                } else {
-                    meme = feCalcs.enemyDefense(player1, feSys.weapons.iron.sword, attackLogp1, player1name, p1HP, player2, player2name, p2HP);
-                    battleMsg = battleMsg + meme[0];
-                    p2HP = meme[1];
-                    if (meme[2] == true) {
-                        battleWon = true;
-                        break;
-                    }
-                    p1HP = meme[3];
-                    attackLogp1 = feCalcs.player1Attack(player1, feSys.weapons.iron.sword, player1name, player2, feSys.weapons.iron.sword, player2name);
-                    if (battleWon) {
-                        break;
-                    }
-                }
 
-                if (p1HP > 0 && p2HP <= 0) {
-                    break;
-                }
-                console.log(turnNum + " p1");
-                console.log(p2HP > 0 + " p2HP");
-                console.log(p1HP > 0 + " p1HP");
-                turnNum++;
-            } else {
-                if (feCalcs.calculateDoubleAtk(player2.spd, player1.spd)) {
-                    for (var i = 0; i < 2; i++) {
+                    if (p1HP > 0 && p2HP <= 0) {
+                        break;
+                    }
+                    console.log(turnNum + " p1");
+                    console.log(p2HP > 0 + " p2HP");
+                    console.log(p1HP > 0 + " p1HP");
+                    turnNum++;
+                } else {
+                    if (feCalcs.calculateDoubleAtk(player2.spd, player1.spd)) {
+                        for (var i = 0; i < 2; i++) {
+                            meme = feCalcs.enemyDefense(player2, feSys.weapons.iron.sword, attackLogp2, player2name, p2HP, player1, player1name, p1HP);
+                            battleMsg = battleMsg + meme[0];
+                            p1HP = meme[1];
+                            if (meme[2] == true) {
+                                battleWon = true;
+                                break;
+                            }
+                            p2HP = meme[3];
+                            attackLogp2 = feCalcs.player1Attack(player2, feSys.weapons.iron.sword, player2name, player1, feSys.weapons.iron.sword, player1name);
+                            if (battleWon) {
+                                break;
+                            }
+                        }
+                    } else {
                         meme = feCalcs.enemyDefense(player2, feSys.weapons.iron.sword, attackLogp2, player2name, p2HP, player1, player1name, p1HP);
                         battleMsg = battleMsg + meme[0];
                         p1HP = meme[1];
@@ -676,47 +720,34 @@ if (m.content.startsWith(`?thin`)) {
                             break;
                         }
                     }
-                } else {
-                    meme = feCalcs.enemyDefense(player2, feSys.weapons.iron.sword, attackLogp2, player2name, p2HP, player1, player1name, p1HP);
-                    battleMsg = battleMsg + meme[0];
-                    p1HP = meme[1];
-                    if (meme[2] == true) {
-                        battleWon = true;
-                        break;
-                    }
-                    p2HP = meme[3];
-                    attackLogp2 = feCalcs.player1Attack(player2, feSys.weapons.iron.sword, player2name, player1, feSys.weapons.iron.sword, player1name);
-                    if (battleWon) {
-                        break;
-                    }
-                }
 
-                if (p2HP > 0 && p1HP <= 0) {
-                    break;
+                    if (p2HP > 0 && p1HP <= 0) {
+                        break;
+                    }
+                    console.log(turnNum + " p2")
+                    console.log(p2HP > 0 + " p2HP");
+                    console.log(p1HP > 0 + " p1HP");
+                    turnNum++;
                 }
-                console.log(turnNum + " p2")
-                console.log(p2HP > 0 + " p2HP");
-                console.log(p1HP > 0 + " p1HP");
-                turnNum++;
             }
-        }
-        console.log(turnNum);
-        if (p2HP > 0 && p1HP <= 0) {
-            battleMsg = battleMsg + `***` + player2name + " wins!***";
-        } else {
-            battleMsg = battleMsg + `***` + player1name + " wins!***";
-        }
-        m.reply(battleMsg);
-        return;
-      } catch(err) {
-        var player2name = m.content.slice(8);
-        if(Math.round(Math.random()) == 0){
-          m.channel.sendMessage(`<@${m.author.id}> punches ${player2name} right in their face! \n They die of a SHEER HEART ATTACK! \n <@${m.author.id}> wins!`);
-        } else {m.channel.sendMessage(`${player2name} touches <@${m.author.id}> with their stando! \n "Dai ichisan no backudan, switch on!" \n <@${m.author.id}> explodes! \n ${player2name} wins!`);
+            console.log(turnNum);
+            if (p2HP > 0 && p1HP <= 0) {
+                battleMsg = battleMsg + `***` + player2name + " wins!***";
+            } else {
+                battleMsg = battleMsg + `***` + player1name + " wins!***";
+            }
+            m.reply(battleMsg);
+            return;
+        } catch (err) {
+            var player2name = m.content.slice(8);
+            if (Math.round(Math.random()) == 0) {
+                m.channel.sendMessage(`<@${m.author.id}> punches ${player2name} right in their face! \n They die of a SHEER HEART ATTACK! \n <@${m.author.id}> wins!`);
+            } else {
+                m.channel.sendMessage(`${player2name} touches <@${m.author.id}> with their stando! \n "Dai ichisan no backudan, switch on!" \n <@${m.author.id}> explodes! \n ${player2name} wins!`);
+
+            }
 
         }
-
-      }
     }
     if (m.content.startsWith(`?yourdone`)) {
         midoriArray = [`http://i.imgur.com/ki4865P.png`, `https://youtu.be/8S_8CX4YD-8?t=832`]
@@ -755,8 +786,8 @@ if (m.content.startsWith(`?thin`)) {
                 return;
             } else {
                 var unluckyOne = namesArray[Math.floor(Math.random() * namesArray.length)]
-                    //  var luckyindex = namesArray.indexOf(unluckyOne)
-                    //  luckyOnes = namesArray.splice(luckyindex, 1)
+                //  var luckyindex = namesArray.indexOf(unluckyOne)
+                //  luckyOnes = namesArray.splice(luckyindex, 1)
                 function Meme(luckyindex) {
                     return luckyindex != unluckyOne
                 }
@@ -782,41 +813,41 @@ if (m.content.startsWith(`?thin`)) {
         }
     }
     if (m.content.startsWith(`?lucina`) || m.content.startsWith(`?perfect`)) {
-    var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=lucina&rating=s&pid=${Math.round(Math.random()*10)}`
-    reequest(requestUrl, function(error, response, html) {
+        var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=lucina&rating=s&pid=${Math.round(Math.random()*10)}`
+        reequest(requestUrl, function(error, response, html) {
 
-        if (!error) {
-            var cheerio$ = cheerio.load(html, {
-                xmlMode: true
-            });
-            cheerio$('posts').filter(function() {
-                var toParse = cheerio$(this);
-                var parsingInfo = toParse.text();
-
-                parseString(toParse, function(err, result) {
-                    if (result.posts.post == undefined) {
-                        m.reply("Sorry, no images were found during this iteration of the search.")
-                        return;
-                    }
-
-                    var randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
-
-                    while (randomPost.rating === "e" || randomPost.rating === "q") {
-                        randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
-                    }
-                    var embed = new Discord.RichEmbed();
-                    embed.setColor("#406b99");
-                    embed.setAuthor("Source for image");
-                    embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
-                    embed.setFooter("Score: " + randomPost.score)
-                    embed.setImage(randomPost.file_url)
-                    m.channel.sendEmbed(embed);
-                    return;
+            if (!error) {
+                var cheerio$ = cheerio.load(html, {
+                    xmlMode: true
                 });
-            });
-        };
-    });
-};
+                cheerio$('posts').filter(function() {
+                    var toParse = cheerio$(this);
+                    var parsingInfo = toParse.text();
+
+                    parseString(toParse, function(err, result) {
+                        if (result.posts.post == undefined) {
+                            m.reply("Sorry, no images were found during this iteration of the search.")
+                            return;
+                        }
+
+                        var randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
+
+                        while (randomPost.rating === "e" || randomPost.rating === "q") {
+                            randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
+                        }
+                        var embed = new Discord.RichEmbed();
+                        embed.setColor("#406b99");
+                        embed.setAuthor("Source for image");
+                        embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
+                        embed.setFooter("Score: " + randomPost.score)
+                        embed.setImage(randomPost.file_url)
+                        m.channel.sendEmbed(embed);
+                        return;
+                    });
+                });
+            };
+        });
+    };
     if (m.content.startsWith(`?gelbooru`)) {
         if (m.content.length > 10 && m.content.indexOf(";") > -1) {
             var tags = m.content.slice(9)
@@ -1194,16 +1225,16 @@ if (m.content.startsWith(`?thin`)) {
     if (m.content.startsWith(`?yomom`)) { //Testing 4 jokes
         var requestUrl = "http://api.yomomma.info/"
         reequest.get({
-          url: requestUrl,
-          json: true
-      }, function(error, response, body) {
-            if (!error){
-              var joke = body
-              m.channel.sendMessage(joke["joke"]);
+            url: requestUrl,
+            json: true
+        }, function(error, response, body) {
+            if (!error) {
+                var joke = body
+                m.channel.sendMessage(joke["joke"]);
             }
-          });
-          return;
-        }
+        });
+        return;
+    }
     /* if (m.content.startsWith(`?phrase`)) {
        var requestUrl = "http://www.randomwordgenerator.com/phrase.html"
        reequest(requestUrl, function(error, response, html){
@@ -1408,23 +1439,23 @@ if (m.content.startsWith(`?thin`)) {
         m.channel.sendFile(messageanswer.replace(/\\\//g, "/"));
     }
     if (m.content.startsWith(`?starterpack`)) { //memecontrol
-          var birdArray = [];
-          var birdObj = {};
-          reequest.get({
-              url: "https://api.imgur.com/3/gallery/r/starterpacks/",
-              headers: {
-                  "Authorization": 'Client-ID ' + imgurClientID
-              },
-              json: true
-          }, function(error, response, body) {
-              if (!error) {
-                  birdObj = body;
-                  birdArray = birdObj["data"]
-                      /*.filter(function(a){
-                        return !(a.is_album);
-                      }); */
-                  birdRandomImage = birdArray[Math.floor(Math.random() * birdArray.length)];
-                  if (birdRandomImage.is_album) {
+        var birdArray = [];
+        var birdObj = {};
+        reequest.get({
+            url: "https://api.imgur.com/3/gallery/r/starterpacks/",
+            headers: {
+                "Authorization": 'Client-ID ' + imgurClientID
+            },
+            json: true
+        }, function(error, response, body) {
+            if (!error) {
+                birdObj = body;
+                birdArray = birdObj["data"]
+                /*.filter(function(a){
+                  return !(a.is_album);
+                }); */
+                birdRandomImage = birdArray[Math.floor(Math.random() * birdArray.length)];
+                if (birdRandomImage.is_album) {
                     var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
                     var title = birdRandomImage.title || "/r/starterpacks";
                     var embed = new Discord.RichEmbed();
@@ -1442,14 +1473,14 @@ if (m.content.startsWith(`?thin`)) {
                     m.channel.sendEmbed(embed);
                 }
 
-              } else {
-                  console.log("An error!");
-                  console.log(error);
-                  m.reply(error);
-              }
-          });
-          console.log("Finished");
-      }
+            } else {
+                console.log("An error!");
+                console.log(error);
+                m.reply(error);
+            }
+        });
+        console.log("Finished");
+    }
 
     if (m.content.startsWith(`?lyin`)) { //memecontrol
         if (!checkCommand(m, `?lyin`)) return
@@ -2040,8 +2071,8 @@ function resolveVid(thing, m) {
         return false;
     } else if (/^http/.test(thing)) {
         var parsed = url.parse(thing, true);
-        if(parsed.host === 'youtu.be'){
-          return parsed.path.slice(1);
+        if (parsed.host === 'youtu.be') {
+            return parsed.path.slice(1);
         }
         if (parsed.query.v) return parsed.query.v;
         m.reply('Not a YouTube URL!');
@@ -2131,19 +2162,22 @@ function play(video) {
         currentStream.on('error', (err) => {
             if (err.code === 'ECONNRESET') {
                 if (!Config.suppressPlaybackNetworkError) {
-                    boundChannel.sendMessage(`There was a network error during playback! The connection to YouTube may be unstable. Auto-skipping to the next video...`);
+                    console.log(err);
+                    boundChannel.sendMessage(`There was a network error during playback! The connection to YouTube may be unstable. Attempting to restart video...`);
                 }
             } else {
                 boundChannel.sendMessage(`There was an error during playback! **${err}**`);
+                console.log(err);
+
             }
             playStopped(); // skip to next video
         });
 
         currentStream.on('end', () => setTimeout(playStopped, Config.timeOffset || 10000)); // 8 second leeway for bad timing
-        dispatcher = channelToJoin.connection.playStream(currentStream)
-            //.then(intent => {
-            console.log(video.author);
-            console.log(video);
+        dispatcher = channelToJoin.connection.playStream(currentStream, 1, 2)
+        //.then(intent => {
+        console.log(video.author);
+        console.log(video);
         boundChannel.sendMessage(`Playing ${video.prettyPrint()}`);
         client.user.setStatus('online', video.title);
         //  });

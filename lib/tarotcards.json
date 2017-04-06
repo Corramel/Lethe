@@ -1,0 +1,226 @@
+{
+  "uprightCards": {
+    "World": {
+      "name": "World",
+      "link": "http://i.imgur.com/bD9P5xv.gif",
+      "desc": "The World signifies completion, achievement and fulfilment. All of your efforts are finally paying off and you have reached the end of a journey or have completed a major life cycle. You have endured hardships and challenges along the way but these have only made you stronger and significantly wiser and more experienced than when you first started on your journey."
+    },
+    "Moon": {
+      "name": "Moon",
+      "link": "http://i.imgur.com/W57L9AV.gif",
+      "desc": "The Moon is a psychological card of projecting fear into your present and your future, based on past experiences. The images, thoughts and feelings that you have repressed over time cause inner disturbances that are becoming overwhelming. \n\nThe Moon is also a card of illusion and deception, and therefore often suggests a time when something is not as it appears to be. Vigilance and clear perception will be necessary to find that which is hidden before it is too late."
+    },
+    "Death": {
+      "name": "Death",
+      "link": "http://i.imgur.com/nTXEXBX.gif",
+      "desc": "The Death card is probably the most feared and misunderstood of all the cards in the Tarot deck. Death is symbolic of the ending of a major phase or aspect of your life that may bring about the beginning of something far more valuable and important. You must close one door in order to open another. \n\nSimilarly, Death indicates a time of significant transformation, change and transition. Finally, Death is an indication that you need to learn to let go of unhealthy attachments in your life to pave the way to a fuller, more fulfilled life of deeper meaning and significance. "
+    },
+    "Devil": {
+      "name": "Devil",
+      "link": "http://i.imgur.com/FijUTb2.gif",
+      "desc": "The card of the Devil represents the hidden forces of negativity that constrain you and that trick you into thinking you are imprisoned by external forces ultimately out of your control. The Devil is an inner force within each of us. He represents our fears, addictions, and other harmful impulses. \n\nThe Devil often reflects actual addictions and dependencies in your life, such as alcoholism, drug-taking, unhealthy relationships, over-spending and the like. More generally, the Devil indicates that you are becoming obsessed and hell-bent on a particular idea, situation or endeavour. "
+    },
+    "Empress": {
+      "name": "Empress",
+      "link": "http://i.imgur.com/4HFej8X.gif",
+      "desc": "The Empress shows a deep connection with our femininity. Femininity translates in many ways – beauty, sensuality, fertility, creative expression, nurturing – and is necessary in creating balance in both men and women. More broadly, the Empress encourages you to connect with others by nurturing, caring and supporting those around you. \n\nSimilarly, the Empress indicates that the Universal energy is about to intervene in your life. It may be just enough to give you a glimpse of a miracle or it may be even more. You may or may not know whom or what brings such good fortune but the care and nurturing that will result come as no accident. What appears to be coincidental good luck may actually be the result of a series of good choices you have made. It is your turn to have things work out in your favour, to be blessed and to feel nurtured."
+    },
+    "Hanged Man": {
+      "name": "Hanged Man",
+      "link": "http://i.imgur.com/BTuMLAL.gif",
+      "desc": "The Hanged Man reflects a need to suspend action, and as a result, a period of indecision may be indicated. Decisions or actions that need to be implemented will be postponed, even if, at the time, there is a sense of urgency to act. \n\n The reversed position of the man in the Hanged Man indicates the need to look at yourself from an entirely different perspective, while the hanging indicates that your life is simply suspended for a time in order for you to recognise what needs to be changed in your personality. The tree is also abundant with leaves and vines, which suggests the possibility that the situation will bear fruit. "
+    },
+    "Hermit": {
+      "name": "Hermit",
+      "link": "http://i.imgur.com/eYmVUMS.gif",
+      "desc": "The Hermit Tarot card suggests that you are in a phase of introspection where you are drawing your attention and focus inward and looking for answers within. \n\nYou have a strong need to understand, not just at the surface level but to really know why life is the way it is. The Hermit reflects that your consciousness has moved inward and you now realise that the truth and understanding you seek is within yourself and not in the distractions of the outside world. This is a perfect time to take a step back from your day-to-day life and deeply contemplate your motivations, personal principles and values. "
+    },
+    "Hierophant": {
+      "name": "Hierophant",
+      "link": "http://i.imgur.com/aIFDdze.gif",
+      "desc": "The Hierophant is very conventional and this Tarot card suggests that you have a desire to follow due process and to stay within the conventional bounds of what is typically an orthodox approach. Instead of being innovative, you will need to adapt to the existing set of beliefs and systems that are already in place. You will need to do what is expected of you. The appearance of the Hierophant in a Tarot reading indicates that this is certainly not a time to challenge the status quo! \n\nIn his focus on sharing knowledge through an institution, the Hierophant represents education and the pursuit of knowledge. This Tarot card can indicate a period of increased studying and learning, through formal mechanisms. You seek to understand a field of study that has been widely explored and documented, and so you may go to a well-known or established teacher to find out more. "
+    },
+    "High Priestess": {
+      "name": "High Priestess",
+      "link": "http://i.imgur.com/QJtL8gh.gif",
+      "desc": "The High Priestess represents wisdom, serenity, knowledge and understanding. She is often described as the guardian of the unconscious. She sits in front of the thin veil of awareness, which is all that separates us from our inner selves. \n\nThe High Priestess knows the secret of how to access these realms. She represents spiritual enlightenment and inner illumination, divine knowledge and wisdom. She has a deep, intuitive understanding of the Universe and uses this knowledge to teach rather than to try to control others. She generally appears in a Tarot reading when you need to listen to and trust your inner voice. "
+    },
+    "Judgement": {
+      "name": "Judgement",
+      "link": "http://i.imgur.com/K4k9gAk.gif",
+      "desc": "The Judgement card suggests that you have had a recent epiphany or an ‘awakening’ where you have come to a realisation that you need to live your life in a different way and you need to be true to yourself and your needs. \n\nThe Judgement card often indicates that life-changing decisions are required but unlike those associated with the logical Justice card, these decisions require a delicate blend of intuition and intellect. You may be at a crossroads, aware that any decision that you make will bring about significant change. Judgement is about finding absolution. Through a period of self-evaluation, you will feel cleansed of your ‘sins’, wrongdoings and mistakes, and you will finally be released of your guilt and sorrow about the past."
+    },
+    "Justice": {
+      "name": "Justice",
+      "link": "http://i.imgur.com/s0tmiow.gif",
+      "desc": "Put simply, the Justice card represents justice, fairness, truth and the law. As an outcome, the Justice card indicates that the fairest decision will be made. You are being called to account for your actions and be judged accordingly. Notice that Justice’s scales are balanced, thus its appearance indicates that events have worked out as they were meant to work out and that what is happening to you comes from the decisions you have made and the actions you have taken in the past. You have what you deserve. "
+    },
+    "Lovers": {
+      "name": "Lovers",
+      "link": "http://i.imgur.com/eU2YcdU.gif",
+      "desc": "The Lovers represent perfection, harmony and mutual attractiveness. Their trust in one another gives them strength and confidence to overcome the obstacles in life. The bond that the two lovers has created is incredibly strong and is often reflective of a marriage, soul mate connection or very intimate and close relationship. \n\nThe Lovers also represents choices on a grand scale. A dilemma will be presented demanding an action or decision, and you will want to decipher the best way to proceed or make the right choice. Something is going to change your plans or the course of your experience, something that may look negative on the surface but will later prove to be a blessing in disguise. "
+    },
+    "Magicican": {
+      "name": "Magicican",
+      "link": "http://i.imgur.com/OOrXAJ0.gif",
+      "desc": "The Magician Tarot card typically appears at a time in your life when you have the creative power and energy to create a new life cycle for yourself. The Magician Tarot card suggests that a situation has been (or soon will be) presented to you that has all the inherent components to allow the manifestation of your desires."
+    },
+    "Chariot": {
+      "name": "Chariot",
+      "link": "http://i.imgur.com/HxGhGQa.gif",
+      "desc": "The Chariot represents conquest, victory and overcoming opposition through your confidence and control. Any success will be a result of applying these factors to the situation. You will need to use the strength of your willpower to overcome any obstacles or challenges in your way. \n\nYou may even find that by leveraging any opposing forces surrounding you at this time you can use them to your advantage. You must be determined, self-disciplined, and hard working. If you are, you will triumph over any difficulties or anyone who is trying to limit you. This struggle will ultimately make you stronger. "
+    },
+    "Star": {
+      "name": "Star",
+      "link": "http://i.imgur.com/ZbaOxX8.gif",
+      "desc": "The Star Tarot card brings renewed hope and faith and a sense that you are truly blessed by the Universe at this time. Courage, fulfilment, and inspiration are in your life. You are entering a loving phase in your life, filled with calm energy, mental stability and deeper understanding of both yourself and others around you. This card is saying to you that, over the long-term, you should have faith and trust in the Universe. A better future is waiting for you but in order to reach it you must trust that it is indeed possible. "
+    },
+    "Strength": {
+      "name": "Strength",
+      "link": "http://i.imgur.com/1yMN3X3.gif",
+      "desc": "The Strength Tarot card represents strength, determination, and power in a manner similar to the Chariot. However, the differences between the two Tarot cards are obvious. Where the Chariot represents outer strength and will, the Strength card represents inner strength and the power of the human spirit to overcome any obstacle. \n\nThe meaning of the Strength Tarot card is about knowing that you can endure life’s obstacles by drawing upon your inner strength and confidence. You have great stamina and persistence, tempered by an underlying patience and inner calm. You are focused on what you need to do, and you go about it in a way that demonstrates great composure and maturity. "
+    },
+    "Sun": {
+      "name": "Sun",
+      "link": "http://i.imgur.com/K1xdTLn.gif",
+      "desc": "The Sun represents success, radiance and abundance. The Sun gives you strength and tells you that no matter where you go or what you do, your positive and radiant energy will follow you and will bring you happiness and joy. People are drawn to you because you can always see the bright side and you bring such warmth into other people’s lives. \n\nThis beautiful, warm energy is what will get you through the tough times and will help you succeed. You are also in a position where you can share your highest qualities and achievements with others. Radiate who you are and what you stand for. Shine love on those you care about. "
+    },
+    "Emperor": {
+      "name": "Emperor",
+      "link": "http://i.imgur.com/szgcChs.gif",
+      "desc": "The Emperor is the father figure of the Tarot deck. He takes what he has learned, and passes it on to the next generation, so someday they can be as wise and powerful as he is. This card indicates that you have a strong desire to see your ideas manifested on the physical plane in the form of material gain or accomplishment. An opportunity will arrive that could be the foundation of a very successful future. \n Domination of the mind over the heart is sometimes unwanted or best avoided but with the Emperor, it is necessary and even welcomed. If you are facing difficult choices, you must maintain your concentration and focus. Enjoy the assertiveness and confidence that this self-control and focus brings. Push ahead and do what you know is best. Know that if you can master yourself then you should have little problem mastering the world and everything in it. "
+    },
+    "Fool": {
+      "name": "Fool",
+      "link": "http://i.imgur.com/McVdT4T.gif",
+      "desc": "The Fool Tarot card is a card of potential, new beginnings and innocence. This Tarot card shows the highest potential for your life, reaching a state of renewal and new beginnings, where each day is an adventure and each moment is lived to the fullest. The Fool Tarot card may represent a choice to be made—one of vital importance. The Fool Tarot card asks you to take a ‘leap of faith’ and to trust in the Universe in that if you begin a new journey, you will find success."
+    },
+    "Tower": {
+      "name": "Tower",
+      "link": "http://i.imgur.com/mXfBmGq.gif",
+      "desc": "The most important aspect of the Tower is that with any destruction there comes creation. Thus, the Tower card represents an awakening and is about inspiration, freedom, reality and the release from bondage. It is a truth and honesty card that comes as a bolt of lightning to you through a shocking and impactful life event. It represents a necessary experience that forces you to get out of your comfort zone and to grow beyond your present level. The Tower therefore asks you to break down the structures that you have surrounded yourself with. This can be a painful and difficult process if you resist against the external forces that are pushing you to reveal more of yourself."
+    },
+    "Wheel": {
+      "name": "Wheel",
+      "link": "http://i.imgur.com/JmlLv9r.gif",
+      "desc": "The Wheel of Fortune refers to the fact that things tend to go in cycles. There are good times and there are bad times. Even if your external environment is difficult and challenging, there will come a time when this will ease off and you will be able to focus more on creating fun and frivolity. \n The Wheel of Fortune suggests that you should not simply stand still and accept what life hands you. You can take an active hand to try and remain on the upside of the Wheel. When things are down, instead of waiting and hoping for things to get better, you can work actively towards improving your situation, thereby speeding up the recovery process. "
+    },
+    "Temperance": {
+      "name": "Temperance",
+      "link": "http://i.imgur.com/cPHExMD.gif",
+      "desc": "Temperance indicates that you are learning to bring about balance, patience and moderation in your life. You have been able to take the middle road, avoiding extremes and maintaining a great sense of calm in your life. You have learned to keep calm in situations of great stress or anxiety, and you give the impression of being a swan, paddling madly underneath the water but appearing so graceful and elegant on the surface. \n The Temperance card reflects that you have a clear, long-term vision of what you want to achieve. You are not rushing things along; rather you are taking your time to ensure that you do the best job you can. This card also reflects a higher learning in what you are doing and demonstrates that you are learning a great deal on your journey."
+    }
+  },
+  "reversedCards": {
+    "World": {
+      "name": "World",
+      "link": "http://i.imgur.com/R6mmg48.gif",
+      "desc": "The Reversed World suggests that you are trying to achieve completion in your life but you may not be taking all the steps necessary to achieve your goals. The reversed World can also indicate a time when you are close to reaching completion but for whatever reason, you lose focus and slack off right at the end. You may also be experiencing a lack of closure in your life, preventing you from embarking on the next journey or challenge."
+    },
+    "Moon": {
+      "name": "Moon",
+      "link": "http://i.imgur.com/PJY4cgD.gif",
+      "desc": "The reversed Moon indicates that you have recently experienced a time of self-deception, illusion, fears and anxiety but these negative energies are beginning to subside. The Moon reversed can highlight that you are in a more psychic and intuitive phase than usual, however the feelings that you are getting may be confusing and easily misinterpreted."
+    },
+    "Death": {
+      "name": "Death",
+      "link": "http://i.imgur.com/kF08ovk.gif",
+      "desc": "Death is a card of transformation and new life, and typically shows a need to start completely over by letting go of the past. Death reversed typically reflects that you are on the verge of major change but for some reason, you are resisting making that change. \n\nYou may be reluctant to let go of the past or you may not know how to make the change you need. You are still carrying harmful aspects from the past that may interfere with the opportunity you have for a new beginning. You are refusing to accept change and you are resisting any element of change that may arise in your life. As a result, life has stagnated and you are feeling ‘stuck’ in limbo. "
+    },
+    "Devil": {
+      "name": "Devil",
+      "link": "http://i.imgur.com/313wLnK.gif",
+      "desc": "The Devil appears when you are feeling trapped by things such as unhealthy or co-dependent relationships, financial debt, unproductive careers, unhealthy lifestyles or addictions, or consumerism and materialism. \n\nWhen the Devil is reversed, it indicates a growing awareness that you are currently in this state and you desire freedom from these harmful bonds. You may now be more willing and able to accept changes in your life and you may be more open to taking on new perspectives. However, it is not going to be an easy journey. You will need to battle your inner fears and anxieties to free yourself from the chains that bind you to your unhealthy habits. "
+    },
+    "Empress": {
+      "name": "Empress",
+      "link": "http://i.imgur.com/5Fjei9U.gif",
+      "desc": "Reversed, the Empress suggests a loss of personal power through placing too much emphasis on another person’s emotional or material needs, thus neglecting your own. \n\nIf you are struggling in a relationship, the first step for you is to take some time to yourself in order to restore your energy levels and your belief in yourself. Unfortunately, your past relationships have impacted how you see yourself and your ability to truly love and trust another person. As a result, you may be doubting your inner beauty and losing your inspiration for creating beautiful, loving relationships. \n\nMore generally, the Empress reversed indicates that you are feeling discontented because something is missing or lacking in your life, or because you want to find something creative, meaningful or fulfilling to do but you do not know what. This card can indicate a creative block. "
+    },
+    "Hanged Man": {
+      "name": "Hanged Man",
+      "link": "http://i.imgur.com/B6n7CB4.gif",
+      "desc": "The Hanged Man reversed represents a period when you feel you are sacrificing a lot and getting nothing in return. \n\n You may have felt things were at an absolute standstill, with no movement or resolution. It is as though you are suspended in time and unable to make a move forward, backward or even sideways to get out of your current situation. Your own goals and dreams are put on hold because of external realities or internal issues. This is an energy that is passing out of your life and you can now expect things to start happening once again and major changes to occur. This period of suspension is like a catalyst for what is to come. "
+    },
+    "Hermit": {
+      "name": "Hermit",
+      "link": "http://i.imgur.com/Cs8xvkC.gif",
+      "desc": "The reversed Hermit can go one of two ways. You are either not taking enough time for personal reflection, or you are taking too much. If you are struggling to connect more deeply with your spiritual self, the Hermit reversed encourages you to create more time and space so that you can meditate and reflect on your spiritual self. \n\nIt is time to go more deeply into your inner being and rediscover your greater meaning and purpose on this earth. You may have been so busy dealing with the day-to-day issues that you have forgotten to reflect inwardly and listen to your inner voice. The Hermit asks you to search deep within your soul to help you find your way again and to focus on rebuilding yourself on a spiritual level. "
+    },
+    "Hierophant": {
+      "name": "Hierophant",
+      "link": "http://i.imgur.com/fXjruE9.gif",
+      "desc": "The Hierophant reversed indicates that you are feeling restricted or constrained by structure and rules, and as a result, you have lost a lot of flexibility and control in your life. \n\nYou have a strong desire to go against the grain and break free from convention. You may be tempted to go about your business in an unorthodox manner, to do something that is out of character or against social norms. The Hierophant reversed is about breaking the rules and challenging the status quo. You no longer accept the rigid structures, tradition and dogma surrounding you, and now seek out opportunities to rebel and retaliate. You want to challenge ideas and concepts that you once thought of as written in stone. "
+    },
+    "High Priestess": {
+      "name": "High Priestess",
+      "link": "http://i.imgur.com/73MfNsq.gif",
+      "desc": "The High Priestess reversed can signify that you are not listening to your inner voice and may need to take time for reflection and meditation. It is as though your intuition is calling out to you but for some reason you have switched off and are no longer really listening to what your subconscious is trying to tell you. Think of the High Priestess as the calm centre inside of you that is untouched by your external world and know that she is always there when you need her. \n\nWhenever you feel that things are just getting too crazy and you are faced with impossible choices, find a quiet space and listen to your inner voice. If you stop thinking about your issues or just give yourself some space and time of ‘nothingness’, the answer will come to you without having to even think about it. So, try listening to the ‘nothingness’ and see what comes to you. There are some very important answers that lie within that you can access right now. "
+    },
+    "Judgement": {
+      "name": "Judgement",
+      "link": "http://i.imgur.com/ECuZwWA.gif",
+      "desc": "Reversed, the Judgement card suggests that you may be indulging yourself in doubt and self-judgement. Your deliberation is causing you to miss the new opportunities that await. A certain amount of momentum has accumulated behind what you have achieved, which could propel you further. If actions are taken now, such momentum will not be lost. Therefore now is not the time for being cautious or introverted, rather it is time to move onwards with confidence and pride. \n\nJudgment reversed serves as a reminder that in every decision that you face, you have at least some element of control. While you may not be able to control the initial events that happen to you, it is important to remember that what is within your control is how you react to these events, and what you create and build out of them.  "
+    },
+    "Justice": {
+      "name": "Justice",
+      "link": "http://i.imgur.com/p7JIsIo.gif",
+      "desc": "Reversed, Justice indicates dishonesty to yourself and others. It shows an unwillingness to understand the deeper meaning of why an event has occurred and shows that you are missing some opportunity for a greater understanding of yourself in life. You are not actively accepting responsibility for your actions and may be trying to ‘dodge the bullet’ and blame others for your mistakes. The key here is to take responsibility for your own situation and realise that you are here through your own past choices, and therefore, whatever it takes to get out of the situation is fair and just according to Universal principles of karma and justice. "
+    },
+    "Lovers": {
+      "name": "Lovers",
+      "link": "http://i.imgur.com/sPcl9BP.gif",
+      "desc": "The Lovers reversed indicates that you are avoiding responsibility for the consequences of your own actions. You have made a rushed decision based purely on your desire for instant gratification and now you are trying to lay the blame on others or on fate. You must do what you can to make amends but if this is not possible, let the past go and resolve to make better choices in the future. \n\nThe Lovers reversed may also reflect that the feelings within a relationship are not mutual. One person in the partnership may have stronger feelings than the other and may be more emotionally involved. This could lead to disappointments later down the track and feelings of insecurity about the relationship. You may be reluctant to open your heart up to the relationship for fear of getting hurt. "
+    },
+    "Magicican": {
+      "name": "Magicican",
+      "link": "http://i.imgur.com/emWB3Kt.gif",
+      "desc": "Reversed, the Magician can indicate greed, deceit, manipulation and using one’s skill and ability for negative ends. It can reflect trickery and cunning, untrustworthiness and mental confusion. The Magician reversed often suggests that you may be out of touch with reality and struggling to bring yourself back down to earth. The Magician reversed may also show that you have a lot of skills, talents and abilities that are not being utilised at the moment and you feel as if your true potential is not being maximized. "
+    },
+    "Chariot": {
+      "name": "Chariot",
+      "link": "http://i.imgur.com/VK3BCXK.gif",
+      "desc": "Reversed, the Chariot suggests that you are feeling as if you have very little control over your life. You may have lost steering power over the opposing forces and you are now at their mercy. You may feel dragged through time, in whatever direction fate takes you. If you are someone who likes to have some control over your destiny and to know where you are heading, this is the time to tighten the reins and become more disciplined and focused on what you are doing. \n\nThe Chariot reversed also suggests that you are collapsing under pressure and losing your self-control. Your aggression is being channelled in the wrong direction, wildly at other people, at fate, at external circumstances. This is a complete waste of your energy and resources. Redefine your aggression as determination and willpower, stop clinging weakly to unrewarding ideas, habits, people, and objects and move forward."
+    },
+    "Star": {
+      "name": "Star",
+      "link": "http://i.imgur.com/vlA3x09.gif",
+      "desc": "When the Star is reversed, it suggests that your spiritual mission is distorted. Instead of hope, you are feeling despair or discouragement. Instead of being filled with positive possibilities, you find yourself dwelling on negative issues. Negative thoughts will wear away at you to the point where you may give up control of the situation and concede defeat. To remedy this, the reversed Star suggests you identify what is making you feel discouraged or overwhelmed and work on moving past these issues. They can take on an importance far greater than they deserve and can hold you back. "
+    },
+    "Strength": {
+      "name": "Strength",
+      "link": "http://i.imgur.com/HUCLjVo.gif",
+      "desc": "Strength reversed indicates weakness. You may have recently experienced a setback, or you are questioning your own journey and whether you are on the right track. Your inner strength and courage is lacking right now and you are feeling inadequate and vulnerable as a result. \n\nWhile these feelings may seem very real when you are in the moment, you will soon come to realise that they exist only to remind you that you are only temporarily out of touch with your inner strength. You need to remember that your core strength will always be with you and now is as good a time as any to reconnect with this core strength. Look towards the positive aspects in your life to reinvigorate self-confidence and self-esteem. \n\nReturn to the lesson of the Chariot, where you need to draw upon your willpower, focus and determination in order to overcome your obstacles and be victorious. "
+    },
+    "Sun": {
+      "name": "Sun",
+      "link": "http://i.imgur.com/ombE2Oq.gif",
+      "desc": "The Sun reversed indicates that finding the positive aspects to a particular situation may prove to be difficult. \n The clouds may be blocking out the warmth, and preventing you from feeling as though everything is on track. You may have experienced setbacks that have damaged your enthusiasm and optimism and have perhaps led you to question whether you can really achieve what you have set out to achieve. You may be feeling depressed, sad or left out. You may be reluctant to proceed and you are no longer enjoying what you are doing. Your direction and path ahead may have become clouded or distorted in some way."
+    },
+    "Emperor": {
+      "name": "Emperor",
+      "link": "http://i.imgur.com/HSjtAhY.gif",
+      "desc": "Reversed, the Emperor can suggest that there is an over-use and abuse of authoritative power surrounding you at this time. He can be incredibly domineering and rigid in his thinking. It could be originating from you or from another person, often a boss, partner or a father-figure. There may be an insecure man throwing his weight around who has a need for control. \n You may feel powerless when the Emperor reversed appears in a reading. Dealing with authority is fraught with difficulties at this time and whether this manifests as a dominant partner, problems with your father or battles with officials, you do not seem to be making any headway. "
+    },
+    "Fool": {
+      "name": "Fool",
+      "link": "http://i.imgur.com/wpco4Y7.gif",
+      "desc": "Reversed, the Fool Tarot card suggests that you may be acting in total disregard of the consequences of your actions and indeed acting ‘the fool’. You are trying to live ‘in the moment’ rather than planning ahead. You are acting recklessly, wanting to break free of the usual routine in order to ‘find yourself’ but doing it in a way that completely disregards others."
+    },
+    "Tower": {
+      "name": "Tower",
+      "link": "http://i.imgur.com/WPNxIM4.gif",
+      "desc": "Upright, the Tower indicates a time of great turmoil and destruction, which will eventually bring with it change and regeneration. Reversed, however, the Tower card indicates that you are simply delaying the necessary ‘destruction’. You need to go through this difficult time in order to learn an important lesson. Do not resist it. Even though it is shocking and hard to deal with, it is a very important part of your life journey."
+    },
+    "Wheel": {
+      "name": "Wheel",
+      "link": "http://i.imgur.com/NgmBnIa.gif",
+      "desc": "When the Wheel of Fortune is reversed, luck is not on your side. There has been a turn of events that are not in your favour sending you into a tail spin and changing your world significantly, seemingly for the worst. \n Oftentimes, the reversed Wheel of Fortune indicates that there are negative forces at play that are outside of your control, leaving you feeling helpless and powerless. However, while there have been some unfortunate circumstances that are outside of your control, the run of bad luck that you are experiencing may also be as a result of poor decisions you have made in the past. "
+    },
+    "Temperance": {
+      "name": "Temperance",
+      "link": "http://i.imgur.com/XWUUgod.gif",
+      "desc": "Temperance reversed reflects a time when something is out of balance, in conflict or excessive, and is therefore creating stress and tension in your life. Look to the other cards in the reading to understand what is out of balance or contributing to this feeling. \n Temperance reversed can also be a lead indicator that, were you to follow a certain path, you would create imbalance in the situation. You may be acting impatiently or refusing to take the moderate, gentle approach. Be wary of hasty action as this will only lead to further imbalance."
+    }
+  }
+}
