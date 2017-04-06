@@ -221,7 +221,7 @@ client.on('message', m => {
     if (m.content.startsWith(`?tarot`)) {
         var embed = new Discord.RichEmbed();
         //embed.setColor("#7A3B81")
-        if (Math.floor(Math.random()) > 0) {
+        if (Math.round(Math.random()) > 0) {
             try {
                 var tarotKeys = Object.keys(tarot.uprightCards);
                 console.log(tarotKeys);
