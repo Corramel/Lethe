@@ -67,6 +67,7 @@ var dispatcher;
 var randomPunInfo;
 var totalNumberNeeded;
 var randomCompliment;
+var randomPost;
 var yourMomJoke;
 var randomInsult;
 var luckyOnes;
@@ -749,7 +750,7 @@ client.on('message', m => {
             if (Math.round(Math.random()) == 0) {
                 m.channel.sendMessage(`<@${m.author.id}> punches ${player2name} right in their face! \n They die of a SHEER HEART ATTACK! \n <@${m.author.id}> wins!`);
             } else {
-                m.channel.sendMessage(`${player2name} touches <@${m.author.id}> with their stando! \n "Dai ichisan no backudan, switch on!" \n <@${m.author.id}> explodes! \n ${player2name} wins!`);
+                m.channel.sendMessage(`${player2name} touches <@${m.author.id}> with their stando! \n "Dai ichi no bakudan, switch on!" \n <@${m.author.id}> explodes! \n ${player2name} wins!`);
 
             }
 
@@ -819,6 +820,8 @@ client.on('message', m => {
         }
     }
     if (m.content.startsWith(`?lucina`) || m.content.startsWith(`?perfect`)) {
+      var randomPost;
+      var mEmbed = new Discord.RichEmbed();
         var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=lucina&rating=s&pid=${Math.round(Math.random()*10)}`
         reequest(requestUrl, function(error, response, html) {
 
@@ -826,32 +829,42 @@ client.on('message', m => {
                 var cheerio$ = cheerio.load(html, {
                     xmlMode: true
                 });
-                cheerio$('posts').filter(function() {
+                  cheerio$('posts').filter(function() {
                     var toParse = cheerio$(this);
                     var parsingInfo = toParse.text();
 
-                    parseString(toParse, function(err, result) {
+                   parseString(toParse, function(err, result) {
                         if (result.posts.post == undefined) {
                             m.reply("Sorry, no images were found during this iteration of the search.")
                             return;
                         }
 
-                        var randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
+                       randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
 
                         while (randomPost.rating === "e" || randomPost.rating === "q") {
                             randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
                         }
-                        var embed = new Discord.RichEmbed();
-                        embed.setColor("#406b99");
-                        embed.setAuthor("Source for image");
-                        embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
-                        embed.setFooter("Score: " + randomPost.score)
-                        embed.setImage(randomPost.file_url)
-                        m.channel.sendEmbed(embed);
-                        return;
-                    });
+
+
+                        //console.log(randomPost);
+                        mEmbed.setColor("#406b99");
+                        mEmbed.setAuthor("Source for image");
+                        mEmbed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id + "/");
+                        mEmbed.setFooter("Score: " + randomPost.score)
+                        mEmbed.setImage("http:" + randomPost.file_url);
+                        console.log(mEmbed.url + " is the author");
+                        //m.channel.sendEmbed(embed);
+                        console.log(mEmbed);
+
+                        m.channel.send("http:" + randomPost.file_url);
+                        m.channel.send({embed : mEmbed});
+                      //  return;
+                   });
                 });
             };
+              /*  .catch(function(){
+                  console.log("There was an error with cheerio$('posts').filter");
+                }); */
         });
     };
     if (m.content.startsWith(`?gelbooru`)) {

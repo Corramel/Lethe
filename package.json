@@ -20,18 +20,20 @@
   },
   "homepage": "https://github.com/meew0/Lethe#readme",
   "dependencies": {
+    "bufferutil": "^3.0.2",
     "cheerio": "latest",
-    "discord.js": "github:hydrabolt/discord.js",
+    "discord.js": "^11.1.0",
+    "erlpack": "github:hammerandchisel/erlpack",
     "express": "latest",
     "git-rev": "^0.2.1",
-    "node-opus": "^0.2.0",
+    "moment": "latest",
+    "node-opus": "^0.2.6",
+    "opusscript": "^0.0.1",
     "request": "^2.67.0",
+    "sodium": "^2.0.1",
+    "uws": "^0.14.1",
     "xml2js": "latest",
-    "ytdl-core": "latest",
-    "erlpack" : "github:hammerandchisel/erlpack#master",
-    "uws" : "^0.12.0",
-    "opusscript" : "^0.0.1",
-    "moment" : "latest"
+    "ytdl-core": "latest"
   },
   "version": "1.0.0"
 }
