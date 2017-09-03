@@ -145,14 +145,18 @@ client.on('message', m => {
         if (boundChannel) return;
         var rest = m.content.split(' ');
         var removed = rest.splice(0, 1);
-        /*var channelToJoin = spliceArguments(m.content)[1];
-        for (var channel of m.guild.channel.type === "voice") {
-          if (channel instanceof Discord.VoiceChannel) {
-            if (!channelToJoin || VoiceChannel.name === channelToJoin) { */
         if (m.content.replace(`${botMention} init`, "").length > 1) {
+            var channelCollection = m.guild.channels.array();
+            var channelJoin;
+            channelCollection.forEach(function(val){
+              if(val.name.indexOf(m.content.replace(`${botMention} init `, "")) > -1){
+                console.log(val.name + " is the correct channel!");
+                channelJoin = val;
+              }
+            });
             if ((!(m.guild.channels.findAll("name", m.content.replace(`${botMention} init `, "")) === undefined))) {
                 console.log("Im running!");
-                channelToJoin = m.guild.channels.findAll("name", m.content.replace(`${botMention} init `, ""))[0];
+                channelToJoin = m.guild.channels.findAll("name", channelJoin.name)[0];
                 boundChannel = m.channel;
                 m.reply(`Binding to text channel <#${boundChannel.id}> and voice channel **${channelToJoin.name}** \`(${channelToJoin.id})\``);
                 channelToJoin.join().then(connection => console.log("Voice connected")).catch(console.error);
@@ -187,9 +191,9 @@ client.on('message', m => {
             if (!error) {
                 birdObj = body;
                 birdArray = birdObj["data"]
-                /*.filter(function(a){
-                  return !(a.is_album);
-                }); */
+                    /*.filter(function(a){
+                      return !(a.is_album);
+                    }); */
                 birdRandomImage = birdArray[Math.floor(Math.random() * birdArray.length)];
                 if (birdRandomImage.is_album) {
                     var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
@@ -223,7 +227,7 @@ client.on('message', m => {
         embed.setColor("#7A3B81")
         var roll = Math.round(Math.random());
         console.log(roll);
-        if (roll>0) {
+        if (roll > 0) {
             try {
                 var tarotKeys = Object.keys(tarot.uprightCards);
                 console.log(tarotKeys);
@@ -267,9 +271,9 @@ client.on('message', m => {
             if (!error) {
                 birdObj = body;
                 birdArray = birdObj["data"]
-                /*.filter(function(a){
-                  return !(a.is_album);
-                }); */
+                    /*.filter(function(a){
+                      return !(a.is_album);
+                    }); */
                 birdRandomImage = birdArray[Math.floor(Math.random() * birdArray.length)];
                 if (birdRandomImage.is_album) {
                     var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
@@ -346,9 +350,9 @@ client.on('message', m => {
             if (!error) {
                 birdObj = body;
                 birdArray = birdObj["data"]
-                /*.filter(function(a){
-                  return !(a.is_album);
-                }); */
+                    /*.filter(function(a){
+                      return !(a.is_album);
+                    }); */
                 birdRandomImage = birdArray[Math.floor(Math.random() * birdArray.length)];
                 if (birdRandomImage.is_album) {
                     var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
@@ -403,9 +407,9 @@ client.on('message', m => {
             if (!error) {
                 birdObj = body;
                 birdArray = birdObj["data"]
-                /*.filter(function(a){
-                  return !(a.is_album);
-                }); */
+                    /*.filter(function(a){
+                      return !(a.is_album);
+                    }); */
                 birdRandomImage = birdArray[Math.floor(Math.random() * birdArray.length)];
                 if (birdRandomImage.is_album) {
                     var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
@@ -788,8 +792,8 @@ client.on('message', m => {
                 return;
             } else {
                 var unluckyOne = namesArray[Math.floor(Math.random() * namesArray.length)]
-                //  var luckyindex = namesArray.indexOf(unluckyOne)
-                //  luckyOnes = namesArray.splice(luckyindex, 1)
+                    //  var luckyindex = namesArray.indexOf(unluckyOne)
+                    //  luckyOnes = namesArray.splice(luckyindex, 1)
                 function Meme(luckyindex) {
                     return luckyindex != unluckyOne
                 }
@@ -1453,9 +1457,9 @@ client.on('message', m => {
             if (!error) {
                 birdObj = body;
                 birdArray = birdObj["data"]
-                /*.filter(function(a){
-                  return !(a.is_album);
-                }); */
+                    /*.filter(function(a){
+                      return !(a.is_album);
+                    }); */
                 birdRandomImage = birdArray[Math.floor(Math.random() * birdArray.length)];
                 if (birdRandomImage.is_album) {
                     var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
@@ -2177,7 +2181,7 @@ function play(video) {
 
         currentStream.on('end', () => setTimeout(playStopped, Config.timeOffset || 10000)); // 8 second leeway for bad timing
         dispatcher = channelToJoin.connection.playStream(currentStream, 1, 2)
-        //.then(intent => {
+            //.then(intent => {
         console.log(video.author);
         console.log(video);
         boundChannel.sendMessage(`Playing ${video.prettyPrint()}`);
