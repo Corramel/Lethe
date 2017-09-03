@@ -854,10 +854,8 @@ client.on('message', m => {
                         mEmbed.setImage("http:" + randomPost.file_url);
                         console.log(mEmbed.url + " is the author");
                         //m.channel.sendEmbed(embed);
-                        console.log(mEmbed);
-
-                        m.channel.send("http:" + randomPost.file_url);
                         m.channel.send({embed : mEmbed});
+                        return;
                       //  return;
                    });
                 });
@@ -901,7 +899,7 @@ client.on('message', m => {
                             embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
                             embed.setFooter("Score: " + randomPost.score)
                             embed.setImage(randomPost.file_url)
-                            m.channel.sendEmbed(embed);
+                            m.channel.send({embed : embed});
                             return;
                         });
                     });
@@ -943,7 +941,7 @@ client.on('message', m => {
                             embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
                             embed.setFooter("Score: " + randomPost.score)
                             embed.setImage(randomPost.file_url)
-                            m.channel.sendEmbed(embed);
+                            m.channel.send({embed : embed});
                             return;
                         });
                     });
@@ -985,7 +983,7 @@ client.on('message', m => {
                             embed.setURL("http://rule34.xxx/index.php?page=post&s=view&id=" + randomPost.id);
                             embed.setFooter("Score: " + randomPost.score)
                             embed.setImage(randomPost.file_url)
-                            m.channel.sendEmbed(embed);
+                            m.channel.send({embed : embed});
                             return;
                         });
                     });
@@ -1021,226 +1019,13 @@ client.on('message', m => {
                         embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
                         embed.setFooter("Score: " + randomPost.score)
                         embed.setImage(randomPost.file_url)
-                        m.channel.sendEmbed(embed);
+                        m.channel.send({embed : embed});
                         return;
                     });
                 });
             };
         });
     };
-
-    if (m.content.startsWith(`?dspic`)) {
-        var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=dark_souls&rating=s&pid=${Math.floor(Math.random()*14 + 1)}`
-        reequest(requestUrl, function(error, response, html) {
-
-            if (!error) {
-                var cheerio$ = cheerio.load(html, {
-                    xmlMode: true
-                });
-                cheerio$('posts').filter(function() {
-                    var toParse = cheerio$(this);
-                    var parsingInfo = toParse.text();
-
-                    parseString(toParse, function(err, result) {
-                        if (result.posts.post == undefined) {
-                            m.reply("Sorry, no images were found during this iteration of the search.")
-                            return;
-                        }
-                        var randomPost = result.posts.post[Math.floor(Math.random() * 100)].$
-
-                        while (randomPost.rating === "e" || randomPost.rating === "q") {
-                            randomPost = result.posts.post[Math.floor(Math.random() * 100)].$
-                        }
-                        var embed = new Discord.RichEmbed();
-                        embed.setColor("#406b99");
-                        embed.setAuthor("Source for image");
-                        embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
-                        embed.setFooter("Score: " + randomPost.score)
-                        embed.setImage(randomPost.file_url)
-                        m.channel.sendEmbed(embed);
-                        return;
-                    });
-                });
-            }
-        });
-    };
-    if (m.content.startsWith(`?hibiki`)) {
-        var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=hibiki_(kantai_collection)&rating=s&pid=${Math.floor(Math.random()*14 + 1)}`
-        reequest(requestUrl, function(error, response, html) {
-
-            if (!error) {
-                var cheerio$ = cheerio.load(html, {
-                    xmlMode: true
-                });
-                cheerio$('posts').filter(function() {
-                    var toParse = cheerio$(this);
-                    var parsingInfo = toParse.text();
-                    if (result.posts.post == undefined) {
-                        m.reply("Sorry, no images were found during this iteration of the search.")
-                        return;
-                    }
-                    parseString(toParse, function(err, result) {
-
-                        var randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
-
-                        while (randomPost.rating === "e" || randomPost.rating === "q") {
-                            randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
-                        }
-                        var embed = new Discord.RichEmbed();
-                        embed.setColor("#406b99");
-                        embed.setAuthor("Source for image");
-                        embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
-                        embed.setFooter("Score: " + randomPost.score)
-                        embed.setImage(randomPost.file_url)
-                        m.channel.sendEmbed(embed);
-                        return;
-                    });
-                });
-            }
-        });
-    };
-    if (m.content.startsWith(`?akatsuki`)) {
-        var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=akatsuki_(kantai_collection)&rating=s&pid=${Math.floor(Math.random()*14 + 1)}`
-        reequest(requestUrl, function(error, response, html) {
-
-            if (!error) {
-                var cheerio$ = cheerio.load(html, {
-                    xmlMode: true
-                });
-                cheerio$('posts').filter(function() {
-                    var toParse = cheerio$(this);
-                    var parsingInfo = toParse.text();
-                    if (result.posts.post == undefined) {
-                        m.reply("Sorry, no images were found during this iteration of the search.")
-                        return;
-                    }
-                    parseString(toParse, function(err, result) {
-
-                        var randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
-
-                        while (randomPost.rating === "e" || randomPost.rating === "q") {
-                            randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
-                        }
-                        var embed = new Discord.RichEmbed();
-                        embed.setColor("#406b99");
-                        embed.setAuthor("Source for image");
-                        embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
-                        embed.setFooter("Score: " + randomPost.score)
-                        embed.setImage(randomPost.file_url)
-                        m.channel.sendEmbed(embed);
-                        return;
-                    });
-                });
-            }
-        });
-    };
-    if (m.content.startsWith(`?hirasawa`)) {
-        var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=hirasawa_yui&rating=s&pid=${Math.floor(Math.random()*20 + 1)}`
-        reequest(requestUrl, function(error, response, html) {
-
-            if (!error) {
-                var cheerio$ = cheerio.load(html, {
-                    xmlMode: true
-                });
-                cheerio$('posts').filter(function() {
-                    var toParse = cheerio$(this);
-                    var parsingInfo = toParse.text();
-
-                    parseString(toParse, function(err, result) {
-                        if (result.posts.post == undefined) {
-                            m.reply("Sorry, no images were found during this iteration of the search.")
-                            return;
-                        }
-                        var randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
-
-                        while (randomPost.rating === "e" || randomPost.rating === "q") {
-                            randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
-                        }
-                        var embed = new Discord.RichEmbed();
-                        embed.setColor("#406b99");
-                        embed.setAuthor("Source for image");
-                        embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
-                        embed.setFooter("Score: " + randomPost.score)
-                        embed.setImage(randomPost.file_url)
-                        m.channel.sendEmbed(embed);
-                        return;
-                    });
-                });
-            }
-        });
-    };
-    if (m.content.startsWith(`?bismarck`)) {
-        var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=bismarck_(kantai_collection)&rating=s&pid=${Math.floor(Math.random()*14 + 1)}`
-        reequest(requestUrl, function(error, response, html) {
-
-            if (!error) {
-                var cheerio$ = cheerio.load(html, {
-                    xmlMode: true
-                });
-                cheerio$('posts').filter(function() {
-                    var toParse = cheerio$(this);
-                    var parsingInfo = toParse.text();
-
-                    parseString(toParse, function(err, result) {
-                        if (result.posts.post == undefined) {
-                            m.reply("Sorry, no images were found during this iteration of the search.")
-                            return;
-                        }
-                        var randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
-
-                        while (randomPost.rating === "e" || randomPost.rating === "q") {
-                            randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
-                        }
-                        var embed = new Discord.RichEmbed();
-                        embed.setColor("#406b99");
-                        embed.setAuthor("Source for image");
-                        embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
-                        embed.setFooter("Score: " + randomPost.score)
-                        embed.setImage(randomPost.file_url)
-                        m.channel.sendEmbed(embed);
-                        return;
-                    });
-                });
-            }
-        });
-    };
-    if (m.content.startsWith(`?cc`)) {
-        var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=c.c.&rating=s&pid=${Math.floor(Math.random()*14 + 1)}`
-        reequest(requestUrl, function(error, response, html) {
-
-            if (!error) {
-                var cheerio$ = cheerio.load(html, {
-                    xmlMode: true
-                });
-                cheerio$('posts').filter(function() {
-                    var toParse = cheerio$(this);
-                    var parsingInfo = toParse.text();
-
-                    parseString(toParse, function(err, result) {
-                        if (result.posts.post == undefined) {
-                            m.reply("Sorry, no images were found during this iteration of the search.")
-                            return;
-                        }
-                        var randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
-
-                        while (randomPost.rating === "e" || randomPost.rating === "q") {
-                            randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
-                        }
-                        var embed = new Discord.RichEmbed();
-                        embed.setColor("#406b99");
-                        embed.setAuthor("Source for image");
-                        embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
-                        embed.setFooter("Score: " + randomPost.score)
-                        embed.setImage(randomPost.file_url)
-                        m.channel.sendEmbed(embed);
-                        return;
-                    });
-                });
-            }
-        });
-    };
-
-
     if (m.content.startsWith(`?yomom`)) { //Testing 4 jokes
         var requestUrl = "http://api.yomomma.info/"
         reequest.get({
