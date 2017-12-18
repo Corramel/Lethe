@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
-const token = ('MjM2ODM0NDY1MzY2NjcxMzYw.CuRSoQ.xZbEciqbAuwmgSN3JmRdxQugmeU');
+const Auth = require('./lethe-auth.json');
+const token = (Auth.discordToken);
 
 const util = require('util');
 const weather = require('openweathermap-js');
@@ -89,9 +90,9 @@ var boundChannel = false;
 var boundChannelArr = [];
 var currentStream = false;
 var ownerID = "81526338728501248"
-var imgurToken = "538304a26a119fe123a5074216590ab2e877d163"
-var imgurClientID = "714c0e3e7e06dfd";
-var imgurClientSecret = "ed8502d3ebb267dbd8a226cacb1223500c0c34ce";
+var imgurToken = Auth.imgurToken;
+var imgurClientID = Auth.imgurClientID;
+var imgurClientSecret = Auth.imgurClientSecret;
 var quoteKey = "pjH2CNeLrYmshTdw2SBV61vNBWiBp1dGTDOjsnedWRo6C44xqr";
 var voteCount = 0;
 var voteTotalCount = 0;
@@ -107,7 +108,7 @@ var shouldStockpile = false
 var stockpile = '';
 
 // Handling api key
-var apiKey = "AIzaSyAqroFUTU83XuAa6x_--vI3AAzESiWHbH4";
+var apiKey = Auth.apiKey;
 
 client.on('ready', () => {
     if (Config.botHasNickname) {
@@ -238,7 +239,7 @@ client.on('message', m => {
                 embed.setImage(tarot.uprightCards[randCard].link);
                 embed.addField("What It Means", tarot.uprightCards[randCard].desc);
             } catch (err) {
-                m.channel.sendMessage("An error occurred");
+                m.channel.send("An error occurred");
                 //return;
             }
         } else {
@@ -251,7 +252,7 @@ client.on('message', m => {
                 embed.setImage(tarot.reversedCards[randCard].link);
                 embed.addField("What It Means", tarot.reversedCards[randCard].desc);
             } catch (err) {
-                m.channel.sendMessage("An error occurred");
+                m.channel.send("An error occurred");
                 return;
             }
         }
@@ -586,20 +587,20 @@ client.on('message', m => {
         return;
     }
     if (m.content.startsWith(`?goodbye`)) {
-        m.channel.sendFile('http://i.imgur.com/NYbyPzQ.jpg', ".png", "https://www.youtube.com/watch?v=gsxXvKnuZ7s");
+        m.channel.send("https://www.youtube.com/watch?v=gsxXvKnuZ7s");
         return;
     }
     if (m.content.startsWith(`?understand`)) {
-        m.channel.sendMessage("https://youtu.be/E_ZDj8N-rAA?t=14");
+        m.channel.send("https://youtu.be/E_ZDj8N-rAA?t=14");
         return;
     }
     if (m.content.startsWith(`?ohno`)) {
-        m.channel.sendMessage("https://youtu.be/bYmDXBwHIiM?t=33");
+        m.channel.send("https://youtu.be/bYmDXBwHIiM?t=33");
         return;
     }
 
     if (m.content.startsWith(`?musicHelp`)) {
-        m.channel.sendMessage(`To queue up a song, type "@{BotName} yq {song name}", and the bot will attempt to queue a song based on your query. If the song is not found, grab the youtube link and type "@{BotName} yt {yt link}". \n To get a list of the queue, type ?list.\n To replay the last song played, type ?replay.\n To get the current time, type ?time.\n To get the link of the current song, type ?link.\n To vote to skip the current time, type ?next. If you are an admin, the song is automatically skipped. `);
+        m.channel.send(`To queue up a song, type "@{BotName} yq {song name}", and the bot will attempt to queue a song based on your query. If the song is not found, grab the youtube link and type "@{BotName} yt {yt link}". \n To get a list of the queue, type ?list.\n To replay the last song played, type ?replay.\n To get the current time, type ?time.\n To get the link of the current song, type ?link.\n To vote to skip the current time, type ?next. If you are an admin, the song is automatically skipped. `);
         return;
     }
     if (m.content.startsWith(`?phrase`)) {
@@ -609,15 +610,15 @@ client.on('message', m => {
         var end2 = ["are easily parted", "happen", "speak louder than words", "must come to an end", "lead to Rome", "can be deceiving", "seldom bite", "can't be choosers", "flock together", "will be boys", "never prosper", "do not make the man", "are odious", "tell no tales", "are the most lasting", "seldom differ", "help themselves", "make good neighbours", "come to those who wait", "come in small packages", "think alike", "please little minds", "make a shower", "make light work", "don't mix", "work", "die young", "should do as the Romans do", "shouldn't throw stones", "will never hurt me", "may break my bones, but words will never hurt me", "are free", "will inherit the earth", "teach", "will rise with fleas", "spoil the broth", "don't make a white", "are better than one", "don't make a right", "have ears", "will play", "get going", "will never cease", "happen at sea", "are better than none", "blame their tools", "are worth two in the bush", "may look at a king", "have nine lives", "are only as strong as their weakest link", "are as good as a rest", "are a man's best friend", "will clutch at a straw", "are a friend indeed", "are a friend to nobody", "are better than a fool's smile", "turn away wrath", "can open any door", "make a good ending", "are a soft pillow", "make good wives", "are hard to find", "are soon snatched up", "stir up anger", "cannot stand", "can't change their spots", "are a dangerous thing", "are a living death", "are known by the company they keep", "are as good as a mile", "are as good as a wink to a blind horse", "are a penny earned", "are worth a thousand words", "are a problem halved", "are a shepherd's delight", "are a shepherd's warning", "lift all boats", "gather no moss", "save nine", "are a joy forever", "are only a bench covered in velvet", "are worth twenty pressed men", "never boil", "are in the home", "are never done", "make the heart grow fonder", "corrupt absolutely", "make strange bedfellows", "are good publicity", "are not gold", "love a lover", "make Jack a dull boy", "are love", "keep the doctor away", "march on their stomach", "never forget", "make the most noise", "are their castle", "keep everyone away", "are worth a pound of cure", "are the best form of defence", "are in the eye of the beholder", "are only skin deep", "are thicker than water", "always fall buttered side down", "are the soul of wit", "begin at home", "are next to godliness", "don't pay", "are no use", "killed the cat", "are the mother of good luck", "are the better part of valour", "have a silver lining", "have their day", "are the architect of their destiny", "have their price", "tell a story", "are the father of wisdom", "are planning to fail", "never won fair ladies", "are no robbery", "will move no mountains", "breed contempt", "will get you nowhere", "favour the brave", "are better than receiving", "save the food", "are better than no bread", "are as handsome does", "are content", "are satisfied", "live to fight another day", "are lost", "laugh longest", "shall die by the sword", "are always twenty-twenty", "are where the heart is", "are the best policy", "are worth doing well", "are bliss", "are the sincerest form of flattery", "pour", "are power", "are the best medicine", "begin at forty", "are just a bowl of cherries", "never strike twice", "are never found again", "are blind", "love company", "don't grow on trees", "make the world go round", "have charms to soothe the savage breast", "are the mothers of invention", "are islands", "can serve two masters", "are good news", "deserve another", "are another man's treasure", "are another man's poison", "do not make a summer", "never knock twice", "are nine-tenths of the law", "make perfect", "come before a fall", "are the thieves of time", "are a dish best served cold", "are sweet", "weren't built in a day", "are believing", "are golden", "are bound to appear", "are hot", "are orphans", "are cheap", "make us stronger", "don't fall far from the tree", "are the bottom line", "are a lie", "always wear the worst shoes", "never did run smooth", "are always right", "are before the dawn", "find work for idle hands", "catch the worm", "justify the means", "are the sweetest fruits", "are always greener on the other side", "rule the world", "are always the last to know", "break the camel's back", "start with a single step", "are the root of all evil", "are mightier than the sword", "call the kettle black", "are in the eating", "are paved with good intentions", "get the cheese", "catch no chickens", "are weak", "get the grease", "are your oyster", "fly", "are a new day", "never come", "lie within", "are stranger than fiction", "are company, but three is a crowd", "are the spice of life", "must be endured", "must come down", "are good for the gander", "win", "never did anyone any good", "are wasted on the young", "are the new black", "are fair in love and war", "cannot live by bread alone", "make a man healthy, wealthy and wise", "are well that end well", "are what you make them", "begin with a single step", "see every problem as a nail", "have a fool for a client", "cost lives", "are the measure of a woman", "shouldn't bite the hand that feeds them", "shouldn't cry over spilt milk", "shouldn't count their chickens before they are hatched", "shouldn't cross the bridge till they come to it", "shouldn't cut off their nose to spite their face", "shouldn't keep a dog and bark themselves", "should never look a gift horse in the mouth", "shouldn't put all their eggs in one basket", "shouldn't rock the boat", "can't walk before they can crawl", "are the beginning of wisdom", "are enough", "are the beginning of wisdom", "rush in where angels fear to tread", "will take a mile", "will eat for a day", "will eat for a lifetime", "will hang themselves", "go a-sorrowing", "call the tune", "do not know", "have no fury like a woman scorned", "get monkeys", "make lemonade", "get out of the kitchen", "are bacon", "weep alone", "are spoken in jest", "come in like a lion and go out like a lamb", "go out like a lamb", "fall mainly on the plain", "abhor a vacuum", "should never judge a book by its cover", "should never say never", "win the race", "spoil the child", "will take care of themselves", "are a good offence", "are money", "are born every minute", "are as blind as love", "won't make you cry", "are always a coward", "often pinch the foot", "are what you eat", "are worse than his bite", "can start a great fire", "are a girl's best friend", "burn a hole in your pocket", "are made to be broken"];
         var starting = [start1, start2]
         if (starting[Math.floor(Math.random())] === start1) {
-            m.channel.sendMessage(start1[Math.floor(Math.random() * start1.length)] + " " + end1[Math.floor(Math.random() * end1.length)] + ".")
+            m.channel.send(start1[Math.floor(Math.random() * start1.length)] + " " + end1[Math.floor(Math.random() * end1.length)] + ".")
         } else {
-            m.channel.sendMessage(start2[Math.floor(Math.random() * start2.length)] + " " + end2[Math.floor(Math.random() * end2.length)] + ".")
+            m.channel.send(start2[Math.floor(Math.random() * start2.length)] + " " + end2[Math.floor(Math.random() * end2.length)] + ".")
         }
         return;
     }
 
     if (m.content.startsWith(`?gin`)) {
-        m.channel.sendMessage("http://puu.sh/paA9X/111dceef42.png");
+        m.channel.send("http://puu.sh/paA9X/111dceef42.png");
         return;
     }
     if (m.content.startsWith(`?arcana`)) {
@@ -625,8 +626,8 @@ client.on('message', m => {
         var chosenCard = cardNames[Math.floor(Math.random() * cardNames.length)];
         var chosenCardPic = arcana[chosenCard].Card;
         var chosenCardDesc = arcana[chosenCard].Description
-        m.channel.sendMessage(`${chosenCardPic}`);
-        m.channel.sendMessage(`${chosenCardDesc}`);
+        m.channel.send(`${chosenCardPic}`);
+        m.channel.send(`${chosenCardDesc}`);
         return;
     }
     if (m.content.startsWith(`?slash `)) {
@@ -636,7 +637,7 @@ client.on('message', m => {
         var cleanUpMessage = allMentions.replace(",", ", ");
         console.log(cleanUpMessage);
         var slashArray = ["http://i.imgur.com/RH2yX.jpg", "http://media.giphy.com/media/daDA43pfSyeHK/giphy.gif", "http://i.imgur.com/7JNeSzT.jpg", "http://i.imgur.com/ZgR1USn.png", "http://i.imgur.com/2KTyI5n.png", "http://i.imgur.com/WnHUFcB.jpg", "http://i.imgur.com/34X6qf4.jpg", "http://i.imgur.com/Oy49Zln.png"]
-        m.channel.sendMessage(`${cleanUpMessage} you have been slashed by ${m.author}! ${slashArray[Math.floor(Math.random()*slashArray.length)]}`);
+        m.channel.send(`${cleanUpMessage} you have been slashed by ${m.author}! ${slashArray[Math.floor(Math.random()*slashArray.length)]}`);
     }
     if (m.content.startsWith(`?battle `)) {
         try {
@@ -748,9 +749,9 @@ client.on('message', m => {
         } catch (err) {
             var player2name = m.content.slice(8);
             if (Math.round(Math.random()) == 0) {
-                m.channel.sendMessage(`<@${m.author.id}> punches ${player2name} right in their face! \n They die of a SHEER HEART ATTACK! \n <@${m.author.id}> wins!`);
+                m.channel.send(`<@${m.author.id}> punches ${player2name} right in their face! \n They die of a SHEER HEART ATTACK! \n <@${m.author.id}> wins!`);
             } else {
-                m.channel.sendMessage(`${player2name} touches <@${m.author.id}> with their stando! \n "Dai ichi no bakudan, switch on!" \n <@${m.author.id}> explodes! \n ${player2name} wins!`);
+                m.channel.send(`${player2name} touches <@${m.author.id}> with their stando! \n "Dai ichi no bakudan, switch on!" \n <@${m.author.id}> explodes! \n ${player2name} wins!`);
 
             }
 
@@ -758,28 +759,28 @@ client.on('message', m => {
     }
     if (m.content.startsWith(`?yourdone`)) {
         midoriArray = [`http://i.imgur.com/ki4865P.png`, `https://youtu.be/8S_8CX4YD-8?t=832`]
-        m.channel.sendMessage(midoriArray[Math.floor(Math.random())])
+        m.channel.send(midoriArray[Math.floor(Math.random())])
     }
     if (m.content.startsWith(`?EbolaChan`)) {
         var messageanswer = randEbolaPic.data.images[Math.floor(Math.random() * 72)].link
 
-        m.channel.sendMessage(messageanswer.replace(/\\\//g, "/"));
+        m.channel.send(messageanswer.replace(/\\\//g, "/"));
         return;
     }
     if (m.content.startsWith(`?popcorn`)) {
-        m.channel.sendMessage("https://pbs.twimg.com/profile_images/597538481225752577/93eMVOd3.jpg")
+        m.channel.send("https://pbs.twimg.com/profile_images/597538481225752577/93eMVOd3.jpg")
         return;
     }
     if (m.content.startsWith(`?cliff`)) {
         m.channel.sendFile("http://img07.deviantart.net/80c7/i/2009/106/9/c/cliff_001_by_neverfading_stock.jpg");
     }
     if (m.content.startsWith(`?tofu`)) {
-        m.channel.sendMessage("https://www.youtube.com/watch?v=QFrd5Dr5ZCs");
+        m.channel.send("https://www.youtube.com/watch?v=QFrd5Dr5ZCs");
     }
     if (m.content.startsWith(`?ben`)) { // a meme
         if (!checkCommand(m, `?ben`)) return
         var benArray = ["**BEN'S STATUS** \n Lips: LARGE \n Feelings: WHO CARES \n Race: SHADOW-REALM BEAST", "http://puu.sh/m3gGP/de199907f3.png", "http://puu.sh/m3gDD/3c6f7c553b.png", "http://puu.sh/m3gIA/28638cd9ad.jpg", "http://puu.sh/m9tgv/84bc2f4914.jpg", "http://puu.sh/m9tfd/fdd3ad0c46.jpg", "http://puu.sh/m9th3/12a1326552.jpg", "https://cdn.discordapp.com/attachments/93578176231374848/130413901367083008/benkms.jpg", "https://cdn.discordapp.com/attachments/93578176231374848/130413948091629568/ben.jpg", "https://puu.sh/ldqI3/7fe79e185e.jpg", "https://puu.sh/ldqI3/7fe79e185e.jpg", "https://puu.sh/ldqC3/563b0df440.jpg", "http://puu.sh/lvryP/a7aeb5c7f2.jpg", "http://puu.sh/l0dy0/97c6792172.jpg", "https://docs.google.com/document/d/1XXeZrKqhCzwAcrbD3IHsAOnwp-XhXdJWwpZQrdLLKZo/edit", "https://docs.google.com/document/d/1qvlZMQLP6BatNGCLt-wrAdVt2bFsqxshGu_RIDMngc0/edit?pref=2&pli=1"]
-        m.channel.sendMessage(benArray[Math.floor(Math.random() * benArray.length)])
+        m.channel.send(benArray[Math.floor(Math.random() * benArray.length)])
         return;
     }
     if (m.content.startsWith(`?rr`)) {
@@ -789,7 +790,7 @@ client.on('message', m => {
             var names = m.content.slice(3)
             var namesArray = names.split("|")
             if (namesArray.length > 6) {
-                m.channel.sendMessage("You have too many people, and not enough holes! You filthy whore.")
+                m.channel.send("You have too many people, and not enough holes! You filthy whore.")
                 return;
             } else {
                 var unluckyOne = namesArray[Math.floor(Math.random() * namesArray.length)]
@@ -803,7 +804,7 @@ client.on('message', m => {
                     messageArray.push(`${luckyOnes[i] + eventArray[Math.floor(Math.random()*eventArray.length)]} \n`)
                     console.log(messageArray)
                 }
-                m.channel.sendMessage(`${messageArray.join("") + unluckyOne} pulls the trigger... :boom: :gun: :skull: R.I.P. in pieces you unlucky piece of shit.`);
+                m.channel.send(`${messageArray.join("") + unluckyOne} pulls the trigger... :boom: :gun: :skull: R.I.P. in pieces you unlucky piece of shit.`);
                 messageArray = [];
                 luckyOnes = [];
                 return;
@@ -811,10 +812,10 @@ client.on('message', m => {
             }
         } else {
             if (m.content.length < 5 && m.content.indexOf("|") === -1) {
-                m.channel.sendMessage(`${m.author.username + eventArrayFull[Math.floor(Math.random()*eventArrayFull.length)]}`)
+                m.channel.send(`${m.author.username + eventArrayFull[Math.floor(Math.random()*eventArrayFull.length)]}`)
                 return;
             } else {
-                m.channel.sendMessage("To play, just use the ?rr without any other users, otherwise, add | inbetween every user you choose, up to 6. e.g: \"?rr |player1|player2|player3|player4|etc.|etc..\"")
+                m.channel.send("To play, just use the ?rr without any other users, otherwise, add | inbetween every user you choose, up to 6. e.g: \"?rr |player1|player2|player3|player4|etc.|etc..\"")
                 return;
             }
         }
@@ -1034,7 +1035,7 @@ client.on('message', m => {
         }, function(error, response, body) {
             if (!error) {
                 var joke = body
-                m.channel.sendMessage(joke["joke"]);
+                m.channel.send(joke["joke"]);
             }
         });
         return;
@@ -1053,7 +1054,7 @@ client.on('message', m => {
          }
        })
        var punJoke = randomPunInfo
-       m.channel.sendMessage(punJoke)
+       m.channel.send(punJoke)
        return;
      } */
     if (m.content.startsWith(`?insult`)) {
@@ -1072,23 +1073,23 @@ client.on('message', m => {
         return;
     }
     if (m.content.startsWith(`?wakeup`)) {
-        m.channel.sendMessage("http://puu.sh/mk18d/a5117ed37a.png")
+        m.channel.send("http://puu.sh/mk18d/a5117ed37a.png")
         return;
     }
     if (m.content.startsWith(`?partysover`)) {
-        m.channel.sendMessage("https://i.4cdn.org/vg/1451833265145.png")
+        m.channel.send("https://i.4cdn.org/vg/1451833265145.png")
         return;
     }
     if (m.content.startsWith(`?kaio`)) {
         if (!checkCommand(m, `?kaio`)) return
         var kaioArray = ["https://cdn.discordapp.com/attachments/93578176231374848/137512943058157568/ss_2015-09-02_at_01.18.43.jpg", "https://cdn.discordapp.com/attachments/93578176231374848/137512835918987264/ss_2015-09-10_at_04.49.26.jpg", "http://puu.sh/miD0v/5322ab2006.jpg", "http://puu.sh/miFg2/b53356ef98.jpg", "https://i.gyazo.com/7c64e7f1a945f8c856f48f75e2f80f02.png", "iou", "iou", "iou"]
-        m.channel.sendMessage(kaioArray[Math.floor(Math.random() * kaioArray.length)])
+        m.channel.send(kaioArray[Math.floor(Math.random() * kaioArray.length)])
         return;
     }
     if (m.content.startsWith(`?blaze`)) {
         if (m.author.id === "82975678428872704" || m.author.id === "81526338728501248") {
             var blazeArray = ["https://cdn.discordapp.com/attachments/93578176231374848/137514138493517824/w0j9VbN.png", "https://cdn.discordapp.com/attachments/93578176231374848/137514162484936704/LuzD3fE.png", "https://cdn.discordapp.com/attachments/93578176231374848/137514196895137792/HENx6fX.png", "https://cdn.discordapp.com/attachments/93578176231374848/137514220961923074/EV1Bqy1.png"]
-            m.channel.sendMessage(blazeArray[Math.floor(Math.random() * blazeArray.length)])
+            m.channel.send(blazeArray[Math.floor(Math.random() * blazeArray.length)])
             return;
         }
     }
@@ -1100,27 +1101,27 @@ client.on('message', m => {
     if (m.content.startsWith(`?evan`)) { // wat a fag
         if (!checkCommand(m, `?evan`)) return
         var evanArray = ["http://puu.sh/mcIfe/4fd9e0578a.png"]
-        m.channel.sendMessage(evanArray[Math.floor(Math.random() * evanArray.length)])
+        m.channel.send(evanArray[Math.floor(Math.random() * evanArray.length)])
         return;
     }
     if (m.content.startsWith(`?fag`)) { // fags
         if (!checkCommand(m, `?fag`)) return
         var fagArray = ["http://puu.sh/mcIfe/4fd9e0578a.png"]
-        m.channel.sendMessage(fagArray[Math.floor(Math.random() * fagArray.length)]);
+        m.channel.send(fagArray[Math.floor(Math.random() * fagArray.length)]);
         return;
     }
     if (m.content.startsWith(`?simmer`)) {
-        m.channel.sendMessage("OMG 😱😱😱 BRO👬 CALM 😴😴 DOWN BRO ⬇️⬇️ SIMMER ☕️☕️ DOWN⬇️⬇️ U WANNA KNOW Y⁉️ BC 💁💁 IT WAS JUST A PRANK 😂😂😂 😛😜 HAHAHA GOT U 👌👌 U FUKIN RETARD 😂😁😁THERE'S A CAMERA 📹📷 RIGHT OVER 👈👇👆☝️ THERE 📍U FAGOT 👨‍❤️‍💋‍👨👨‍❤️‍💋‍👨👐WE 👨‍👨‍👦 GOT U BRO👬. I BET U DIDNT 🙅🙅NOE 💆HOW 2⃣ REACT WHEN MY 🙋 BRO DESMOND 😎😎 CAME UP ⬆️ TO U AND 💦💦😫😫 JIZZED ALL OVER UR 👖👖 SWEET JEANS 😂😂 IT WAS SO FUNNY 😂😛😀😀😅 NOW U HAVE 🙋👅👅 SUM BABY👶👶 GRAVY 💦🍲 ALL OVER THEM SHITS😵😵");
+        m.channel.send("OMG 😱😱😱 BRO👬 CALM 😴😴 DOWN BRO ⬇️⬇️ SIMMER ☕️☕️ DOWN⬇️⬇️ U WANNA KNOW Y⁉️ BC 💁💁 IT WAS JUST A PRANK 😂😂😂 😛😜 HAHAHA GOT U 👌👌 U FUKIN RETARD 😂😁😁THERE'S A CAMERA 📹📷 RIGHT OVER 👈👇👆☝️ THERE 📍U FAGOT 👨‍❤️‍💋‍👨👨‍❤️‍💋‍👨👐WE 👨‍👨‍👦 GOT U BRO👬. I BET U DIDNT 🙅🙅NOE 💆HOW 2⃣ REACT WHEN MY 🙋 BRO DESMOND 😎😎 CAME UP ⬆️ TO U AND 💦💦😫😫 JIZZED ALL OVER UR 👖👖 SWEET JEANS 😂😂 IT WAS SO FUNNY 😂😛😀😀😅 NOW U HAVE 🙋👅👅 SUM BABY👶👶 GRAVY 💦🍲 ALL OVER THEM SHITS😵😵");
         return;
     }
     if (m.content.startsWith(`?funny`)) {
-        m.channel.sendMessage("💯💯hOHoHOHHHHMYFUCkking GOFD 😂😂😂 DUDE 👌i AM 👉LITERALLY👈 iN 😂TEARS😂 RIGHT NOW BRo 👆👇👉👈 hHAHAHAHAHAHAHA ✌️👌👍 TAHT WA SO FUCKIN G FUNNY DUd 💧💧😅😂💦💧I cAN NOT FUCKING BELIEV how 💯FUNny 👌👍💯thta shit wa s 👀👍😆😂😂😅 I 👦 CAN NOT ❌ bRATHE 👃👄👃👄❌❌ / HELP ❗️I NEEd 👉👉 AN a m b u l a n c e🚑🚑 SSSooOOoo00000oOOOOOøøøØØØØØ fUCKING FUNY ✔️☑️💯💯1⃣0⃣0⃣😆😆😂😂😅 shit man ❕💯💯🔥☝️👌damn");
+        m.channel.send("💯💯hOHoHOHHHHMYFUCkking GOFD 😂😂😂 DUDE 👌i AM 👉LITERALLY👈 iN 😂TEARS😂 RIGHT NOW BRo 👆👇👉👈 hHAHAHAHAHAHAHA ✌️👌👍 TAHT WA SO FUCKIN G FUNNY DUd 💧💧😅😂💦💧I cAN NOT FUCKING BELIEV how 💯FUNny 👌👍💯thta shit wa s 👀👍😆😂😂😅 I 👦 CAN NOT ❌ bRATHE 👃👄👃👄❌❌ / HELP ❗️I NEEd 👉👉 AN a m b u l a n c e🚑🚑 SSSooOOoo00000oOOOOOøøøØØØØØ fUCKING FUNY ✔️☑️💯💯1⃣0⃣0⃣😆😆😂😂😅 shit man ❕💯💯🔥☝️👌damn");
         return;
     }
     if (m.content.startsWith(`?komari`)) { // lmao
         if (!checkCommand(m, `?komari`)) return
         var komariArray = ["https://i.gyazo.com/de05c41201cd9c4e402e557de475c176.png", "https://i.gyazo.com/36d0fce02401db14680b97e276f25b4e.png", "https://i.gyazo.com/23ebae539c0c7494de1701b8676afbe0.png"]
-        m.channel.sendMessage(komariArray[Math.floor(Math.random() * komariArray.length)])
+        m.channel.send(komariArray[Math.floor(Math.random() * komariArray.length)])
         return;
     }
     if (m.content.startsWith(`?tumblr`)) {
@@ -1130,7 +1131,7 @@ client.on('message', m => {
         var tumblrArray4 = ["***Social Dysphoria*** - In trans discussions, dysphoria that is caused by being perceived or treated by other people as an incorrect gender.", "***Spivak Pronouns*** - E(y)/eir/em/emself. A set of gender-neutral pronouns.", "***SRS*** - Sex reassignment surgery.", "***Stand-to-pee*** - A device used to enable someone to urinate while standing up, in the manner that people with penises sometimes do.", "***Standards of Care*** - Full name: \"Standards of Care for the Health of Transsexual, Transgender, and Gender Nonconforming People.\" These are non-binding guidelines that influence the decisions of many doctors and other gatekeepers in determining whether trans people are allowed to get transitional medical care. Often criticized for being overly strict, for preventing trans youth from transitioning, and for compelling non-binary trans people to hide or lie about their experiences in order to receive treatment.", "***Stealth*** - Living publicly as one's correct gender without being open about the fact that one is trans.", "***STP*** - Stand-to-pee.", "***T*** - Testosterone", "***TCR*** - Thyroid cartilage reduction surgery.", "***TERF*** - Trans-exclusive radical feminist. That is, they exclude trans people from their feminist movement, and are transphobic and transmisogynistic. See also TWERF.", "***Testosterone*** - The main androgen hormone in the human body. Supplemental testosterone is sometimes taken by trans people, usually with the intent of achieving a more masculine appearance.", "***The Surgery*** - A mysterious and frightening transformation spoken of by cis people who don’t know anything about how trans people actually transition.", "***They (singular)*** - See singular they.", "***Third Gender*** - A phrase used in anthropology for genders and gender roles that do not fit the Western constructs of \"man\" or \"woman.\" The phrase is problematic because of its colonialist or Eurocentric associations.", "***Tomboy*** - _1._ A woman, usually a young girl, who behaves or dresses in a traditionally masculine or boyish way. \n _2._ Occasionally used as a non-binary gender or presentation.", "***Top Surgery*** - A colloquial term for surgery that corrects one’s chest area to better match one’s gender presentation.", "***Trans*** - Short for transgender, or (less often) transsexual.", "***Trans* *** - Variant of \"trans\" that specifically denotes inclusion of non-binary, genderqueer and gender-variant people. The asterisk is controversial.", "***Trans Exclusive Radical Feminism*** - A sector of the feminist movement that does not accept trans people, especially trans women.", "***Trans man*** - A man who is also trans.", "***Trans woman*** - A woman who is also trans.", "***Transexual*** - Alternative spelling for transsexual.", "***Transfeminine*** - Having a gender that is female or feminine-of-center, and being trans.", "***Transgender*** - An umbrella term for all people and genders that do not match the gender that they were assigned at birth, or which was imposed on them by society, or which they were raised as.", "***Transition*** - To change one's presentation to reflect a gender other than the one assigned at birth. Transitioning may include, but does not require, any of the following: changing one's pronouns, wearing different clothing than before, altering one's legal gender, taking hormone therapy, and undergoing surgery.", "***Transman*** - Alternative spelling for trans man. Not recommended because it is sometimes seen as implying that \"transman\" is separate from \"man,\" a form of cissexism.", "***Transmasculine*** - Having a gender that is male or masculine-of-center, and being trans.", "***Transmisogyny*** - Transphobia and misogyny combined, forming an especially virulent form of oppression against trans women and other transfeminine people.", "***Transphobe*** - A person who acts, thinks or speaks with transphobia.", "***Transphobia*** - Prejudice, stigma, or discrimination against trans, non-binary and/or genderqueer people. Can occur as both an individual attitude and as a widespread social force.", "***Transsexual*** - _1._ A person whose gender does not match their assigned sex (similar to transgender). \n _2._ A person who has changed, or wishes to change, their anatomy to better reflect their true gender. This is a loaded term and should not be used to refer to someone without their permission. Some transsexual people do not identify as transgender.", "***Transtrender*** - A derogatory word used by some trans people to invalidate other trans people's identities. Not recommended for use, as it is frequently associated with respectability politics.", "***Transvestic Fetishism*** - A kink in which one derives pleasure (usually sexual) from wearing clothes of a different gender. This phrase is discredited in trans communities because it has often been used to delegitimize trans identities, especially those of trans women.", "***Transvestite*** - Old-fashioned word for a person who wears clothing of another gender. Not to be confused with transgender or transsexual. A loaded term, not recommended.", "***Transwoman*** - Alternative spelling for trans woman. Not recommended because it is sometimes seen as implying that “transwoman” is separate from \"woman,\" a form of cissexism.", "***Trigender*** - _1._ Not identifying as male, female or androgynous, but constructing one's own distinct gender. \n _2._ Having a gender identity that includes or shifts between three or more distinct genders, similarly to bigender.", "***Truscum*** - Trans people who invalidate or perpetuate prejudice against other trans people, often by claiming that others are not \“truly\” trans or \“trans enough.\” This is often related to respectability politics.", "***Tucking*** - Moving the genitals into place to make the presence of a penis less obvious.", "***TWERF*** - Trans woman exclusive radical feminist. That is, they exclude trans woman from their feminist movement, and are transmisogynistic.", "***Woman-Born-Woman*** - A cisgender woman. This term is sometimes used by transphobic people to invalidate trans people, and as such, it is not recommended."];
         var specialArray = ["***Uni*** - A term for describing a transexual who unfortunately is an annoying prick who doesn't know how to be kind unironically. _For an example, use the command \"?uni\"._", "***Ben*** - A term for describing your average weeaboo nigger who has giant lips and is dark. May or may not have severe aspergers. Bias and No fun allowed to be expected from one.", "***Hanna*** - A term for describing your average edgy girl who may or may not be lewd as heck, and may or may not be attractive, usually not.", "***Dion*** - A term describing someone who is under the height of 4'10\"", "***Vanilla*** - A term describing your average punnigger who may or may not need to be hanged, drawn, and quartered.", "***Kuro*** - A term describing your average aromantic, asexual, ozzy fag who may or may not come with mild to severe autism."]
         var totalTumblrArray = [tumblrArray1[Math.floor(Math.random() * tumblrArray1.length)], tumblrArray2[Math.floor(Math.random() * tumblrArray2.length)], tumblrArray3[Math.floor(Math.random() * tumblrArray3.length)], tumblrArray4[Math.floor(Math.random() * tumblrArray4.length)], specialArray[Math.floor(Math.random() * specialArray.length)]]
-        m.channel.sendMessage(totalTumblrArray[Math.floor(Math.random() * totalTumblrArray.length)])
+        m.channel.send(totalTumblrArray[Math.floor(Math.random() * totalTumblrArray.length)])
         return;
     }
     if (m.content.startsWith(`?google`)) { // google
@@ -1141,56 +1142,56 @@ client.on('message', m => {
         return;
     }
     if (m.content.startsWith(`?justacustom`)) {
-        m.channel.sendMessage("http://puu.sh/oDGoc/41e9c94583.jpg")
+        m.channel.send("http://puu.sh/oDGoc/41e9c94583.jpg")
         return;
     }
     if (m.content.startsWith(`?asexual`) || m.content.startsWith(`?kuro`) || m.content.startsWith(`?aromantic`)) { //kuro
         if (!checkCommand(m, `?asexual`)) return
         var kuroArray = ["http://puu.sh/mev31/7dde568741.png", "https://puu.sh/lSqgq/6015ed7c50.png", "https://puu.sh/m7mJf/3b295db195.png", "https://puu.sh/m8u7L/e20325a995.png", ]
-        m.channel.sendMessage(kuroArray[Math.floor(Math.random() * kuroArray.length)])
+        m.channel.send(kuroArray[Math.floor(Math.random() * kuroArray.length)])
         return;
     }
 
     if (m.content.startsWith(`?darkness`)) { //my old friend
         if (!checkCommand(m, `?darkness`)) return
         var darknessArray = ["https://www.youtube.com/watch?v=a5gz6KB_yvQ", "https://www.youtube.com/watch?v=ZNwICMDMV-g", "https://i.ytimg.com/vi/ZNwICMDMV-g/maxresdefault.jpg", "http://i1.kym-cdn.com/entries/icons/original/000/018/886/hello.png"]
-        m.channel.sendMessage(darknessArray[Math.floor(Math.random() * darknessArray.length)])
+        m.channel.send(darknessArray[Math.floor(Math.random() * darknessArray.length)])
         return;
     }
 
     if (m.content.startsWith(`?chancey`)) { // chancey telling off darrell
         if (!checkCommand(m, `?chancey`)) return
         var chanceyArray = ["http://puu.sh/mmmre/b40b5a1d1f.png", "\n >attacking \n I was telling you how is it when you legit tell me to \"promise\" you to text first. \n I was implying that I cannot guarantee shit like this because it rarely happens, even if someone were to complain. \n Attack sounds like this: \n You sound like you're triggered. Where's your problem glasses? Oh wait. You're a nigger! You're just gonna complain that everything bad that happens to you is because you're black. Are you ready to get cucked by your master? Or perhaps you'd rather fuck gorillas aka your own people.", "http://puu.sh/lvpn6/2199db5dcd.png"]
-        m.channel.sendMessage(chanceyArray[Math.floor(Math.random() * chanceyArray.length)])
+        m.channel.send(chanceyArray[Math.floor(Math.random() * chanceyArray.length)])
         return;
     }
     if (m.content.startsWith(`?turgle`)) { //meme
         if (!checkCommand(m, `turgle`)) return
-        m.channel.sendMessage("https://i.gyazo.com/2e5e7e03320bcbdcb5e6a86ca377b3fc.png")
+        m.channel.send("https://i.gyazo.com/2e5e7e03320bcbdcb5e6a86ca377b3fc.png")
         return;
     }
     /* if (m.content.startsWith(`?nanami`)) { //nanami
       if (!checkCommand(m, `?vanilla`)) return
       var vanillaArray = ["https://i.gyazo.com/fb6577a3239a86a24fac222e53b1e889.png", "http://puu.sh/maD1a/ebe71dec99.jpg", "https://i.gyazo.com/af8f05c42fb749f170a3788ebae3f9c6.png", "https://i.gyazo.com/109f37eaafac9ee14669d3b9a53e11ad.png", "http://puu.sh/menhE/94c73018b1.png"]
-      m.channel.sendMessage(vanillaArray[Math.floor(Math.random()*vanillaArray.length)])
+      m.channel.send(vanillaArray[Math.floor(Math.random()*vanillaArray.length)])
       return;
     }*/
     if (m.content.startsWith(`?vanilla`) || m.content.startsWith(`?nanami`)) { //nanami
         if (!checkCommand(m, `?vanilla`)) return
         var vanillaArray = ["https://i.gyazo.com/235af2315c7cefcf5e2364a26b8b3752.png", "https://i.gyazo.com/4189c488ed2f247fdc48bcc9d7971f7c.png", "https://i.gyazo.com/88a95e81cc012ac30a8917b08321d291.png", "https://i.gyazo.com/fb6577a3239a86a24fac222e53b1e889.png", "http://puu.sh/maD1a/ebe71dec99.jpg", "https://i.gyazo.com/af8f05c42fb749f170a3788ebae3f9c6.png", "https://i.gyazo.com/109f37eaafac9ee14669d3b9a53e11ad.png", "http://puu.sh/menhE/94c73018b1.png"]
-        m.channel.sendMessage(vanillaArray[Math.floor(Math.random() * vanillaArray.length)])
+        m.channel.send(vanillaArray[Math.floor(Math.random() * vanillaArray.length)])
         return;
     }
     if (m.content.startsWith(`?uni`)) { //uni
         if (!checkCommand(m, `?uni`)) return
         var uniArray = ["https://puu.sh/lTwMZ/0176bb7075.JPG", "http://puu.sh/lNwLG/47cc9cf362.png", "http://puu.sh/m9whg/187a691bc7.png", "ALWAYS 🕔 make sure 👍 to shave 🔪🍑 because ✌️ the last time 🕒 we let 👐😪 a bush 🌳 in our lives 👈😜👉 it did 9/11 💥🏢🏢✈️🔥🔥🔥"]
-        m.channel.sendMessage(uniArray[Math.floor(Math.random() * uniArray.length)])
+        m.channel.send(uniArray[Math.floor(Math.random() * uniArray.length)])
         return;
     }
     if (m.content.startsWith(`?roast`)) { //when ya homie gets roasted
         if (!checkCommand(m, `?roast`)) return
         var roastArray = ["https://40.media.tumblr.com/a45905c3728d9e12c0cf75f1068dc1ca/tumblr_noto8ys9Uc1rraq2ko2_1280.jpg", "https://cdn.discordapp.com/attachments/93578176231374848/130706697416081408/tumblr_nwsaleCKuD1s8as3do1_540.png", "http://www.kappit.com/img/pics/20150116_124218_bhcdaeb_sm.jpg", "http://img.memecdn.com/n-gga-gets-roasted-even-when-he-amp-039-s-dead_o_4109505.jpg", "http://cdn.meme.am/instances/500x/52976907.jpg", "http://www.kappit.com/img/pics/201501_2208_abfbd_sm.jpg", "http://i0.kym-cdn.com/photos/images/original/000/947/153/89e.jpg", "http://img.memecdn.com/we-all-been-throught-this_o_3521609.jpg", "http://cdn.meme.am/instances/500x/55960483.jpg", "https://i.imgflip.com/ngeg6.jpg", "http://img.memecdn.com/nice-guys-get-roasted-last_o_6089935.jpg", "https://40.media.tumblr.com/1102da4ecaed1492da9ab9662d62abc0/tumblr_npu3y5uKv81swz866o1_500.jpg", "https://pbs.twimg.com/media/CJK5waPWEAAoJyE.jpg", "http://puu.sh/mcJW3/4351a36e0b.png", "http://cdn.meme.am/instances/400x/57509406.jpg", "http://www.kappit.com/img/pics/201410_1526_fihbf_sm.jpg", "http://www.kappit.com/img/pics/201501_0902_bfhia_sm.jpg", "http://img.ifcdn.com/images/d6745e26c1fadaf2fa16a130fc398b8f4ffae666b0212be26c5364550d7e7ce6_1.jpg", "https://i.imgur.com/ngWCSjh.jpg", "http://img.ifcdn.com/images/6c571851a801b64e886f01a087a82cee95089f877198d1bd846e2c30c3e66652_1.jpg", "http://img.ifcdn.com/images/a4167df60cf75c3cfec1f1d4a96f1a3bb3986bbaf900a578830c32946186f4c8_1.jpg", "http://img.ifcdn.com/images/bd19c9876aa68bcb382cd030750a7378c627e3ded10b57e052a39473e756bb88_3.jpg", "https://scontent.cdninstagram.com/hphotos-xfp1/t51.2885-15/e35/11906257_1031577300246069_1601729207_n.jpg", "http://img.ifcdn.com/images/2c4a68e9c6d80906022de1d7434e8fa2792fa9f134f8999d7fa4cbb5daa8536c_1.jpg", "https://i.imgur.com/gZAR1gC.png", "http://img.ifcdn.com/images/945df2cbec8055e5e9feb25c97efea7a23ac48de02ed4134ae421c14f51b3c00_3.jpg", "http://img.ifcdn.com/images/9b54a313f4b7c92897323d4bc3f2d0bb1c7886111524cb7a85a914798e4f155c_3.jpg", "http://img.ifcdn.com/images/4e499b636afb516ec4c2d53c5c68d1418a6734cd495a464a9b4bfdb914f74e58_3.jpg", "http://img.ifcdn.com/images/bea0a6f2fbf7fcceafaa4be3d078f20da222dea4df473e93cb6597b32ff44f5d_3.jpg", "http://puu.sh/mcKv3/0edce0b0c7.png"]
-        m.channel.sendMessage(roastArray[Math.floor(Math.random() * roastArray.length)])
+        m.channel.send(roastArray[Math.floor(Math.random() * roastArray.length)])
         return;
     }
     if (m.content.startsWith(`?niger`)) { //niger
@@ -1211,13 +1212,13 @@ client.on('message', m => {
     }
     if (m.content.startsWith(`?unumii`)) { //unumii
         if (!checkCommand(m, `?unumii`)) return
-        m.channel.sendMessage("http://puu.sh/mero2/3d8fbbaacf.png")
+        m.channel.send("http://puu.sh/mero2/3d8fbbaacf.png")
         return;
     }
     if (m.content.startsWith(`?edgemaster`)) { //edge
         if (!checkCommand(m, `?edgemaster`)) return
         var edgeArray = ["http://puu.sh/merq0/24e932c0e5.png", "http://puu.sh/merdn/d6c644843e.png", "http://puu.sh/mersp/b0d7487014.png", "http://puu.sh/merwB/549f239009.png", "http://puu.sh/merye/ab56b50781.png", "http://puu.sh/merzr/6e21fadfd0.png"]
-        m.channel.sendMessage(edgeArray[Math.floor(Math.random() * edgeArray.length)])
+        m.channel.send(edgeArray[Math.floor(Math.random() * edgeArray.length)])
         return;
     }
     if (m.content.startsWith(`?jimbo`)) { //shadow realm jimbo
@@ -1388,7 +1389,7 @@ client.on('message', m => {
                 $('tr').filter(function() {
                     var insultData = $(this);
                     randomInsult = insultData.text();
-                    m.channel.sendMessage(randomInsult);
+                    m.channel.send(randomInsult);
                     return;
                 })
             }
@@ -1406,15 +1407,15 @@ client.on('message', m => {
         var userChoicesArray = userChoices.split(";");
         if (userChoicesArray.length > 1) {
             var botChoice = userChoicesArray[Math.floor(Math.random() * userChoicesArray.length)];
-            m.channel.sendMessage(`Ebola-chan has decided... \`${botChoice}\`!`);
+            m.channel.send(`Ebola-chan has decided... \`${botChoice}\`!`);
             return;
         } else {
-            m.channel.sendMessage(`You either didn't format it correctly, or only have one choice. Use ';' to split your choices.`)
+            m.channel.send(`You either didn't format it correctly, or only have one choice. Use ';' to split your choices.`)
         }
 
     }
     if (m.content.startsWith(`?roll`)) {
-        m.channel.sendMessage(`${Math.floor(Math.random()*100)}`);
+        m.channel.send(`${Math.floor(Math.random()*100)}`);
         return;
     }
 
@@ -1423,10 +1424,10 @@ client.on('message', m => {
         var ballArray = ["Signs :arrow_right: to yes.", "Yeah.", "Try again.", "Without a doubt.", "Ebola-chan says no.", "I'd say yes.", "Go for it, fam.", "It doesn't look so good...", "Yep!", "Uh, I don't think you want to know.", "It seems very doubtful.", "Ebola-chan says: \"Yes, definitely\"!", "Even I know it's certain!", "Err... Foggy, hazy, y'know.", "Probably!", "Perhaps you should ask later?", "No.", "It seems the outlook is good!", "I wouldn't count on it."]
         if (m.content.length > 7) {
             if (m.content.indexOf("?", 7) === -1) {
-                m.channel.sendMessage(`<@${m.author.id.toString()}> \`${userQuestion}?\`: ${ballArray[Math.floor(Math.random()*ballArray.length)]}`)
+                m.channel.send(`<@${m.author.id.toString()}> \`${userQuestion}?\`: ${ballArray[Math.floor(Math.random()*ballArray.length)]}`)
                 return;
             } else {
-                m.channel.sendMessage(`<@${m.author.id.toString()}> \`${userQuestion}\`: ${ballArray[Math.floor(Math.random()*ballArray.length)]}`)
+                m.channel.send(`<@${m.author.id.toString()}> \`${userQuestion}\`: ${ballArray[Math.floor(Math.random()*ballArray.length)]}`)
                 return;
             }
         } else {
@@ -1510,7 +1511,7 @@ client.on('message', m => {
       if(!(userToPing === undefined)){
         if(!(m.author.id == "81526338728501248")){
           console.log("Step3");
-            userToPing.sendMessage(`${m.author.username} said something about thiccness in \`${m.channel.name}\` in \`${m.guild.name}\`.`);
+            userToPing.send(`${m.author.username} said something about thiccness in \`${m.channel.name}\` in \`${m.guild.name}\`.`);
             console.log("Step 3a");
             return;
         } else {
@@ -1541,7 +1542,7 @@ client.on('message', m => {
         console.log("Step2");
         if (!(m.author.id == "81526338728501248")) {
             console.log("Step3");
-            userToPing.sendMessage(`${m.author.username} said something about thicc in ${m.channel.name} in ${m.guild.name}.`);
+            userToPing.send(`${m.author.username} said something about thicc in ${m.channel.name} in ${m.guild.name}.`);
             console.log("Step 3a");
             return;
         } else {
@@ -1581,10 +1582,10 @@ client.on('message', m => {
                 return;
             } else if ((!userIsAdmin(m.author.id)) && (voteAllIDs.indexOf(m.author.id) < 0)) {
                 voteCount = 1;
-                m.channel.sendMessage("Vote to next added by " + m.author.username + ".")
+                m.channel.send("Vote to next added by " + m.author.username + ".")
                 var voter = m.author.id;
             } else {
-                m.channel.sendMessage(m.author.username + " already voted!")
+                m.channel.send(m.author.username + " already voted!")
                 voteCount = 0;
             }
             // console.log("The current amount of votes is " + voteCount);
@@ -1599,7 +1600,7 @@ client.on('message', m => {
             //   }
             var peopleinCall = channelToJoin.members.array();
             if (voteTotalCount >= (Math.floor(peopleinCall.length / 2))) {
-                m.channel.sendMessage(`Skipping **${currentVideo.title}**... `)
+                m.channel.send(`Skipping **${currentVideo.title}**... `)
                 console.log("L I M I T S  W E R E  M E A N T  T O  B E  B R O K E N . . .")
                 console.log("The current amount of votes are " + voteTotalCount)
                 playStopped();
@@ -1608,14 +1609,14 @@ client.on('message', m => {
                 //  totalNumberNeeded = 0;
                 return;
             } else {
-                m.channel.sendMessage("The current amount of votes are " + voteTotalCount + ". " + peopleinCall.length / 2 + " votes are needed.")
+                m.channel.send("The current amount of votes are " + voteTotalCount + ". " + peopleinCall.length / 2 + " votes are needed.")
                 console.log("Not breaking limits........")
                 console.log("The current amount of votes is " + voteTotalCount);
                 console.log("The people in the vote list are " + voteAllIDs);
             };
             return;
         } else {
-            m.channel.sendMessage("Hey, nothing's playing!");
+            m.channel.send("Hey, nothing's playing!");
             return;
         }
     };
@@ -1933,13 +1934,13 @@ function possiblyQueue(video, userId, m, suppress) {
 function handleYTError(err) {
     if (err.toString().indexOf('Code 150') > -1) {
         // Video unavailable in country
-        boundChannel.sendMessage(`This video is unavailable in the country the bot is running in! Please try a different video. (Most likely Copyrighted) \n Error Message: ${err}`);
+        boundChannel.send(`This video is unavailable in the country the bot is running in! Please try a different video. (Most likely Copyrighted) \n Error Message: ${err}`);
     } else if (err.message == 'Could not extract signature deciphering actions') {
-        boundChannel.sendMessage(`YouTube streams have changed their formats, please update 'ytdl-core' to account for the change!(This means I'm being lazy)`);
+        boundChannel.send(`YouTube streams have changed their formats, please update 'ytdl-core' to account for the change!(This means I'm being lazy)`);
     } else if (err.message == 'status code 404') {
-        boundChannel.sendMessage('That video does not exist!');
+        boundChannel.send('That video does not exist!');
     } else {
-        boundChannel.sendMessage('An error occurred while getting video information! Please try a different video.');
+        boundChannel.send('An error occurred while getting video information! Please try a different video.');
     }
 
     console.log(err.toString());
@@ -1948,8 +1949,8 @@ function handleYTError(err) {
 function playStopped() {
     if (channelToJoin.connection) dispatcher.end();
 
-    boundChannel.sendMessage(`Finished playing **${currentVideo.title}**`);
-    client.user.setStatus('online', null);
+    boundChannel.send(`Finished playing **${currentVideo.title}**`);
+    client.user.setStatus('online');
     lastVideo = currentVideo;
     currentVideo = false;
     voteTotalCount = 0;
@@ -1967,23 +1968,23 @@ function play(video) {
             if (err.code === 'ECONNRESET') {
                 if (!Config.suppressPlaybackNetworkError) {
                     console.log(err);
-                    boundChannel.sendMessage(`There was a network error during playback! The connection to YouTube may be unstable. Attempting to restart video...`);
+                    boundChannel.send(`There was a network error during playback! The connection to YouTube may be unstable. Attempting to restart video...`);
                 }
             } else {
-                boundChannel.sendMessage(`There was an error during playback! **${err}**`);
+                boundChannel.send(`There was an error during playback! **${err}**`);
                 console.log(err);
 
             }
             playStopped(); // skip to next video
         });
 
-        currentStream.on('end', () => setTimeout(playStopped, Config.timeOffset || 10000)); // 8 second leeway for bad timing
+        currentStream.on('end', () => setTimeout(playStopped, Config.timeOffset || 5000)); // 8 second leeway for bad timing
         dispatcher = channelToJoin.connection.playStream(currentStream, 1, 2)
             //.then(intent => {
         console.log(video.author);
         console.log(video);
-        boundChannel.sendMessage(`Playing ${video.prettyPrint()}`);
-        client.user.setStatus('online', video.title);
+        boundChannel.send(`Playing ${video.prettyPrint()}`);
+        client.user.setActivity(`${video.title}`, {type: 'LISTENING'});
         //  });
     }
 }

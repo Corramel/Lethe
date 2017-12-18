@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const token = (process.argv[3]);
+
 const Twitter = require('twitter')
 const util = require('util');
 const weather = require('openweathermap-js');
@@ -89,6 +90,7 @@ var boundChannel = false;
 var timeNow;
 var timeOfYasu;
 var tweetsArr = [];
+var oldTweetsArr = [""];
 var boundChannelArr = [];
 var currentStream = false;
 var ownerID = "81526338728501248"
@@ -115,7 +117,6 @@ var shouldStockpile = false
 var stockpile = '';
 
 // Handling api key
-
 var apiKey = process.argv[4] || (Config.auth.apiKey !== "youtube API key (optional)") ? Config.auth.apiKey : false;
 
 client.on('ready', () => {
@@ -155,12 +156,11 @@ client.on('message', m => {
     if(m.content.startsWith(`?yastwi`)){
       console.log(m.channel.name);
       if(m.channel.name === "estoylameme" || m.channel.name === "just-chat"){
-      var timer = moment.duration(10, "seconds").timer({
+      var timer = moment.duration(15, "seconds").timer({
         loop:true
       }, function() {
         console.log("running!");
-        if(!timeOfYasu){
-          var params = {screen_name: 'DeformedYasu', count:20, includes_entites:true, exclude_replies:true};
+          var params = {screen_name: 'ILoveEbolaChan', count:20, includes_entites:true, exclude_replies:true};
           twitterClient.get('favorites/list', params, function(error, tweets, response) {
             if (!error) {
                 tweetsArr = [];
@@ -171,49 +171,44 @@ client.on('message', m => {
                       //console.log(tweetsArr[0]);
                       }
                   }
+                  if(oldTweetsArr[0] === ""){
                 //  console.log(tweetsArr);
-                  var tweetDateString = Date.parse(tweetsArr[0].created_at)
-                  console.log(tweetDateString);
-                  timeOfYasu = moment(tweetDateString);
-                  timeNow = moment();
+                  //var tweetDateString = Date.parse(tweetsArr[0].created_at)
+                  //console.log(tweetDateString);
+                //  timeOfYasu = moment();
+                  //timeNow = moment();
                   m.channel.send(tweetsArr[0].entities.media[0].expanded_url);
-                 tweetsArr = [];
+                  oldTweetsArr = tweetsArr;
+                  tweetsArr = [];
+                 console.log(oldTweetsArr[0].entities.media[0].expanded_url);
                 //console.log(tweetsArr);
                 //console.log(tweets);
+              } else if(!(tweetsArr[0].entities.media[0].expanded_url === oldTweetsArr[0].entities.media[0].expanded_url)){
+                  console.log(oldTweetsArr[0].entities.media[0].expanded_url);
+                  console.log(tweetsArr[0].entities.media[0].expanded_url);
+
+                  console.log("tweets != old tweets check above for confirmation");
+                        //console.log(timeNow.diff(timeOfYasu));
+                        //var tweetDateString = tweetsArr[0].entities.created_at;
+                        //timeOfYasu = moment();
+                        //timeNow = moment().add(1, "second");
+                        m.channel.send(tweetsArr[0].entities.media[0].expanded_url);
+                        oldTweetsArr = tweetsArr;
+                        tweetsArr = []
+              } else {
+                //console.log(timeNow.diff(timeOfYasu));
+                //console.log(timeNow);
+                //console.log(timeOfYasu);
+                console.log(oldTweetsArr[0].entities.media[0].expanded_url);
+                console.log(tweetsArr[0].entities.media[0].expanded_url);
+                console.log("Nothing here, boss.");
+                return;
+              }
             } else {
                 throw error
             }
           });
-        } else if(timeOfYasu.diff(timeNow) > 0){
-          console.log(timeNow.diff(timeOfYasu));
-          var params = {screen_name: 'DeformedYasu', count:20, includes_entites:true, exclude_replies:true};
-          twitterClient.get('favorites/list', params, function(error, tweets, response) {
-            if (!error) {
-                tweetsArr = [];
-                  for(var i = 0; i<tweets.length; i++){
-                      //console.log(tweets[i]);
-                      if(Object.keys(tweets[i].entities).includes("media")){
-                      tweetsArr.push(tweets[i]);
-                      console.log(tweetsArr[0]);
-                      }
-                  }
-                  console.log(tweetsArr);
-                  var tweetDateString = tweetsArr[0].entities.created_at;
-                  timeOfYasu = moment(Date.parse(tweetDateString.replace(/( \+)/, ' UTC$1')));
-                  timeNow = moment();
-                  m.channel.send(tweetsArr[0].entities.media[0].expanded_url);
-                 tweetsArr = [];
-            } else {
-                throw error
-            }
-          });
-        } else {
-          console.log(timeNow.diff(timeOfYasu));
-          console.log(timeNow);
-          console.log(timeOfYasu);
-          console.log("Nothing here, boss.");
-          return;
-        }
+
       });
     }
 

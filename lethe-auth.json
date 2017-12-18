@@ -1,5 +1,9 @@
 {
 	"email": "email",
 	"password": "pass",
-	"apiKey": "AIzaSyAqroFUTU83XuAa6x_--vI3AAzESiWHbH4"
+	"apiKey": "AIzaSyAqroFUTU83XuAa6x_--vI3AAzESiWHbH4",
+	"discordToken":"MjM2ODM0NDY1MzY2NjcxMzYw.CuRSoQ.xZbEciqbAuwmgSN3JmRdxQugmeU",
+	"imgurToken":"538304a26a119fe123a5074216590ab2e877d163",
+	"imgurClientID":"714c0e3e7e06dfd",
+	"imgurClientSecret":"ed8502d3ebb267dbd8a226cacb1223500c0c34ce"
 }
