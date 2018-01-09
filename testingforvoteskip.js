@@ -200,19 +200,19 @@ client.on('message', m => {
                 if (birdRandomImage.is_album) {
                     var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
                     var title = birdRandomImage.title || "/r/birdpics";
-                    var embed = new Discord.RichEmbed();
+                    var embed = new Discord.MessageEmbed();
                     embed.setColor("#c39582");
                     embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.cover)
                     embed.setImage(image);
-                    m.channel.sendEmbed(embed);
+                    m.channel.send(embed);
                 } else {
                     var image = birdRandomImage.link.replace(`\\/`, `/`);
                     var title = birdRandomImage.title || "/r/birdpics";
-                    var embed = new Discord.RichEmbed();
+                    var embed = new Discord.MessageEmbed();
                     embed.setColor("#c39582");
                     embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.id)
                     embed.setImage(image);
-                    m.channel.sendEmbed(embed);
+                    m.channel.send(embed);
                 }
 
             } else {
@@ -225,7 +225,7 @@ client.on('message', m => {
     }
 
     if (m.content.startsWith(`?tarot`)) {
-        var embed = new Discord.RichEmbed();
+        var embed = new Discord.MessageEmbed();
         embed.setColor("#7A3B81")
         var roll = Math.round(Math.random());
         console.log(roll);
@@ -256,7 +256,7 @@ client.on('message', m => {
                 return;
             }
         }
-        m.channel.sendEmbed(embed);
+        m.channel.send(embed);
         return;
     }
 
@@ -280,19 +280,19 @@ client.on('message', m => {
                 if (birdRandomImage.is_album) {
                     var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
                     var title = birdRandomImage.title || "/r/birdpics";
-                    var embed = new Discord.RichEmbed();
+                    var embed = new Discord.MessageEmbed();
                     embed.setColor("#fdc6b2");
                     embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.cover)
                     embed.setImage(image);
-                    m.channel.sendEmbed(embed);
+                    m.channel.send(embed);
                 } else {
                     var image = birdRandomImage.link.replace(`\\/`, `/`);
                     var title = birdRandomImage.title || "/r/birdpics";
-                    var embed = new Discord.RichEmbed();
+                    var embed = new Discord.MessageEmbed();
                     embed.setColor("#e91e63");
                     embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.id)
                     embed.setImage(image);
-                    m.channel.sendEmbed(embed);
+                    m.channel.send(embed);
                 }
 
             } else {
@@ -310,11 +310,11 @@ client.on('message', m => {
             json: true
         }, function(error, response, body) {
             if (!error) {
-                var embed = new Discord.RichEmbed();
+                var embed = new Discord.MessageEmbed();
                 embed.setColor("#d546d5");
                 embed.setAuthor(body.quote);
                 embed.setFooter("-" + body.author);
-                m.channel.sendEmbed(embed);
+                m.channel.send(embed);
             } else {
                 console.log(error);
             }
@@ -359,19 +359,19 @@ client.on('message', m => {
                 if (birdRandomImage.is_album) {
                     var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
                     var title = birdRandomImage.title || "Thick Chicks";
-                    var embed = new Discord.RichEmbed();
+                    var embed = new Discord.MessageEmbed();
                     embed.setColor("#cdcdcd");
                     embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.cover)
                     embed.setImage(image);
-                    m.channel.sendEmbed(embed);
+                    m.channel.send(embed);
                 } else {
                     var image = birdRandomImage.link.replace(`\\/`, `/`);
                     var title = birdRandomImage.title || "Thick Chicks";
-                    var embed = new Discord.RichEmbed();
+                    var embed = new Discord.MessageEmbed();
                     embed.setColor("#cdcdcd");
                     embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.id)
                     embed.setImage(image);
-                    m.channel.sendEmbed(embed);
+                    m.channel.send(embed);
                 }
 
             } else {
@@ -416,19 +416,19 @@ client.on('message', m => {
                 if (birdRandomImage.is_album) {
                     var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
                     var title = birdRandomImage.title || "Thin Girls";
-                    var embed = new Discord.RichEmbed();
+                    var embed = new Discord.MessageEmbed();
                     embed.setColor("#cdcdcd");
                     embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.cover)
                     embed.setImage(image);
-                    m.channel.sendEmbed(embed);
+                    m.channel.send(embed);
                 } else {
                     var image = birdRandomImage.link.replace(`\\/`, `/`);
                     var title = birdRandomImage.title || "Thin Girls";
-                    var embed = new Discord.RichEmbed();
+                    var embed = new Discord.MessageEmbed();
                     embed.setColor("#cdcdcd");
                     embed.setAuthor(title, "http://s.imgur.com/images/favicon-96x96.png", "http://imgur.com/" + birdRandomImage.id)
                     embed.setImage(image);
-                    m.channel.sendEmbed(embed);
+                    m.channel.send(embed);
                 }
 
             } else {
@@ -466,7 +466,7 @@ client.on('message', m => {
         var discordJoin = targetUser.createdAt;
         var momentDiscord = moment(discordJoin);
         var momentJoin = moment(joinedAt);
-        var embed = new Discord.RichEmbed();
+        var embed = new Discord.MessageEmbed();
         var statusInd;
         switch (targetUser.presence.status) {
             case 'online':
@@ -498,7 +498,7 @@ client.on('message', m => {
         //embed.setImage("https://cdn.discordapp.com/attachments/103601699930791936/264005163667161108/IMG_3572.JPG");
         embed.setThumbnail(targetUser.avatarURL);
         //embed.setTitle(m.author.username + "#" + m.author.discriminator + " user information");
-        m.channel.sendEmbed(embed)
+        m.channel.send(embed)
     }
     if (m.content.startsWith(`?weather`)) {
         currentWeather = "";
@@ -822,7 +822,7 @@ client.on('message', m => {
     }
     if (m.content.startsWith(`?lucina`) || m.content.startsWith(`?perfect`)) {
       var randomPost;
-      var mEmbed = new Discord.RichEmbed();
+      var mEmbed = new Discord.MessageEmbed();
         var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=lucina&rating=s&pid=${Math.round(Math.random()*10)}`
         reequest(requestUrl, function(error, response, html) {
 
@@ -854,7 +854,7 @@ client.on('message', m => {
                         mEmbed.setFooter("Score: " + randomPost.score)
                         mEmbed.setImage("http:" + randomPost.file_url);
                         console.log(mEmbed.url + " is the author");
-                        //m.channel.sendEmbed(embed);
+                        //m.channel.send(embed);
                         m.channel.send({embed : mEmbed});
                         return;
                       //  return;
@@ -894,7 +894,7 @@ client.on('message', m => {
                             while (randomPost.rating === "e" || randomPost.rating === "q") {
                                 randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
                             }
-                            var embed = new Discord.RichEmbed();
+                            var embed = new Discord.MessageEmbed();
                             embed.setColor("#406b99");
                             embed.setAuthor("Source for image");
                             embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
@@ -936,7 +936,7 @@ client.on('message', m => {
                             while (randomPost.rating === "s") {
                                 randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
                             }
-                            var embed = new Discord.RichEmbed();
+                            var embed = new Discord.MessageEmbed();
                             embed.setColor("#406b99");
                             embed.setAuthor("Source for image");
                             embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
@@ -978,7 +978,7 @@ client.on('message', m => {
                             while (randomPost.rating === "s") {
                                 randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
                             }
-                            var embed = new Discord.RichEmbed();
+                            var embed = new Discord.MessageEmbed();
                             embed.setColor("#406b99");
                             embed.setAuthor("Source for image");
                             embed.setURL("http://rule34.xxx/index.php?page=post&s=view&id=" + randomPost.id);
@@ -1014,7 +1014,7 @@ client.on('message', m => {
                         while (randomPost.rating === "e" || randomPost.rating === "q") {
                             randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
                         }
-                        var embed = new Discord.RichEmbed();
+                        var embed = new Discord.MessageEmbed();
                         embed.setColor("#406b99");
                         embed.setAuthor("Source for image");
                         embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
@@ -1263,19 +1263,19 @@ client.on('message', m => {
                 if (birdRandomImage.is_album) {
                     var image = "http://i.imgur.com/" + birdRandomImage.cover + ".jpg";
                     var title = birdRandomImage.title || "/r/starterpacks";
-                    var embed = new Discord.RichEmbed();
+                    var embed = new Discord.MessageEmbed();
                     embed.setColor("#1bb76e");
                     embed.setImage(image);
                     embed.setAuthor(title);
-                    m.channel.sendEmbed(embed);
+                    m.channel.send(embed);
                 } else {
                     var image = birdRandomImage.link.replace(`\\/`, `/`);
                     var title = birdRandomImage.title || "/r/starterpacks";
-                    var embed = new Discord.RichEmbed();
+                    var embed = new Discord.MessageEmbed();
                     embed.setColor("#1bb76e");
                     embed.setAuthor(title);
                     embed.setImage(image);
-                    m.channel.sendEmbed(embed);
+                    m.channel.send(embed);
                 }
 
             } else {
