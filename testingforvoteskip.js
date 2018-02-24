@@ -35,6 +35,7 @@ const tarot = require('./lib/tarotcards.json');
 const randEbolaPic = require('./lib/ebolachaninfo.json');
 const randFangCringe = require('./lib/fangsmemes.json');
 const feSys = require('./lib/FEClasses.json');
+const insults = require('./lib/insults.json');
 var CURRENT_REV = 4;
 
 const client = new Discord.Client();
@@ -93,6 +94,7 @@ var ownerID = "81526338728501248"
 var imgurToken = Auth.imgurToken;
 var imgurClientID = Auth.imgurClientID;
 var imgurClientSecret = Auth.imgurClientSecret;
+var danbooruToken = Auth.danbooruToken;
 var quoteKey = "pjH2CNeLrYmshTdw2SBV61vNBWiBp1dGTDOjsnedWRo6C44xqr";
 var voteCount = 0;
 var voteTotalCount = 0;
@@ -823,43 +825,30 @@ client.on('message', m => {
     if (m.content.startsWith(`?lucina`) || m.content.startsWith(`?perfect`)) {
       var randomPost;
       var mEmbed = new Discord.MessageEmbed();
-        var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=lucina&rating=s&pid=${Math.round(Math.random()*10)}`
-        reequest(requestUrl, function(error, response, html) {
+        var requestUrl = `https://danbooru.donmai.us/posts.json?tags=lucina+-rating:e&random=true`
+        reequest.get({
+          url: "https://danbooru.donmai.us/posts.json?tags=lucina+-rating:e&random=true",
+          headers: {
+            "login":"Corriander",
+            "api_key":danbooruToken
+          },
+          json:true
+        },
+        function(error, response, html) {
 
             if (!error) {
-                var cheerio$ = cheerio.load(html, {
-                    xmlMode: true
-                });
-                  cheerio$('posts').filter(function() {
-                    var toParse = cheerio$(this);
-                    var parsingInfo = toParse.text();
-
-                   parseString(toParse, function(err, result) {
-                        if (result.posts.post == undefined) {
-                            m.reply("Sorry, no images were found during this iteration of the search.")
-                            return;
-                        }
-
-                       randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
-
-                        while (randomPost.rating === "e" || randomPost.rating === "q") {
-                            randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
-                        }
-
-
-                        //console.log(randomPost);
-                        mEmbed.setColor("#406b99");
-                        mEmbed.setAuthor("Source for image");
-                        mEmbed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id + "/");
-                        mEmbed.setFooter("Score: " + randomPost.score)
-                        mEmbed.setImage("http:" + randomPost.file_url);
-                        console.log(mEmbed.url + " is the author");
-                        //m.channel.send(embed);
-                        m.channel.send({embed : mEmbed});
-                        return;
-                      //  return;
-                   });
-                });
+              console.log(response);
+              console.log(response.body[0]);
+              randomPost = response.body[0];
+              mEmbed.setColor("#406b99");
+              mEmbed.setAuthor("Source", "https://i.pinimg.com/originals/0c/d4/f6/0cd4f6b0f012c780b448412f4071568d.jpg");
+              mEmbed.setURL("https://danbooru.donmai.us/posts" + randomPost.id + "/");
+              mEmbed.setFooter("Score: " + randomPost.score)
+              mEmbed.setImage("https://danbooru.donmai.us" + randomPost.file_url);
+              //console.log(mEmbed.url + " is the author");
+              //m.channel.send(embed);
+              m.channel.send(mEmbed);
+              return;
             };
               /*  .catch(function(){
                   console.log("There was an error with cheerio$('posts').filter");
@@ -870,86 +859,66 @@ client.on('message', m => {
         if (m.content.length > 10 && m.content.indexOf(";") > -1) {
             var tags = m.content.slice(9)
             var tagsArray = tags.split(";")
-            var tagsJoined = tagsArray.join(" ")
-            var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=${tagsJoined}&rating=s&pid=${Math.floor(Math.random()*20)}`
-            reequest(requestUrl, function(error, response, html) {
+            var tagsJoined = tagsArray.join("+")
+            var randomPost;
+            var mEmbed = new Discord.MessageEmbed();
+              reequest.get({
+                url: `https://danbooru.donmai.us/posts.json?tags=${tagsJoined}+-rating:e&random=true`,
+                headers: {
+                  "login":"Corriander",
+                  "api_key":danbooruToken
+                },
+                json:true
+              },
+              function(error, response, html) {
 
-                if (!error) {
-                    var cheerio$ = cheerio.load(html, {
-                        xmlMode: true
-                    });
-                    cheerio$('posts').filter(function() {
-                        var toParse = cheerio$(this);
-                        var parsingInfo = toParse.text();
-
-                        parseString(toParse, function(err, result) {
-                            //var lengthOfPosts = result.posts.post.length
-                            //console.log(lengthOfPosts);
-                            if (result.posts.post == undefined) {
-                                m.reply("Sorry, no images were found during this iteration of the search.")
-                                return;
-                            }
-                            var randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
-
-                            while (randomPost.rating === "e" || randomPost.rating === "q") {
-                                randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
-                            }
-                            var embed = new Discord.MessageEmbed();
-                            embed.setColor("#406b99");
-                            embed.setAuthor("Source for image");
-                            embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
-                            embed.setFooter("Score: " + randomPost.score)
-                            embed.setImage(randomPost.file_url)
-                            m.channel.send({embed : embed});
+                  if (!error) {
+                    console.log(response);
+                    console.log(response.body[0]);
+                    randomPost = response.body[0];
+                            mEmbed.setColor("#406b99");
+                            mEmbed.setAuthor("Source for image");
+                            mEmbed.setURL("https://danbooru.donmai.us/posts" + randomPost.id);
+                            mEmbed.setFooter("Score: " + randomPost.score)
+                            mEmbed.setImage("https://danbooru.donmai.us" + randomPost.file_url)
+                            m.channel.send(mEmbed);
                             return;
-                        });
+                        };
                     });
                 };
-            });
-        }
-    }
+            };
     if (m.content.startsWith(`?ngelbooru`)) {
         if (m.content.length > 11 && m.content.indexOf(";") > -1) {
-            var tags = m.content.slice(10)
-            var tagsArray = tags.split(";")
-            var tagsJoined = tagsArray.join(" ")
-            var requestUrl = `http://gelbooru.com/index.php?page=dapi&s=post&q=index&tags=${tagsJoined}&rating=e&pid=${Math.floor(Math.random()*20)}`
-            reequest(requestUrl, function(error, response, html) {
+          var tags = m.content.slice(9)
+          var tagsArray = tags.split(";")
+          var tagsJoined = tagsArray.join("+")
+          var randomPost;
+          var mEmbed = new Discord.MessageEmbed();
+            reequest.get({
+              url: `https://danbooru.donmai.us/posts.json?tags=${tagsJoined}+rating:e&random=true`,
+              headers: {
+                "login":"Corriander",
+                "api_key":danbooruToken
+              },
+              json:true
+            },
+            function(error, response, html) {
 
                 if (!error) {
-                    var cheerio$ = cheerio.load(html, {
-                        xmlMode: true
-                    });
-                    cheerio$('posts').filter(function() {
-                        var toParse = cheerio$(this);
-                        var parsingInfo = toParse.text();
-
-                        parseString(toParse, function(err, result) {
-                            //var lengthOfPosts = result.posts.post.length
-                            //console.log(lengthOfPosts);
-                            if (result.posts.post == undefined) {
-                                m.reply("Sorry, no images were found during this iteration of the search.")
-                                return;
-                            }
-                            var randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
-
-                            while (randomPost.rating === "s") {
-                                randomPost = result.posts.post[Math.floor(Math.random() * result.posts.post.length)].$
-                            }
-                            var embed = new Discord.MessageEmbed();
-                            embed.setColor("#406b99");
-                            embed.setAuthor("Source for image");
-                            embed.setURL("http://gelbooru.com/index.php?page=post&s=view&id=" + randomPost.id);
-                            embed.setFooter("Score: " + randomPost.score)
-                            embed.setImage(randomPost.file_url)
-                            m.channel.send({embed : embed});
-                            return;
-                        });
-                    });
-                };
-            });
-        }
-    }
+                  console.log(response);
+                  console.log(response.body[0]);
+                  randomPost = response.body[0];
+                          mEmbed.setColor("#406b99");
+                          mEmbed.setAuthor("Source for image");
+                          mEmbed.setURL("https://danbooru.donmai.us/posts" + randomPost.id);
+                          mEmbed.setFooter("Score: " + randomPost.score)
+                          mEmbed.setImage("https://danbooru.donmai.us" + randomPost.file_url)
+                          m.channel.send(mEmbed);
+                          return;
+                      };
+                  });
+              };
+        };
     if (m.content.startsWith(`?rule34`)) {
         if (m.content.length > 8 && m.content.indexOf(";") > -1) {
             var tags = m.content.slice(7)
@@ -1058,19 +1027,31 @@ client.on('message', m => {
        return;
      } */
     if (m.content.startsWith(`?insult`)) {
-        var requestUrl = "http://www.insultgenerator.org/";
-        reequest(requestUrl, function(error, response, html) {
-            if (!error) {
-                var $ = cheerio.load(html);
-                $('.wrap').filter(function() {
-                    var insultData = $(this);
-                    randomInsult = insultData.text();
-                })
-            }
-        })
-        var insult = randomInsult
-        m.reply(insult);
-        return;
+        var randomItem = function(array){
+          return array[Math.floor(Math.random() * array.length)]
+        }
+          var insult = "";
+          var meme = Math.ceil(Math.random()*3);
+          if(meme === 1){
+            insult = "Oh shut up you ";
+          } else if (meme === 2){
+            insult = "...You ";
+          } else {
+            insult = "Do not ask me to insult you, you ";
+          }
+          var roll = Math.ceil(Math.random()*20);
+          for(var i = 0; i < roll; i++){
+            console.log(randomItem(insults.adjInsult))
+            if(i < roll-1){
+            insult = insult + randomItem(insults.adjInsult) + ", ";
+          } else {
+            insult = insult + randomItem(insults.adjInsult);
+          }
+
+          }
+          insult = insult + " " + randomItem(insults.adjEnd) + "!";
+          m.channel.send(insult);
+          return;
     }
     if (m.content.startsWith(`?wakeup`)) {
         m.channel.send("http://puu.sh/mk18d/a5117ed37a.png")

@@ -1,0 +1,20 @@
+{
+  "adjInsult" : [
+    "insipid",  "anti-social", "selfish", "prejudiced", "money-grubbing", "covetous", "abominable", "barbarous", "base", "boorish", "obscene", "repulsive", "sadistic", "vile",
+    "depraved", "gross", "inhuman", "foul", "feral", "coarse", "rude", "tasteless", "uncivilized", "ugly", "churlish", "vulgar", "loud", "uncouth", "uncultured", "uneducated", "ungracious", "unrefined",
+    "bad-mannered", "ill-mannered", "cloddish", "inhumane", "senseless", "abhorrent", "disgusting", "odious", "worthless", "feeding", "cheap", "dirty", "inferior", "pitiable", "lowest", "unworthy",
+    "grudging", "guzzling", "dull", "rank", "raw", "improper", "inelegant", "indelicate", "impure", "indecent", "raunchy", "scatological", "smutty", "unsophisticated", "insensitive", "lewd", "low-minded",
+    "repulsive", "unreasonable", "unsound", "incoherent", "insane", "ridiculous", "preposterous", "stupid", "wild", "flaky", "brainless", "nutty", "wacky", "absurd", "foolish", "illogical", "ludicrous", "idiotic",
+    "birdbrained", "harebrained", "lunatic", "grotesque", "hideous", "horrid", "unseemly", "unsightly", "appalling", "deformed", "disfigured", "nasty", "queer", "malformed"
+  ],
+  "adjEnd" : [
+    "cur", "oaf", "trogloydyte", "prehistoric-cave dweller", "cad", "scoundrel", "mutt", "wretch", "toad", "villian", "bum", "scum", "knave", "rascal", "brute", "ingrate", "scalawag", "scamp", "swine",
+    "clown"
+  ],
+  "animal" : [
+    "pig", "swan", "boar", "pigeon", "bear", "insect", "bug", "mutt", "cow"
+  ],
+  "adjBodyPart" : [
+    "nose", "mouth", "face", "hair", "right arm", "left arm", "finger", "big toe", "left leg", "left nut", "tongue", "ear", "neck", "back", "ass", "knee", "elbow"
+  ]
+}
