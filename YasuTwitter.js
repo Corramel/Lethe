@@ -81,9 +81,9 @@ var voteAllIDs = [];
 var playQueue = [];
 var cardNames = ["Sharpshooter", "Pugilist", "Neophyte", "Vagabond", "Arbiter", "Chaplain", "Sovereign", "Troubadour", "Oracle", "Cavalier", "Tactician", "Ambsace", "Fortuitous"];
 var shitpostCommands = ["?musicHelp", "?wontstop", "?weather", "?fast", "?goodbye", "?understand", "?ohno", "?phrase", "?gin", "?tarot", "?slash ", "?yourdone", "?EbolaChan", "?popcorn", "?cliff", "?tofu", "?ben", "?rr", '?perfect',
-    '?gelbooru', '?ngelbooru', '?rule34', '?fepic', '?dspic', '?hibiki', '?atasuki', '?hirasawa', '?bismarck', '?cc', '?yomom', '?insult', '?wakeup', '?partysover', '?kaio', '?blaze', '?anna', '?evan', '?fag', '?simmer',
+    '?gelbooru', '?ngelbooru', '?rule34', '?fepic', '?dspic', '?hibiki', '?atasuki', '?hirasawa', '?bismarck', '?cc', '?yomom', '?insult', '?wakeup', '?partysover', '?kaio', '?blaze', '?anna', '?evan', '?simmer',
     '?komari', '?tumblr', '?google', '?justacustom', '?asexual', '?darkness', '?chancey', 'nanami', '?uni', '?niger', '?unumii', '?edgemaster', '?jimbo', '?stayfree', '?dion', '?fang', '?starterpack', '?lyin', '?compliment', '?catfax',
-    '?catpix', '?haiku', '?choice', '?8ball', '?mura', '?gasthejaps', '?chill', '?disgusting', '?murder', '?clearly', '?stiff', '?sadness', '?peace', '?friends', '?shock', '?goodgirls', '?mana'
+    '?catpix', '?haiku', '?choice', '?8ball', '?mura',  '?chill', '?disgusting', '?murder', '?clearly', '?stiff', '?sadness', '?peace', '?friends', '?shock', '?goodgirls', '?mana'
 ];
 var boundChannel = false;
 var timeNow;
